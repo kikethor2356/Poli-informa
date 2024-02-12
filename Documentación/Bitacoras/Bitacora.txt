@@ -1,0 +1,4 @@
+1°Agregue la conexion a la base de datos, esta hecha con PDO y POO "No mover la conexion para nada"; 11/02/2024
+
+2°Hice una parte del crud solo el metodo create en la clase Horario, esta hecha con POO; 12/02/2024
+
