@@ -1,0 +1,1 @@
+Hagan una carpeta con su nombre para que pongan sus migraciones de la base de datos
