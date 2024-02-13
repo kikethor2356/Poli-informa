@@ -1,5 +1,5 @@
 <!-- Formulario HTML en index.php -->
-<form action="RegisterHorario.php" method="post">
+<form action="ControllerHorario.php" method="post">
     <input type="text" name="maestro_id" placeholder="ID del maestro"><br>
     <select name="hoea_inicio" id="hora_inicio">
         <option value="7:00">7:00am</option>

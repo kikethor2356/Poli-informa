@@ -1,6 +1,6 @@
 <?php
     include "../../Conexion/conexion.php";
-    include "../Horarios/Horario.php";
+    include "../Horarios/ModeloHorario.php";
 // Verificar si se han enviado datos del formulario
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Recibir los datos del formulario
