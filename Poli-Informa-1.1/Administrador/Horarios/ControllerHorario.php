@@ -1,6 +1,6 @@
 <?php
     include "../../Conexion/conexion.php";
-    include "../Horarios/ModeloHorario.php";
+    include "../Horarios/ModelHorario.php";
 // Verificar si se han enviado datos del formulario
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Recibir los datos del formulario
@@ -25,5 +25,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         echo "Error al crear el horario.";
     }
+
+
+   
+    $horarioModelo = new Horario($db);
+    $horario = $horarioModelo->show();
+    
+    
+
+    
+    
 }
 ?>

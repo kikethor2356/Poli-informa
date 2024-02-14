@@ -1,7 +1,7 @@
 <!-- Formulario HTML en index.php -->
 <form action="ControllerHorario.php" method="post">
     <input type="text" name="maestro_id" placeholder="ID del maestro"><br>
-    <select name="hoea_inicio" id="hora_inicio">
+    <select name="hora_inicio" id="hora_inicio">
         <option value="7:00">7:00am</option>
         <option value="8:00">8:00am</option>
         <option value="9:00">9:00am</option>
