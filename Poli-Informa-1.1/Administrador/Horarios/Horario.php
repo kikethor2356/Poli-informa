@@ -46,49 +46,80 @@ class Horario
         return false;
     }
 
-    // Método para obtener el horario según el nombre del laboratorio
-    public function getHorarioPorLaboratorio()
-    {
-        $query = "SELECT * FROM horarios WHERE nombre_laboratorio = 'Taller1' ";
-        $stmt = $this->conn->prepare($query);
-        $stmt->execute();
-        return $stmt;
-    }
 
-
-    // Función para generar la tabla de horarios
-function generarTablaHorarios($conn)
-{
-    // Crear instancia de la clase Horario
-    $horario = new Horario($conn);
-
-    // Obtener horarios por laboratorio
-    $stmt = $horario->getHorarioPorLaboratorio();
-
-    // Verificar si hay resultados
-    if ($stmt->rowCount() > 0) {
-        $table = "<table border='1'>";
-        $table .= "<tr><th>Nombre Maestro</th><th>Hora de inicio</th><th>Hora de fin</th><th>Día</th><th>Nombre del laboratorio</th></tr>";
-
-        // Iterar sobre los resultados
-        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            $table .= "<tr>";
-            $table .= "<td>{$row['maestro']}</td>";
-            $table .= "<td>{$row['hora_inicio']}</td>";
-            $table .= "<td>{$row['hora_fin']}</td>";
-            $table .= "<td>{$row['dias']}</td>";
-            $table .= "<td>{$row['nombre_laboratorio']}</td>";
-            $table .= "</tr>";
+    
+      
+        public function obtenerHorario() {
+            $query = "SELECT * FROM $this->table WHERE nombre_laboratorio = 'Taller1'";
+            $resultado = $this->conn->query($query);
+    
+            $horario = array(
+                'Lunes' => array(),
+                'Martes' => array(),
+                'Miércoles' => array(),
+                'Jueves' => array(),
+                'Viernes' => array(),
+                'Sábado' => array(),
+                'Domingo' => array()
+            );
+    
+            while ($fila = $resultado->fetch(PDO::FETCH_ASSOC)) {
+                $dias = $fila['dias'];
+                $hora_inicio = $fila['hora_inicio'];
+                $hora_fin = $fila['hora_fin'];
+                $nombre_laboratorio = $fila['nombre_laboratorio'];
+                $maestro = $fila['maestro'];
+    
+                $horario[$dias][] = array('hora_inicio' => $hora_inicio, 'hora_fin' => $hora_fin, 'maestro' => $maestro);
+            }
+    
+            return $horario;
         }
-        $table .= "</table>";
-    } else {
-        $table = "No se encontraron horarios.";
+    
+        public function mostrarHorario() {
+            $horario = $this->obtenerHorario();
+    
+           // Crear la tabla de horarios
+    echo "<table border='1'>";
+    echo "<tr><th>Horario</th>";
+    foreach (['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'] as $dia) {
+        echo "<th>$dia</th>";
+    }
+    echo "</tr>";
+
+    // Generar las filas de la tabla
+    for ($i = 0; $i < 20; $i++) {
+        echo "<tr>";
+        if ($i < 12) {
+            echo "<td>0$i:00 am</td>";
+        } else {
+            echo "<td>$i:00 pm</td>";
+        }
+        foreach (['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'] as $dia) {
+            echo "<td>";
+            if (isset($horario[$dia])) {
+                foreach ($horario[$dia] as $hora) {
+                    if ($i >= (int)$hora['hora_inicio'] && $i <= (int)$hora['hora_fin']) {
+                        echo "No disponible";
+                        break;
+                    }
+                }
+            }
+            echo "</td>";
+        }
+        echo "</tr>";
     }
 
-    return $table;
-}
+    echo "</table>";
+        }
+    
+        public function __destruct() {
+            $this->conn = null;
+        }
+    }
+    
 
 
-}
+
 
 ?>

@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+<script src="script.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Barra lateral con Submenús y Contenido</title>
 <style>
@@ -95,7 +96,9 @@
   </div>
   <div id="editarHor" class="subcontent">
     <h2>Editar Horario</h2>
-    <p>Este es el contenido del Producto 2.</p>
+    <?php
+    include "viewHorario.php";
+    ?>
   </div>
   <div id="eliminarHor" class="subcontent">
     <h2>Eliminar Horario</h2>
@@ -113,35 +116,6 @@
     <p>Este es el contenido del Servicio 3.</p>
   </div>
 </div>
-
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-    var submenuItems = document.querySelectorAll('.submenu');
-
-    submenuItems.forEach(function(item) {
-      item.addEventListener('click', function() {
-        item.classList.toggle('active');
-      });
-    });
-
-    var subcontentLinks = document.querySelectorAll('.submenu a');
-
-    subcontentLinks.forEach(function(link) {
-      link.addEventListener('click', function(event) {
-        event.preventDefault();
-        var targetId = link.getAttribute('href').substring(1);
-        var targetContent = document.getElementById(targetId);
-        var allContent = document.querySelectorAll('.subcontent');
-
-        allContent.forEach(function(content) {
-          content.classList.remove('active');
-        });
-
-        targetContent.classList.add('active');
-      });
-    });
-  });
-</script>
 
 </body>
 </html>

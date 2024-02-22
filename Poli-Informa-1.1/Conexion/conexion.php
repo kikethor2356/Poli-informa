@@ -3,8 +3,6 @@ require_once 'config.php';
 
 class Database {
     private $conn;
-
-
     /* Funcion para conectar a la base de datos */
     public function connect() {
         $this->conn = null;
