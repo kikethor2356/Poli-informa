@@ -13,7 +13,8 @@ class Database {
         } catch(PDOException $e) {
             echo 'Error de conexión: ' . $e->getMessage();
         }
-
+// jfcnojcnfklmefklcerkm
+// jnjrfnjrfn
         return $this->conn;
     }
 }
