@@ -3,19 +3,20 @@ require_once 'config.php';
 
 class Database {
     private $conn;
-    /* Funcion para conectar a la base de datos */
-    public function connect() {
-        $this->conn = null;
 
-        try {
-            $this->conn = new PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME, DB_USER, DB_PASS);
-            $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        } catch(PDOException $e) {
-            echo 'Error de conexión: ' . $e->getMessage();
+    public function __construct() {
+        global $db_host, $db_user, $db_pass, $db_name;
+        $this->conn = new mysqli($db_host, $db_user, $db_pass, $db_name);
+
+        if ($this->conn->connect_error) {
+            die("Error de conexión: " . $this->conn->connect_error);
         }
-// jfcnojcnfklmefklcerkm
-// jnjrfnjrfn
+    }
+
+    public function connect() {
         return $this->conn;
     }
 }
+
+
 ?>

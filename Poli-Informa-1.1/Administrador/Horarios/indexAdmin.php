@@ -97,7 +97,7 @@
   <div id="editarHor" class="subcontent">
     <h2>Editar Horario</h2>
     <?php
-    include "viewHorario.php";
+    include "../Horarios/viewHorario.php";
     ?>
   </div>
   <div id="eliminarHor" class="subcontent">

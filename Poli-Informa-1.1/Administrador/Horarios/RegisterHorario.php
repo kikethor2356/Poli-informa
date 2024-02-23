@@ -11,9 +11,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $dias = $_POST['dias'];
     $nombre_laboratorio = $_POST['nombre_laboratorio'];
 
-
-
-
     // Crear una instancia de la clase Database
     $database = new Database();
     $db = $database->connect();
@@ -21,6 +18,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Crear una instancia de la clase Horario
     $horario = new Horario($db);
     // Obtener los horarios por laboratorio
+
+    $horario->mostrarHorario();
 
     // Establecer las variables del horario
     $horario->setHorario($maestro, $hora_inicio, $hora_fin, $dias, $nombre_laboratorio);
