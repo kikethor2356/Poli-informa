@@ -96,9 +96,15 @@
   </div>
   <div id="editarHor" class="subcontent">
     <h2>Editar Horario</h2>
-    <?php
-    include "../Horarios/viewHorario.php";
-    ?>
+    <form action="BusquedaHorario.php"  method="POST">
+    <select name="busqueda">
+        <option value="Especialidades">Laboratorio de especialidades</option>
+        <option value="Redes">Laboratorio de redes</option>
+        <option value="Taller1">Taller1</option>
+        <option value="Taller2">Taller2</option>
+    </select>
+    <button type="submit">Buscar</button>
+</form>
   </div>
   <div id="eliminarHor" class="subcontent">
     <h2>Eliminar Horario</h2>

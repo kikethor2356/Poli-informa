@@ -1,6 +1,6 @@
 <?php
 
-class Horario 
+class Horario
 {
     private $conn;
     private $table = 'horarios';
@@ -16,14 +16,13 @@ class Horario
     }
 
     // Método para establecer las variables del horario
-    public function setHorario($maestro,$hora_inicio, $hora_fin,$dias,$nombre_laboratorio)
+    public function setHorario($maestro, $hora_inicio, $hora_fin, $dias, $nombre_laboratorio)
     {
         $this->maestro = $maestro;
         $this->hora_inicio = $hora_inicio;
         $this->hora_fin = $hora_fin;
         $this->dias = $dias;
         $this->nombre_laboratorio = $nombre_laboratorio;
-        
     }
 
     public function create()
@@ -41,7 +40,8 @@ class Horario
         return false;
     }
 
-    public function obtenerHorario() {
+    public function obtenerHorario()
+    {
         $query = "SELECT * FROM $this->table WHERE nombre_laboratorio = 'Taller1'";
         $resultado = $this->conn->query($query);
 
@@ -67,7 +67,8 @@ class Horario
         return $horario;
     }
 
-    public function mostrarHorario() {
+    public function mostrarHorario()
+    {
         $horario = $this->obtenerHorario();
 
         // Crear la tabla de horarios
@@ -90,9 +91,9 @@ class Horario
                 echo "<td>";
                 if (isset($horario[$dia])) {
                     foreach ($horario[$dia] as $hora) {
-                        if ($i >= (int)$hora['hora_inicio'] && $i <= (int)$hora['hora_fin']) {
+                        if ($i >= (float)$hora['hora_inicio'] && $i <= (float)$hora['hora_fin']) {
                             echo $hora['maestro']; // Corregido aquí
-                            break;
+
                         }
                     }
                 }
@@ -104,12 +105,34 @@ class Horario
         echo "</table>";
     }
 
-    public function __destruct() {
+
+    function search($busqueda)
+    {
+        // Consulta SQL para buscar en la base de datos
+        $sql = "SELECT * FROM $this->table WHERE nombre_laboratorio LIKE '%$busqueda%'";
+        $resultado = $this->conn->query($sql);
+
+        // Mostrar resultados en una tabla
+
+        echo "<h2 style= 'font-size:20px'>$busqueda</h2> ";
+        
+        echo "<table style='border-collapse: collapse; width: 100%;'>";
+        echo "<tr><th style='border: 1px solid #ddd; padding: 8px;'>Laboratorio</th><th style='border: 1px solid #ddd; padding: 8px;'>Maestro</th><th style='border: 1px solid #ddd; padding: 8px;'>Hora Inicio</th><th style='border: 1px solid #ddd; padding: 8px;'>Hora Fin</th><th style='border: 1px solid #ddd; padding: 8px;'>Editar</th><th style='border: 1px solid #ddd; padding: 8px;'>Eliminar</th></tr>";
+        while ($fila = $resultado->fetch_assoc()) {
+            echo "<tr>";
+            echo "<td style='border: 1px solid #ddd; padding: 8px;'>" . $fila['nombre_laboratorio'] . "</td>";
+            echo "<td style='border: 1px solid #ddd; padding: 8px;'>" . $fila['maestro'] . "</td>";
+            echo "<td style='border: 1px solid #ddd; padding: 8px;'>" . $fila['hora_inicio'] . "</td>";
+            echo "<td style='border: 1px solid #ddd; padding: 8px;'>" . $fila['hora_fin'] . "</td>";
+            echo "<td style='border: 1px solid #ddd; padding: 8px;'><a href='editar.php?id=" . $fila['id'] . "'>Editar</a></td>";
+            echo "<td style='border: 1px solid #ddd; padding: 8px;'><a href='eliminar.php?id=" . $fila['id'] . "'>Eliminar</a></td>";
+            echo "</tr>";
+        }
+        echo "</table>";
+    }
+
+    public function __destruct()
+    {
         $this->conn->close();
     }
 }
-
-
-
-
-?>

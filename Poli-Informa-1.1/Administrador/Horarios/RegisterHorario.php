@@ -31,3 +31,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Error al crear el horario.";
     }
 }
+
