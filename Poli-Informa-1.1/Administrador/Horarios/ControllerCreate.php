@@ -27,8 +27,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Crear un nuevo horario
     if ($horario->create($nombre_laboratorio, $maestro, $hora_inicio, $hora_fin, $dias)) {
         echo "Horario creado exitosamente.";
+        header('Location: indexAdmin.php');
+     
     } else {
         echo "Error al crear el horario.";
+       
     }
+    mysqli_close($db);
 }
+
 

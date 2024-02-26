@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <script src="script.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Barra lateral con Submenús y Contenido</title>
+<title>Poli-Informa Admin</title>
 <style>
   body {
     margin: 0;
@@ -69,9 +69,8 @@
     <li><a href="#">Inicio</a></li>
     <li class="submenu"><a href="#">Horario</a>
       <ul>
-        <li><a href="#añadirHor">Añadir Horario</a></li>
-        <li><a href="#editarHor">Editar Horario</a></li>
-        <li><a href="#eliminarHor">Eliminar Horario</a></li>
+        <li><a href="#añadirHor">Añadir </a></li>
+        <li><a href="#editarHor">Editar o Eliminar</a></li>
       </ul>
     </li>
     <li class="submenu"><a href="#">Producto</a>
@@ -91,12 +90,12 @@
     <h2>Añadir Horario</h2>
     <?php
     include "Componentes/index.php";
-    include "RegisterHorario.php";
+    include "ControllerCreate.php";
     ?>
   </div>
   <div id="editarHor" class="subcontent">
-    <h2>Editar Horario</h2>
-    <form action="BusquedaHorario.php"  method="POST">
+    <h2>Editar o Eliminar Horario</h2>
+    <form action="ControllerSearch.php"  method="POST">
     <select name="busqueda">
         <option value="Especialidades">Laboratorio de especialidades</option>
         <option value="Redes">Laboratorio de redes</option>
@@ -105,10 +104,6 @@
     </select>
     <button type="submit">Buscar</button>
 </form>
-  </div>
-  <div id="eliminarHor" class="subcontent">
-    <h2>Eliminar Horario</h2>
-    <p>Este es el contenido del Producto 3.</p>
   </div>
   <div id="añadirPro" class="subcontent">
     <h2>Añadir Producto</h2>

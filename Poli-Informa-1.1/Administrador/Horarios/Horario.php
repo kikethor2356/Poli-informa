@@ -124,15 +124,78 @@ class Horario
             echo "<td style='border: 1px solid #ddd; padding: 8px;'>" . $fila['maestro'] . "</td>";
             echo "<td style='border: 1px solid #ddd; padding: 8px;'>" . $fila['hora_inicio'] . "</td>";
             echo "<td style='border: 1px solid #ddd; padding: 8px;'>" . $fila['hora_fin'] . "</td>";
-            echo "<td style='border: 1px solid #ddd; padding: 8px;'><a href='editar.php?id=" . $fila['id'] . "'>Editar</a></td>";
-            echo "<td style='border: 1px solid #ddd; padding: 8px;'><a href='eliminar.php?id=" . $fila['id'] . "'>Eliminar</a></td>";
+            echo "<td style='border: 1px solid #ddd; padding: 8px;'><a href='ControllerEdit.php?id=" . $fila['id'] . "'>Editar</a></td>";
+            echo "<td style='border: 1px solid #ddd; padding: 8px;'><a href='ControllerDelete.php?id=" . $fila['id'] . "'>Eliminar</a></td>";
             echo "</tr>";
         }
         echo "</table>";
     }
 
-    public function __destruct()
+
+    function editarRegistro($id, $nombre_laboratorio, $maestro, $hora_inicio, $hora_fin) {
+        // Consulta SQL para actualizar el registro en la base de datos
+        $sql = "UPDATE $this->table SET nombre_laboratorio=?, maestro=?, hora_inicio=?, hora_fin=? WHERE id=?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param('sssss', $nombre_laboratorio, $maestro, $hora_inicio, $hora_fin, $id);
+
+        if ($stmt->execute()) {
+            return "Registro actualizado correctamente";
+            header('Location: indexAdmin.php');
+        } else {
+            return "Error al actualizar el registro: " . $this->conn->error;
+        }
+    }
+    
+    function mostrarFormularioEdicion($id) {
+        // Consulta SQL para obtener los datos del registro
+        $sql = "SELECT * FROM $this->table WHERE id=?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param('i', $id);
+        $stmt->execute();
+        $resultado = $stmt->get_result();
+    
+        if ($resultado->num_rows > 0) {
+            // Mostrar el formulario de edición con los datos actuales del registro
+            $fila = $resultado->fetch_assoc();
+            ?>
+            <h2>Editar Registro</h2>
+            <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+                <input type="hidden" name="id" value="<?php echo $fila['id']; ?>">
+                <label for="nombre_laboratorio">Nombre laboratorio:</label>
+                <input type="text" name="nombre_laboratorio" value="<?php echo $fila['nombre_laboratorio']; ?>"><br><br>
+                <label for="maestro">Maestro:</label>
+                <input type="text" name="maestro" value="<?php echo $fila['maestro']; ?>"><br><br>
+                <label for="hora_inicio">Hora de inicio:</label>
+                <input type="text" name="hora_inicio" value="<?php echo $fila['hora_inicio']; ?>"><br><br>
+                <label for="hora_fin">Hora de fin:</label>
+                <input type="text" name="hora_fin" value="<?php echo $fila['hora_fin']; ?>"><br><br>
+
+                <input type="submit" value="Guardar Cambios">
+            </form>
+            <?php
+        } else {
+            echo "No se encontró ningún registro con el ID proporcionado";
+        }
+    }
+
+
+    function eliminarRegistro($id) {
+        // Consulta SQL para eliminar el registro de la base de datos
+        $sql = "DELETE FROM $this->table WHERE id=?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param('i', $id);
+
+        if ($stmt->execute()) {
+            return "Registro eliminado correctamente";
+            
+        } else {
+            return "Error al eliminar el registro: " . $this->conn->error;
+        }
+    }
+
+
+    /* public function __destruct()
     {
         $this->conn->close();
-    }
+    } */
 }

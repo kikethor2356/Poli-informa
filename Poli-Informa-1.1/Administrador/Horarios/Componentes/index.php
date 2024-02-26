@@ -1,5 +1,5 @@
 <!-- Formulario HTML en index.php -->
-<form action="RegisterHorario.php" method="post">
+<form action="ControllerCreate.php" method="post">
     <input type="text" name="maestro" placeholder="Nombre Maestro">
     <select name="nombre_laboratorio" id="">
         <option value="Especialidades">Laboratorio de Especialidades</option>
