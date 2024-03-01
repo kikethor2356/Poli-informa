@@ -9,7 +9,7 @@ $database = new Database();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
-    $busqueda = $_POST['busqueda'];
+    $busqueda = $_POST['nombre_laboratorio'];
 }
 
 
