@@ -1,12 +1,9 @@
 <!-- Formulario HTML en index.php -->
 <form action="ControllerCreate.php" method="post">
-    <input type="text" name="maestro" placeholder="Nombre Maestro">
-    <select name="nombre_laboratorio" id="">
-        <option value="Especialidades">Laboratorio de Especialidades</option>
-        <option value="Redes">Laboratorio de Redes</option>
-        <option value="Taller1">Taller1</option>
-        <option value="Taller2">Taller2</option>
-    </select>
+    <?php
+    include "Componentes/ComboBoxMaestros.php";
+    ?>
+   
     <select name="hora_inicio" id="hora_inicio">
         <option value="7:00 am">7:00am</option>
         <option value="8:00 am">8:00am</option>

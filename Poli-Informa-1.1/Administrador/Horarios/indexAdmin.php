@@ -86,13 +86,7 @@
 
 <div class="content">
   <!-- Contenido de los submenús -->
-  <div id="añadirHor" class="subcontent">
-    <h2>Añadir Horario</h2>
-    <?php
-    include "Componentes/index.php";
-    include "ControllerCreate.php";
-    ?>
-  </div>
+
   <div id="editarHor" class="subcontent">
     <h2>Editar o Eliminar Horario</h2>
     <form action="ControllerSearch.php"  method="POST">
@@ -101,22 +95,18 @@
         <option value="Redes">Laboratorio de redes</option>
         <option value="Taller1">Taller1</option>
         <option value="Taller2">Taller2</option>
-    </select>
-    <button type="submit">Buscar</button>
-</form>
-  </div>
-  <div id="añadirPro" class="subcontent">
-    <h2>Añadir Producto</h2>
-  </div>
-  <div id="buscarPro" class="subcontent">
-    <h2>Buscar Producto</h2>
-    <p>Este es el contenido del Servicio 2.</p>
-  </div>
-  <div id="eliminarPro" class="subcontent">
-    <h2>Eliminar Producto</h2>
-    <p>Este es el contenido del Servicio 3.</p>
-  </div>
+      </select>
+      <button type="submit">Buscar</button>
 </div>
+</form>
+
+  <div id="añadirHor" class="subcontent">
+    <h2>Añadir Horario</h2>
+    <?php
+    include "Componentes/index.php";
+    include "ControllerCreate.php";
+    ?>
+  </div>
 
 </body>
 </html>
