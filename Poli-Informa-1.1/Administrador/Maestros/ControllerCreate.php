@@ -28,5 +28,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 // Después del envío del formulario, obtén la lista de maestros
 $maestro = new Maestro();
 /* $maestro->MostrarMaestros(); */
-$maestro->SuperMostrarMaestros();
+$maestro->MostrarMaestrosTabla();
 ?>

@@ -20,11 +20,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
 
     $maestro->editarRegistro($id, $nombre, $apellidos, $correo, $codigo, $imagen);
-
+    header('Location: ControllerCreate.php');
+    
 
 }else{
     $id = $_GET['id'];
     $maestro->mostrarFormularioEdicion($id);
+    
 }
 ?>
 
