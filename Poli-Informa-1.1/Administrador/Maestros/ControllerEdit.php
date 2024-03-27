@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     header('Location: ControllerCreate.php');
     
 
-}else{
+        }else{
     $id = $_GET['id'];
     $maestro->mostrarFormularioEdicion($id);
     

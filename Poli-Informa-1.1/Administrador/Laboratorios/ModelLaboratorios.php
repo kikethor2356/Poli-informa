@@ -34,7 +34,7 @@ class Laboratorio extends Database{
         $result = $conn->query($sql);
     
         if ($result->num_rows > 0) {
-            echo '<center><h1>Tabla de maestros</h1></center>';
+            echo '<center><h1>Tabla de Laboratorios</h1></center>';
             echo '<table style="border-collapse: collapse; width: 100%;">';
             echo '<tr>';
             echo '<th style="border: 1px solid #dddddd; text-align: left; padding: 8px;">Nombre</th>';

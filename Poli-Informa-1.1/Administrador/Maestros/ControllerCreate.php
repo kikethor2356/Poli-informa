@@ -25,8 +25,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $maestro->crearMaestro($nombre, $apellidos, $correo, $codigo, $imagen);
 }
 
-// Después del envío del formulario, obtén la lista de maestros
-$maestro = new Maestro();
-/* $maestro->MostrarMaestros(); */
-$maestro->MostrarMaestrosTabla();
+header('Location:ControllerShowTable.php');
 ?>

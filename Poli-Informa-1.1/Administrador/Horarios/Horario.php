@@ -23,6 +23,7 @@ class Horario
         $this->hora_fin = $hora_fin;
         $this->dias = $dias;
         $this->nombre_laboratorio = $nombre_laboratorio;
+    
     }
 
     public function create()
@@ -56,60 +57,65 @@ class Horario
     
     
 
-    public function obtenerHorario()
+    public function obtenerHorario($nombre_laboratorio)
     {
-        $query = "SELECT * FROM $this->table WHERE nombre_laboratorio = 'Taller1'";
+        $query = "SELECT * FROM $this->table WHERE nombre_laboratorio = '$nombre_laboratorio'";
         $resultado = $this->conn->query($query);
-
+    
         $horario = array(
             'Lunes' => array(),
             'Martes' => array(),
-            'Miércoles' => array(),
+            'Miercoles' => array(),
             'Jueves' => array(),
             'Viernes' => array(),
-            'Sábado' => array(),
+            'Sabado' => array(),
         );
-
+    
         while ($fila = $resultado->fetch_assoc()) {
+            $id = $fila['id']; // Se recoge el ID del horario
             $dias = $fila['dias'];
             $hora_inicio = $fila['hora_inicio'];
             $hora_fin = $fila['hora_fin'];
-            $nombre_laboratorio = $fila['nombre_laboratorio'];
             $maestro = $fila['maestro'];
-
-            $horario[$dias][] = array('hora_inicio' => $hora_inicio, 'hora_fin' => $hora_fin, 'maestro' => $maestro);
+    
+            // Verificar si el día está configurado correctamente
+            if (isset($horario[$dias])) {
+                // Agregar el horario al día correspondiente
+                $horario[$dias][] = array('id' => $id, 'hora_inicio' => $hora_inicio, 'hora_fin' => $hora_fin, 'maestro' => $maestro);
+            } else {
+                // Si el día no está configurado correctamente, mostrar un mensaje de error
+                echo "Error: Día inválido: $dias"; 
+            }
         }
-
+    
         return $horario;
     }
-
-    public function mostrarHorario()
+    
+    public function mostrarHorario($nombre_laboratorio)
     {
-        $horario = $this->obtenerHorario();
-
+        $horario = $this->obtenerHorario($nombre_laboratorio);
+    
         // Crear la tabla de horarios
         echo "<table border='1'>";
         echo "<tr><th>Horario</th>";
-        foreach (['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'] as $dia) {
+        foreach (['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'] as $dia) {
             echo "<th>$dia</th>";
         }
         echo "</tr>";
-
+    
         // Generar las filas de la tabla
-        for ($i = 7; $i <= 20; $i++) {
+        for ($i = 7; $i < 20; $i++) {
             echo "<tr>";
-            if ($i < 12) {
-                echo "<td>0$i:00 am</td>";
-            } else {
-                echo "<td>$i:00 pm</td>";
-            }
-            foreach (['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'] as $dia) {
+            $hora_inicio = str_pad($i, 2, "0", STR_PAD_LEFT) . ":00";
+            $hora_fin = str_pad(($i + 1), 2, "0", STR_PAD_LEFT) . ":00";
+            echo "<td>$hora_inicio - $hora_fin</td>";
+    
+            foreach (['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'] as $dia) {
                 echo "<td>";
                 if (isset($horario[$dia])) {
                     foreach ($horario[$dia] as $hora) {
                         if ($i >= (float)$hora['hora_inicio'] && $i <= (float)$hora['hora_fin']) {
-                            echo $hora['maestro']; // Corregido aquí
-
+                            echo $hora['maestro'] . "<a href='ControllerEdit.php?id=" . $hora['id'] . "'>Editar</a> <a href='ControllerDelete.php?id=" . $hora['id'] . "'>Eliminar</a>";
                         }
                     }
                 }
@@ -117,9 +123,10 @@ class Horario
             }
             echo "</tr>";
         }
-
+    
         echo "</table>";
     }
+    
 
 
     function search($busqueda)

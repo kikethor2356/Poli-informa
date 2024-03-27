@@ -1,11 +1,11 @@
 <?php
-include "../../Conexion/conexion.php";
+    
 
-function obtenerOpcionesCombo($conn, $tabla)
+function obtenerOpcionesCombo($db, $tabla)
 {
     // Consulta SQL para obtener los valores de la base de datos
     $sql = "SELECT Nombre FROM $tabla";
-    $result = $conn->query($sql);
+    $result = $db->query($sql);
 
     // Array para almacenar las opciones
     $opciones = array();
