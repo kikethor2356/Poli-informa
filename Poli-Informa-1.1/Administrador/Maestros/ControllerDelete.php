@@ -1,6 +1,6 @@
 <?php
 
-include "ModelMaestros.php";
+include "Maestro.php";
 $maestro = new Maestro();
 
     $id = $_GET['id'];

@@ -1,5 +1,5 @@
 <?php
-require_once 'ModelMaestros.php';
+require_once 'Maestro.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Recibir los datos del formulario

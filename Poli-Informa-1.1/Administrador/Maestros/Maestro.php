@@ -86,7 +86,7 @@ class Maestro extends Database {
             echo '</tr>';
             while($row = $result->fetch_assoc()) {
                 echo '<tr>';
-                echo '<td style="border: 1px solid #dddddd; text-align: left; padding: 8px;"><a href="ControllerShow.php?id=' . $row["id"] . '">' . $row["Nombre"] . '</a></td>';
+                echo '<td style="border: 1px solid #dddddd; text-align: left; padding: 8px;"><a href="ControllerShowProfile.php?id=' . $row["id"] . '">' . $row["Nombre"] . '</a></td>';
                 echo '<td style="border: 1px solid #dddddd; text-align: left; padding: 8px;">' . $row["Apellidos"] . '</td>';
                 echo '<td style="border: 1px solid #dddddd; text-align: left; padding: 8px;">' . $row["Codigo"] . '</td>';
                 echo '<td style="border: 1px solid #dddddd; text-align: left; padding: 8px;">' . $row["Correo"] . '</td>';
@@ -186,6 +186,9 @@ class Maestro extends Database {
         $consulta->close();
         $conn->close();
     }
+
+
+    
     
 }
 ?>

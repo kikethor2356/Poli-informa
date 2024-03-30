@@ -1,6 +1,6 @@
 <?php
 
-include "ModelMaestros.php";
+include "Maestro.php";
 
 // Verificar si se ha proporcionado un ID de maestro en la URL
 if(isset($_GET['id'])) {

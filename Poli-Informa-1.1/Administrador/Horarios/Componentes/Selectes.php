@@ -1,5 +1,4 @@
 <?php
-    
 
 function obtenerOpcionesCombo($db, $tabla)
 {
@@ -24,27 +23,26 @@ function obtenerOpcionesCombo($db, $tabla)
     return $opciones;
 }
 
-function mostrarOpcionesMaestros($conn)
+function mostrarOpcionesMaestrosEdicion($conn, $maestroSeleccionado)
 {
     $opciones = obtenerOpcionesCombo($conn, "maestros");
     // Mostrar las opciones en un combo box
     echo "<select name='maestro'>";
     foreach ($opciones as $opcion) {
-        echo "<option value='$opcion'>$opcion</option>";
+        $selected = ($opcion == $maestroSeleccionado) ? "selected" : "";
+        echo "<option value='$opcion' $selected>$opcion</option>";
     }
     echo "</select>";
 }
 
-function mostrarOpcionesLaboratorios($conn)
+function mostrarOpcionesLaboratoriosEdicion($conn, $laboratorioSeleccionado)
 {
     $opciones = obtenerOpcionesCombo($conn, "laboratorios");
     // Mostrar las opciones en un combo box
     echo "<select name='nombre_laboratorio'>";
     foreach ($opciones as $opcion) {
-        echo "<option value='$opcion'>$opcion</option>";
+        $selected = ($opcion == $laboratorioSeleccionado) ? "selected" : "";
+        echo "<option value='$opcion' $selected>$opcion</option>";
     }
     echo "</select>";
 }
-
-
-?>
