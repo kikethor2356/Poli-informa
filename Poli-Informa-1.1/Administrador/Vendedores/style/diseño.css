@@ -3,9 +3,7 @@
 /* FIN IMPORTACIONES */
 
 
-*{
-    font-family: 'Poppins';
-}
+
 
 
 /* CONTENEDOR DE LA VENTANA PARA AGREGAR UN PRODUCTO */
@@ -18,31 +16,55 @@
 }
 
 /* VENTANA PARA AGREGAR PRODUCTO */
-#agregar-producto{
 
-    position: absolute;
-    width: 72%;
-    height: 86vh;
-    top: 5%;
-    border-radius: 12px;
-    left: 5%;
-    background: rgb(208, 215, 219);
-    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.13);
-    overflow: hidden;
- 
+.modal_agregar_producto{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #111111bd;
+    display: flex;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .6s .9s;
+    --transform: translateY(-100vh);
+    --transition: transform .8s;
 }
 
 
-#agregar-producto #enviar{
+#ventana-agregar-producto{
+    position: absolute;
+    width: 72%;
+    height: 86vh;
+    top: 6.5%;
+    border-radius: 12px;
+    left: 24%;
+    background: rgb(208, 215, 219);
+    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.13);
+    overflow: hidden;
+    transform: var(--transform);
+    transition: var(--transition);
+}
+
+.modal--show--agregar--producto{
+    opacity: 1;
+    pointer-events: unset;
+    transition: opacity .6s;
+    --transform: translateY(0);
+    --transition: transform .8s .8s;
+}
+
+#ventana-agregar-producto #enviar{
     cursor: pointer;
 }
 
 
-#agregar-producto input[type="text"]{
+#ventana-agregar-producto input[type="text"]{
     border-radius: 5px;
 }
 
-#agregar-producto #cerrar{
+#ventana-agregar-producto #cerrar{
     position: absolute;
     color: white;
     left: 94%;
@@ -51,12 +73,12 @@
     transition: color .3s;
 }
 
-#agregar-producto #cerrar:hover{
+#ventana-agregar-producto #cerrar:hover{
     color: black;
 }
 
 
-#agregar-producto h1{
+#ventana-agregar-producto h1{
     font-weight: normal;
     font-size: 130%;
     font-weight: 500;
@@ -68,7 +90,7 @@
 }
 
 
-#agregar-producto #nombre, #agregar-producto #descripcion, #agregar-producto #codigoVendedor, #agregar-producto #precio{
+#ventana-agregar-producto #nombre, #ventana-agregar-producto #descripcion, #ventana-agregar-producto #codigoVendedor, #ventana-agregar-producto #precio{
     padding-left: 1.5%;
     padding-bottom: .5%;
     padding-right: 1.5%;
@@ -77,7 +99,7 @@
     outline: none;
 }
 
-#agregar-producto #descripcion{
+#ventana-agregar-producto #descripcion{
     margin-left: 5%;
     margin-top: 1%;
     border-radius: 10px;
@@ -88,7 +110,7 @@
     text-align: justify;
 }
 
-#agregar-producto #codigoVendedor{
+#ventana-agregar-producto #codigoVendedor{
     margin-left: 5%;
     width: 35%;
     height: 3.5vh;
@@ -97,17 +119,17 @@
     margin-top: 6%;
 }
 
-#agregar-producto #precio{
+#ventana-agregar-producto #precio{
     width: 6%;
     padding-top: .6%;
     text-align: center;
 }
 
-#agregar-producto input[type="file"]{
+#ventana-agregar-producto input[type="file"]{
     display: none;
 }
 
-#agregar-producto #labelArchivo{
+#ventana-agregar-producto #labelArchivo{
     text-transform: capitalize;
     color: white;
     background: rgb(255, 58, 58);
@@ -125,11 +147,11 @@
     width: 27%;
 }
 
-#agregar-producto #labelArchivo i{
+#ventana-agregar-producto #labelArchivo i{
     font-size: 100%;
 }
 
-#agregar-producto #enviar{
+#ventana-agregar-producto #enviar{
     margin-left: 5%;
     margin-top: 2%;
     width: 38%;
@@ -144,11 +166,11 @@
     transition: transform .4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
 }
 
-#agregar-producto #enviar:hover {
+#ventana-agregar-producto #enviar:hover {
     transform: scale(0.9);
 }
 
-#agregar-producto #nombreArchivo{
+#ventana-agregar-producto #nombreArchivo{
     position: absolute;
     width: 37%;
     height: 7.5%;
@@ -160,7 +182,7 @@
     border: none;
 }
 
-#agregar-producto #nombre{
+#ventana-agregar-producto #nombre{
     margin-left: 5%;
     position: absolute;
     padding-top: .6%;
@@ -168,7 +190,7 @@
     height: 4vh;
 }
 
-#agregar-producto p{
+#ventana-agregar-producto p{
     margin-left: 5%;
     margin-top: 5%;
 }
@@ -225,8 +247,296 @@
 /* FIN DE LA VENTANA PARA AGREGAR CATEGORÍA */
 
 
+/* VENTANA PARA EDITAR PRODUCTOS */
+
+.modal_editar_producto{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #111111bd;
+    display: flex;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .6s .9s;
+    --transform: translateY(-100vh);
+    --transition: transform .8s; 
+}
 
 
+#ventana-editar-producto{
+    position: absolute;
+    left: 37%;
+    top: 3.5%;
+    border-radius: 5px;
+    width: 27%;
+    height: 92%;
+    background: white;
+    transform: var(--transform);
+    transition: var(--transition);
+}
+
+.modal--show--editar--producto{
+    opacity: 1;
+    pointer-events: unset;
+    transition: opacity .6s;
+    --transform: translateY(0);
+    --transition: transform .8s .8s;
+}
+
+
+#ventana-editar-producto h1{
+    background: rgb(94, 138, 189);
+    margin: 0;
+    font-weight: 400;
+    font-size: 110%;
+    padding-left: 3%;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    font-family: Poppins;
+    user-select: none;
+    color: white;
+}
+
+#ventana-editar-producto #iconoSalir{
+    position: absolute;
+    top: 1%;
+    left: 88%;
+    color: rgb(34, 32, 32);
+    font-family: Poppins;
+    border-radius: 50%;
+    padding-left: 3%;
+    padding-top: 1.3%;
+    padding-bottom: 1.3%;
+    padding-right: 3%;
+    cursor: pointer;
+    transition: color .2s;
+}
+
+#ventana-editar-producto #iconoSalir:hover{
+    color: white;
+}
+
+
+#ventana-editar-producto label, #ventana-editar-producto .texto, #ventana-editar-producto #descripcionEditarProducto{
+    margin-left: 3%;
+    margin-top: .3%;
+    color: rgb(146, 146, 146);
+    font-size: 90%;
+}
+
+
+#ventana-editar-producto label{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#ventana-editar-producto .texto, #ventana-editar-producto #descripcionEditarProducto{
+    border: 1px solid grey;
+    border-radius: 5px;
+    padding-top: 1.5%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding-left: 2%;
+    padding-bottom: 1.5%;
+    width: 89%;
+    padding-right: 2%;    
+}
+
+#ventana-editar-producto #descripcionEditarProducto{
+    resize: none;
+    height: 8vh;
+}
+
+#ventana-editar-producto input[type=file]{
+    display: none;
+}
+
+#ventana-editar-producto #rutaArchivoEditarProducto{
+    color: rgb(146, 146, 146);
+    font-size: 90%;
+    border: 1px solid grey;
+    border-radius: 5px;
+    padding-top: 1.6%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding-left: 2%;
+    padding-bottom: 1.6%;
+    padding-right: 2%;
+    margin-left: 2%;
+    width: 67%;
+    cursor: text;
+}
+
+#ventana-editar-producto #label-archivo{
+    padding-top: 2%;
+    padding-left: 3%;
+    padding-bottom: 2%;
+    padding-right: 3%;
+    border-radius: 5px;
+    color: white;
+    background: rgb(6, 139, 156);
+    cursor: pointer;
+    user-select: none;
+    transition: transform .5s;
+}
+
+
+#ventana-editar-producto #comboBoxCategoriaEditarProducto{
+    width: 75%;
+    font-family: 'Poppins';
+    border-radius: 50px;
+    border: 2px solid black;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    padding-left: 3%;
+    padding-right: 9%;
+    cursor: pointer;
+    color: black;
+}
+
+#ventana-editar-producto #editarProducto{
+    border: none;
+    font-family: 'Poppins';
+    cursor: pointer;
+    padding-left: 3%;
+    padding-top: 1.5%;
+    padding-bottom: 1.5%;
+    padding-right: 3%;
+    border-radius: 5px;
+    position: absolute;
+    top: 93.5%;
+}
+
+#ventana-editar-producto #editarProducto{
+    background: grey;
+    color: white;
+    left: 75%;
+    transition: background .2s;
+}
+
+#ventana-editar-producto #editarProducto:hover{
+    background: rgb(73, 73, 73);
+}
+
+/* FIN DE LA VENTANA PARA EDITAR PRODUCTOS */
+
+
+
+
+
+/* VENTANA PARA ELIMINAR PRODUCTOS */
+.modal_borrar_producto{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #111111bd;
+    display: flex;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .6s .9s;
+    --transform: translateY(-100vh);
+    --transition: transform .8s;
+}
+
+#ventana-eliminar-producto{
+
+    position: absolute;
+    left: 33.5%;
+    top: 10%;
+    width: 450px;
+    background: white;
+    height: 220px;
+    border-radius: 5px;
+    transform: var(--transform);
+    transition: var(--transition);
+}
+
+.modal--show--borrar--producto{
+
+    opacity: 1;
+    pointer-events: unset;
+    transition: opacity .6s;
+    --transform: translateY(0);
+    --transition: transform .8s .8s;
+
+}
+
+
+
+#ventana-eliminar-producto h1{
+    font-weight: 500;
+    font-family: Poppins;
+    font-size: 120%;
+    background: red;
+    color: white;
+    margin: 0;
+    padding: 2%;
+    user-select: none;
+
+}
+
+
+#ventana-eliminar-producto #raya1{
+    border: 1px solid rgb(250, 249, 249);
+    margin-top: 2%;
+}
+
+#ventana-eliminar-producto #raya2{
+    border: 1px solid rgb(250, 249, 249);
+    margin-top: 5%;
+}
+
+
+#ventana-eliminar-producto #contenedor-eliminar{
+
+    background: rgb(239, 242, 243);
+    border-radius: 5px;
+    margin-top: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 90%;
+    padding: 2%;
+}
+
+#ventana-eliminar-producto #borrarProducto{
+    border: none;
+    font-family: Poppins;
+    cursor: pointer;
+    padding-left: 5%;
+    padding-top: 1.5%;
+    padding-bottom: 1.5%;
+    padding-right: 5%;
+    border-radius: 5px;
+    position: absolute;
+    top: 81.5%;
+}
+
+#ventana-eliminar-producto #borrarProducto{
+    color: white;
+    background: red;
+    left: 75.5%;
+    transition: background .2s;
+}
+
+#ventana-eliminar-producto #borrarProducto:hover{
+    background: rgb(230, 12, 12);
+
+}
+
+#ventana-eliminar-producto #salir{
+    position: absolute;
+    top: 5%;
+    left: 92%;
+    transition: color .3s;
+    cursor: pointer;
+}
+
+#ventana-eliminar-producto #salir:hover{
+    color: white;
+}
 
 
 /* SECCIÓN PARA MOSTRAR LOS PRODUCTOS */
@@ -374,8 +684,6 @@
 }
 
 /* FIN DE LA SECCIÓN PARA MOSTRAR LOS PRODUCTOS */
-
-
 
 
 

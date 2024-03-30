@@ -14,7 +14,7 @@ function archivoSeleccionado(event) {
 function mostrarArchivoEnEditar(event) {
 
     const archivo = event.target.files[0];
-    let nombreArchivo = document.getElementById('nombre-archivo');
+    let nombreArchivo = document.getElementById('rutaArchivoEditarProducto');
 
     if (archivo) {
         nombreArchivo.value = archivo.name;
@@ -58,22 +58,76 @@ function mostrarArchivoEditarVendedor(event){
     }
 }
 
-function modalEditarVendedor(){
-    const abrirModal = document.querySelector(".modal_abrir");
-    const modal = document.querySelector(".modal_editar_vendedor");
-    const cerrarModal = document.querySelector(".modal_cerrar");
+function modalAgregarProducto(){
+
+    const abrirModal = document.querySelector('.modal_abrir_agregar_producto');
+    const modal = document.querySelector('.modal_agregar_producto');
+    const cerrarModal = document.querySelector('.modal_cerrar_agregar_producto');
     abrirModal.addEventListener("click", (e)=>{
         e.preventDefault();
-        modal.classList.add("modal--show");
+        modal.classList.add('modal--show--agregar--producto');
+    });
+    cerrarModal.addEventListener("click", (e)=>{
+        e.preventDefault();
+        modal.classList.remove('modal--show--agregar--producto');
+    });
 
+}
+
+function modalEditarProducto(id, nombre, codigo, precio, descripcion, nombreImagen, categoria){
+
+    let idProducto = document.getElementById('idEditarProducto');
+    let nombreProducto = document.getElementById('nombreEditarProducto');
+    let codigoProducto = document.getElementById('vendedorEditarProducto');
+    let precioProducto = document.getElementById('precioEditarProducto');
+    let descripcionProducto = document.getElementById('descripcionEditarProducto');
+    let nombreImagenProducto = document.getElementById('rutaArchivoEditarProducto');
+    let categoriaProducto = document.getElementById('comboBoxCategoriaEditarProducto');
+    idProducto.value = id;
+    nombreProducto.value = nombre;
+    codigoProducto.value = codigo;
+    precioProducto.value = precio;
+    descripcionProducto.value = descripcion;
+    nombreImagenProducto.value = nombreImagen;
+    categoriaProducto.value = categoria;
+
+    const abrirModal = document.querySelector(`.modal_abrir_editar_producto_${id}`);
+    const modal = document.querySelector('.modal_editar_producto');
+    const cerrarModal = document.querySelector('.modal_cerrar_editar_producto');
+    abrirModal.addEventListener("click", (e)=>{
+        e.preventDefault();
+        modal.classList.add('modal--show--editar--producto');
     });
 
     cerrarModal.addEventListener("click", (e)=>{
         e.preventDefault();
-        modal.classList.remove("modal--show");
+        modal.classList.remove('modal--show--editar--producto');
     });
-    
+
 }
+
+function modalBorrarProducto(id, foto){
+    
+    let idProducto = document.getElementById('idEliminarProducto');
+    let fotoProducto = document.getElementById('archivoEliminarProducto');
+
+    idProducto.value = id;
+    fotoProducto.value = foto;
+
+    const abrirModal = document.querySelector(`.modal_abrir_borrar_producto_${id}`);
+    const modal = document.querySelector('.modal_borrar_producto');
+    const cerrarModal = document.querySelector('.modal_cerrar_borrar_producto'); 
+    abrirModal.addEventListener("click", (e)=>{
+        e.preventDefault();
+        modal.classList.add("modal--show--borrar--producto"); 
+    });
+    cerrarModal.addEventListener("click", (e)=>{
+        e.preventDefault();
+        modal.classList.remove("modal--show--borrar--producto");
+    });
+
+}
+
 
 function modalAgregarVendedor(){
 

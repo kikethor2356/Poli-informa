@@ -1,7 +1,8 @@
 <?php 
+    include("../../../../Conexion/conexion.php");
+    $db = new Database();
+    $conexion = $db->connect();
 
-    include('../../../../Conexion/conexion.php');
-    
     $metodoAccion = (int) filter_var($_REQUEST['metodo'], FILTER_SANITIZE_NUMBER_INT);
 
 
@@ -57,13 +58,13 @@ if($metodoAccion == 1){
 
 if($metodoAccion == 2){
 
-    $idProducto = (int) filter_var($_POST['idProducto'], FILTER_SANITIZE_NUMBER_INT);
-    $nombreProducto = filter_var($_POST['nombre'], FILTER_SANITIZE_STRING);
-    $codigoVendedor = filter_var($_POST['codigoVendedor'], FILTER_SANITIZE_STRING);
-    $precioProducto = filter_var($_POST['precio'], FILTER_VALIDATE_FLOAT);
-    $descripcionProducto = filter_var($_POST['descripcion'], FILTER_SANITIZE_STRING);
-    $nombreImagenProducto = filter_var($_POST['nombre-archivo'], FILTER_SANITIZE_STRING);
-    $categoriaProducto = filter_var($_POST['comboBoxCategoria'], FILTER_SANITIZE_STRING);
+    $idProducto = (int) filter_var($_POST['idEditarProducto'], FILTER_SANITIZE_NUMBER_INT);
+    $nombreProducto = filter_var($_POST['nombreEditarProducto'], FILTER_SANITIZE_STRING);
+    $codigoVendedor = filter_var($_POST['vendedorEditarProducto'], FILTER_SANITIZE_STRING);
+    $precioProducto = filter_var($_POST['precioEditarProducto'], FILTER_VALIDATE_FLOAT);
+    $descripcionProducto = filter_var($_POST['descripcionEditarProducto'], FILTER_SANITIZE_STRING);
+    $nombreImagenProducto = filter_var($_POST['rutaArchivoEditarProducto'], FILTER_SANITIZE_STRING);
+    $categoriaProducto = filter_var($_POST['comboBoxCategoriaEditarProducto'], FILTER_SANITIZE_STRING);
 
     $updateProducto = ("UPDATE productos 
     set nombre='$nombreProducto',
@@ -76,10 +77,10 @@ if($metodoAccion == 2){
 
     $resultadoUpdate = mysqli_query($conexion, $updateProducto);
 
-    if(!empty($_FILES['archivo']['name'])){
+    if(!empty($_FILES['archivoEditarProducto']['name'])){
         
-        $nombreFoto = $_FILES['archivo']['name'];
-        $temporal = $_FILES['archivo']['tmp_name'];
+        $nombreFoto = $_FILES['archivoEditarProducto']['name'];
+        $temporal = $_FILES['archivoEditarProducto']['tmp_name'];
 
         $carpeta = 'imagenes';
         $miCarpeta = opendir($carpeta);
@@ -104,8 +105,8 @@ if($metodoAccion == 2){
 //ELIMINAR PRODUCTO
 if($metodoAccion == 3){
 
-    $idProducto = (int) filter_var($_REQUEST['texto-eliminar'], FILTER_SANITIZE_NUMBER_INT);
-    $nombreFoto = filter_var($_REQUEST['archivoEliminar'], FILTER_SANITIZE_STRING);
+    $idProducto = (int) filter_var($_REQUEST['idEliminarProducto'], FILTER_SANITIZE_NUMBER_INT);
+    $nombreFoto = filter_var($_REQUEST['archivoEliminarProducto'], FILTER_SANITIZE_STRING);
 
     $SqlDeleteAlumno = ("DELETE FROM productos WHERE id='$idProducto'");
     $resultDeleteAlumno = mysqli_query($conexion, $SqlDeleteAlumno);

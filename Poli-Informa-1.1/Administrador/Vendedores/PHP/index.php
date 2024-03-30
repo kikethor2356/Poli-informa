@@ -1,3 +1,8 @@
+<?php
+    include("../../../Conexion/conexion.php");
+    $db = new Database();
+    $conexion = $db->connect();
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -12,7 +17,7 @@
 <body>
 
 
-    <div id="productos">
+    <div id="cafeteria">
 
         <!-- OPCIONES DEL ADMINISTRADOR -->
         <nav id="navegacion-productos">        
@@ -45,7 +50,7 @@
 
                         <input type="text" id="buscar-producto" placeholder="Ingresar nombre del producto">
 
-                        <a href="BD/agregar.php"><button id="nuevoProducto" name="nuevoProducto"><i class="fa-solid fa-plus"></i>&nbsp;Agregar producto</button></a>
+                        <a class="modal_abrir_agregar_producto" onclick="modalAgregarProducto()"><button id="nuevoProducto" name="nuevoProducto"><i class="fa-solid fa-plus"></i>&nbsp;Agregar producto</button></a>
 
                         <table id="tablaProductos" border="1px">
                             
@@ -66,7 +71,6 @@
 
                             <?php 
 
-                            include("../../../Conexion/conexion.php");
                             $consulta = "SELECT * FROM PRODUCTOS";
                             $resultado = mysqli_query($conexion, $consulta);
                             
@@ -86,8 +90,14 @@
                                     <td class="<?php echo $clase_fila; ?>"><input type="text" id="campoImagen" name="campoImagen" value="<?php echo $mostrar['nombreImagen']?>" readonly></td>
                                     <td class="<?php echo $clase_fila; ?>"><input type="text" id="campoCategoria" name="campoCategoria" value="<?php echo $mostrar['categoria']?>" readonly></td>
                                     <td id="campoAcciones" name="campoAcciones" class="<?php echo $clase_fila; ?>">
-                                        <a href="../PHP/BD/borrar.php?id=<?php echo $mostrar['ID']?>"><img src="../iconos/basura.png" alt="eliminar" id="iconoEliminar" title="Eliminar registro"></a>
-                                        <a href="../PHP/BD/editar.php?id=<?php echo $mostrar['ID']?>"><img src="../iconos/editar.png" alt="editar" id="iconoEditar" title="Editar registro"></a>
+                                        <a class="modal_abrir_borrar_producto_<?php echo $mostrar['ID'];?>" onclick="modalBorrarProducto('<?php echo $mostrar['ID'];?>', 
+                                        '<?php echo $mostrar['nombreImagen'];?>')">
+                                        <img src="../iconos/basura.png" alt="eliminar" id="iconoEliminar" title="Eliminar registro"></a>
+                                        
+                                        <a class="modal_abrir_editar_producto_<?php echo $mostrar['ID'];?>" onclick="modalEditarProducto('<?php echo $mostrar['ID'];?>', 
+                                        '<?php echo $mostrar['nombre'];?>', '<?php echo $mostrar['codigoVendedor'];?>', '<?php echo $mostrar['precio'];?>', 
+                                        '<?php echo $mostrar['descripcion'];?>', '<?php echo $mostrar['nombreImagen'];?>', '<?php echo $mostrar['categoria'];?>')">
+                                        <img src="../iconos/editar.png" alt="editar" id="iconoEditar" title="Editar registro"></a>
                                     </td>
                                 </tr>
                                 <?php
@@ -100,6 +110,122 @@
                         </table>
 
                     </div>
+                    <!-- FIN PARA MOSTRAR PRODUCTOS -->
+
+
+
+                <!-- VENTANAS MODALES PARA PRODUCTOS -->
+
+                <!-- VENTANA PARA AGREGAR PRODUCTO -->
+                <div class="modal_agregar_producto">
+                    <div id="agregar">
+                        <!-- DATOS DEL PRODUCTO -->
+                        <div id="ventana-agregar-producto">
+                            <div id="cerrar" class="modal_cerrar_agregar_producto">✖</div>
+                            <h1>Nuevo Producto</h1>
+                            <form action="../PHP/BD/Acciones.php?metodo=1" method="post" id="contenedor" name="contenedor" enctype="multipart/form-data">
+                                <input type="text" id="nombre" name="nombre" placeholder="Nombre del producto"><br><br>
+                                <input type="text" id="codigoVendedor" name="codigoVendedor" placeholder="Vendedor"><br>
+                                <p>Precio:  $ <input type="text" id="precio" name="precio"> MXN</p>
+                                <textarea id="descripcion" name="descripcion" placeholder="Descripción" ></textarea><br><br>
+                                <input type="file" id="imagen" name="imagen" onchange="archivoSeleccionado(event)" accept="image/jpeg, image/png">
+                                <label for="imagen" id="labelArchivo"><i class="fa-solid fa-upload"></i>  elegir imagen</label><br><br>
+                                <input type="text" id="nombreArchivo" readonly><br>
+                                <input type="submit" value="Subir producto" id="enviar" name="enviar">
+                        <!-- FIN DATOS DEL PRODUCTO-->
+
+                        <!-- PIDE LA CATEGORÍA A LA QUE PERTENECE EL PRODUCTO -->
+
+
+                        <div id="contenedor-categoria">
+                            <h2>Categoría del producto</h2>
+                            <ul>
+                                <li>
+                                    <input type="radio" name="categoria" id="Dulce" value="Dulce" checked>
+                                    <label for="Dulce">Dulce</label>
+
+                                </li>
+                                <li>
+                                    <input type="radio" name="categoria" id="Salado" value="Salado">
+                                    <label for="Salado">Salado</label>
+
+                                </li>
+                                <li>
+                                    <input type="radio" name="categoria" id="Mezclado" value="Mezclado">
+                                    <label for="Mezclado">Mezclado</label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="categoria" id="Tecnología" value="Tecnología">
+                                    <label for="Tecnología">Tecnología</label>
+                                </li>
+                            </ul>
+                        <!-- FIN DIV AGREGAR CATEGORÍA -->
+                        </div>
+                            </form>
+                        <!-- FIN DE LA OPCIÓN PARA AGREGAR UN PRODUCTO -->
+                        </div>
+                        <!-- FIN DEL CONTENEDOR PARA AGREGAR PRODUCTO -->
+                    </div>
+                </div>
+                <!-- FIN DE LA VENTANA MODAL PARA AGREGAR PRODUCTO -->                            
+
+                
+
+                <!-- VENTANA MODAL PARA EDITAR PRODUCTO -->
+                <div class="modal_editar_producto">    
+                    <div id="ventana-editar-producto">
+                        <h1>Editar producto</h1>
+                        <div id="iconoSalir" class="modal_cerrar_editar_producto">✖</div>
+                        <form action="../PHP/BD/Acciones.php?metodo=2" method="POST" id="formulario-editar" enctype="multipart/form-data">
+                            <label for="idProducto" id="paraId" hidden>ID: </label>
+                            <input type="text" id="idEditarProducto" name="idEditarProducto" value="" hidden><br>
+                            <label for="nombre">Nombre:</label>
+                            <input type="text" id="nombreEditarProducto" name="nombreEditarProducto" class="texto" value=""><br><br>
+                            <label for="vendedor">Vendedor:</label>
+                            <input type="text" id="vendedorEditarProducto" name="vendedorEditarProducto" class="texto" value=""><br><br>   
+                            <label for="precio">Precio: </label>
+                            <input type="text" id="precioEditarProducto" name="precioEditarProducto" class="texto" value=""><br><br>
+                            <label for="descripcionEditar">Descripción: </label><br>
+                            <textarea name="descripcionEditarProducto" id="descripcionEditarProducto"></textarea><br><br>
+                            <input type="file" id="archivoEditarProducto" name="archivoEditarProducto" onchange="mostrarArchivoEnEditar(event)" accept="image/jpeg, image/png">
+                            <label for="archivoEditarProducto" id="label-archivo">Imagen</label>
+                            <input type="text" id="rutaArchivoEditarProducto" name="rutaArchivoEditarProducto" disabled value=""><br><br>
+                            <label for="comboBoxCategoriaEditarProducto">Categoria: </label>
+                            <select id="comboBoxCategoriaEditarProducto" name="comboBoxCategoriaEditarProducto">
+                                <option value="Dulce">Dulce</option>
+                                <option value="Salado">Salado</option>
+                                <option value="Mezclado">Mezclado</option>
+                                <option value="Tecnología">Tecnología</option>
+                            </select>
+                            <div id="rayaEditarProducto"></div>
+                            <input type="submit" id="editarProducto" name="editarProducto" value="Guardar">
+                        </form>     
+                    </div>
+                </div>
+                <!--  FIN DE LA VENTANA MODAL PARA EDITAR PRODUCTOS -->
+
+
+                <!-- VENTANA MODAL PARA BORRAR PRODUCTOS -->
+                <div class="modal_borrar_producto">
+                    <div id="ventana-eliminar-producto">
+                        <h1>Eliminar registro</h1>
+                        <div id="salir" class="modal_cerrar_borrar_producto">✖</div>
+                        <div id="raya1"></div>
+                        <form action="../PHP/BD/Acciones.php?metodo=3" method="post" enctype="multipart/form-data" id="formulario-eliminar">
+                            <div id="contenedor-eliminar">
+                                <p>¿Desea eliminar el producto?</p>
+                            </div>
+                            <input type="text" id="idEliminarProducto" name="idEliminarProducto" value="" hidden>                            
+                            <input type="text" id="archivoEliminarProducto" name="archivoEliminarProducto" value="" hidden>
+                            <input type="submit" name="borrarProducto" id="borrarProducto" value="Borrar">
+                        </form>
+                        <div id="raya2"></div>
+                    </div>
+                </div>           
+                <!-- FIN DE LA VENTANA MODAL PARA BORRAR PRODUCTOS -->
+
+                <!-- FIN DE LAS VENTANAS MODALES PARA PRODUCTOS -->
+
 
 
                     <!-- MOSTRAR VENDEDORES -->
@@ -127,8 +253,6 @@
 
                             
                             <?php 
-                            
-                                include("../../../Conexion/conexion.php");
                                 $consulta = "SELECT * FROM VENDEDORES";
                                 $resultado = mysqli_query($conexion, $consulta);
                                 $numeroID;
@@ -261,7 +385,7 @@
                                     </div>
 
                                     <div class="fotoVendedor">
-                                        <input type="file" id="fotoVendedor" name="fotoVendedor" onchange="mostrarArchivoAgregarVendedor(event)">
+                                        <input type="file" id="fotoVendedor" name="fotoVendedor" onchange="mostrarArchivoAgregarVendedor(event)" accept="image/jpeg, image/png">
                                         <input type="text" id="rutaFotoVendedor" name="rutaFotoVendedor" placeholder="Subir foto del vendedor" readonly>
                                         <label for="fotoVendedor"><i class="fa-solid fa-upload"></i></label>
                                     </div>
@@ -281,12 +405,7 @@
                 <!-- FIN DE VENTANA MODAL PARA AGREGAR AL VENDEDOR -->
                         
 
-                <!-- VENTANA MODAL PARA EDITAR AL VENDEDOR -->
-                <?php 
-
-                    include("../../../Conexion/conexion.php");
-            
-                ?>
+                <!-- VENTANA MODAL PARA EDITAR AL VENDEDOR -->                                
 
                 <div class="modal_editar_vendedor">
 
@@ -367,7 +486,7 @@
                             </div>
 
                             <div class="fotoVendedor">
-                                <input type="file" id="archivoVendedor" name="archivoVendedor" onchange="mostrarArchivoEditarVendedor(event)">
+                                <input type="file" id="archivoVendedor" name="archivoVendedor" onchange="mostrarArchivoEditarVendedor(event)" accept="image/jpeg, image/png">
                                 <label for="archivoVendedor"><i class="fa-solid fa-upload"></i></label>
                                 <input type="text" id="fotoEditarVendedor" name="fotoEditarVendedor" value="" readonly><br><br>
                             </div>
@@ -385,27 +504,18 @@
 
                 <!-- VENTANA MODAL PARA BORRAR AL VENDEDOR -->
                 <div class="modal_borrar_vendedor">
-
                     <div id="ventana-borrar-vendedor">
-
                         <h1>Borrar registro</h1>
-
                         <div id="cerrar" class="modal_cerrar_borrar_vendedor">✖</div>
-
                         <form action="../PHP/BD/Acciones.php?metodo=6" id="formulario-borrar-vendedor" enctype="multipart/form-data" method="post">
-
                             <div id="contenedorEliminar">
                                 <p id="informacion">¿Desea eliminar el registro?</p>
                                 <input type="text" id="fotoEliminarVendedor" name="fotoEliminarVendedor" value="" hidden>
                                 <input type="text" id="idEliminarVendedor" name="idEliminarVendedor" value="" hidden>    
                             </div>
-
                             <button id="borrarVendedor" name="Borrar"><i class="fa-solid fa-trash"></i>&nbsp;Borrar</button>
-
                         </form>
-
                     </div>
-
                 </div>
                 <!-- FIN DE VENTANA MODAL PARA ELIMINAR AL VENDEDOR -->
 
