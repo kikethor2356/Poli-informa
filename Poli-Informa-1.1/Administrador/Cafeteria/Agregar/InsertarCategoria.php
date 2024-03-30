@@ -1,6 +1,8 @@
 <?php
 include('../../../Conexion/conexion.php');
 session_start();
+$db = new Database();
+$conexion = $db->connect();
 
 if(isset($_POST['Agregar1'])){
     $categorianombre = $_POST['categoria_nombre'];

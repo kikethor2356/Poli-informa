@@ -1,7 +1,9 @@
 <?php
 include('../../../Conexion/conexion.php');
 session_start();
- 
+$db = new Database();
+$conexion = $db->connect();
+
 if(isset($_POST['Agregar1'])){
     $nombre = $_POST['nombre_producto'];
     $descripcion = $_POST['descripcion'];

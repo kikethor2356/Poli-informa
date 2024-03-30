@@ -1,7 +1,8 @@
 <?php
 include('../../../Conexion/conexion.php');
 session_start();
-
+$db = new Database();
+$conexion = $db->connect();
 
 $cafeteriama = $_POST['eliminar_id'];
 $eliminar_imagen = $_POST['eliminar_imagen'];
