@@ -1,6 +1,8 @@
 <?php
 include('../../Conexion/conexion.php');
 session_start();
+$db = new Database();
+$conexion = $db->connect();
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -3,4 +3,4 @@
 $db_host = 'localhost'; 
 $db_user = 'root';
 $db_pass = '';
-$db_name = 'poli-informa'; 
+$db_name = 'poli_informa'; 
