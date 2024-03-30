@@ -1,0 +1,79 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+
+/* FIN IMPORTACIONES */
+
+
+
+
+*{
+
+    font-family: 'Poppins';
+}
+
+
+#productos{
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    width: 99.8%;
+    height: 99vh;
+}
+
+
+#navegacion-productos, #principal-productos{
+
+    position: absolute;
+
+}
+
+#navegacion-productos{
+
+    width: 13%;
+    height: 98.7vh;
+    top: 0%;
+    background-color: rgb(63, 141, 175);
+    color: white;
+}
+
+
+#principal-productos{
+
+    width: 86.5%;
+    height: 98.5vh;
+    top: 0%;
+    left: 13.3%;
+    background-color: white;
+
+
+}
+
+#opciones-productos li{
+    transition: background-color .5s ease;
+    line-height: 300%;
+    list-style-type: none;
+    cursor: default;
+    width: 80%;
+    margin-top: 7%;
+    user-select: none;
+    border-radius: 50px;
+    padding-left: 8%;
+    padding-bottom: 8%;
+    height: 5vh;
+    font-size: 90%;
+}
+
+#opciones-productos li:hover{
+    background-color: rgb(225, 225, 225);
+}
+
+
+#navegacion-productos h4{
+    font-weight: normal;
+    font-size: 95%;
+    margin-left: 6%;
+    user-select: none;
+
+}
+
+

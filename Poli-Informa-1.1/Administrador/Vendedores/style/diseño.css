@@ -1,0 +1,966 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+/* FIN IMPORTACIONES */
+
+
+*{
+    font-family: 'Poppins';
+}
+
+
+/* CONTENEDOR DE LA VENTANA PARA AGREGAR UN PRODUCTO */
+#agregar{
+
+    width: 84.5%;
+    position: absolute;
+    height: 100%;
+    
+}
+
+/* VENTANA PARA AGREGAR PRODUCTO */
+#agregar-producto{
+
+    position: absolute;
+    width: 72%;
+    height: 86vh;
+    top: 5%;
+    border-radius: 12px;
+    left: 5%;
+    background: rgb(208, 215, 219);
+    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.13);
+    overflow: hidden;
+ 
+}
+
+
+#agregar-producto #enviar{
+    cursor: pointer;
+}
+
+
+#agregar-producto input[type="text"]{
+    border-radius: 5px;
+}
+
+#agregar-producto #cerrar{
+    position: absolute;
+    color: white;
+    left: 94%;
+    top: 2%;
+    cursor: pointer;
+    transition: color .3s;
+}
+
+#agregar-producto #cerrar:hover{
+    color: black;
+}
+
+
+#agregar-producto h1{
+    font-weight: normal;
+    font-size: 130%;
+    font-weight: 500;
+    margin: 0;
+    background: rgb(19, 123, 207);
+    color: white;
+    padding: 1%;
+    padding-left: 3%;
+}
+
+
+#agregar-producto #nombre, #agregar-producto #descripcion, #agregar-producto #codigoVendedor, #agregar-producto #precio{
+    padding-left: 1.5%;
+    padding-bottom: .5%;
+    padding-right: 1.5%;
+    border: none;
+    margin-top: 5%;
+    outline: none;
+}
+
+#agregar-producto #descripcion{
+    margin-left: 5%;
+    margin-top: 1%;
+    border-radius: 10px;
+    padding-top: 1.5%;
+    resize: none;
+    width: 35%;
+    height: 14vh;
+    text-align: justify;
+}
+
+#agregar-producto #codigoVendedor{
+    margin-left: 5%;
+    width: 35%;
+    height: 3.5vh;
+    position: absolute;
+    padding-top: .6%;
+    margin-top: 6%;
+}
+
+#agregar-producto #precio{
+    width: 6%;
+    padding-top: .6%;
+    text-align: center;
+}
+
+#agregar-producto input[type="file"]{
+    display: none;
+}
+
+#agregar-producto #labelArchivo{
+    text-transform: capitalize;
+    color: white;
+    background: rgb(255, 58, 58);
+    text-align: center;
+    padding: 10px 40px;
+    font-size: 18px;
+    letter-spacing: 1.5px;
+    user-select: none;
+    cursor: pointer;
+    font-size: 95%;
+    box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.35);
+    border-radius: 5px;
+    position: absolute;
+    left: 5%;
+    width: 27%;
+}
+
+#agregar-producto #labelArchivo i{
+    font-size: 100%;
+}
+
+#agregar-producto #enviar{
+    margin-left: 5%;
+    margin-top: 2%;
+    width: 38%;
+    padding: 1%;
+    user-select: none;
+    box-shadow: 2px 4px 10px rgba(157, 157, 157, 0.35);
+    border: 1px solid rgb(194, 194, 194);
+    border-radius: 5px;
+    font-size: 95%;
+    background: rgb(83, 127, 177);
+    color: white;
+    transition: transform .4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+#agregar-producto #enviar:hover {
+    transform: scale(0.9);
+}
+
+#agregar-producto #nombreArchivo{
+    position: absolute;
+    width: 37%;
+    height: 7.5%;
+    font-size: 70%;
+    margin-left: 5%;
+    background: none;
+    outline: none;
+    margin-top: -1%;
+    border: none;
+}
+
+#agregar-producto #nombre{
+    margin-left: 5%;
+    position: absolute;
+    padding-top: .6%;
+    width: 35%;
+    height: 4vh;
+}
+
+#agregar-producto p{
+    margin-left: 5%;
+    margin-top: 5%;
+}
+
+
+
+
+/* SECCIÓN PARA ELEGIR LA CATEGORÍA DEL PRODUCTO */
+
+#contenedor-categoria{
+    display: flex;
+    position: absolute;
+    left: 51.5%;
+    top: 26%;
+    flex-direction: column;
+    background-color: white;
+    width: 33%;
+    height: 45%;
+    padding: 3% 4%;
+    border-radius: 20px;
+    box-shadow: 10px 8px 30px rgba(0, 0, 0, 0.13);
+    user-select: none;
+}
+
+#contenedor-categoria ul{
+    list-style-type: none;
+    padding-left: 1%;
+    margin: 0;
+}
+
+#contenedor-categoria li{
+    display: block;
+    position: relative;
+    padding-top: 5%;
+    padding-left: 4%;
+}
+
+#contenedor-categoria h2{
+    margin: 10px 0;
+    font-weight: 700;
+    font-size: 120%;
+    font-family: Poppins;
+
+}
+
+
+#contenedor-categoria label{
+    cursor: pointer;
+    font-family: Poppins;
+}
+
+/* FIN DISEÑO CATEGORÍA DEL PRODUCTO */
+
+/* FIN DE LA VENTANA PARA AGREGAR CATEGORÍA */
+
+
+
+
+
+
+/* SECCIÓN PARA MOSTRAR LOS PRODUCTOS */
+
+#mostrarProductos h1{
+    text-align: center;
+    margin-top: 3%;
+}
+
+#mostrarProductos #nuevoProducto{
+    position: absolute;
+    top: 18%;
+    left: 85%;
+    padding-left: 1%;
+    padding-right: 1%;
+    padding-top: .5%;
+    padding-bottom: .5%;
+    background: rgb(143, 0, 0);
+    color: white;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+
+#mostrarProductos table{
+    width: 95%;
+    margin-left: 2%;
+    margin-top: 7%;
+
+}
+
+
+#mostrarProductos table, #mostrarProductos th, #mostrarProductos td{
+    border-collapse: collapse;
+    border: none;
+}
+
+
+#mostrarProductos th{
+    border-bottom: 1px solid black;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    text-align: left;
+    font-weight: 600;
+}
+
+#mostrarProductos td{
+    padding-top: .2%;
+    padding-bottom: .2%;
+}
+
+#mostrarProductos #cabezaID{
+    width: 4%;
+    text-align: center;
+}
+
+#mostrarProductos #cabezaNombre{
+    width: 11.5%;
+}
+
+#mostrarProductos #cabezaVendedor{
+    width: 10%;
+}
+
+#mostrarProductos #cabezaPrecio{
+    text-align: center;
+    width: 6.5%;
+}
+
+#mostrarProductos #cabezaDescripcion{
+    width: 15%;
+}
+
+#mostrarProductos #cabezaImagen{
+    width: 17%;
+}
+
+#mostrarProductos #cabezaCategoria{
+    width: 10%;
+}
+
+#mostrarProductos #cabezaFecha{
+    width: 8%;
+    text-align: center;
+}
+
+#mostrarProductos #cabezaAcciones{
+    text-align: center;
+    width: 12%;
+}
+
+
+#tablaProductos input[type=text]{
+    margin: 0;
+    width: 95%;
+    outline: none;
+    border: none;
+    background: none;
+}
+
+#mostrarProductos #campoID, #mostrarProductos #campoPrecio{
+    width: 85%;
+    text-align: center;
+}
+
+#mostrarProductos #campoFecha{
+    width: 90%;
+    text-align: center;
+}
+
+#mostrarProductos .fila1{
+    background: rgb(238, 237, 237);
+}
+
+#mostrarProductos #iconoEliminar, #mostrarProductos #iconoEditar{
+    position: relative;
+    margin-top: 3%;
+    width: 12.5%;
+    border-radius: 5px;
+    padding: 1.5%;
+    background: red;
+    cursor: pointer;
+    margin-left: 25%;
+    user-select: none;
+}
+
+#mostrarProductos #iconoEditar{
+    background: blue;
+    margin-left: 5%;
+}
+
+#mostrarProductos #buscar-producto{
+    border: 1px solid grey;
+    border-radius: 5px;
+    position: absolute;
+    padding-top: .5%;
+    padding-left: 1%;
+    padding-right: 1%;
+    padding-bottom: .5%;
+    outline: none;
+    margin-left: 2%;
+    top: 18%;
+    width: 22%;
+}
+
+/* FIN DE LA SECCIÓN PARA MOSTRAR LOS PRODUCTOS */
+
+
+
+
+
+
+
+/* SECCIÓN PARA MOSTRAR A LOS VENDEDORES */
+#mostrarVendedores h1{
+    text-align: center;
+    margin-top: 3%;
+}
+
+#mostrarVendedores table{
+    width: 95%;
+    margin-left: 2%;
+    position: absolute;
+    top: 24%;
+}
+
+
+#mostrarVendedores table, #mostrarVendedores th, #mostrarVendedores td{
+    border-collapse: collapse;
+    border: none;
+}
+
+#mostrarVendedores th{
+    border-bottom: 1px solid black;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    text-align: left;
+    font-weight: 600;
+}
+
+#mostrarVendedores td{
+    padding-top: .2%;
+    padding-bottom: .2%;
+}
+
+
+#mostrarVendedores #cabezaCodigoVendedor{
+    text-align: center;
+    width: 7%;
+}
+
+
+#mostrarVendedores #cabezaNombreVendedor{
+    width: 13%;
+}
+
+#mostrarVendedores #cabezaDescripcionVendedor{
+    width: 16%;
+}
+
+#mostrarVendedores #cabezaCorreoVendedor{
+    width: 15.5%;
+}
+
+#mostrarVendedores #cabezaTelefonoVendedor{
+    width: 8.5%;
+    text-align: center;
+}
+
+#mostrarVendedores #cabezaHoraInicio{
+    width: 7.5%;
+}
+
+#mostrarVendedores #cabezaHoraFin{
+    width: 7.5%;
+}
+
+#mostrarVendedores #cabezaFotoVendedor{
+    width: 15%;
+}
+
+#mostrarVendedores #cabezaAccionesVendedor{
+    width: 15%;
+}
+
+#mostrarVendedores input[type="text"]{
+    margin: 0;
+    width: 93%;
+    outline: none;
+    border: none;
+    background: none;
+}
+
+#mostrarVendedores #campoCodigoVendedor{
+    text-align: center;
+}
+
+#mostrarVendedores #campoTelefonoVendedor{
+    text-align: center;
+}
+
+#mostrarVendedores #iconoEliminarVendedor, #mostrarVendedores #iconoEditarVendedor{
+    position: relative;
+    margin-top: 3%;
+    width: 15.5%;
+    border-radius: 5px;
+    padding: 1.5%;
+    background: red;
+    cursor: pointer;
+    user-select: none;
+    margin-left: 2%;
+}
+
+#mostrarVendedores #iconoEditarVendedor{
+    background: blue;
+}
+
+#mostrarVendedores .fila1{
+    background: rgb(184, 173, 138);
+    color: white;
+}
+
+
+#mostrarVendedores #nuevoVendedor{
+    position: absolute;
+    top: 18%;
+    left: 84%;
+    padding-left: 1%;
+    padding-right: 1%;
+    padding-top: .5%;
+    padding-bottom: .5%;
+    background: rgb(219, 168, 0);
+    color: white;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+
+
+/* FIN DE LA SECCIÓN PARA MOSTRAR A LOS VENDEDORES */
+
+
+
+
+/* SECCIÓN DE LA VENTANA PARA AGREGAR AL VENDEDOR */
+
+.modal_agregar_vendedor{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #111111bd;
+    display: flex;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .6s .9s;
+    --transform: translateY(-100vh);
+    --transition: transform .8s;
+}
+
+
+#ventana-agregar-vendedor{
+    position: absolute;
+    left: 25%;
+    top: 13%;
+    width: 45%;
+    height: 72%;
+    padding-left: 3.2%;
+    padding-top: .5%;
+    border-radius: 10px;
+    background: white;
+    padding-right: 3%;
+    transform: var(--transform);
+    transition:var(--transition);
+}
+
+
+.modal--show--agregar--vendedor{
+    opacity: 1;
+    pointer-events: unset;
+    transition: opacity .6s;
+    --transform: translateY(0);
+    --transition: transform .8s .8s;
+}
+
+#ventana-agregar-vendedor #cerrar{
+    position: absolute;
+    top: 5%;
+    left: 93%;
+    cursor: pointer;
+    user-select: none;
+    transition: color .5s;
+}
+
+#ventana-agregar-vendedor #cerrar:hover{
+    color: rgb(156, 0, 0);;
+}
+
+
+#ventana-agregar-vendedor h1{
+    font-weight: 600;
+    font-size: 140%;
+}
+
+#ventana-agregar-vendedor label{
+    font-size: 90%;
+    font-weight: 500;
+}
+
+
+#ventana-agregar-vendedor input[type="text"], #ventana-agregar-vendedor textarea{
+    border-radius: 4px;
+    padding-left: 1.5%;
+    border: 1px solid grey;
+    outline: none;
+    padding-top: .8%;
+    padding-bottom: .8%;
+    padding-right: 1.5%;  
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    transition: box-shadow .2s ease;
+}
+
+#ventana-agregar-vendedor input[type=text]:focus, #ventana-agregar-vendedor textarea:focus, #ventana-agregar-vendedor select:focus{
+    box-shadow: 1px 1px 5px 1px rgba(87, 150, 233, 0.938);
+}
+
+#ventana-agregar-vendedor .formularioIzquierdo{
+    position: absolute;
+    width:  41%;
+}
+
+#ventana-agregar-vendedor select{
+    font-size: 80%;
+    transition: box-shadow .2s ease;
+}
+
+#ventana-agregar-vendedor .formularioDerecho{
+    position: absolute;
+    left: 53%;
+    width: 40%;
+    margin: 0;
+    padding: 0;
+}
+
+#ventana-agregar-vendedor .correoVendedor, #ventana-agregar-vendedor .descripcionVendedor, 
+#ventana-agregar-vendedor .telefonoVendedor{
+    margin-top: 4.5%;
+}
+
+#ventana-agregar-vendedor .horarioVendedor{
+    margin-top: 7.5%;
+
+}
+
+#ventana-agregar-vendedor .horarioInicio, #ventana-agregar-vendedor .horarioFin{
+    margin-top: 2.5%;
+}
+
+
+#ventana-agregar-vendedor input[type=file]{
+    display: none;
+}
+
+#ventana-agregar-vendedor i{
+    width: 10%;
+    height: 5vh;
+    color: white;
+}
+
+#ventana-agregar-vendedor textarea{
+
+    height: 20vh;
+    resize: none;
+    transition: box-shadow .2s ease;
+}
+
+#ventana-agregar-vendedor .fotoVendedor{
+    margin-top: 12%;
+}
+
+
+#ventana-agregar-vendedor #rutaFotoVendedor{
+    width: 76%;
+    padding-left: 1.5%;
+    padding-top: .8%;  
+    padding-bottom: .8%;
+    padding-right: 1.5%;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    box-shadow: none; 
+}
+
+
+#ventana-agregar-vendedor label[for=fotoVendedor]{
+    position: absolute;
+    margin: 0;
+    margin-top: .2%;
+    padding-left: 5%;
+    padding-top: .7%;  
+    padding-bottom: .7%;
+    height: 8%;
+    padding-right: 5%;
+    background: rgb(156, 0, 0);
+
+}
+
+
+#ventana-agregar-vendedor #enviarVendedor{
+    position: absolute;
+    background: linear-gradient(rgb(156, 0, 0), rgb(182, 61, 61));
+    color: white;
+    border-radius: 5px;
+    border: 1px solid white;
+    top: 85%;
+    width: 85%;
+    padding: 1% 3% 1% 3%; 
+    cursor: pointer;
+}
+
+/* FIN DE LA SECCIÓN PARA AGREGAR AL VENDEDOR */
+
+
+/* SECCIÓN PARA EDITAR AL VENDEDOR */
+
+
+.modal_editar_vendedor{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #111111bd;
+    display: flex;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .6s .9s;
+    --transform: translateY(-100vh);
+    --transition: transform .8s;
+}
+
+.modal--show{
+    opacity: 1;
+    pointer-events: unset;
+    transition: opacity .6s;
+    --transform: translateY(0);
+    --transition: transform .8s .8s;
+}
+
+#ventana-editar-vendedor{
+    background: white;
+    position: absolute;
+    width: 30%;
+    height: 95%;
+    top: 2%;
+    left: 35%;
+    padding: .1% 2.5% .5% 0;
+    border-radius: 5px;
+    transform: var(--transform);
+    transition:var(--transition);
+}
+
+#ventana-editar-vendedor h1{
+    font-weight: 500;
+    font-size: 130%;
+    text-align: left;
+    margin-left: 10%;    
+    color: rgb(8, 11, 136);
+}
+
+#ventana-editar-vendedor #cerrar{
+    position: absolute;
+    left: 87%;
+    top: 3%;
+    user-select: none;
+    cursor: pointer;
+    transition: color .5s;
+    color: rgb(8, 11, 136);
+}
+
+#ventana-editar-vendedor #cerrar:hover{
+    color: black;
+}
+
+#ventana-editar-vendedor input[type=text]{
+    outline: none;
+    border: 1px solid grey;
+    border-radius: 5px;
+    padding: .8% 2.5% .8% 2.5%;
+    width: 82%;
+    margin-left: 10%;
+}
+
+#ventana-editar-vendedor label{
+    font-size: 85%;
+    font-weight: 500;
+    color: rgb(63, 62, 62);
+    margin-left: 10%;
+
+}
+
+#ventana-editar-vendedor textarea{
+    outline: none;
+    border: 1px solid grey;
+    border-radius: 5px;
+    padding: 1% 2.5% 1% 2.5%;
+    width: 82%;
+    resize: none;
+    height: 10vh;
+    margin-left: 10%;
+
+}
+
+#ventana-editar-vendedor div{
+    margin-bottom: 1.2%;
+}
+
+#ventana-editar-vendedor .horaInicio, #ventana-editar-vendedor .horaFin{
+    margin-bottom: 3.5%;
+    margin-top: 4%;
+}
+
+#ventana-editar-vendedor select{
+    font-size: 80%;
+    border: 1px solid black;
+    border-radius: 3px;
+    outline: none;
+}
+
+#ventana-editar-vendedor input[type=file]{
+    display: none;
+}
+
+#ventana-editar-vendedor #fotoEditarVendedor{
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    margin: 0;
+    margin-left: 0;
+    position: absolute;
+    padding: 1.1% 3% 1.1% 3%;
+    border-left: none;
+    width: 67%;
+}
+
+#ventana-editar-vendedor label i{
+    border: 1px solid rgb(116, 16, 16);
+    padding: 2%;
+    background: rgb(116, 16, 16);
+    color: white;
+    border-bottom-left-radius: 3px;
+    border-top-left-radius: 3px;
+}
+
+#ventana-editar-vendedor #editarVendedor, #ventana-editar-vendedor #cancelar{
+    padding: 1.5% 4% 1.5% 4%;
+    border-radius: 5px;
+    position: absolute;
+    left: 65%;
+    border: 1px solid white;
+    cursor: pointer;
+}
+
+#ventana-editar-vendedor #cancelar{
+    left: 40%;
+    background: grey;
+    color: white;
+}
+
+#ventana-editar-vendedor #editarVendedor{
+    background: rgb(26, 28, 172);
+    transition: background .2s;
+    color: white;
+}
+
+#ventana-editar-vendedor #editarVendedor:hover{
+    background: rgb(2, 38, 80);
+}
+/* FIN SECCIÓN EDITAR VENDEDOR */
+
+
+
+/* INICIO BORRAR VENDEDOR */
+
+.modal_borrar_vendedor{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #111111bd;
+    display: flex;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .6s .9s;
+    --transform: translateY(-100vh);
+    --transition: transform .8s;
+
+}
+
+.modal--show--borrar--vendedor{
+    opacity: 1;
+    pointer-events: unset;
+    transition: opacity .6s;
+    --transform: translateY(0);
+    --transition: transform .8s .8s;
+}
+
+#ventana-borrar-vendedor{
+    position: absolute;
+    width: 33%;
+    height: 38%;
+    border-radius: 5px;
+    left: 32%;
+    top: 5%;
+    background: white;
+    transform: var(--transform);
+    transition:var(--transition);
+}
+
+#ventana-borrar-vendedor h1{
+    font-weight: 500;
+    font-size: 135%;
+    margin: 0;
+    padding: 2% 5% 2% 5%;
+    color: white;
+    background: rgb(170, 23, 23);
+    user-select: none;
+}
+
+#ventana-borrar-vendedor #cerrar{
+    position: absolute;
+    left: 92%;
+    top: 5%;
+    user-select: none;
+    cursor: pointer;
+    transition: color .2s;
+    color: white;
+}
+
+#ventana-borrar-vendedor #cerrar:hover{
+    color: black;
+}
+
+#ventana-borrar-vendedor #contenedorEliminar{
+    border: 1px solid rgb(207,204,204);
+    background: rgb(231, 229, 229);
+    width: 80%;
+    margin-left: 9%;
+    margin-top: 7%;
+    text-align: center;
+    padding-top: 2%;
+    height: 12vh;
+    font-size: 95%;
+    border-radius: 5px;
+}
+
+#ventana-borrar-vendedor #cancelar, #ventana-borrar-vendedor #borrarVendedor{
+    cursor: pointer;
+    padding: 1.5% 4% 1.5% 4%;
+    user-select: none;
+    margin-top: 5%;
+    outline: none;
+    border-radius: 5px;
+    border: none;
+}
+
+#ventana-borrar-vendedor #cancelar{
+    position: absolute;
+    left: 45%;
+}
+
+
+#ventana-borrar-vendedor #borrarVendedor{
+    background: rgb(170, 23, 23);
+    color: white;
+    transition: background .2s;
+    position: absolute;
+    left: 69%;
+}
+
+#ventana-borrar-vendedor #borrarVendedor:hover{
+    background: rgb(212, 14, 14);
+}
+
+
+
+/* FIN SECCIÓN BORRAR VENDEDOR */
+
+
+
+
+
+
+
