@@ -1,5 +1,8 @@
 <?php
 
+//NUESTRAS VARIABLES DE ENTORNO
+
+
 $db_host = 'localhost'; 
 $db_user = 'root';
 $db_pass = '';
