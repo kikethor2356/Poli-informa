@@ -1,7 +1,7 @@
 <?php 
-    require '../../Conexion/conexion.php';
-    session_start();
-    $db = new Database();
+include('../../Conexion/conexion.php');
+session_start();
+$db = new Database();
 $conexion = $db->connect();
 ?>
 <!DOCTYPE html>
@@ -10,25 +10,50 @@ $conexion = $db->connect();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/DiseñoAvisos.css">
+    <link rel="stylesheet" href="../menu.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Avisos</title>
 </head>
 <body>
     <div id="productos">
         <!-- OPCIONES DEL ADMINISTRADOR -->
-        <nav id="navegacion-productos">        
-            <h4>Avisos</h4>
-            <ul id="opciones-productos">
-            </ul>
-        </nav>
+        <?php include '../menu.html'; ?>
 
         <!-- ÁREA DE TRABAJO -->
         <main id="principal-productos">
             <section id="section-productos">
                 <div id="mostrarProductos">
                     <h1>Avisos</h1>
-                    
-                    <button id="nuevoProducto" class="nuevoProducto" name="nuevoProducto" title="Agregar Producto" onclick="mostrarVentana()"><i class="fa-solid fa-circle-plus"></i> Agregar Producto</button>   
+                    <button id="nuevoProducto" class="nuevoProducto" name="nuevoProducto" title="Agregar Producto" onclick="mostrarVentana()"><i class="fa-solid fa-circle-plus"></i> Agregar Producto</button>
+                    <!-- Controles de paginación -->
+                    <div id="paginacion">
+                        <form action="" method="GET">
+                            <label for="resultados_por_pagina">Mostrar 
+                            <select name="resultados_por_pagina" id="resultados_por_pagina" onchange="this.form.submit()">
+                                <option value="4" <?php if(isset($_GET['resultados_por_pagina']) && $_GET['resultados_por_pagina'] == 4) echo 'selected'; ?>>4</option>
+                                <option value="7" <?php if(isset($_GET['resultados_por_pagina']) && $_GET['resultados_por_pagina'] == 7) echo 'selected'; ?>>7</option>
+                                <option value="10" <?php if(isset($_GET['resultados_por_pagina']) && $_GET['resultados_por_pagina'] == 10) echo 'selected'; ?>>10</option>
+                            </select>
+                             Producto</label>
+                        </form>
+                        <?php
+                        
+                        $resultados_por_pagina = isset($_GET['resultados_por_pagina']) ? $_GET['resultados_por_pagina'] : 10;
+                        $pagina_actual = isset($_GET['pagina']) ? $_GET['pagina'] : 1;
+
+                        $inicio = ($pagina_actual - 1) * $resultados_por_pagina;
+
+                        $sql = "SELECT COUNT(*) AS total FROM avisos";
+                        $resultado = mysqli_query($conexion, $sql);
+                        $fila = mysqli_fetch_assoc($resultado);
+                        $total_resultados = $fila['total'];
+                        $total_paginas = ceil($total_resultados / $resultados_por_pagina);
+
+                        $consulta="SELECT * FROM avisos LIMIT $inicio, $resultados_por_pagina";
+                        $row = mysqli_query($conexion, $consulta);
+                        ?>
+                    </div>
 
                     <table id="tablaProductos" border="1px">
                         <thead id="cabeceraTabla">
@@ -38,23 +63,16 @@ $conexion = $db->connect();
                                 <th id="Acciones">Opciones</th>
                             </tr>
                         </thead>
-
                         <?php
-                            $consulta="SELECT * FROM avisos";
-                            $row = mysqli_query($conexion, $consulta);
-                            
                             if (mysqli_num_rows($row) > 0){ 
                                 $contador = 1; //LLEVA EL SEGUIMIENTO DE LAS FILAS
-
                                 foreach($row as $fila){
                                     $categoria = $fila['categoria'];
                                     $foto = $fila['foto'];
                                     $id_categoria = $fila['id_categoria'];
-
                                     //DETERMINA LA CLASE QUE SE ASIGNARÁ A CADA FILA EN FUNCIÓN DE SI ES PAR O IMPAR
                                     $clase_fila = ($contador % 2 == 0) ? 'fila2' : 'fila1';
                                     ?>
-                                
                                     <tr>
                                         <td class="<?php echo $clase_fila; ?>"><input type="text" id="campoNombre" name="campoNombre" value="<?php echo $fila['categoria']; ?>" readonly></td>
                                         <td class="<?php echo $clase_fila; ?>"><input type="text" id="campoImagen" name="campoImagen" value="<?php echo $fila['foto']; ?>" readonly></td>
@@ -90,6 +108,19 @@ $conexion = $db->connect();
                             }
                         ?>
                     </table>
+                    <!-- Navegación entre páginas -->
+                    <div id="paginacion">
+                        <?php
+                        if ($total_paginas > 1) {
+                            echo "<span>Páginas: </span>";
+                            for ($i = 1; $i <= $total_paginas; $i++) {
+                                echo "<a href='?pagina=$i&resultados_por_pagina=$resultados_por_pagina' ";
+                                if ($pagina_actual == $i) echo "class='current'";
+                                echo "> $i </a>";
+                            }
+                        }
+                        ?>
+                    </div>
                 </div>
             </section>
         </main>
@@ -131,7 +162,7 @@ $conexion = $db->connect();
         <div class="contenidoVentanaVisualizarProducto">
             <!-- Contenido de la ventana emergente de visualización -->
             <h2>Mostrar Producto</h2>
-            <p id="nombreProducto"></p>
+            <textarea id="nombreProducto"></textarea>
             <div id="contenedor-imagen3">
                 <img id="imagenProducto" src="" alt="">    
             </div>
@@ -167,10 +198,9 @@ $conexion = $db->connect();
                 <input type="hidden" id="id_categoria1" name="id_categoria">
 
                 <p>Nombre de categoria</p>
-                <input type="text" id="categoria1" name="categoria" placeholder="Nombre del aviso">
+                <textarea type="text" id="categoria1" name="categoria" placeholder="Nombre del aviso"></textarea>
 
                 <div id="contenedor-imagen1">
-                    <label id="imagen_mos">Elegir imagen:</label>
                     <input type="file" name="foto" id="imagenInputEditar" onchange="previewImageEditar(this)">
                     <input type="hidden" id="imagen_old" name="imagen_old">
                     <label for="imagenInputEditar" id="foto"><i class="fa-solid fa-upload"></i>Seleccionar Imagen</label>
@@ -252,6 +282,29 @@ $conexion = $db->connect();
                 document.querySelector(".ventanaEditarProducto").classList.remove('enseñar_Editar'); // Oculta la ventana de edición
             }
     </script>
+    <?php
+    if(isset($_SESSION['success']) && $_SESSION['success']) {
+        echo "<script>
+                Swal.fire({
+                    title: 'Agregar',
+                    text: 'El registro fue todo un éxito',
+                    icon: 'success',
+                    confirmButtonText: 'Aceptar'
+                });
+            </script>";
+        unset($_SESSION['success']); // Eliminar la variable de sesión
+    } else if(isset($_SESSION['error']) && $_SESSION['error']) {
+        echo "<script>
+                Swal.fire({
+                    title: 'Error',
+                    text: 'El registro no fue posible, inténtelo de nuevo',
+                    icon: 'error',
+                    confirmButtonText: 'Cerrar'
+                });
+            </script>";
+        unset($_SESSION['error']); // Eliminar la variable de sesión
+    }
+    ?>
 
     <!-- AGREGAR: VENTANA MODAL -->
     <div class="ventanaEmergente" >
@@ -260,19 +313,15 @@ $conexion = $db->connect();
             <span class="close">&times;</span>
             <h2>Registro</h2>
             <form action="agregar_categoria.php" method="post" enctype="multipart/form-data">
-
-                <input type="text" id="nombre" name="categoria" required placeholder="Nombre de Producto">
-                
+                <textarea type="text" id="nombre" name="categoria" required placeholder="Informacion"></textarea>
                 <div id="contenedor-imagen">                   
                     <input type="file" name="foto" id="imagenInput" onchange="previewImage()" required> 
                     <label for="imagenInput" id="imagen"><i class="fa-solid fa-upload"></i>Seleccionar Imagen</label>
                     <img src="" id="imagenPreview" alt="">
                     <input type="text" id="nombreArchivo" readonly>
                 </div>
-
                 <button type="submit" name="Agregar1" id="Agregar1">Agregar Producto</button>
                 <button type="button" class="ventanacerrar" onclick="limpiarDatos()">Cancelar</button>
-
             </form>
         </div>
     </div>
@@ -318,31 +367,55 @@ $conexion = $db->connect();
                 document.getElementById('nombreArchivo').value = "";
             }
         }
-
     </script>
+    <?php
+    if(isset($_SESSION['success1']) && $_SESSION['success1']) {
+        echo "<script>
+                Swal.fire({
+                    title: 'Editar',
+                    text: 'La editación fue todo un éxito',
+                    icon: 'success',
+                    confirmButtonText: 'Aceptar'
+                });
+            </script>";
+        unset($_SESSION['success1']); // Eliminar la variable de sesión
+    } else if(isset($_SESSION['error1']) && $_SESSION['error1']) {
+        echo "<script>
+                Swal.fire({
+                    title: 'Error',
+                    text: 'No fue posible editarlo, inténtelo de nuevo',
+                    icon: 'error',
+                    confirmButtonText: 'Cerrar'
+                });
+            </script>";
+        unset($_SESSION['error1']); // Eliminar la variable de sesión
+    }
+    ?>
 
-    <!-- ELIMINAR: VENTANA -->
-    <div id="ModalAgregar" class="modal" >
-        <!-- Contenido de la ventana modal -->
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h1>Registro</h1>
-            <form action="agregar_categoria.php" method="post" enctype="multipart/form-data">
 
-                <label>Nombre de categoria</label>
-                <input REQUIRED type="text" name="categoria"><br><br><br>
-
-                <label>Elegir imagen: </label>
-                <input REQUIRED type="file" name="foto" id="imagenInput2" onchange="previewImage2()"><br><br><br>
-                <img src="" id="imagenPreview2" width=80px height=auto><br><br><br>
-                <label id="fileNameDisplay2"></label><br><br>
-
-                <input type="submit" value="Guardar" name="Enviar1">
-                <button type="button" onclick="cerrarModal2()">Cancelar</button>
-
-            </form>
-        </div>
-    </div>
-
+    <!-- ELIMINAR: VENTANA -->  
+    <?php
+    if(isset($_SESSION['success2']) && $_SESSION['success2']) {
+        echo "<script>
+                Swal.fire({
+                    title: 'Eliminar',
+                    text: 'Aviso eliminado fue todo un éxito',
+                    icon: 'success',
+                    confirmButtonText: 'Aceptar'
+                });
+            </script>";
+        unset($_SESSION['success2']); // Eliminar la variable de sesión
+    } else if(isset($_SESSION['error2']) && $_SESSION['error2']) {
+        echo "<script>
+                Swal.fire({
+                    title: 'Error',
+                    text: 'No se puedo eliminar el aviso, inténtelo de nuevo',
+                    icon: 'error',
+                    confirmButtonText: 'Cerrar'
+                });
+            </script>";
+        unset($_SESSION['error2']); // Eliminar la variable de sesión
+    }
+    ?>  
 </body>
 </html>

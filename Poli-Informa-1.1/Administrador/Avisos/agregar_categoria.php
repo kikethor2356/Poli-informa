@@ -3,6 +3,7 @@ include('../../Conexion/conexion.php');
 session_start();
 $db = new Database();
 $conexion = $db->connect();
+session_start();
 
 if(isset($_POST['Agregar1'])){
     $nombre = $_POST['categoria'];
@@ -13,10 +14,10 @@ if(isset($_POST['Agregar1'])){
 
     if($resultado){
         move_uploaded_file($_FILES["foto"]["tmp_name"], "fotos/".$_FILES["foto"]["name"]);
-        $_SESSION['status'] = "Se agregó exitosamente el producto";
+        $_SESSION['success'] = true;
         header("location: vista_categoria.php");
     } else{
-        $_SESSION['status'] = "Hubo un error al agregar el producto";
+        $_SESSION['error'] = true;
         header("location: vista_categoria.php");
     }
 }

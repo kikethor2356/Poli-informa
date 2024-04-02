@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="stylesheet" href="menu.css">
+</head>
+<body>
+    <div class="contenedor_menu">
+        <div class="menu_lateral">
+            <div class="elemento_menu" id="contenedor_titulo">
+                <h1>Panel <br>de<br> control</h1>
+            </div>
+            <div class="linea"></div>
+            <div class="elemento_menu">
+                <input type="checkbox" name="opciones_menu" id="opcion_avisos">
+                <label for="opcion_avisos"><i class="fa-regular fa-newspaper"></i>Avisos&nbsp;<i class="fa-solid fa-chevron-down" ></i></label>
+                  <ul>
+                    <li class="ultima_opcion"><a href="../Avisos/vista_categoria.php">Mostrar</a></li>
+                  </ul>
+            </div>
+            <div class="elemento_menu">
+                <input type="checkbox" name="opciones_menu" id="opcion_vendedores">
+                <label for="opcion_vendedores"><i class="fa-regular fa-user"></i>Vendedores&nbsp;<i class="fa-solid fa-chevron-down"></i></label>  
+                <ul>
+                    <li><a href="../Vendedores/productos.php">Poli-commerce</a></li>
+                    <li class="ultima_opcion"><a href="../Vendedores/index.php">Productos</a></li>
+                </ul>
+            </div>
+            <div class="elemento_menu">
+                <input type="checkbox" name="opciones_menu" id="opcion_horarios">
+                <label for="opcion_horarios"><i class="fa-regular fa-clock"></i>Horarios&nbsp;<i class="fa-solid fa-chevron-down"></i></label>  
+                <ul>
+                    <li><a href="../">Laboratorios</a></li>
+                    <li><a href="../">Talleres</a></li>
+                    <li><a href="../">Académicos</a></li>
+                    <li class="ultima_opcion"><a href="">Grupos</a></li>
+                </ul>
+            </div>
+            <div class="elemento_menu">
+                <input type="checkbox" name="opciones_menu" id="opcion_cafeteria">
+                <label for="opcion_cafeteria"><i class="fa-solid fa-store"></i>Cafetería&nbsp;<i class="fa-solid fa-chevron-down"></i></label>  
+                <ul>
+                    <li><a href="../Cafeteria/AdminCafeteria1.php">Módulo A</a></li>
+                    <li><a href="../Cafeteria/AdminCafeteria2.php">Canchas</a></li>
+                    <li class="ultima_opcion"><a href="../Cafeteria/Categorias.php">Categorías</a></li>
+                </ul>
+            </div>
+            <div class="elemento_menu">
+                <input type="checkbox" name="opciones_menu" id="opcion_registro">
+                <label for="opcion_registro"><i class="fa-regular fa-clipboard"></i>Registro&nbsp;<i class="fa-solid fa-chevron-down"></i></label> 
+                <ul>
+                    <li><a href="../">Administradores</a></li>
+                    <li class="ultima_opcion"><a href="../">Alumnos</a></li>
+                </ul> 
+            </div>
+        </div>
+    </div>
+</body>
+</html>

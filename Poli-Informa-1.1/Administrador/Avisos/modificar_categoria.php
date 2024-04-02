@@ -1,5 +1,8 @@
 <?php
-require '../../Conexion/conexion.php';
+include('../../Conexion/conexion.php');
+session_start();
+$db = new Database();
+$conexion = $db->connect();
 session_start();
 
 if(isset($_POST['Guardar'])){
@@ -38,10 +41,10 @@ if(isset($_POST['Guardar'])){
     $resultado = mysqli_query($conexion, $sql);
 
     if ($resultado) {
-        $_SESSION['status'] = "Datos actualizados fue exitoso";
+        $_SESSION['success1'] = true;
         header("location: vista_categoria.php");
     } else {
-        $_SESSION['status'] = "Los datos no se insertaron";
+        $_SESSION['error1'] = true;
         header("location: vista_categoria.php");
     }
 }

@@ -12,6 +12,7 @@ $conexion = $db->connect();
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/AdminCafeteria.css">
+    <link rel="stylesheet" href="../menu.css">
     <script src="js/AdminCafeteria2.js"></script>
     <!-- Link separados (iconos) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -85,7 +86,7 @@ $conexion = $db->connect();
         echo "<script>
                 Swal.fire({
                     title: 'Editar',
-                    text: 'La editacion fue todo un exito',
+                    text: 'La editación fue todo un exito',
                     icon: 'success',
                     confirmButtonText: 'Aceptar'
                 });
@@ -95,7 +96,7 @@ $conexion = $db->connect();
         echo "<script>
                 Swal.fire({
                     title: 'Error',
-                    text: 'La editacion no fue posible, inténtelo de nuevo',
+                    text: 'No fue posible editarlo, inténtelo de nuevo',
                     icon: 'error',
                     confirmButtonText: 'Cerrar'
                 });
@@ -175,14 +176,7 @@ $conexion = $db->connect();
 
     <div id="productos">
         <!-- OPCIONES DEL ADMINISTRADOR -->
-        <nav id="navegacion-productos">
-            <h4>Cafeteria</h4>
-            <ul id="opciones-productos">
-                <li><a href="AdminCafeteria1.php">Modulo A</a></li>
-                <li><a href="AdminCafeteria2.php">Canchas</a></li>
-                <li><a href="Categorias.php">Categoria</a></li>            
-            </ul>
-        </nav>
+        <?php include '../menu.html'; ?>
 
         <!-- ÁREA DE TRABAJO -->
         <main id="principal-productos">
@@ -246,7 +240,7 @@ $conexion = $db->connect();
                                     <td class="<?php echo $clase_fila; ?>"><input type="text" id="campoNombre" value="<?php echo $row['nombre_producto']; ?>" readonly></td>
                                     <td class="<?php echo $clase_fila; ?>"><input type="text" id="campoDescripcion" value="<?php echo $row['descripcion']; ?>" readonly></td>
                                     <td class="<?php echo $clase_fila; ?>"><input type="text" id="campoPrecio" value="<?php echo $row['precio']; ?>" readonly></td>
-                                    <!-- <td class="<?php echo $clase_fila; ?>" id="campoImagen"><img src="<?php echo "Agregar/temp/".$row['imagen']; ?>" width = "300px" height = "120px" alt="Imagenes"></td> -->
+                                    <!-- <td class="<?php echo $clase_fila; ?>" id="campoImagen"><img src="<?php echo "Agregar/temp2/".$row['imagen']; ?>" width = "300px" height = "120px" alt="Imagenes"></td> -->
                                     <td class="<?php echo $clase_fila; ?>"><input type="text" id="campoImagen" value="<?php echo $row['imagen']; ?>" readonly></td>
                                     <!-- en vez de utilizar prodcategoria_id utilizo lo que quiero que muestre, ya que INNER JOIN sirve para relacionar tablas y me deja usar el la variable de la tabla, ojo debe de ser en la misma posicion porque da error-->
                                     <td class="<?php echo $clase_fila; ?>"><input type="text"  id="campoCategoria" value="<?php echo $row['categoria_nombre'] ?>" readonly></td>
@@ -305,7 +299,7 @@ $conexion = $db->connect();
         echo "<script>
                 Swal.fire({
                     title: 'Eliminar',
-                    text: 'La eliminacion fue todo un exito',
+                    text: 'La eliminación fue todo un exito',
                     icon: 'success',
                     confirmButtonText: 'Aceptar'
                 });
@@ -315,7 +309,7 @@ $conexion = $db->connect();
         echo "<script>
                 Swal.fire({
                     title: 'Error',
-                    text: 'La eliminacion no fue posible, inténtelo de nuevo',
+                    text: 'No fue posible eliminarlo, inténtelo de nuevo',
                     icon: 'error',
                     confirmButtonText: 'Cerrar'
                 });

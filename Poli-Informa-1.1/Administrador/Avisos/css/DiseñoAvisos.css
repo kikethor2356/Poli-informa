@@ -11,60 +11,20 @@
     position: absolute;
     left: 0%;
     top: 0%;
-    width: 99.8%;
-    height: 99vh;
+    width: 100%;
+    height: 100vh;
 }
 
-
-#navegacion-productos, #principal-productos{
+#principal-productos{
     position: absolute;
 }
 
-#navegacion-productos{
-    width: 13%;
-    height: 98.7vh;
-    top: 0%;
-    background-color: rgb(63, 141, 175);
-    color: white;
-}
-
-
 #principal-productos{
-    width: 86.5%;
-    height: 98.5vh;
+    width: 85%;
+    height: 100%;
     top: 0%;
-    left: 13.3%;
+    left: 15%;
     background-color: white;
-}
-
-#opciones-productos li{
-    transition: background-color .5s ease;
-    line-height: 300%;
-    list-style-type: none;
-    cursor: default;
-    width: 80%;
-    margin-top: 7%;
-    user-select: none;
-    border-radius: 50px;
-    padding-left: 8%;
-    padding-bottom: 8%;
-    height: 5vh;
-}
-
-#opciones-productos li:hover{
-    background-color: rgb(225, 225, 225);
-}
-
-#opciones-productos li img{
-    width: 15%;
-}
-
-#navegacion-productos h4{
-    font-weight: normal;
-    font-size: 120%;
-    margin-left: 6%;
-    user-select: none;
-
 }
 
 
@@ -88,11 +48,14 @@
     border: none;
     cursor: pointer;
 }
+#nuevoProducto:hover{
+    transform: scale(0.9);
+}
 
 #mostrarProductos table{
     width: 95%;
     margin-left: 2%;
-    margin-top: 7%;
+    margin-top: 3%;
 
 }
 
@@ -115,50 +78,6 @@
 }
 
 /* Diseño de columna */
-#mostrarProductos h1{
-    text-align: center;
-    margin-top: 3%;
-}
-
-#mostrarProductos #nuevoProducto{
-    position: absolute;
-    top: 18%;
-    left: 85%;
-    padding-left: 1%;
-    padding-right: 1%;
-    padding-top: .5%;
-    padding-bottom: .5%;
-    background: rgb(143, 0, 0);
-    color: white;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-}
-
-#mostrarProductos table{
-    width: 95%;
-    margin-left: 2%;
-    margin-top: 7%;
-}
-
-#mostrarProductos table, th, td{
-    border-collapse: collapse;
-    border: none ;
-}
-
-#mostrarProductos th{
-    border-bottom: 1px solid black;
-    padding-top: 1%;
-    padding-bottom: 1%;
-    text-align: left;
-    font-weight: 600;
-}
-
-#mostrarProductos td{
-    padding-top: .2%;
-    padding-bottom: .2%;
-}
-
 #mostrarProductos #cabezaNombre{
     width: 10%;
 }
@@ -252,7 +171,10 @@
     display: flex;
     justify-content: space-evenly;
 }
-/* Fin de Estilo Andres */
+.iconoEliminar:hover, .iconoEditar:hover, .iconoVer:hover{
+    transform: scale(0.9);
+}
+
 
 /* Ventana de Agregar */
 @media screen and (max-width: 768px) {
@@ -314,8 +236,8 @@
 
 .contenidoVentanaEmergente {
     display: inline;
-    width: 150vh;
-    height: 70vh;
+    width: 120vh;
+    height: 80vh;
     margin: auto;
     border-radius: 10px;
     background: rgb(255, 255, 255);
@@ -328,10 +250,12 @@
 .contenidoVentanaEmergente #nombre{
     position: absolute;
     width: 35%;
-    margin-top: -2vh;
+    height: 30%;
+    margin-top: 10vh;
     padding-top: .6%;
     margin-left: 7.5vh;
     border-radius: 5px;
+    resize: none;
     outline: none;
     border: none;
     border: 1px solid;
@@ -339,7 +263,7 @@
 
 .contenidoVentanaEmergente #Agregar1{
     margin-left: 5vh;
-    margin-top: 5vh;
+    margin-top: 60vh;
     width: 30vh;
     padding: 1vh;
     user-select: none;
@@ -377,11 +301,11 @@
 
 .contenidoVentanaEmergente #contenedor-imagen #nombreArchivo{
     position: absolute;
-    width: 50%;
+    width: 100%;
     height: auto;
     font-size: 70%;
     margin-left: -10%;
-    margin-top: 30vh;
+    margin-top: 35vh;
     background: none;
     outline: none;
     border: none;
@@ -395,7 +319,7 @@
 #contenedor-imagen #imagen{
     text-transform: capitalize;
     color: white;
-    margin-top: 35vh;
+    margin-top: 40vh;
     background: rgb(255, 58, 58);
     text-align: center;
     padding: 10px 40px;
@@ -406,11 +330,15 @@
     box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.35);
     border-radius: 5px;
     position: fixed;
-    width: 50vh;
+    width: 35vh;
+    right: 6%;
 }
 
 #contenedor-imagen #imagen i{
     font-size: 100%;
+}
+#imagen:hover {
+    transform: scale(0.9);
 }
 
 #contenedor-imagen{
@@ -420,7 +348,7 @@
     top: 13.5vh;
     flex-direction: column;
     background-color: white;
-    width: 60vh;
+    width: 40vh;
     height: 30vh;
     padding: 3% 4%;
     border-radius: 20px;
@@ -500,8 +428,8 @@
 
 .contenidoVentanaEditarProducto {
     display: inline;
-    width: 130vh;
-    height: 85vh;
+    width: 120vh;
+    height: 80vh;
     margin: auto;
     border-radius: 10px;
     background: rgb(255, 255, 255);
@@ -513,11 +441,13 @@
 
 .contenidoVentanaEditarProducto #categoria1 {
     position: absolute;
-    width: 30%;
-    margin-top: -.5vh;
+    width: 35%;
+    height: 30%;
+    margin-top: .5vh;
     padding-top: .6%;
-    margin-left: 1vh;
+    margin-left: 7.5vh;
     border-radius: 5px;
+    resize: none;
     outline: none;
     border: none;
     border: 1px solid;
@@ -525,7 +455,7 @@
 
 .contenidoVentanaEditarProducto #Guardar {
     margin-left: 5vh;
-    margin-top: 40vh;
+    margin-top: 50vh;
     width: 30vh;
     padding: 1vh;
     user-select: none;
@@ -590,7 +520,7 @@
 #contenedor-imagen1 #foto{
     text-transform: capitalize;
     color: white;
-    margin-top: 50vh;
+    margin-top: 42vh;
     background: rgb(255, 58, 58);
     text-align: center;
     padding: 10px 40px;
@@ -601,7 +531,8 @@
     box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.35);
     border-radius: 5px;
     position: fixed;
-    width: 50vh;
+    width: 35vh;
+    right: 6%;
 }
 
 #contenedor-imagen1 #foto i{
@@ -612,10 +543,10 @@
     display: flex;
     position: absolute;
     left: 51.5%;
-    top: 20vh;
+    top: 10vh;
     flex-direction: column;
     background-color: white;
-    width: 30vh;
+    width: 40vh;
     height: 30vh;
     padding: 3% 4%;
     border-radius: 20px;
@@ -708,12 +639,15 @@
 .contenidoVentanaVisualizarProducto #nombreProducto{
     position: absolute;
     width: 35%;
+    height: 65%;
     margin-top: 2vh;
     padding-top: .6%;
-    margin-left: 5vh;
+    margin-left: 7.5vh;
     border-radius: 5px;
+    resize: none;
     outline: none;
     border: none;
+    border: 1px solid;
 }
 
 #contenedor-imagen3{
@@ -873,5 +807,37 @@
 
 /* Cambia el color de fondo al pasar el ratón por encima */
 .contenedor-eliminar button:hover {
+    transform: scale(0.9);
+}
+
+
+/* Botones de pagina para los productos */
+#paginacion {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#paginacion a {
+    padding: 5px 10px;
+    margin: 0 5px;
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #333;
+}
+
+#paginacion #resultados_por_pagina{
+    cursor: pointer;
+}
+
+#paginacion a.current {
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+}
+#paginacion a.current:hover {
     transform: scale(0.9);
 }
