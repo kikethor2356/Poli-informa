@@ -1,3 +1,11 @@
+<?php 
+include('../../Conexion/conexion.php');
+session_start();
+$db = new Database();
+$conexion = $db->connect();
+
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +18,6 @@
     <form action="modificar_categoria.php" method="post" enctype="multipart/form-data">
         <?php
             $id_categoria = $_GET['id_categoria'];
-            require '../../Conexion/conexion.php';
  
             $buscar = mysqli_query($conexion, "SELECT * FROM avisos WHERE id_categoria='$id_categoria'");
             $fila = mysqli_fetch_array($buscar);

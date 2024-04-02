@@ -11,78 +11,32 @@
     position: absolute;
     left: 0%;
     top: 0%;
-    width: 99.8%;
-    height: 99vh;
+    width: 100%;
+    height: 100vh;
 }
 
-#navegacion-productos, #principal-productos{
+#principal-productos{
     position: absolute;
 }
 
-#navegacion-productos{
-    width: 13%;
-    height: 100vh;
-    top: 0%;
-    background-color: rgb(63, 141, 175);
-    color: white;
-}
-
-
 #principal-productos{
-    width: 86.5%;
-    height: 98vh;
+    width: 85%;
+    height: 100%;
     top: 0%;
-    left: 13.3%;
+    left: 15%;
     background-color: white;
 }
 
-#opciones-productos li a{
-    transition: background-color .5s ease;
-    line-height: 300%;
-    list-style-type: none;
-    cursor: default;
-    width: 80%;
-    margin-top: 7%;
-    user-select: none;
-    border-radius: 50px;
-    padding-left: 8%;
-    padding-bottom: 8%;
-    height: 5vh;
-    color: #fff;
-    font-size: 90%;
-    text-decoration: none;
-}
-
-ul {
-    list-style: none;
-}
-
-#opciones-productos li:hover{
-    background-color: rgb(225, 225, 225);
-}
-
-#opciones-productos li img{
-    width: 15%;
-}
-
-#navegacion-productos h4{
-    font-weight: normal;
-    font-size: 120%;
-    margin-left: 6%;
-    user-select: none;
-}
-
-
 /* Diseño de la tabla */
-#mostrarProductos h1{
+#mostrarProductos h2{
     text-align: center;
     margin-top: 3%;
 }
 
 #mostrarProductos #nuevoProducto{
     position: absolute;
-    top: 18%;
-    left: 85%;
+    top: 15%;
+    left: 82%;
     padding-left: 1%;
     padding-right: 1%;
     padding-top: .5%;
@@ -90,7 +44,7 @@ ul {
     background: rgb(143, 0, 0);
     color: white;
     border-radius: 5px;
-    border: none;
+    /* border: none; */
     cursor: pointer;
 }
 #nuevoProducto:hover{
@@ -100,7 +54,7 @@ ul {
 #mostrarProductos table{
     width: 95%;
     margin-left: 2%;
-    margin-top: 4.5%;
+    margin-top: 3%;
 
 }
 

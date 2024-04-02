@@ -10,6 +10,7 @@ $conexion = $db->connect();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/AdminCafeteria.css">
+    <link rel="stylesheet" href="../menu.css">
     <script src="js/AdminCafeteria.js"></script>
     <!-- Link separados (iconos) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -76,39 +77,6 @@ $conexion = $db->connect();
             </form>
         </div>
     </div>
-    <!-- <script>
-        // Mostrar SweetAlert2 con el formulario cuando se carga la página
-        document.addEventListener('DOMContentLoaded', function () {
-            Swal.fire({
-                title: 'Agregar Producto',
-                html: `<form action="Agregar/InsertarDatosCafeteria1.php" method="POST" enctype="multipart/form-data">
-                            <input type="text" id="nombre" name="nombre_producto" required placeholder="Nombre de Producto">
-                            <textarea id="descripcion" name="descripcion" required placeholder="Descripción"></textarea>
-                            <p>Precio $<input type="text" id="precio" name="precio" required placeholder="$00.00"> MXN</p>
-                            <div id="contenedor-imagen">                   
-                                <input type="file" name="imagen" id="imagenInput" onchange="previewImage()" required> 
-                                <label for="imagenInput" id="imagen"><i class="fa-solid fa-upload"></i>Seleccionar Imagen</label>
-                                <img src="" id="imagenPreview" alt="Imagen del producto">
-                                <input type="text" id="nombreArchivo" readonly>
-                            </div>
-                            <p>Categoría</p>
-                            <select name="categoria_nombre" id="categoria_nombre" required>
-                                <option selected disabled>----Seleccionar----</option>
-                                <?php 
-                                $sql = $conexion->query("SELECT * FROM categorias_cafeteria");
-                                while($resultado = $sql->fetch_assoc()){
-                                    echo "<option value='".$resultado['categoria_id']."'>".$resultado['categoria_nombre']."</option>";
-                                }
-                                ?>
-                            </select>
-                            <button type="submit" name="Agregar1" id="Agregar1">Agregar Producto</button>
-                            <button type="button" class="ventanacerrar" onclick="limpiarDatos()">Cancelar</button>
-                        </form>`,
-                showCloseButton: true,
-                showConfirmButton: false,
-            });
-        });
-    </script> -->
     <!-- Fin de la ventana emergente -->
 
     <?php
@@ -116,7 +84,7 @@ $conexion = $db->connect();
         echo "<script>
                 Swal.fire({
                     title: 'Editar',
-                    text: 'La editacion fue todo un exito',
+                    text: 'La editación fue todo un exito',
                     icon: 'success',
                     confirmButtonText: 'Aceptar'
                 });
@@ -126,7 +94,7 @@ $conexion = $db->connect();
         echo "<script>
                 Swal.fire({
                     title: 'Error',
-                    text: 'La editacion no fue posible, inténtelo de nuevo',
+                    text: 'No fue posible editarlo, inténtelo de nuevo',
                     icon: 'error',
                     confirmButtonText: 'Cerrar'
                 });
@@ -206,20 +174,13 @@ $conexion = $db->connect();
 
     <div id="productos">
         <!-- OPCIONES DEL ADMINISTRADOR -->
-        <nav id="navegacion-productos">
-            <h4>Cafeteria</h4>
-            <ul id="opciones-productos">
-                <li><a href="AdminCafeteria1.php">Modulo A</a></li>
-                <li><a href="AdminCafeteria2.php">Canchas</a></li>
-                <li><a href="Categorias.php">Categoria</a></li>            
-            </ul>
-        </nav>
+        <?php include '../menu.html'; ?>
 
         <!-- ÁREA DE TRABAJO -->
         <main id="principal-productos">
             <section id="section-productos">
                 <div id="mostrarProductos">
-                    <center><h2>CAFETERIA MODULO A</h2></center>
+                    <h2>CAFETERIA MODULO A</h2>
 
                     <button id="nuevoProducto" class="nuevoProducto" name="nuevoProducto" title="Agregar Producto" onclick="mostrarVentana()"><i class="fa-solid fa-circle-plus"></i> Agregar Producto</button>   
 
@@ -336,7 +297,7 @@ $conexion = $db->connect();
         echo "<script>
                 Swal.fire({
                     title: 'Eliminar',
-                    text: 'La eliminacion fue todo un exito',
+                    text: 'La eliminación fue todo un exito',
                     icon: 'success',
                     confirmButtonText: 'Aceptar'
                 });
@@ -346,7 +307,7 @@ $conexion = $db->connect();
         echo "<script>
                 Swal.fire({
                     title: 'Error',
-                    text: 'La eliminacion no fue posible, inténtelo de nuevo',
+                    text: 'No fue posible eliminarlo, inténtelo de nuevo',
                     icon: 'error',
                     confirmButtonText: 'Cerrar'
                 });
