@@ -146,10 +146,130 @@ class Horario
         $result = $stmt->get_result();
 
         if ($result->num_rows > 0) {
-            // Obtener el perfil del maestro
+            // Obtener el perfil del maestro    
             $row = $result->fetch_assoc();
-            echo "Nombre: " . $row["Nombre"] . " - Apellidos: " . $row["Apellidos"] . " - Código: " . $row["Codigo"] . " - Correo: " . $row["Correo"] . "<br>";
-            echo '<img src="../Maestros/ImgCroquis/' . $row["Imagen_croquis"] . '" alt="Imagen de Maestro">';
+         
+
+            ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <title>Perfil</title>
+</head>
+<body>
+    <style>
+        
+  .gradient-custom {
+    /* fallback for old browsers */
+    background: #f6d365;
+
+    background: linear-gradient(to right bottom, rgba(51, 196, 255), black);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  }
+
+  .card {
+    border-radius: 0.5rem;
+    overflow: hidden;
+  }
+
+  .card-body {
+    padding: 1.5rem;
+  }
+
+  .card h6 {
+    font-weight: 500;
+  }
+
+  .card hr {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0));
+  }
+
+  .card p {
+    margin-bottom: 0;
+  }
+
+  .card-img-top {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+  }
+
+  .social-links a {
+    font-size: 1.75rem;
+    margin-right: 0.5rem;
+    color: #333;
+    transition: color 0.2s;
+  }
+
+  .social-links a:hover {
+    color: #555;
+  }
+
+    </style>
+<section class="vh-100" style="background-color: black;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col col-lg-6 mb-4 mb-lg-0">
+        <div class="card mb-3" style="border-radius: .5rem;">
+          <div class="row g-0">
+            <div class="col-md-4 gradient-custom text-center text-white"
+              style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
+              <img src="../Maestros/ImgCroquis/<?php echo $row['Imagen_croquis']; ?>" alt="Avatar" class="img-fluid my-5" style="width: 80px;" />
+              <h5><?php echo $row["Nombre"] ?></h5>
+              <p><?php echo $row["Apellidos"] ?></p>
+              <i class="far fa-edit mb-5"></i>
+            </div>
+            <div class="col-md-8">
+              <div class="card-body p-4">
+                <h6>Información personal</h6>
+                <hr class="mt-0 mb-4">
+                <div class="row pt-1">
+                  <div class="col-6 mb-3">
+                    <h6>Email</h6>
+                    <p class="text-muted"><?php echo $row["Correo"] ?></p>
+                  </div>
+                  <div class="col-6 mb-3">
+                    <h6>Codigo UDG</h6>
+                    <p class="text-muted"><?php echo $row["Codigo"] ?></p>
+                  </div>
+                </div>
+                <h6>Projects</h6>
+                <hr class="mt-0 mb-4">
+                <div class="row pt-1">
+                  <div class="col-6 mb-3">
+                    <h6>Recent</h6>
+                    <p class="text-muted">Lorem ipsum</p>
+                  </div>
+                  <div class="col-6 mb-3">
+                    <h6>Most Viewed</h6>
+                    <p class="text-muted">Dolor sit amet</p>
+                  </div>
+                </div>
+                <div class="d-flex justify-content-start">
+                  <a href="#!"><i class="fab fa-facebook-f fa-lg me-3"></i></a>
+                  <a href="#!"><i class="fab fa-twitter fa-lg me-3"></i></a>
+                  <a href="#!"><i class="fab fa-instagram fa-lg"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</body>
+</html>
+        <?php
+            
+            
+            
         } else {
             echo "No se encontró ningún maestro con ese nombre.";
         }
