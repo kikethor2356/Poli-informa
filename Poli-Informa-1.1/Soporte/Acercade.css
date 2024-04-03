@@ -1,0 +1,129 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+body{
+    margin: 0;
+    padding: 0;
+    background: rgb(222, 222, 233);
+}
+
+h1{
+    text-align: center;
+}
+
+#container-acercade{
+    width: 85%;
+    background-color: white;
+    margin: auto;
+}
+
+#container-acercade #version{
+    position: relative;
+    left: 15%;
+    width: 50%;
+    height: 30vh;
+}
+
+#container-acercade #version p{
+    margin-left: 50%;
+    position: absolute;
+    margin-top: 10%;
+}
+
+#container-acercade img{
+    position: relative;    
+    width: 50%;
+    height: 25vh;
+    left: 2%;
+}
+
+/*  */
+#container-acercade #fondo{
+    position: relative;
+    background: rgb(222, 222, 233);
+    width: 100%;
+    border: none;
+    margin-top: 2%;
+    margin: auto;
+}
+
+#container-acercade #fondo #contenido{
+    position: relative;
+    width: 100%;
+    background: white;
+    margin-top: 2%;
+    height: 12vh;
+}
+
+#container-acercade #fondo #contenido1{
+    position: relative;
+    width: 100%;
+    background: white;
+    margin-top: 2%;
+    height: 12vh;
+}
+
+#container-acercade #fondo #contenido2{
+    position: relative;
+    width: 100%;
+    background: white;
+    margin-top: 2%;
+    height: 12vh;
+}
+
+#container-acercade #fondo #contenido3{
+    position: relative;
+    width: 100%;
+    background: white;
+    margin-top: 2%;
+    height: 70vh;
+}
+
+/*  */
+#contenido3 #referencias a{
+    position: relative;
+    background: rgb(234, 234, 255);
+    color: black;
+    text-decoration: none;
+    padding: 3%;
+    width: 50%;
+    border: 1px solid #000;
+    height: 2.5vh;
+    display: inline-block; /* Hacer que los enlaces se comporten como bloques en línea */
+    margin-bottom: 10px; /* Espacio entre cada referencia */
+    cursor: auto;
+    transform: translateY(50%);
+    transform: translateX(50%);
+
+}
+
+#contenido3 #referencias i{
+    position: absolute;
+    padding: .1%;
+    width: 2.5%;
+    height: 25%;
+    right: 5%;
+    cursor: pointer;
+    top: 50%; /* Centrar verticalmente el icono */
+    transform: translateY(-50%); /* Ajustar verticalmente el icono */
+}
+#contenido3 #referencias i:hover{
+    cursor: pointer; /* Solo mostrar el cursor cuando se está sobre el icono */
+}
+
+#contenido3 .referencia1{
+    display: block;
+    width: 100%;
+    top: 5vh;    
+}
+
+#contenido3 .referencia2{
+    display: block;
+    width: 100%;
+    top: 10vh;
+}
+
+#contenido3 .referencia3{
+    display: block;
+    width: 100%;
+    top: 15vh;
+}
