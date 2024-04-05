@@ -28,6 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Mostrar el formulario de edición con los datos actuales del registro
     $id = $_GET['id'];
     $horario-> mostrarFormularioEdicion($id,$db);
+
 }
 
 // Cerrar conexión a la base de datos

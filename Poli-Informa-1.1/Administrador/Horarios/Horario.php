@@ -102,29 +102,116 @@ class Horario
         $horario = $datos_horario['horario'];
 
         // Crear la tabla de horarios
-        echo "<h1>$nombre_laboratorio</h1>";
-        echo "<table border='1'>";
-        echo "<tr><th>Horario</th>";
+        echo "<h1 style='text-align: center; color: black;'>$nombre_laboratorio</h1>";
+        ?>
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formulario</title>
+<script>
+function mostrarFormulario() {
+  document.getElementById("formulario").style.display = "block";
+  // Aquí puedes cargar los datos del formulario si es necesario
+}
+</script>
+</head>
+<body>
+
+<button onclick="mostrarFormulario()">Mostrar Formulario</button>
+
+<form id="formulario" action="ControllerCreate.php" method="post" style="display: none; margin-top: 20px; text-align: center;">
+  <?php
+  $database = new Database();
+  $db = $database->connect();
+  // Incluir funciones para mostrar opciones de maestros y laboratorios
+  include "Componentes/ComboBoxMaestros.php";
+  mostrarOpcionesMaestros($db);
+  ?>
+  <input type="hidden" name="nombre_laboratorio" value="<?php echo $nombre_laboratorio; ?>">
+         <select name="hora_inicio" id="hora_inicio" style="margin: 10px; padding: 8px;">
+             <option value="7:00 am">7:00am</option>
+             <option value="8:00 am">8:00am</option>
+             <option value="9:00 am">9:00am</option>
+             <option value="10:00 am">10:00am</option>
+             <option value="11:00 am">11:00am</option>
+             <option value="12:00 pm">12:00pm</option>
+             <option value="13:00 pm">1:00pm</option>
+             <option value="14:00 pm">2:00pm</option>
+             <option value="15:00 pm">3:00pm</option>
+             <option value="16:00 pm">4:00pm</option>
+             <option value="17:00 pm">5:00pm</option>
+             <option value="18:00 pm">6:00pm</option>
+             <option value="19:00 pm">7:00pm</option>
+             <option value="20:00 pm">8:00pm</option>
+         </select>
+         <select name="hora_fin" id="hora_fin" style="margin: 10px; padding: 8px;">
+             <option value="8:00 am">8:00am</option>
+             <option value="9:00 am">9:00am</option>
+             <option value="10:00 am">10:00am</option>
+             <option value="11:00 am">11:00am</option>
+             <option value="12:00 pm">12:00pm</option>
+             <option value="13:00 pm">1:00pm</option>
+             <option value="14:00 pm">2:00pm</option>
+             <option value="15:00 pm">3:00pm</option>
+             <option value="16:00 pm">4:00pm</option>
+             <option value="17:00 pm">5:00pm</option>
+             <option value="18:00 pm">6:00pm</option>
+             <option value="19:00 pm">7:00pm</option>
+             <option value="20:00 pm">8:00pm</option>
+         </select>
+         <select name="dias" id="dia_semana" style="margin: 10px; padding: 8px;">
+             <option value="Lunes">Lunes</option>
+             <option value="Martes">Martes</option>
+             <option value="Miercoles">Miercoles</option>
+             <option value="Jueves">Jueves</option>
+             <option value="Viernes">Viernes</option>
+             <option value="Sábado">Sábado</option>
+         </select>
+         <select name="turno" id="turno" style="margin: 10px; padding: 8px;">
+             <option value="Matutino">Matutino</option>
+             <option value="Vespertino">Vespertino</option>
+         </select>
+         <input type="submit" name="submit" value="Guardar" style="margin-top: 10px; padding: 8px 16px; background-color: #218380 ; color: #FFFFFF; border: none; border-radius: 5%; cursor: pointer;">
+
+</form>
+
+</body>
+</html>
+
+
+        
+             <?php
+      echo "<div style='text-align: left; margin-bottom: 20px;'>";
+      echo "<div style='display: inline-block; margin-right: 10px;'><a href='../../Administrador/Laboratorios/index.php' style='text-decoration: none; color: white; background-color: green; padding: 10px 20px; border-radius: 5px;'>Agregar Laboratorio</a></div>";
+      echo "<div style='display: inline-block;'><a href='indexAdmin.php' style='text-decoration: none; color: white; background-color: blue; padding: 10px 20px; border-radius: 5px;'>Regresar</a></div>";
+      echo "</div>";
+      
+        echo "<table border='1' style='border-collapse: collapse; width: 100%; background-color: #FFFFFF;'>";
+        echo "<tr><th style='background-color: #073b4c; color: #FFFFFF; padding: 8px; text-align: center;'>Horario</th>";
         foreach (['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'] as $dia) {
-            echo "<th>$dia</th>";
+            echo "<th style='background-color: #073b4c; color: #FFFFFF; padding: 8px; text-align: center;'>$dia</th>";
         }
         echo "</tr>";
-
+        
         // Generar las filas de la tabla
         for ($i = 7; $i < 20; $i++) {
             echo "<tr>";
             $hora_inicio = str_pad($i, 2, "0", STR_PAD_LEFT) . ":00";
             $hora_fin = str_pad(($i + 1), 2, "0", STR_PAD_LEFT) . ":00";
-            echo "<td>$hora_inicio - $hora_fin</td>";
-
+            echo "<td style='background-color: #FFFFFF; color: #118ab2; padding: 8px; text-align: center;'>$hora_inicio - $hora_fin</td>";
+        
             foreach (['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'] as $dia) {
-                echo "<td>";
+                echo "<td style='background-color: #FFFFFF; color: #118ab2; padding: 8px; text-align: center;'>";
                 if (isset($horario[$dia])) {
                     foreach ($horario[$dia] as $hora) {
-                        if ($i >= (float)$hora['hora_inicio'] && $i <= (float)$hora['hora_fin'] - 1) {
-                            echo '<a href="ControllerShowProfile.php?nombre=' . $hora["maestro"] . '">' . $hora["maestro"] . '</a>';
-                            echo " <a href='ControllerEdit.php?id=" . $hora['id'] . "'>Editar</a>";
-                            echo " <a href='ControllerDelete.php?id=" . $hora['id'] . "'>Eliminar</a>";
+                        if ($i >= (int)$hora['hora_inicio'] && $i <=  (int)$hora['hora_fin'] - 1) {
+                            echo '<a href="ControllerShowProfile.php?nombre=' . $hora["maestro"] . '" style="text-decoration: none; color: #218380 ;">' . $hora["maestro"] . '</a>';
+                            echo " <a href='ControllerEdit.php?id=" . $hora['id'] . "' style='text-decoration: none; color: #ffd166;'>Editar</a>";
+                            echo " <a href='ControllerDelete.php?id=" . $hora['id'] . "' style='text-decoration: none; color: #ef476f;'>Eliminar</a>";
                         }
                     }
                 }
@@ -132,8 +219,11 @@ class Horario
             }
             echo "</tr>";
         }
-
+        
         echo "</table>";
+        
+        
+        
     }
 
     public function PerfilMaestros($maestro, $db)
@@ -288,98 +378,8 @@ class Horario
         $nombre_laboratorio = $datos_horario['nombre_laboratorio'];
         $horario = $datos_horario['horario'];
 
-        // Crear la tabla de horarios
-        echo "<h1>$nombre_laboratorio</h1>";
-        echo "<table border='1'>";
-        echo "<tr><th>Horario</th>";
-        foreach (['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'] as $dia) {
-            echo "<th>$dia</th>";
-        }
-        echo "</tr>";
-
-        // Generar las filas de la tabla
-        for ($i = 7; $i < 20; $i++) {
-            echo "<tr>";
-            $hora_inicio = str_pad($i, 2, "0", STR_PAD_LEFT) . ":00";
-            $hora_fin = str_pad(($i + 1), 2, "0", STR_PAD_LEFT) . ":00";
-            echo "<td>$hora_inicio - $hora_fin</td>";
-
-            foreach (['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'] as $dia) {
-                echo "<td>";
-                if (isset($horario[$dia])) {
-                    foreach ($horario[$dia] as $hora) {
-                        if ($i >= (int)$hora['hora_inicio'] && $i <=  (int)$hora['hora_fin'] - 1) {
-                            echo '<a href="ControllerShowProfile.php?nombre=' . $hora["maestro"] . '">' . $hora["maestro"] . '</a>';
-                            echo " <a href='ControllerEdit.php?id=" . $hora['id'] . "'>Editar</a>";
-                            echo " <a href='ControllerDelete.php?id=" . $hora['id'] . "'>Eliminar</a>";
-                        }
-                    }
-                }
-                echo "</td>";
-            }
-            echo "</tr>";
-        }
-
-        echo "</table>";
-
-        $database = new Database();
-        $db = $database->connect();
-
-?>
-        <form action="ControllerCreate.php" method="post">
-            <?php
-            // Incluir funciones para mostrar opciones de maestros y laboratorios
-            include "Componentes/ComboBoxMaestros.php";
-            mostrarOpcionesMaestros($db);
-            ?>
-            <input type="hidden" name="nombre_laboratorio" value="<?php echo $nombre_laboratorio; ?>">
-            <select name="hora_inicio" id="hora_inicio">
-                <option value="7:00 am">7:00am</option>
-                <option value="8:00 am">8:00am</option>
-                <option value="9:00 am">9:00am</option>
-                <option value="10:00 am">10:00am</option>
-                <option value="11:00 am">11:00am</option>
-                <option value="12:00 pm">12:00pm</option>
-                <option value="13:00 pm">1:00pm</option>
-                <option value="14:00 pm">2:00pm</option>
-                <option value="15:00 pm">3:00pm</option>
-                <option value="16:00 pm">4:00pm</option>
-                <option value="17:00 pm">5:00pm</option>
-                <option value="18:00 pm">6:00pm</option>
-                <option value="19:00 pm">7:00pm</option>
-                <option value="20:00 pm">8:00pm</option>
-            </select>
-            <select name="hora_fin" id="hora_fin">
-                <option value="8:00 am">8:00am</option>
-                <option value="9:00 am">9:00am</option>
-                <option value="10:00 am">10:00am</option>
-                <option value="11:00 am">11:00am</option>
-                <option value="12:00 pm">12:00pm</option>
-                <option value="13:00 pm">1:00pm</option>
-                <option value="14:00 pm">2:00pm</option>
-                <option value="15:00 pm">3:00pm</option>
-                <option value="16:00 pm">4:00pm</option>
-                <option value="17:00 pm">5:00pm</option>
-                <option value="18:00 pm">6:00pm</option>
-                <option value="19:00 pm">7:00pm</option>
-                <option value="20:00 pm">8:00pm</option>
-            </select>
-            <select name="dias" id="dia_semana">
-                <option value="Lunes">Lunes</option>
-                <option value="Martes">Martes</option>
-                <option value="Miercoles">Miercoles</option>
-                <option value="Jueves">Jueves</option>
-                <option value="Viernes">Viernes</option>
-                <option value="Sabado">Sabado</option>
-            </select>
-            <select name="turno" id="turno">
-                <option value="Matutino">Matutino</option>
-                <option value="Vespertino">Vespertino</option>
-            </select>
-            <input type="submit" name="submit" value="Guardar">
-        </form>
-        <?php
-
+        $this->obtenerHorario($nombre_laboratorio);
+        $this->mostrarHorario($nombre_laboratorio);
     }
 
 
@@ -399,61 +399,7 @@ class Horario
             $this->obtenerHorario($nombre_laboratorio);
             // Mostrar el horario actualizado después de editar el registro
             $this->mostrarHorario($nombre_laboratorio);
-        ?>
-            <!-- Formulario para crear un nuevo horario -->
-            <form action="ControllerCreate.php" method="post">
-                <?php
-                // Incluir funciones para mostrar opciones de maestros y laboratorios
-                include "Componentes/ComboBoxMaestros.php";
-                mostrarOpcionesMaestros($db);
-                ?>
-                <input type="hidden" name="nombre_laboratorio" value="<?php echo $nombre_laboratorio; ?>">
-                <select name="hora_inicio" id="hora_inicio">
-                    <option value="7:00 am">7:00am</option>
-                    <option value="8:00 am">8:00am</option>
-                    <option value="9:00 am">9:00am</option>
-                    <option value="10:00 am">10:00am</option>
-                    <option value="11:00 am">11:00am</option>
-                    <option value="12:00 pm">12:00pm</option>
-                    <option value="13:00 pm">1:00pm</option>
-                    <option value="14:00 pm">2:00pm</option>
-                    <option value="15:00 pm">3:00pm</option>
-                    <option value="16:00 pm">4:00pm</option>
-                    <option value="17:00 pm">5:00pm</option>
-                    <option value="18:00 pm">6:00pm</option>
-                    <option value="19:00 pm">7:00pm</option>
-                    <option value="20:00 pm">8:00pm</option>
-                </select>
-                <select name="hora_fin" id="hora_fin">
-                    <option value="8:00 am">8:00am</option>
-                    <option value="9:00 am">9:00am</option>
-                    <option value="10:00 am">10:00am</option>
-                    <option value="11:00 am">11:00am</option>
-                    <option value="12:00 pm">12:00pm</option>
-                    <option value="13:00 pm">1:00pm</option>
-                    <option value="14:00 pm">2:00pm</option>
-                    <option value="15:00 pm">3:00pm</option>
-                    <option value="16:00 pm">4:00pm</option>
-                    <option value="17:00 pm">5:00pm</option>
-                    <option value="18:00 pm">6:00pm</option>
-                    <option value="19:00 pm">7:00pm</option>
-                    <option value="20:00 pm">8:00pm</option>
-                </select>
-                <select name="dias" id="dia_semana">
-                    <option value="Lunes">Lunes</option>
-                    <option value="Martes">Martes</option>
-                    <option value="Miercoles">Miercoles</option>
-                    <option value="Jueves">Jueves</option>
-                    <option value="Viernes">Viernes</option>
-                    <option value="Sabado">Sabado</option>
-                </select>
-                <select name="turno" id="turno">
-                    <option value="Matutino">Matutino</option>
-                    <option value="Vespertino">Vespertino</option>
-                </select>
-                <input type="submit" name="submit" value="Guardar">
-            </form>
-        <?php
+        
             return "Registro actualizado correctamente";
         } else {
             return "Error al actualizar el registro: " . $this->conn->error;
@@ -474,64 +420,74 @@ class Horario
             // Mostrar el formulario de edición con los datos actuales del registro
             $fila = $resultado->fetch_assoc();
         ?>
-            <h2>Editando a <?php echo $fila['maestro'] ?></h2>
-            <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-                <input type="hidden" name="id" value="<?php echo $fila['id']; ?>">
-                <?php
-                include "../Horarios/Componentes/Selectes.php";
-                echo "<label for='maestro'>Maestro:</label> <br>";
-                mostrarOpcionesMaestrosEdicion($db, $fila['maestro']);
-                echo " <br><br><label for='nombre_laboratorio'>Nombre laboratorio:</label> <br>";
-                mostrarOpcionesLaboratoriosEdicion($db, $fila['nombre_laboratorio']);
-                ?>
-                <br><br><label for="hora_inicio">Hora de inicio:</label>
-                <select name="hora_inicio">
-                    <option value="7:00 am" <?php echo isset($fila['hora_inicio']) && $fila['hora_inicio'] == '7:00 am' ? 'selected' : ''; ?>>7:00 am</option>
-                    <option value="8:00 am" <?php echo isset($fila['hora_inicio']) && $fila['hora_inicio'] == '8:00 am' ? 'selected' : ''; ?>>8:00 am</option>
-                    <option value="9:00 am" <?php echo isset($fila['hora_inicio']) && $fila['hora_inicio'] == '9:00 am' ? 'selected' : ''; ?>>9:00 am</option>
-                    <option value="10:00 am" <?php echo isset($fila['hora_inicio']) && $fila['hora_inicio'] == '10:00 am' ? 'selected' : ''; ?>>10:00 am</option>
-                    <option value="11:00 am" <?php echo isset($fila['hora_inicio']) && $fila['hora_inicio'] == '11:00 am' ? 'selected' : ''; ?>>11:00 am</option>
-                    <option value="12:00 pm" <?php echo isset($fila['hora_inicio']) && $fila['hora_inicio'] == '12:00 pm' ? 'selected' : ''; ?>>12:00 pm</option>
-                    <option value="13:00 pm" <?php echo isset($fila['hora_inicio']) && $fila['hora_inicio'] == '13:00 pm' ? 'selected' : ''; ?>>1:00 pm</option>
-                    <option value="14:00 pm" <?php echo isset($fila['hora_inicio']) && $fila['hora_inicio'] == '14:00 pm' ? 'selected' : ''; ?>>2:00 pm</option>
-                    <option value="15:00 pm" <?php echo isset($fila['hora_inicio']) && $fila['hora_inicio'] == '15:00 pm' ? 'selected' : ''; ?>>3:00 pm</option>
-                    <option value="16:00 pm" <?php echo isset($fila['hora_inicio']) && $fila['hora_inicio'] == '16:00 pm' ? 'selected' : ''; ?>>4:00 pm</option>
-                    <option value="17:00 pm" <?php echo isset($fila['hora_inicio']) && $fila['hora_inicio'] == '17:00 pm' ? 'selected' : ''; ?>>5:00 pm</option>
-                    <option value="18:00 pm" <?php echo isset($fila['hora_inicio']) && $fila['hora_inicio'] == '18:00 pm' ? 'selected' : ''; ?>>6:00 pm</option>
-                    <option value="19:00 pm" <?php echo isset($fila['hora_inicio']) && $fila['hora_inicio'] == '19:00 pm' ? 'selected' : ''; ?>>7:00 pm</option>
-                    <option value="20:00 pm" <?php echo isset($fila['hora_inicio']) && $fila['hora_inicio'] == '20:00 pm' ? 'selected' : ''; ?>>8:00 pm</option>
+ <div style="max-width: 600px; margin: 0 auto; padding: 40px; border: 1px solid #ccc; border-radius: 16px; background-color: #f9f9f9; box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); font-family: 'Poppins', sans-serif;">
+    <h2 style="margin-bottom: 40px; text-align: center; color: #333; font-size: 28px;">Editando</h2>
+    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" style="text-align: center;">
+        <input type="hidden" name="id" value="<?php echo $fila['id']; ?>">
+
+        <div style="margin-bottom: 30px;">
+            <label for="maestro" style="font-weight: bold;">Maestro:</label><br>
+            <?php include "../Horarios/Componentes/Selectes.php"; mostrarOpcionesMaestrosEdicion($db, $fila['maestro']); ?>
+        </div>
+
+        <div style="margin-bottom: 30px;">
+            <label for="nombre_laboratorio" style="font-weight: bold;">Nombre laboratorio:</label><br>
+            <?php mostrarOpcionesLaboratoriosEdicion($db, $fila['nombre_laboratorio']); ?>
+        </div>
+
+        <div style="margin-bottom: 30px;">
+            <label for="hora_inicio" style="font-weight: bold;">Hora de inicio:</label><br>
+            <select name="hora_inicio">
+                <option value="7:00 am" <?php echo isset($fila['hora_inicio']) && $fila['hora_inicio'] == '7:00 am' ? 'selected' : ''; ?>>7:00 am</option>
+                <option value="8:00 am" <?php echo isset($fila['hora_inicio']) && $fila['hora_inicio'] == '8:00 am' ? 'selected' : ''; ?>>8:00 am</option>
+                <option value="9:00 am" <?php echo isset($fila['hora_inicio']) && $fila['hora_inicio'] == '9:00 am' ? 'selected' : ''; ?>>9:00 am</option>
+                <option value="10:00 am" <?php echo isset($fila['hora_inicio']) && $fila['hora_inicio'] == '10:00 am' ? 'selected' : ''; ?>>10:00 am</option>
+                <option value="11:00 am" <?php echo isset($fila['hora_inicio']) && $fila['hora_inicio'] == '11:00 am' ? 'selected' : ''; ?>>11:00 am</option>
+                <option value="12:00 pm" <?php echo isset($fila['hora_inicio']) && $fila['hora_inicio'] == '12:00 pm' ? 'selected' : ''; ?>>12:00 pm</option>
+                <option value="1:00 pm" <?php echo isset($fila['hora_inicio']) && $fila['hora_inicio'] == '1:00 pm' ? 'selected' : ''; ?>>1:00 pm</option>
+                <option value="2:00 pm" <?php echo isset($fila['hora_inicio']) && $fila['hora_inicio'] == '2:00 pm' ? 'selected' : ''; ?>>2:00 pm</option>
+                <option value="3:00 pm" <?php echo isset($fila['hora_inicio']) && $fila['hora_inicio'] == '3:00 pm' ? 'selected' : ''; ?>>3:00 pm</option>
+                <option value="4:00 pm" <?php echo isset($fila['hora_inicio']) && $fila['hora_inicio'] == '4:00 pm' ? 'selected' : ''; ?>>4:00 pm</option>
+                <option value="5:00 pm" <?php echo isset($fila['hora_inicio']) && $fila['hora_inicio'] == '5:00 pm' ? 'selected' : ''; ?>>5:00 pm</option>
+                <option value="6:00 pm" <?php echo isset($fila['hora_inicio']) && $fila['hora_inicio'] == '6:00 pm' ? 'selected' : ''; ?>>6:00 pm</option>
+                <option value="7:00 pm" <?php echo isset($fila['hora_inicio']) && $fila['hora_inicio'] == '7:00 pm' ? 'selected' : ''; ?>>7:00 pm</option>
+                <option value="8:00 pm" <?php echo isset($fila['hora_inicio']) && $fila['hora_inicio'] == '8:00 pm' ? 'selected' : ''; ?>>8:00 pm</option>
+            </select>
+        </div>
+
+        <div style="margin-bottom: 30px;">
+            <label for="hora_fin" style="font-weight: bold;">Hora de fin:</label><br>
+            <select name="hora_fin">
+                <option value="7:00 am" <?php echo isset($fila['hora_fin']) && $fila['hora_fin'] == '7:00 am' ? 'selected' : ''; ?>>7:00 am</option>
+                <option value="8:00 am" <?php echo isset($fila['hora_fin']) && $fila['hora_fin'] == '8:00 am' ? 'selected' : ''; ?>>8:00 am</option>
+                <option value="9:00 am" <?php echo isset($fila['hora_fin']) && $fila['hora_fin'] == '9:00 am' ? 'selected' : ''; ?>>9:00 am</option>
+                <option value="10:00 am" <?php echo isset($fila['hora_fin']) && $fila['hora_fin'] == '10:00 am' ? 'selected' : ''; ?>>10:00 am</option>
+                <option value="11:00 am" <?php echo isset($fila['hora_fin']) && $fila['hora_fin'] == '11:00 am' ? 'selected' : ''; ?>>11:00 am</option>
+                <option value="12:00 pm" <?php echo isset($fila['hora_fin']) && $fila['hora_fin'] == '12:00 pm' ? 'selected' : ''; ?>>12:00 pm</option>
+                <option value="1:00 pm" <?php echo isset($fila['hora_fin']) && $fila['hora_fin'] == '1:00 pm' ? 'selected' : ''; ?>>1:00 pm</option>
+                <option value="2:00 pm" <?php echo isset($fila['hora_fin']) && $fila['hora_fin'] == '2:00 pm' ? 'selected' : ''; ?>>2:00 pm</option>
+                <option value="3:00 pm" <?php echo isset($fila['hora_fin']) && $fila['hora_fin'] == '3:00 pm' ? 'selected' : ''; ?>>3:00 pm</option>
+                <option value="4:00 pm" <?php echo isset($fila['hora_fin']) && $fila['hora_fin'] == '4:00 pm' ? 'selected' : ''; ?>>4:00 pm</option>
+                <option value="5:00 pm" <?php echo isset($fila['hora_fin']) && $fila['hora_fin'] == '5:00 pm' ? 'selected' : ''; ?>>5:00 pm</option>
+                <option value="6:00 pm" <?php echo isset($fila['hora_fin']) && $fila['hora_fin'] == '6:00 pm' ? 'selected' : ''; ?>>6:00 pm</option>
+                <option value="7:00 pm" <?php echo isset($fila['hora_fin']) && $fila['hora_fin'] == '7:00 pm' ? 'selected' : ''; ?>>7:00 pm</option>
+                <option value="8:00 pm" <?php echo isset($fila['hora_fin']) && $fila['hora_fin'] == '8:00 pm' ? 'selected' : ''; ?>>8:00 pm</option>
+            </select>
+        </div>
+
+        <div style="margin-bottom: 30px;">
+            <label for="turno" style="font-weight: bold;">Turno:</label><br>
+            <select name="turno" id="turno">
+                <option value="Matutino">Matutino</option>
+                <option value="Vespertino">Vespertino</option>
+            </select>
+        </div>
+
+        <input type="submit" value="Guardar Cambios" style="padding: 14px 28px; font-size: 18px; background-color: #007bff; color: #fff; border: none; border-radius: 8px; cursor: pointer;">
+    </form>
+</div>
 
 
-
-                    <!-- Agrega más opciones según sea necesario -->
-                </select><br><br>
-                <label for="hora_fin">Hora de fin:</label>
-                <select name="hora_fin">
-                    <option value="7:00 am" <?php echo isset($fila['hora_fin']) && $fila['hora_fin'] == '7:00 am' ? 'selected' : ''; ?>>7:00 am</option>
-                    <option value="8:00 am" <?php echo isset($fila['hora_fin']) && $fila['hora_fin'] == '8:00 am' ? 'selected' : ''; ?>>8:00 am</option>
-                    <option value="9:00 am" <?php echo isset($fila['hora_fin']) && $fila['hora_fin'] == '9:00 am' ? 'selected' : ''; ?>>9:00 am</option>
-                    <option value="10:00 am" <?php echo isset($fila['hora_fin']) && $fila['hora_fin'] == '10:00 am' ? 'selected' : ''; ?>>10:00 am</option>
-                    <option value="11:00 am" <?php echo isset($fila['hora_fin']) && $fila['hora_fin'] == '11:00 am' ? 'selected' : ''; ?>>11:00 am</option>
-                    <option value="12:00 pm" <?php echo isset($fila['hora_fin']) && $fila['hora_fin'] == '12:00 pm' ? 'selected' : ''; ?>>12:00 pm</option>
-                    <option value="13:00 pm" <?php echo isset($fila['hora_fin']) && $fila['hora_fin'] == '13:00 pm' ? 'selected' : ''; ?>>1:00 pm</option>
-                    <option value="14:00 pm" <?php echo isset($fila['hora_fin']) && $fila['hora_fin'] == '14:00 pm' ? 'selected' : ''; ?>>2:00 pm</option>
-                    <option value="15:00 pm" <?php echo isset($fila['hora_fin']) && $fila['hora_fin'] == '15:00 pm' ? 'selected' : ''; ?>>3:00 pm</option>
-                    <option value="16:00 pm" <?php echo isset($fila['hora_fin']) && $fila['hora_fin'] == '16:00 pm' ? 'selected' : ''; ?>>4:00 pm</option>
-                    <option value="17:00 pm" <?php echo isset($fila['hora_fin']) && $fila['hora_fin'] == '17:00 pm' ? 'selected' : ''; ?>>5:00 pm</option>
-                    <option value="18:00 pm" <?php echo isset($fila['hora_fin']) && $fila['hora_fin'] == '18:00 pm' ? 'selected' : ''; ?>>6:00 pm</option>
-                    <option value="19:00 pm" <?php echo isset($fila['hora_fin']) && $fila['hora_fin'] == '19:00 pm' ? 'selected' : ''; ?>>7:00 pm</option>
-                    <option value="20:00 pm" <?php echo isset($fila['hora_fin']) && $fila['hora_fin'] == '20:00 pm' ? 'selected' : ''; ?>>8:00 pm</option>
-                    <!-- Agrega más opciones según sea necesario -->
-                </select><br><br>
-
-                <select name="turno" id="turno">
-                    <option value="Matutino">Matutino</option>
-                    <option value="Vespertino">Vespertino</option>
-                </select>
-                <br><br>
-
-                <input type="submit" value="Guardar Cambios">
-            </form>
 <?php
         } else {
             echo "No se encontró ningún registro con el ID proporcionado";
