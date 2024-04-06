@@ -132,7 +132,7 @@ class Horario
       <?php
  echo "<div style='text-align: center; margin-bottom: 20px; font-family: Arial, sans-serif;'>";
  echo "<div style='display: inline-block; margin-right: 10px;'><a href='../../Administrador/Laboratorios/index.php' style='text-decoration: none; color: white; background-color: #28a745; padding: 10px 20px; border-radius: 5px;'>Agregar Laboratorio</a></div>";
- echo "<div style='display: inline-block; margin-right: 10px;'><a href='../../Administrador/Maestros/index.php' style='text-decoration: none; color: white; background-color: #6610f2; padding: 10px 20px; border-radius: 5px;'>Agregar Maestro</a></div>";
+ echo "<div style='display: inline-block; margin-right: 10px;'><a href='../../Administrador/Maestros/ControllerShowTable.php' style='text-decoration: none; color: white; background-color: #6610f2; padding: 10px 20px; border-radius: 5px;'>Agregar Maestro</a></div>";
  echo "<div style='display: inline-block;'><a href='indexAdmin.php' style='text-decoration: none; color: white; background-color: #17a2b8; padding: 10px 20px; border-radius: 5px;'>Regresar</a></div>";
  echo "<button onclick='mostrarFormulario()' style='background-color: #ffc107; color: white; border: none; padding: 10px 20px;font-size: 17px; border-radius: 5px; cursor: pointer; margin-left: 10px;'>Agregar clase</button>";
  echo "</div>";
@@ -557,7 +557,6 @@ class Horario
       echo "No se encontró ningún registro con el ID proporcionado";
     }
   }
-
   public function eliminarRegistro($id)
   {
     $database = new Database();
@@ -577,4 +576,70 @@ class Horario
       return "Error al eliminar el registro: " . $this->conn->error;
     }
   }
+
+
+
+
+
+
+
+  
+
+  function searchCliente($busqueda){
+    
+    // Consulta SQL para buscar en la base de datos
+    $sql = "SELECT * FROM $this->table WHERE nombre_laboratorio LIKE '%$busqueda%'";
+    $resultado = $this->conn->query($sql);
+    $datos_horario = $this->obtenerHorario($busqueda);
+    $nombre_laboratorio = $datos_horario['nombre_laboratorio'];
+    $horario = $datos_horario['horario'];
+
+    $this->obtenerHorario($nombre_laboratorio);
+    $this->mostrarHorarioCliente($nombre_laboratorio);
+  }
+
+  public function mostrarHorarioCliente($nombre_laboratorio)
+  {
+    $datos_horario = $this->obtenerHorario($nombre_laboratorio);
+    $nombre_laboratorio = $datos_horario['nombre_laboratorio'];
+    $horario = $datos_horario['horario'];
+
+    // Crear la tabla de horarios
+    echo "<h1 style='text-align: center; font-family:Arial; color: black;'>$nombre_laboratorio</h1>";
+?>
+
+    <?php
+    echo "<table border='4' style='border-collapse: collapse; width: 100%; background-color: #FFFFFF;'>";
+    echo "<tr><th style='background-color: #073b4c; color: #FFFFFF; padding: 8px; text-align: center; font-family:Arial;'>Horario</th>";
+    foreach (['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'] as $dia) {
+      echo "<th style='background-color: #073b4c; color: #FFFFFF; padding: 8px; text-align: center; font-family:Arial;'>$dia</th>";
+    }
+    echo "</tr>";
+
+    // Generar las filas de la tabla
+    for ($i = 7; $i < 20; $i++) {
+      echo "<tr>";
+      $hora_inicio = str_pad($i, 2, "0", STR_PAD_LEFT) . ":00";
+      $hora_fin = str_pad(($i + 1), 2, "0", STR_PAD_LEFT) . ":00";
+      echo "<td style=' border: 1px solid black; background-color: #28a745; color: black; padding: 8px; text-align: center; font-family:Arial; color:	#f8f9fa;'>$hora_inicio - $hora_fin</td>";
+
+      foreach (['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'] as $dia) {
+        echo "<td style='background-color: #FFFFFF; color: black; padding: 8px; text-align: center; font-family:Arial; border: 1px solid black'>";
+        if (isset($horario[$dia])) {
+          foreach ($horario[$dia] as $hora) {
+            if ($i >= (int)$hora['hora_inicio'] && $i <=  (int)$hora['hora_fin'] - 1) {
+              echo '<a href="ControllerShowProfile.php?nombre=' . $hora["maestro"] . '" style="margin-right: 10px; text-decoration: none; color: black ;">' . $hora["maestro"] . '</a>';
+              
+              
+            }
+          }
+        }
+        echo "</td>";
+      }
+      echo "</tr>";
+    }
+
+    echo "</table>";
+  }
+
 }

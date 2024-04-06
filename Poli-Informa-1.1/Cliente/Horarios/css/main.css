@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    font-family: 'Poppins';
+    margin: 0;
+    padding: 0;
+}
+
+body, html {
+    height: 100%;
+}
+
+.hero {
+    background-image: url('https://www.comunidadbaratz.com/wp-content/uploads/Sabes-cuales-son-los-libros-mas-vendidos-de-2017-a-traves-de-Internet-en-Espana.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Fija la imagen de fondo */
+    height: 100%;
+}
+
+.content {
+    text-align: center;
+    padding: 200px 100px; /* Modifica el valor de padding para ajustar la posición vertical del texto */
+    color: white;
+}
+
+.content h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+
+}
+
+.content p {
+    font-size: 1.5em;
+    margin-bottom: 5%;
+}
+
+.a_Start {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease; 
+}
+
+.a_Start:hover {
+    background-color: #0056b3;
+}
+
+.container-horarios{
+    background-color: white;
+}
+
+.content-1 {
+    text-align: center; /* Alinea el texto horizontalmente */
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    height: 100vh; /* Ajusta la altura para ocupar el 100% del viewport */
+    background-color: white; /* Color de fondo opcional */
+}
+.question h2{
+    margin-top: 5%;
+}
+
+.container_descripcion {
+    width: 50%;
+    margin: 0 auto; /* Centra horizontalmente */
+    margin-top: 1%;
+    text-align: center; /* Alinea el texto al centro */
+}

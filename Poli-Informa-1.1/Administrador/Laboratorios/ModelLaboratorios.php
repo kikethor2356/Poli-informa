@@ -26,35 +26,35 @@ class Laboratorio extends Database{
         $stmt->close();
     }
 
-     //Esta funcion te regresa una tabla de maestros
-     public function MostrarLaboratoriosTabla() {
-        $conn = $this->connect();
-        
-        $sql = "SELECT * FROM laboratorios";
-        $result = $conn->query($sql);
-        
-        if ($result->num_rows > 0) {
-            echo '<center><h1 style="margin-bottom: 20px;">Tabla de Aulas</h1></center>';
-            echo "<div style='text-align: left; margin-bottom: 20px;'><a href='../../Administrador/Laboratorios/index.php' style='text-decoration: none; color: white; background-color: green; padding: 10px 20px; border-radius: 5px; display: inline-block;'>Agregar Laboratorio</a></div>";
-            echo '<table style="border-collapse: collapse; width: 100%; border: 2px solid #ddd; font-size: 22px;">';
+     // Esta función te regresa una tabla de maestros
+public function MostrarLaboratoriosTabla() {
+    $conn = $this->connect();
+    
+    $sql = "SELECT * FROM laboratorios";
+    $result = $conn->query($sql);
+    
+    if ($result->num_rows > 0) {
+        echo '<center><h1 style="margin-bottom: 20px; font-family: Arial;">Tabla de Aulas</h1></center>';
+        echo "<div style='text-align: left; margin-bottom: 20px;'><a href='../../Administrador/Laboratorios/index.php' style='text-decoration: none; color: white; background-color: green; padding: 10px 20px; border-radius: 5px; display: inline-block; font-family: Arial;'>Agregar Laboratorio</a></div>";
+        echo '<table style="border-collapse: collapse; width: 100%; border: 2px solid #ddd; font-size: 22px; font-family: Arial;">';
+        echo '<tr>';
+        echo '<th style="border: 1px solid #dddddd; color:white; text-align: left; padding: 8px; background-color:#343a40 ;">Nombre</th>';
+        echo '<th style="border: 1px solid #dddddd; color:white; text-align: left; padding: 8px; background-color:#343a40;">Editar</th>';
+        echo '<th style="border: 1px solid #dddddd; color:white; text-align: left; padding: 8px; background-color:#343a40;">Eliminar</th>';
+        echo '</tr>';
+        while ($row = $result->fetch_assoc()) {
             echo '<tr>';
-            echo '<th style="border: 1px solid #dddddd; text-align: left; padding: 8px; background-color: #f2f2f2;">Nombre</th>';
-            echo '<th style="border: 1px solid #dddddd; text-align: left; padding: 8px; background-color: #f2f2f2;">Editar</th>';
-            echo '<th style="border: 1px solid #dddddd; text-align: left; padding: 8px; background-color: #f2f2f2;">Eliminar</th>';
+            echo '<td style="border: 1px solid #dddddd; text-align: left; padding: 8px; font-family: Arial;">' . $row["Nombre"] . '</td>';
+            echo '<td style="border: 1px solid #dddddd; text-align: left; padding: 8px; font-family: Arial;"><a href="ControllerEdit.php?id=' . $row["id"] . '" style="text-decoration: none; color: black; background-color:#17a2b8; padding: 5px 10px; border-radius: 5px;">Editar</a></td>';
+            echo '<td style="border: 1px solid #dddddd; text-align: left; padding: 8px; font-family: Arial;"><a href="ControllerDelete.php?id=' . $row["id"] . '" style="text-decoration: none; color: black; background-color:#dc3545; padding: 5px 10px; border-radius: 5px;">Eliminar</a></td>';
             echo '</tr>';
-            while ($row = $result->fetch_assoc()) {
-                echo '<tr>';
-                echo '<td style="border: 1px solid #dddddd; text-align: left; padding: 8px;">' . $row["Nombre"] . '</td>';
-                echo '<td style="border: 1px solid #dddddd; text-align: left; padding: 8px;"><a href="ControllerEdit.php?id=' . $row["id"] . '" style="text-decoration: none; color: blue;">Editar</a></td>';
-                echo '<td style="border: 1px solid #dddddd; text-align: left; padding: 8px;"><a href="ControllerDelete.php?id=' . $row["id"] . '" style="text-decoration: none; color: red;">Eliminar</a></td>';
-                echo '</tr>';
-            }
-            echo '</table>';
-        } else {
-            echo "<p style='margin-top: 20px; text-align: center; font-size: 18px;'>No se encontraron resultados.</p>";
         }
-        
+        echo '</table>';
+    } else {
+        echo "<p style='margin-top: 20px; text-align: center; font-size: 18px; font-family: Arial;'>No se encontraron resultados.</p>";
     }
+    
+}
 
 
     function editarRegistro($id, $nombre)
@@ -74,21 +74,82 @@ class Laboratorio extends Database{
     }
 }
 
-    
-    function mostrarFormularioEdicion($id)
-    {
-        // Consulta SQL para obtener los datos del registro
-        $sql = "SELECT * FROM laboratorios WHERE id=?";
-        $conn = $this->connect();
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param('i', $id);
-        $stmt->execute();
-        $resultado = $stmt->get_result();
+function mostrarFormularioEdicion($id)
+{
+    // Consulta SQL para obtener los datos del registro
+    $sql = "SELECT * FROM laboratorios WHERE id=?";
+    $conn = $this->connect();
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('i', $id);
+    $stmt->execute();
+    $resultado = $stmt->get_result();
 
-        if ($resultado->num_rows > 0) {
-            // Mostrar el formulario de edición con los datos actuales del registro
-            $fila = $resultado->fetch_assoc();
+    if ($resultado->num_rows > 0) {
+        // Mostrar el formulario de edición con los datos actuales del registro
+        $fila = $resultado->fetch_assoc();
 ?>
+        <!DOCTYPE html>
+        <html lang="es">
+
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Editar Registro</title>
+            <style>
+                body {
+                    font-family: Arial, sans-serif;
+                    background-color: #f5f5f5;
+                    margin: 0;
+                    padding: 0;
+                }
+
+                form {
+                    max-width: 400px;
+                    margin: 20px auto;
+                    background-color: #fff;
+                    padding: 20px;
+                    border-radius: 8px;
+                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                }
+
+                h2 {
+                    text-align: center;
+                    color: #333;
+                }
+
+                label {
+                    font-weight: bold;
+                    color: #555;
+                }
+
+                input[type="text"] {
+                    width: 100%;
+                    padding: 10px;
+                    margin-bottom: 15px;
+                    border: 1px solid #ccc;
+                    border-radius: 4px;
+                    box-sizing: border-box;
+                }
+
+                input[type="submit"] {
+                    background-color: #007bff;
+                    color: white;
+                    padding: 15px 20px;
+                    border: none;
+                    border-radius: 4px;
+                    cursor: pointer;
+                    font-size: 16px;
+                    width: 100%;
+                    transition: background-color 0.3s ease;
+                }
+
+                input[type="submit"]:hover {
+                    background-color: #0056b3;
+                }
+            </style>
+        </head>
+
+        <body>
             <h2>Editar Registro</h2>
             <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                 <input type="hidden" name="id" value="<?php echo $fila['id']; ?>">
@@ -97,13 +158,14 @@ class Laboratorio extends Database{
 
                 <input type="submit" value="Guardar Cambios">
             </form>
+        </body>
+
+        </html>
 <?php
-       /*  $maestro = new Maestro();
-        $maestro->editarMaestro($id_maestro, $nombre, $apellidos, $correo, $codigo, $imagen); */
-        } else {
-            echo "No se encontró ningún registro con el ID proporcionado";
-        }
+    } else {
+        echo "No se encontró ningún registro con el ID proporcionado";
     }
+}
 
 
      // Función para eliminar un registro basado en el ID
