@@ -28,7 +28,7 @@ function mostrarOpcionesMaestros($conn)
 {
     $opciones = obtenerOpcionesCombo($conn, "maestros");
     // Mostrar las opciones en un combo box
-    echo "<select name='maestro'>";
+    echo "<select name='maestro' style='margin: 10px; padding: 8px; background:	#007bff;'>";
     foreach ($opciones as $opcion) {
         echo "<option value='$opcion'>$opcion</option>";
     }

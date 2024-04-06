@@ -39,7 +39,7 @@ function mostrarOpcionesLaboratoriosEdicion($conn, $laboratorioSeleccionado)
 {
     $opciones = obtenerOpcionesCombo($conn, "laboratorios");
     // Mostrar las opciones en un combo box
-    echo "<select name='nombre_laboratorio'>";
+    echo "<select name='nombre_laboratorio'";
     foreach ($opciones as $opcion) {
         $selected = ($opcion == $laboratorioSeleccionado) ? "selected" : "";
         echo "<option value='$opcion' $selected>$opcion</option>";

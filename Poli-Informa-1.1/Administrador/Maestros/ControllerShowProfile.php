@@ -9,10 +9,11 @@ if(isset($_GET['id'])) {
 
     // Crear una instancia de tu clase
     $maestro = new Maestro();
-
+    $database = new Database();
+    $db = $database->connect();
 
     // Llamar al método PerfilMaestros() con el ID del maestro
-    $maestro->PerfilMaestros($id);
+    $maestro->PerfilMaestros($id,$db);
 } else {
     echo "No se proporcionó un ID de maestro.";
 }
