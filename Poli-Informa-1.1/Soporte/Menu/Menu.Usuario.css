@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900");
 
-/* Reset CSS */
 * {
   margin: 0;
   padding: 0;
@@ -10,7 +9,7 @@
 body {
   display: grid;
   /* grid-template-columns: auto 1fr; Menú y contenido */
-  background-color: #dbe2f4;
+  /* background-color: #dbe2f4; */
 }
 .container {
   width: 100%;
@@ -199,17 +198,14 @@ nav {
 
 /* Cuerpo */
 .home {
-  position: absolute;
+  position: relative;
   top: 0;
-  height: 250px;
-  transition: all 0.3s;
   width: 100%;
-  border: 1px solid #000;
 }
 .home .text {
-  font-size: 30px;
+  /* font-size: 30px;
   font-weight: 500;
-  color: #70707070;
+  color: #70707070; */
   padding: 12px 60px;
 }
 .home {
