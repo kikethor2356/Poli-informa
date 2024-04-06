@@ -29,121 +29,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $horario->obtenerHorario($nombre_laboratorio);
         $horario->mostrarHorario($nombre_laboratorio);
-?>
-        <!-- Formulario para crear un nuevo horario -->
-        <form action="ControllerCreate.php" method="post">
-            <?php
-            // Incluir funciones para mostrar opciones de maestros y laboratorios
-            include "Componentes/ComboBoxMaestros.php";
-            mostrarOpcionesMaestros($db);
-            ?>
-            <input type="hidden" name="nombre_laboratorio" value="<?php echo $nombre_laboratorio; ?>">
-            <select name="hora_inicio" id="hora_inicio">
-                <option value="7:00 am">7:00am</option>
-                <option value="8:00 am">8:00am</option>
-                <option value="9:00 am">9:00am</option>
-                <option value="10:00 am">10:00am</option>
-                <option value="11:00 am">11:00am</option>
-                <option value="12:00 pm">12:00pm</option>
-                <option value="13:00 pm">1:00pm</option>
-                <option value="14:00 pm">2:00pm</option>
-                <option value="15:00 pm">3:00pm</option>
-                <option value="16:00 pm">4:00pm</option>
-                <option value="17:00 pm">5:00pm</option>
-                <option value="18:00 pm">6:00pm</option>
-                <option value="19:00 pm">7:00pm</option>
-                <option value="20:00 pm">8:00pm</option>
-            </select>
-            <select name="hora_fin" id="hora_fin">
-                <option value="8:00 am">8:00am</option>
-                <option value="9:00 am">9:00am</option>
-                <option value="10:00 am">10:00am</option>
-                <option value="11:00 am">11:00am</option>
-                <option value="12:00 pm">12:00pm</option>
-                <option value="13:00 pm">1:00pm</option>
-                <option value="14:00 pm">2:00pm</option>
-                <option value="15:00 pm">3:00pm</option>
-                <option value="16:00 pm">4:00pm</option>
-                <option value="17:00 pm">5:00pm</option>
-                <option value="18:00 pm">6:00pm</option>
-                <option value="19:00 pm">7:00pm</option>
-                <option value="20:00 pm">8:00pm</option>
-            </select>
-            <select name="dias" id="dia_semana">
-                <option value="Lunes">Lunes</option>
-                <option value="Martes">Martes</option>
-                <option value="Miercoles">Miercoles</option>
-                <option value="Jueves">Jueves</option>
-                <option value="Viernes">Viernes</option>
-                <option value="Sabado">Sabado</option>
-            </select>
-            <select name="turno" id="turno">
-                <option value="Matutino">Matutino</option>
-                <option value="Vespertino">Vespertino</option>
-            </select>
-            <input type="submit" name="submit" value="Guardar">
-        </form>
-    <?php
+
     } else {
         // Mostrar el horario existente
         $horario->mostrarHorario($nombre_laboratorio);
-        echo "<a href='indexAdmin.php'>Regresar</a>";
     ?>
         <!-- Formulario para crear un nuevo horario -->
-        <form action="ControllerCreate.php" method="post">
-            <?php
-            // Incluir funciones para mostrar opciones de maestros y laboratorios
-            include "Componentes/ComboBoxMaestros.php";
-            mostrarOpcionesMaestros($db);
-            ?>
-            <input type="hidden" name="nombre_laboratorio" value="<?php echo $nombre_laboratorio; ?>">
-
-            <select name="hora_inicio" id="hora_inicio">
-                <option value="7:00 am">7:00am</option>
-                <option value="8:00 am">8:00am</option>
-                <option value="9:00 am">9:00am</option>
-                <option value="10:00 am">10:00am</option>
-                <option value="11:00 am">11:00am</option>
-                <option value="12:00 pm">12:00pm</option>
-                <option value="13:00 pm">1:00pm</option>
-                <option value="14:00 pm">2:00pm</option>
-                <option value="15:00 pm">3:00pm</option>
-                <option value="16:00 pm">4:00pm</option>
-                <option value="17:00 pm">5:00pm</option>
-                <option value="18:00 pm">6:00pm</option>
-                <option value="19:00 pm">7:00pm</option>
-                <option value="20:00 pm">8:00pm</option>
-            </select>
-            <select name="hora_fin" id="hora_fin">
-                <option value="8:00 am">8:00am</option>
-                <option value="9:00 am">9:00am</option>
-                <option value="10:00 am">10:00am</option>
-                <option value="11:00 am">11:00am</option>
-                <option value="12:00 pm">12:00pm</option>
-                <option value="13:00 pm">1:00pm</option>
-                <option value="14:00 pm">2:00pm</option>
-                <option value="15:00 pm">3:00pm</option>
-                <option value="16:00 pm">4:00pm</option>
-                <option value="17:00 pm">5:00pm</option>
-                <option value="18:00 pm">6:00pm</option>
-                <option value="19:00 pm">7:00pm</option>
-                <option value="20:00 pm">8:00pm</option>
-            </select>
-            <select name="dias" id="dia_semana">
-                <option value="Lunes">Lunes</option>
-                <option value="Martes">Martes</option>
-                <option value="Miercoles">Miercoles</option>
-                <option value="Jueves">Jueves</option>
-                <option value="Viernes">Viernes</option>
-                <option value="Sabado">Sabado</option>
-            </select>
-            <select name="turno" id="turno">
-                <option value="Matutino">Matutino</option>
-                <option value="Vespertino">Vespertino</option>
-            </select>
-            <input type="submit" name="submit" value="Guardar">
-        </form>
-
+       
 <?php
 
     }

@@ -29,31 +29,31 @@ class Laboratorio extends Database{
      //Esta funcion te regresa una tabla de maestros
      public function MostrarLaboratoriosTabla() {
         $conn = $this->connect();
-
+        
         $sql = "SELECT * FROM laboratorios";
         $result = $conn->query($sql);
-    
+        
         if ($result->num_rows > 0) {
-            echo '<center><h1>Tabla de Aulas</h1></center>';
-            echo '<table style="border-collapse: collapse; width: 100%;">';
+            echo '<center><h1 style="margin-bottom: 20px;">Tabla de Aulas</h1></center>';
+            echo "<div style='text-align: left; margin-bottom: 20px;'><a href='../../Administrador/Laboratorios/index.php' style='text-decoration: none; color: white; background-color: green; padding: 10px 20px; border-radius: 5px; display: inline-block;'>Agregar Laboratorio</a></div>";
+            echo '<table style="border-collapse: collapse; width: 100%; border: 2px solid #ddd; font-size: 22px;">';
             echo '<tr>';
-            echo '<th style="border: 1px solid #dddddd; text-align: left; padding: 8px;">Nombre</th>';
-            echo '<th style="border: 1px solid #dddddd; text-align: left; padding: 8px;">Editar</th>';
-            echo '<th style="border: 1px solid #dddddd; text-align: left; padding: 8px;">Eliminar</th>';
-
-           
+            echo '<th style="border: 1px solid #dddddd; text-align: left; padding: 8px; background-color: #f2f2f2;">Nombre</th>';
+            echo '<th style="border: 1px solid #dddddd; text-align: left; padding: 8px; background-color: #f2f2f2;">Editar</th>';
+            echo '<th style="border: 1px solid #dddddd; text-align: left; padding: 8px; background-color: #f2f2f2;">Eliminar</th>';
             echo '</tr>';
-            while($row = $result->fetch_assoc()) {
+            while ($row = $result->fetch_assoc()) {
                 echo '<tr>';
-                echo '<td style="border: 1px solid #dddddd; text-align: left; padding: 8px;">' . $row["Nombre"] . '</a></td>';
-                echo '<td style="border: 1px solid #dddddd; text-align: left; padding: 8px;"><a href="ControllerEdit.php?id=' . $row["id"] . '">Editar</a></td>';
-                echo '<td style="border: 1px solid #dddddd; text-align: left; padding: 8px;"><a href="ControllerDelete.php?id=' . $row["id"] . '">Eliminar</a></td>';
+                echo '<td style="border: 1px solid #dddddd; text-align: left; padding: 8px;">' . $row["Nombre"] . '</td>';
+                echo '<td style="border: 1px solid #dddddd; text-align: left; padding: 8px;"><a href="ControllerEdit.php?id=' . $row["id"] . '" style="text-decoration: none; color: blue;">Editar</a></td>';
+                echo '<td style="border: 1px solid #dddddd; text-align: left; padding: 8px;"><a href="ControllerDelete.php?id=' . $row["id"] . '" style="text-decoration: none; color: red;">Eliminar</a></td>';
                 echo '</tr>';
             }
             echo '</table>';
         } else {
-            echo "0 resultados";
+            echo "<p style='margin-top: 20px; text-align: center; font-size: 18px;'>No se encontraron resultados.</p>";
         }
+        
     }
 
 
