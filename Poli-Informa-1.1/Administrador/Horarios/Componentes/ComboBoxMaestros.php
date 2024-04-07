@@ -46,5 +46,15 @@ function mostrarOpcionesLaboratorios($conn)
     echo "</select>";
 }
 
+function mostrarOpcionesLaboratoriosCliente($conn)
+{
+    $opciones = obtenerOpcionesCombo($conn, "laboratorios");
+    // Mostrar las opciones en un combo box
+    echo "<select name='nombre_laboratorio' style='width: 200px; padding: 10px; border: 1px solid #ccc; border-radius: 5px; font-size: 16px; color: #333; background-color: #fff;'>";
+    foreach ($opciones as $opcion) {
+        echo "<option value='$opcion' style='font-size: 14px; color: #333;'>$opcion</option>";
+    }
+    echo "</select>";
+}
 
 ?>
