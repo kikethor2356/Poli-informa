@@ -8,19 +8,17 @@
 }
 body {
   display: grid;
-  /* grid-template-columns: auto 1fr; Menú y contenido */
-  /* background-color: #dbe2f4; */
 }
 .container {
   width: 100%;
   display: flex;
 }
 .sidebar {
-  position: fixed; /* Cambiado de relative a fixed */
-  top: 0; /* Asegura que la barra lateral comience desde la parte superior */
-  left: 0; /* Asegura que la barra lateral comience desde el borde izquierdo */
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 256px;
-  height: 100vh;
+  height: calc(100vh - 64px);
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -113,7 +111,7 @@ nav {
 }
 .menu-btn {
   position: absolute;
-  right: -14px;
+  right: 10px;
   top: 3.5%;
   width: 28px;
   height: 28px;
@@ -203,125 +201,60 @@ nav {
   width: 100%;
 }
 .home .text {
-  /* font-size: 30px;
-  font-weight: 500;
-  color: #70707070; */
-  padding: 12px 60px;
-}
-.home {
-  height: 100%;
-  padding: 50px;
-}
-
-/* Diseño de cada quien */
-h1{
-  text-align: center;
-}
-.cuerpo2{
-  width: 100%;
-  background-color: white;
-}
-
-#version{
-  position: relative;
-  left: 15%;
-  width: 50%;
-  height: 30vh;
-}
-
-#version p{
-  margin-left: 50%;
-  position: absolute;
-  margin-top: 10%;
-}
-
-
-#fondo{
-  position: relative;
-  background: rgb(222, 222, 233);
-  width: 100%;
-  border: none;
-  margin-top: 2%;
-  margin: auto;
-}
-
-#fondo #contenido{
-  position: relative;
-  width: 100%;
-  background: white;
-  margin-top: 2%;
-  height: 12vh;
-}
- #fondo #contenido1{
-  position: relative;
-  width: 100%;
-  background: white;
-  margin-top: 2%;
-  height: 12vh;
-}
-
-#fondo #contenido2{
-  position: relative;
-  width: 100%;
-  background: white;
-  margin-top: 2%;
-  height: 12vh;
-}
-
-#fondo #contenido3{
-  position: relative;
-  width: 100%;
-  background: white;
-  margin-top: 2%;
-  height: 70vh;
-}
-
-
-#contenido3 #referencias a{
-  position: relative;
-  background: rgb(234, 234, 255);
-  color: black;
-  text-decoration: none;
-  padding: 3%;
-  width: 50%;
+  padding: 7%;
   border: 1px solid #000;
-  height: 2.5vh;
-  display: inline-block;
-  cursor: auto;
-  transform: translateX(40%);
-}
-
-#contenido3 #referencias i{
-  position: absolute;
-  padding: .1%;
-  width: 2.5%;
-  height: 25%;
-  right: 5%;
-  cursor: pointer;
-  top: 50%;
-  transform: translateY(-50%);
-}
-#contenido3 #referencias i:hover{
-  cursor: pointer;
-}
-
-#contenido3 .referencia1{
-  display: block;
   width: 100%;
-  top: 5vh;    
+}
+.home ~ .text {
+  height: 100%;
+  padding: 5%;
 }
 
-#contenido3 .referencia2{
-  display: block;
+/* Menu arriba */
+.profile-box {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
-  top: 10vh;
+  padding: 20px;
+  background-color: #744040;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  border-bottom: 1px solid #f6f6f6;
+  z-index: 99;
 }
 
-#contenido3 .referencia3{
-  display: block;
+.header1 {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.user-img1 {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.user-img1 img {
   width: 100%;
-  top: 15vh;
+  object-fit: cover;
 }
 
+.user-details1 {
+  text-align: right;
+}
 
-/*  */
+.user-details1 .title1 {
+  font-size: 10px;
+  font-weight: 500;
+  color: #757575;
+  text-transform: uppercase;
+}
+
+.user-details1 .name1 {
+  font-size: 14px;
+  font-weight: 500;
+}

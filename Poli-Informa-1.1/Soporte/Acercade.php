@@ -9,93 +9,17 @@
     <title>Acerca de</title>
 </head>
 <body>
-    <nav class="sidebar close">
-        <header>
-            <div class="text logo">
-                <span class="name">Menuchido</span>
-                <span class="profe">POLIINFORMA</span>
-            </div>
-            <i class="fa-solid fa-bars toggle" ></i>
-        </header>
-        <div class="menu-bar">
-            <div class="menu">
-                <li class="search-box">
-                    <i class="fa-solid fa-magnifying-glass icon"></i>
-                    <input type="text" placeholder="Buscar.....">
-                </li>
-                <ul class="menu-links">
-                    <li class="nav-link">
-                        <a href="#">
-                            <i class="fa-solid fa-house icon"></i>
-                            <span class="text nav-text" >Inicio</span>
-                        </a>
-                    </li>
-                    
-                    <li class="nav-link">
-                        <a href="#">
-                            <i class="fa-regular fa-user icon"></i>
-                            <span class="text nav-text" >Policommerce</span>
-                        </a>
-                    </li>
-                    <li class="nav-link">
-                        <a href="#">
-                            <i class="fa-solid fa-utensils icon"></i>
-                            <span class="text nav-text" >Cafeteria</span>
-                        </a>
-                        <!-- <ul class="nav-link2">
-                            <li class="nav-link">
-                                <a href="#">
-                                    <i class="fa-regular fa-user"></i>
-                                    <span class="text nav-text">Modulo A</span>
-                                </a>
-                            </li>
+    <?php include 'Menu/MenuUsuario.html'; ?>
 
-                            <li class="nav-link">
-                                <a href="#">
-                                    <i class="fa-regular fa-user"></i>
-                                    <span class="text nav-text">Canchas</span>
-                                </a>
-                            </li>
-                        </ul> -->
-                    </li>
-                    <li class="nav-link">
-                        <a href="#">
-                            <i class="fa-solid fa-clock icon"></i>
-                            <span class="text nav-text" >Horarios</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="bottom-content">
-                <li class="">
-                    <a href="">
-                        <i class="fa-solid fa-arrow-right-from-bracket icon"></i>
-                        <span class="text nav-text">Salir</span>
-                    </a>
-                </li>
-                <li class="mode">
-                    <div class="sun-moon">
-                        <i class="fa-solid icon fa-moon" ></i>
-                        <i class="fa-solid icon fa-sun" ></i>
-                    </div>
-                    <span class="mode-text text">Modo Oscuro</span>
-                    <div class="toggle-switch">
-                        <span class="switch"></span>
-                    </div>
-                </li>
-            </div>
-
-        </div>
-    </nav>
-
+    <!-- Inicio del menu -->
     <section class="home">
         <div class="text">
+            <!-- Contenido de todos -->
             <div class="cuerpo2">
                 <h1>Acerca de POLI-INFORMA</h1>
                 <div id="version">
                     <p>Versión 2.0</p>
-                    <img src="imagenes/image.png" alt="Logo de POLI-INFORMA">
+                    <img src="Menu/imagenes/image.png" alt="Logo de POLI-INFORMA">
                 </div>
         
                 <div id="fondo"><br>
@@ -121,6 +45,8 @@
                     </div>
                 </div>
             </div>
+            <!-- Fin de su contenido -->
+        <!-- Fin del menu -->
         </div>
     </section>
     
