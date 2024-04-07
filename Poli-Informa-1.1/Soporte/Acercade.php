@@ -15,7 +15,7 @@
     <section class="home">
         <div class="text">
             <!-- Contenido de todos -->
-            <div class="cuerpo2">
+            <div class="acerca">
                 <h1>Acerca de POLI-INFORMA</h1>
                 <div id="version">
                     <p>Versión 2.0</p>
@@ -46,13 +46,14 @@
                 </div>
             </div>
             <!-- Fin de su contenido -->
+            
         <!-- Fin del menu -->
         </div>
     </section>
     
 
 
-    <script>
+    <!-- <script>
         const body = document.querySelector('body'),
         sidebar = body.querySelector('nav'),
         toggle = body.querySelector('.toggle'),
@@ -77,6 +78,6 @@
                 modeText.innerText = "Modo Oscuro";
             }
         })
-    </script>
+    </script> -->
 </body>
 </html>
