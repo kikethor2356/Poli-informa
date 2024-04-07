@@ -5,3 +5,18 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+.acerca{
+    position: absolute;
+    width: 100%;
+    border: 1px solid #000;
+}
+
+.acerca h1{
+    text-align: center;
+}
+
+.acerca #version{
+    position: relative;
+    border: 1px solid #db0b0b;    
+}
