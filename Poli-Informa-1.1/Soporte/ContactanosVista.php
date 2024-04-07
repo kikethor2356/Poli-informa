@@ -13,6 +13,7 @@
 </head>
 
 <body>
+    <?php include 'Menu/MenuUsuario.html'; ?>
     <div class="container-form">
         <div class="info-form">
             <h2>Contactanos</h2>
@@ -43,7 +44,6 @@
             <input type="submit" name="enviar" value="Enviar mensaje" class="btn-enviar">
         </form>
 
-        <a href="../Cliente/Horarios/Horario.php" style="width: 90px;">Regresar</a>
     </div>
     
     <script>

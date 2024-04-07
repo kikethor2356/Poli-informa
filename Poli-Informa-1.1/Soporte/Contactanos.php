@@ -16,10 +16,10 @@ if (isset($_POST['enviar'])) {
     mail($destinatario, $asunto, $contenido);
 
     // Redirige al usuario de vuelta al formulario con un mensaje de éxito
-    header('Location: ContactanosVista.html?enviado=true');
+    header('Location: ContactanosVista.php?enviado=true');
 } else {
     // Si alguien intenta acceder directamente a este script, redirige al formulario
-    header('Location: ContactanosVista.html');
+    header('Location: ContactanosVista.php');
     echo "No se puedo mandar el correo";
 }
 ?>
