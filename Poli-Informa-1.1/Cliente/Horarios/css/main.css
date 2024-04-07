@@ -14,13 +14,15 @@ body, html {
     background-image: url('https://www.comunidadbaratz.com/wp-content/uploads/Sabes-cuales-son-los-libros-mas-vendidos-de-2017-a-traves-de-Internet-en-Espana.jpg');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed; /* Fija la imagen de fondo */
+    background-attachment: fixed;
+    /* Fija la imagen de fondo */
     height: 100%;
 }
 
 .content {
     text-align: center;
-    padding: 200px 100px; /* Modifica el valor de padding para ajustar la posición vertical del texto */
+    padding: 200px 100px;
+    /* Modifica el valor de padding para ajustar la posición vertical del texto */
     color: white;
 }
 
@@ -42,31 +44,94 @@ body, html {
     color: white;
     text-decoration: none;
     border-radius: 4px;
-    transition: background-color 0.3s ease; 
+    transition: background-color 0.3s ease;
 }
 
 .a_Start:hover {
     background-color: #0056b3;
 }
 
-.container-horarios{
+.container-horarios {
     background-color: white;
 }
 
 .content-1 {
-    text-align: center; /* Alinea el texto horizontalmente */
-    justify-content: center; /* Centra horizontalmente */
-    align-items: center; /* Centra verticalmente */
-    height: 100vh; /* Ajusta la altura para ocupar el 100% del viewport */
-    background-color: white; /* Color de fondo opcional */
+    text-align: center;
+    /* Alinea el texto horizontalmente */
+    justify-content: center;
+    /* Centra horizontalmente */
+    align-items: center;
+    /* Centra verticalmente */
+    height: 100vh;
+    /* Ajusta la altura para ocupar el 100% del viewport */
+    background-color: white;
+    /* Color de fondo opcional */
 }
-.question h2{
+
+.question h2 {
     margin-top: 5%;
+    font-size: 30px;
 }
 
 .container_descripcion {
     width: 50%;
-    margin: 0 auto; /* Centra horizontalmente */
+    margin: 0 auto;
+    /* Centra horizontalmente */
     margin-top: 1%;
-    text-align: center; /* Alinea el texto al centro */
+    text-align: center;
+    /* Alinea el texto al centro */
+    font-size: 23px;
+}
+
+.selector-lab {
+    width: 300px;
+    padding: 10px;
+    border: 2px solid #000;
+    border-radius: 10px;
+    font-size: 16px;
+    color: #333;
+    background-color: #fff;
+    margin-left:5% ;
+
+}
+
+.option {
+    font-size: 14px;
+    color: #333;
+
+}
+
+.button {
+    background-color: #007bff;
+    height: 47px;
+    width: 100px;
+    margin: 5%;
+    color: #fff;
+    margin-left: 0;
+    border-radius: 10px;
+    font-family: 'Poppins';
+    font-size: 17px;
+    transition: all ease 1s;
+
+}
+
+
+.button:hover {
+    background-color: #2967e1;
+
+}
+
+.h1-lab {
+    font-family: 'Poppins';
+    font-size: 50px;
+}
+
+.table {
+
+    border-collapse: collapse;
+    width: 90%;
+    background-color: #FFFFFF;
+    margin-left: 5%;
+    
+    
 }

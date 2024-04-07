@@ -5,3 +5,10 @@ function mostrarVentana() {
 function cerrarVentana() {
     document.getElementById('ventana').style.display = 'none';
 }
+
+
+
+
+
+
+

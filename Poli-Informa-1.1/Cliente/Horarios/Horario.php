@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="footer-page/style.css"> 
     <title>Bienvenido a la seccion de horarios</title>
 </head>
 
@@ -12,12 +13,15 @@
 
 <style>
     
-    .button{
-        background-color: #333;
-        height: 45px;
-        width: 100px;
-    }
+   
 </style>
+
+    <?php
+
+    include "Menu/MenuUsuario.html";  
+
+    ?>
+
     <section class="hero">
         <div class="content">
             <h1>Bienvenido a la sección de horarios</h1>
@@ -42,23 +46,25 @@
                 <form action="" method="POST">
                     <?php
                     include "../../Conexion/conexion.php";  //incluir la conexión
-                    $database = new Database();
+                    $database = new Database(); 
                     $db = $database->connect();
                     include "../../Administrador/Horarios/Componentes/ComboBoxMaestros.php";
                     $opciones = obtenerOpcionesCombo($db, "laboratorios");
                     // Mostrar las opciones en un combo box
                     ?>
-                    <select name="nombre_laboratorio" style="width: 200px; padding: 10px; border: 1px solid #ccc; border-radius: 5px; font-size: 16px; color: #333; background-color: #fff;">
+                    <select name="nombre_laboratorio" class="selector-lab">
                     <?php
                     foreach ($opciones as $opcion) {
                         ?>
-                            <option value='<?php echo $opcion; ?>' style='font-size: 14px; color: #333;'><?php echo $opcion; ?></option>
+                            <option class="option" value='<?php echo $opcion;?>'><?php echo $opcion; ?></option>
                         <?php
                     }
                     ?>
                     </select>
                     <button class="button" type="submit">Buscar</button>
                 </form>
+
+                
 
                 <?php
                 // Mostrar el horario cuando se carga la página inicialmente
@@ -96,11 +102,11 @@
                     }
 
                     // Mostrar la tabla de horarios
-                    echo "<h1 style='text-align: center; font-family:Arial; color: black;'>$nombre_laboratorio</h1>";
-                    echo "<table border='4' style='border-collapse: collapse; width: 100%; background-color: #FFFFFF;'>";
-                    echo "<tr><th style='background-color: #073b4c; color: #FFFFFF; padding: 8px; text-align: center; font-family:Arial;'>Horario</th>";
+                    echo "<h1 class='h1-lab'>$nombre_laboratorio</h1>";
+                    echo "<table  border:'4 '; class='table'>";
+                    echo "<tr><th style='background-color: #1e071e; color: #FFFFFF; padding: 8px; text-align: center; font-family:Arial;'>Horario</th>";
                     foreach (['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'] as $dia) {
-                        echo "<th style='background-color: #073b4c; color: #FFFFFF; padding: 8px; text-align: center; font-family:Arial;'>$dia</th>";
+                        echo "<th style='background-color: #1e071e; color: #FFFFFF; padding: 8px; text-align: center; font-family:Arial;'>$dia</th>";
                     }
                     echo "</tr>";
 
@@ -109,14 +115,14 @@
                         echo "<tr>";
                         $hora_inicio = str_pad($i, 2, "0", STR_PAD_LEFT) . ":00";
                         $hora_fin = str_pad(($i + 1), 2, "0", STR_PAD_LEFT) . ":00";
-                        echo "<td style=' border: 1px solid black; background-color: #28a745; color: black; padding: 8px; text-align: center; font-family:Arial; color:	#f8f9fa;'>$hora_inicio - $hora_fin</td>";
+                        echo "<td style=' border: 1px solid black; background-color: #781c77; color: black; padding: 8px; text-align: center; font-family:Arial; color:	#f8f9fa;'>$hora_inicio - $hora_fin</td>";
 
                         foreach (['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'] as $dia) {
                             echo "<td style='background-color: #FFFFFF; color: black; padding: 8px; text-align: center; font-family:Arial; border: 1px solid black'>";
                             if (isset($horario[$dia])) {
                                 foreach ($horario[$dia] as $hora) {
                                     if ($i >= (int)$hora['hora_inicio'] && $i <=  (int)$hora['hora_fin'] - 1) {
-                                        echo '<a href="ControllerShowProfile.php?nombre=' . $hora["maestro"] . '" style="margin-right: 10px; text-decoration: none; color: black ;">' . $hora["maestro"] . '</a>';
+                                        echo '<a href="../../Administrador/Horarios/ControllerShowProfile.php?nombre=' . $hora["maestro"] . '" style="margin-right: 10px; text-decoration: none; color: black ;">' . $hora["maestro"] . '</a>';
                                     }
                                 }
                             }
@@ -126,13 +132,28 @@
                     }
 
                     echo "</table>";
+                    echo "<br>";
                 }
                 ?>
             </div>
         </section>
     </div>
 
-    <script src="script/main.js"></script>
-</body>
 
+    <?php
+
+include "footer-page/index.html";
+
+?>
+
+
+
+    
+    <script src="script/main.js"></script>
+
+
+
+
+
+</body>
 </html>
