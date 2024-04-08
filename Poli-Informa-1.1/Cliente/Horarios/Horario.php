@@ -18,7 +18,7 @@
 
     <?php
 
-    include "Menu/MenuUsuario.html";  
+    include "../Partes/Menu/MenuUsuario.html";  
 
     ?>
 
@@ -142,7 +142,7 @@
 
     <?php
 
-include "footer-page/index.html";
+include "../Partes/footer-page/index.html";  
 
 ?>
 
