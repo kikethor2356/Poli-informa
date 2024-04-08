@@ -1,5 +1,8 @@
 <?php
-$conn = mysqli_connect("localhost", "root", "", "radministrador");
+
+include "../../Conexion/conexion.php";
+$database = new Database;
+$conn =  $database->connect();
 
 if(isset($_POST["submit"])){
     if($_POST["submit"] == "add"){

@@ -7,6 +7,11 @@
     font-family: 'Open Sans';
 }
 
+
+body {
+   background-color: whitesmoke;
+  }
+
 .container-form {
     width: 100%;
     max-width: 1100px;
@@ -74,22 +79,23 @@
 }
 
 .container-form .btn-enviar {
-    background-color: #0F52BA;
-    width: 100%;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-    /* Transición de 0.3 segundos en el cambio de color de fondo */
-}
-
-.container-form .btn-enviar:hover {
-    background-color: #72a3ec;
+    border-radius: 10px;
+    background-color: #216ddf;
     width: 50%;
     color: black;
     margin: 0 auto;
     display: block;
     text-align: center;
+    transition: all ease 1s;
+
+}
+
+.container-form .btn-enviar:hover {
+    background-color: #1c77ff;
+    width: 50%;
+    color: black;
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+    transition: all ease 1s;
 }

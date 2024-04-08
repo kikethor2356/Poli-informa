@@ -17,20 +17,22 @@
     <div class="container-form">
         <div class="info-form">
             <h2>Contactanos</h2>
-            <p>¡Hola! Esperamos que estés disfrutando de Poli-Informa.
-                <br>¿En qué podemos ayudarte? Si necesitas asistencia,
-                envía un mensaje al número de teléfono o al correo
-                electrónico.<br>lo contrario, ¡llena el formulario
-                para recibir ayuda! <br>¡Estamos aquí para ayudarte!
-            </p>
+            <p>¡Hola! Bienvenido a Poli-Informa. 
+     Esperamos que estés disfrutando tu experiencia con nosotros.
+     <br><strong>¿En qué podemos ayudarte?</strong>
+     <br>Si necesitas asistencia, 
+     envía un mensaje al número de teléfono <strong>(+52) 3326-770-713</strong> o al correo electrónico <strong>poli-informa.com</strong>.
+     <br>De lo contrario, ¡llena el formulario para recibir ayuda!
+     <br><strong>¡Estamos aquí para ayudarte!</strong>
+  </p>
 
             <a href="#">
                 <i class="fa fa-phone"></i>
                 +52 3326770713
             </a>
-            <a href="#">
+            <a href="mailto:info.poli.informa@gmail.com">
                 <i class="fa fa-envelope"></i>
-                poli-informa@gmail.com
+                info.poli.informa@gmail.com
             </a>
             <a href="#">
                 <i class="fa fa-map-marked"></i>
