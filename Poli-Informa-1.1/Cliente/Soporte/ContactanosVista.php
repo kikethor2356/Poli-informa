@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <?php include '../MenuUsuario/MenuUsuario.html'; ?>
+    <?php include '../Partes/MenuUsuario.html'; ?>
 
     <div class="home">
         <div class="text">
