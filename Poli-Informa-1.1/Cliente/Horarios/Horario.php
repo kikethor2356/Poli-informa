@@ -20,7 +20,7 @@
 
     <?php
 
-    include "../Partes/Menu/MenuUsuario.html";  
+    include "../Partes/MenuUsuario.html";  
 
     ?>
 
@@ -141,21 +141,8 @@
         </section>
     </div>
 
+    <!-- <?php include "../Partes/footer-page/index.html";  ?> -->
 
-    <?php
-
-include "../Partes/footer-page/index.html";  
-
-?>
-
-
-
-    
     <script src="script/main.js"></script>
-
-
-
-
-
 </body>
 </html>
