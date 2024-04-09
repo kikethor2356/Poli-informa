@@ -38,12 +38,13 @@ function mostrarOpcionesMaestros($conn)
 function mostrarOpcionesLaboratorios($conn)
 {
     $opciones = obtenerOpcionesCombo($conn, "laboratorios");
-    // Mostrar las opciones en un combo box
-    echo "<select name='nombre_laboratorio'>";
-    foreach ($opciones as $opcion) {
-        echo "<option value='$opcion'>$opcion</option>";
-    }
-    echo "</select>";
+    // Mostrar las opciones en un combo box con estilos CSS
+echo "<select name='nombre_laboratorio' style='padding: 10px; font-size: 18px; border: 1px solid #ccc; border-radius: 5px; background-color: #fff; color: #333; width: 100%;'>";
+foreach ($opciones as $opcion) {
+    echo "<option value='$opcion' style='background-color: #fff; color: #333;'>$opcion</option>";
+}
+echo "</select>";
+
 }
 
 function mostrarOpcionesLaboratoriosCliente($conn)
