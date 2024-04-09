@@ -8,8 +8,7 @@
     <title>Acerca de</title>
 </head>
 <body>
-    <?php include '../../Cliente/Partes/MenuUsuario.html'; ?>
-
+    <?php include '../Partes/MenuUsuario.html'; ?>
     <!-- Inicio del menu -->
     <section class="home">
         <div class="text">

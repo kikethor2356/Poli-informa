@@ -6,6 +6,6 @@
     <title>Modulo A</title>
 </head>
 <body>
-    <?php include '../../MenuUsuario/MenuUsuario.html'?>
+    <?php include '../Partes/MenuUsuario.html'?>
 </body>
 </html>
