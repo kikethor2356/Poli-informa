@@ -195,6 +195,38 @@ class Maestro extends Database
         $sql = "SELECT * FROM maestros";
         $result = $conn->query($sql);
 
+        ?>
+        <link rel="stylesheet" href="../menu.css">
+
+    <style>
+        #productos{
+            position: absolute;
+            left: 0%;
+            top: 0%;
+            width: 100%;
+            height: 100vh;
+        }
+
+        #principal-productos{
+            position: absolute;
+        }
+
+        #principal-productos{
+            width: 85%;
+            height: 100%;
+            top: 0%;
+            left: 15%;
+            background-color: white;
+        }
+    </style>
+    <div id="productos">
+
+    <main id="principal-productos">
+        <section id="section-productos">
+        <?php include '../menu.html';?>
+
+        <?php
+
         if ($result->num_rows > 0) {
             echo '<style>';
             echo 'body { font-family: Arial, sans-serif; }'; // Cambiar la fuente del cuerpo del documento
@@ -240,6 +272,11 @@ class Maestro extends Database
         } else {
             echo "0 resultados";
         }
+        ?>
+        </section>
+    </main>
+</div>
+<?php
     }
 
 

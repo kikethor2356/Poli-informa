@@ -7,5 +7,4 @@ $maestro = new Maestro();
 /* $maestro->MostrarMaestros(); */
 $maestro->MostrarMaestrosTabla();
 
-
 ?>

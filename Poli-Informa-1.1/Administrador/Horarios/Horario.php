@@ -102,7 +102,7 @@ class Horario
     $horario = $datos_horario['horario'];
 
     // Crear la tabla de horarios
-    echo "<h1 style='text-align: center; font-family:Arial; color: black;'>$nombre_laboratorio</h1>";
+
 ?>
 
 
@@ -112,90 +112,118 @@ class Horario
     <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="../menu.css">
       <title>Formulario</title>
-     
 
-   
-       <script>
-    function mostrarFormulario() {
-        var formulario = document.getElementById("formulario");
-        if (formulario.style.display === "none") {
+
+
+      <script>
+        function mostrarFormulario() {
+          var formulario = document.getElementById("formulario");
+          if (formulario.style.display === "none") {
             formulario.style.display = "block";
-        } else {
+          } else {
             formulario.style.display = "none";
+          }
         }
-    }
       </script>
     </head>
 
     <body>
-      <?php
- echo "<div style='text-align: center; margin-bottom: 20px; font-family: Arial, sans-serif;'>";
- echo "<div style='display: inline-block; margin-right: 10px;'><a href='../../Administrador/Laboratorios/index.php' style='text-decoration: none; color: white; background-color: #28a745; padding: 10px 20px; border-radius: 5px;'>Agregar Laboratorio</a></div>";
- echo "<div style='display: inline-block; margin-right: 10px;'><a href='../../Administrador/Maestros/ControllerShowTable.php' style='text-decoration: none; color: white; background-color: #6610f2; padding: 10px 20px; border-radius: 5px;'>Agregar Maestro</a></div>";
- echo "<div style='display: inline-block;'><a href='indexAdmin.php' style='text-decoration: none; color: white; background-color: #17a2b8; padding: 10px 20px; border-radius: 5px;'>Regresar</a></div>";
- echo "<button onclick='mostrarFormulario()' style='background-color: #ffc107; color: white; border: none; padding: 10px 20px;font-size: 17px; border-radius: 5px; cursor: pointer; margin-left: 10px;'>Agregar clase</button>";
- echo "</div>";
- 
-   
-?>
+      <style>
+        #productos {
+          position: absolute;
+          left: 0%;
+          top: 0%;
+          width: 100%;
+          height: 100vh;
+        }
+
+        #principal-productos {
+          position: absolute;
+        }
+
+        #principal-productos {
+          width: 85%;
+          height: 100%;
+          top: 0%;
+          left: 15%;
+          background-color: white;
+        }
+      </style>
+      <div id="productos">
+        <main id="principal-productos">
+          <section id="section-productos">
+            <?php include '../menu.html'; ?>
+
+            <?php
+            echo "<h1 style='text-align: center; font-family:Arial; color: black;'>$nombre_laboratorio</h1>";
+            echo "<div style='text-align: center; margin-bottom: 20px; font-family: Arial, sans-serif;'>";
+            echo "<div style='display: inline-block; margin-right: 10px;'><a href='../../Administrador/Laboratorios/index.php' style='text-decoration: none; color: white; background-color: #28a745; padding: 10px 20px; border-radius: 5px;'>Agregar Laboratorio</a></div>";
+            echo "<div style='display: inline-block; margin-right: 10px;'><a href='../../Administrador/Maestros/ControllerShowTable.php' style='text-decoration: none; color: white; background-color: #6610f2; padding: 10px 20px; border-radius: 5px;'>Agregar Maestro</a></div>";
+            echo "<div style='display: inline-block;'><a href='indexAdmin.php' style='text-decoration: none; color: white; background-color: #17a2b8; padding: 10px 20px; border-radius: 5px;'>Regresar</a></div>";
+            echo "<button onclick='mostrarFormulario()' style='background-color: #ffc107; color: white; border: none; padding: 10px 20px;font-size: 17px; border-radius: 5px; cursor: pointer; margin-left: 10px;'>Agregar clase</button>";
+            echo "</div>";
 
 
-      <form id="formulario" action="ControllerCreate.php" method="post" style="display: none; margin-top: 20px; text-align: center; ">
-        <?php
-        $database = new Database();
-        $db = $database->connect();
-        // Incluir funciones para mostrar opciones de maestros y laboratorios
-        include "Componentes/ComboBoxMaestros.php";
-        mostrarOpcionesMaestros($db);
-        ?>
-        <input type="hidden" name="nombre_laboratorio"  value="<?php echo $nombre_laboratorio;?>">
-        <select name="hora_inicio" id="hora_inicio" style="margin: 10px; padding: 8px; background:	#28a745; border-radius: 10%">
-          <option value="7:00 am">7:00am</option>
-          <option value="8:00 am">8:00am</option>
-          <option value="9:00 am">9:00am</option>
-          <option value="10:00 am">10:00am</option>
-          <option value="11:00 am">11:00am</option>
-          <option value="12:00 pm">12:00pm</option>
-          <option value="13:00 pm">1:00pm</option>
-          <option value="14:00 pm">2:00pm</option>
-          <option value="15:00 pm">3:00pm</option>
-          <option value="16:00 pm">4:00pm</option>
-          <option value="17:00 pm">5:00pm</option>
-          <option value="18:00 pm">6:00pm</option>
-          <option value="19:00 pm">7:00pm</option>
-          <option value="20:00 pm">8:00pm</option>
-        </select>
-        <select name="hora_fin" id="hora_fin" style="margin: 10px; padding: 8px; background:#17a2b8; border-radius: 10%">
-          <option value="8:00 am">8:00am</option>
-          <option value="9:00 am">9:00am</option>
-          <option value="10:00 am">10:00am</option>
-          <option value="11:00 am">11:00am</option>
-          <option value="12:00 pm">12:00pm</option>
-          <option value="13:00 pm">1:00pm</option>
-          <option value="14:00 pm">2:00pm</option>
-          <option value="15:00 pm">3:00pm</option>
-          <option value="16:00 pm">4:00pm</option>
-          <option value="17:00 pm">5:00pm</option>
-          <option value="18:00 pm">6:00pm</option>
-          <option value="19:00 pm">7:00pm</option>
-          <option value="20:00 pm">8:00pm</option>
-        </select>
-        <select name="dias" id="dia_semana" style="margin: 10px; padding: 8px; background:#ffc107; border-radius:10%;">
-          <option value="Lunes">Lunes</option>
-          <option value="Martes">Martes</option>
-          <option value="Miercoles">Miercoles</option>
-          <option value="Jueves">Jueves</option>
-          <option value="Viernes">Viernes</option>
-          <option value="Sábado">Sábado</option>
-        </select>
-        <select name="turno" id="turno" style="margin: 10px; padding: 8px; background:#dc3545;border-radius: 10%;">
-          <option value="Matutino">Matutino</option>
-          <option value="Vespertino">Vespertino</option>
-        </select>
-        <input type="submit" name="submit" value="Guardar" style="margin-top: 10px; padding: 10px 16px; background-color: #343a40 ; color: #FFFFFF; border: none; border-radius: 10%; cursor: pointer;">
+            ?>
 
-      </form>
+
+            <form id="formulario" action="ControllerCreate.php" method="post" style="display: none; margin-top: 20px; text-align: center; ">
+              <?php
+              $database = new Database();
+              $db = $database->connect();
+              // Incluir funciones para mostrar opciones de maestros y laboratorios
+              include "Componentes/ComboBoxMaestros.php";
+              mostrarOpcionesMaestros($db);
+              ?>
+              <input type="hidden" name="nombre_laboratorio" value="<?php echo $nombre_laboratorio; ?>">
+              <select name="hora_inicio" id="hora_inicio" style="margin: 10px; padding: 8px; background:	#28a745; border-radius: 10%">
+                <option value="7:00 am">7:00am</option>
+                <option value="8:00 am">8:00am</option>
+                <option value="9:00 am">9:00am</option>
+                <option value="10:00 am">10:00am</option>
+                <option value="11:00 am">11:00am</option>
+                <option value="12:00 pm">12:00pm</option>
+                <option value="13:00 pm">1:00pm</option>
+                <option value="14:00 pm">2:00pm</option>
+                <option value="15:00 pm">3:00pm</option>
+                <option value="16:00 pm">4:00pm</option>
+                <option value="17:00 pm">5:00pm</option>
+                <option value="18:00 pm">6:00pm</option>
+                <option value="19:00 pm">7:00pm</option>
+                <option value="20:00 pm">8:00pm</option>
+              </select>
+              <select name="hora_fin" id="hora_fin" style="margin: 10px; padding: 8px; background:#17a2b8; border-radius: 10%">
+                <option value="8:00 am">8:00am</option>
+                <option value="9:00 am">9:00am</option>
+                <option value="10:00 am">10:00am</option>
+                <option value="11:00 am">11:00am</option>
+                <option value="12:00 pm">12:00pm</option>
+                <option value="13:00 pm">1:00pm</option>
+                <option value="14:00 pm">2:00pm</option>
+                <option value="15:00 pm">3:00pm</option>
+                <option value="16:00 pm">4:00pm</option>
+                <option value="17:00 pm">5:00pm</option>
+                <option value="18:00 pm">6:00pm</option>
+                <option value="19:00 pm">7:00pm</option>
+                <option value="20:00 pm">8:00pm</option>
+              </select>
+              <select name="dias" id="dia_semana" style="margin: 10px; padding: 8px; background:#ffc107; border-radius:10%;">
+                <option value="Lunes">Lunes</option>
+                <option value="Martes">Martes</option>
+                <option value="Miercoles">Miercoles</option>
+                <option value="Jueves">Jueves</option>
+                <option value="Viernes">Viernes</option>
+                <option value="Sábado">Sábado</option>
+              </select>
+              <select name="turno" id="turno" style="margin: 10px; padding: 8px; background:#dc3545;border-radius: 10%;">
+                <option value="Matutino">Matutino</option>
+                <option value="Vespertino">Vespertino</option>
+              </select>
+              <input type="submit" name="submit" value="Guardar" style="margin-top: 10px; padding: 10px 16px; background-color: #343a40 ; color: #FFFFFF; border: none; border-radius: 10%; cursor: pointer;">
+
+            </form>
 
     </body>
 
@@ -226,8 +254,6 @@ class Horario
               echo '<a href="ControllerShowProfile.php?nombre=' . $hora["maestro"] . '" style="margin-right: 10px; text-decoration: none; color: black ;">' . $hora["maestro"] . '</a>';
               echo "<a href='ControllerEdit.php?id=" . $hora['id'] . "' style='margin-right: 10px; display: inline-block; padding: 8px 16px; text-align: center; text-decoration: none; border-radius: 4px; background-color: #ffd166; color: #000; border: 1px solid #ffd166; transition: background-color 0.3s;'>Editar</a>";
               echo "<a href='ControllerDelete.php?id=" . $hora['id'] . "' style='display: inline-block; padding: 8px 16px; text-align: center; text-decoration: none; border-radius: 4px; background-color: #ef476f; color: #fff; border: 1px solid #ef476f; transition: background-color 0.3s;'>Eliminar</a>";
-              
-              
             }
           }
         }
@@ -237,6 +263,11 @@ class Horario
     }
 
     echo "</table>";
+    ?>
+    </section>
+    </main>
+    </div>
+    <?php
   }
 
   public function PerfilMaestros($maestro, $db)
@@ -433,152 +464,155 @@ class Horario
       // Mostrar el formulario de edición con los datos actuales del registro
       $fila = $resultado->fetch_assoc();
     ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Editando</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #f5f5f5;
-      margin: 0;
-      padding: 0;
-    }
+      <!DOCTYPE html>
+      <html lang="en">
 
-    .container {
-      max-width: 500px;
-      margin: 50px auto;
-      padding: 40px;
-      border-radius: 20px;
-      background-color: #fff;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    }
+      <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Editando</title>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+        <style>
+          body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+          }
 
-    h2 {
-      margin-bottom: 30px;
-      text-align: center;
-      color: #333;
-      font-size: 32px;
-    }
+          .container {
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 40px;
+            border-radius: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+          }
 
-    .form-group {
-      margin-bottom: 20px;
-    }
+          h2 {
+            margin-bottom: 30px;
+            text-align: center;
+            color: #333;
+            font-size: 32px;
+          }
 
-    label {
-      display: block;
-      font-weight: bold;
-      margin-bottom: 10px;
-      color: #555;
-      font-size: 18px;
-    }
+          .form-group {
+            margin-bottom: 20px;
+          }
 
-    select {
-      width: 100%;
-      padding: 12px;
-      border-radius: 10px;
-      border: 1px solid #ccc;
-      background-color: #f9f9f9;
-      color: #333;
-      font-size: 16px;
-    }
+          label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #555;
+            font-size: 18px;
+          }
 
-    input[type="submit"] {
-      display: block;
-      width: 100%;
-      padding: 16px;
-      font-size: 20px;
-      background-color: #007bff;
-      color: #fff;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
+          select {
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            color: #333;
+            font-size: 16px;
+          }
 
-    input[type="submit"]:hover {
-      background-color: #0056b3;
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <h2>Editando</h2>
-    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-      <input type="hidden" name="id" value="<?php echo $fila['id']; ?>">
+          input[type="submit"] {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            font-size: 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+          }
 
-      <div class="form-group">
-        <label for="maestro">Maestro</label>
-        <?php include "../Horarios/Componentes/Selectes.php";
-        mostrarOpcionesMaestrosEdicion($db, $fila['maestro']); ?>
-      </div>
+          input[type="submit"]:hover {
+            background-color: #0056b3;
+          }
+        </style>
+      </head>
 
-      <div class="form-group">
-        <label for="nombre_laboratorio">Nombre laboratorio</label>
-        <?php mostrarOpcionesLaboratoriosEdicion($db, $fila['nombre_laboratorio']); ?>
-      </div>
+      <body>
+        <div class="container">
+          <h2>Editando</h2>
+          <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+            <input type="hidden" name="id" value="<?php echo $fila['id']; ?>">
 
-      <div class="form-group">
-        <label for="hora_inicio">Hora de inicio</label>
-        <select name="hora_inicio">
-        <option value="7:00 am" <?php echo isset($fila['hora_inicio']) && $fila['hora_inicio'] == '7:00 am' ? 'selected' : ''; ?>>7:00 am</option>
-              <option value="8:00 am" <?php echo isset($fila['hora_inicio']) && $fila['hora_inicio'] == '8:00 am' ? 'selected' : ''; ?>>8:00 am</option>
-              <option value="9:00 am" <?php echo isset($fila['hora_inicio']) && $fila['hora_inicio'] == '9:00 am' ? 'selected' : ''; ?>>9:00 am</option>
-              <option value="10:00 am" <?php echo isset($fila['hora_inicio']) && $fila['hora_inicio'] == '10:00 am' ? 'selected' : ''; ?>>10:00 am</option>
-              <option value="11:00 am" <?php echo isset($fila['hora_inicio']) && $fila['hora_inicio'] == '11:00 am' ? 'selected' : ''; ?>>11:00 am</option>
-              <option value="12:00 pm" <?php echo isset($fila['hora_inicio']) && $fila['hora_inicio'] == '12:00 pm' ? 'selected' : ''; ?>>12:00 pm</option>
-              <option value="1:00 pm" <?php echo isset($fila['hora_inicio']) && $fila['hora_inicio'] == '1:00 pm' ? 'selected' : ''; ?>>1:00 pm</option>
-              <option value="2:00 pm" <?php echo isset($fila['hora_inicio']) && $fila['hora_inicio'] == '2:00 pm' ? 'selected' : ''; ?>>2:00 pm</option>
-              <option value="3:00 pm" <?php echo isset($fila['hora_inicio']) && $fila['hora_inicio'] == '3:00 pm' ? 'selected' : ''; ?>>3:00 pm</option>
-              <option value="4:00 pm" <?php echo isset($fila['hora_inicio']) && $fila['hora_inicio'] == '4:00 pm' ? 'selected' : ''; ?>>4:00 pm</option>
-              <option value="5:00 pm" <?php echo isset($fila['hora_inicio']) && $fila['hora_inicio'] == '5:00 pm' ? 'selected' : ''; ?>>5:00 pm</option>
-              <option value="6:00 pm" <?php echo isset($fila['hora_inicio']) && $fila['hora_inicio'] == '6:00 pm' ? 'selected' : ''; ?>>6:00 pm</option>
-              <option value="7:00 pm" <?php echo isset($fila['hora_inicio']) && $fila['hora_inicio'] == '7:00 pm' ? 'selected' : ''; ?>>7:00 pm</option>
-              <option value="8:00 pm" <?php echo isset($fila['hora_inicio']) && $fila['hora_inicio'] == '8:00 pm' ? 'selected' : ''; ?>>8:00 pm</option>
-        </select>
-      </div>
+            <div class="form-group">
+              <label for="maestro">Maestro</label>
+              <?php include "../Horarios/Componentes/Selectes.php";
+              mostrarOpcionesMaestrosEdicion($db, $fila['maestro']); ?>
+            </div>
 
-      <div class="form-group">
-        <label for="hora_fin">Hora de fin</label>
-        <select name="hora_fin">
-        <option value="7:00 am" <?php echo isset($fila['hora_fin']) && $fila['hora_fin'] == '7:00 am' ? 'selected' : ''; ?>>7:00 am</option>
-              <option value="8:00 am" <?php echo isset($fila['hora_fin']) && $fila['hora_fin'] == '8:00 am' ? 'selected' : ''; ?>>8:00 am</option>
-              <option value="9:00 am" <?php echo isset($fila['hora_fin']) && $fila['hora_fin'] == '9:00 am' ? 'selected' : ''; ?>>9:00 am</option>
-              <option value="10:00 am" <?php echo isset($fila['hora_fin']) && $fila['hora_fin'] == '10:00 am' ? 'selected' : ''; ?>>10:00 am</option>
-              <option value="11:00 am" <?php echo isset($fila['hora_fin']) && $fila['hora_fin'] == '11:00 am' ? 'selected' : ''; ?>>11:00 am</option>
-              <option value="12:00 pm" <?php echo isset($fila['hora_fin']) && $fila['hora_fin'] == '12:00 pm' ? 'selected' : ''; ?>>12:00 pm</option>
-              <option value="1:00 pm" <?php echo isset($fila['hora_fin']) && $fila['hora_fin'] == '1:00 pm' ? 'selected' : ''; ?>>1:00 pm</option>
-              <option value="2:00 pm" <?php echo isset($fila['hora_fin']) && $fila['hora_fin'] == '2:00 pm' ? 'selected' : ''; ?>>2:00 pm</option>
-              <option value="3:00 pm" <?php echo isset($fila['hora_fin']) && $fila['hora_fin'] == '3:00 pm' ? 'selected' : ''; ?>>3:00 pm</option>
-              <option value="4:00 pm" <?php echo isset($fila['hora_fin']) && $fila['hora_fin'] == '4:00 pm' ? 'selected' : ''; ?>>4:00 pm</option>
-              <option value="5:00 pm" <?php echo isset($fila['hora_fin']) && $fila['hora_fin'] == '5:00 pm' ? 'selected' : ''; ?>>5:00 pm</option>
-              <option value="6:00 pm" <?php echo isset($fila['hora_fin']) && $fila['hora_fin'] == '6:00 pm' ? 'selected' : ''; ?>>6:00 pm</option>
-              <option value="7:00 pm" <?php echo isset($fila['hora_fin']) && $fila['hora_fin'] == '7:00 pm' ? 'selected' : ''; ?>>7:00 pm</option>
-              <option value="8:00 pm" <?php echo isset($fila['hora_fin']) && $fila['hora_fin'] == '8:00 pm' ? 'selected' : ''; ?>>8:00 pm</option>
-        </select>
-      </div>
+            <div class="form-group">
+              <label for="nombre_laboratorio">Nombre laboratorio</label>
+              <?php mostrarOpcionesLaboratoriosEdicion($db, $fila['nombre_laboratorio']); ?>
+            </div>
 
-      <div class="form-group">
-        <label for="turno">Turno</label>
-        <select name="turno" id="turno">
-          <option value="Matutino">Matutino</option>
-          <option value="Vespertino">Vespertino</option>
-        </select>
-      </div>
+            <div class="form-group">
+              <label for="hora_inicio">Hora de inicio</label>
+              <select name="hora_inicio">
+                <option value="7:00 am" <?php echo isset($fila['hora_inicio']) && $fila['hora_inicio'] == '7:00 am' ? 'selected' : ''; ?>>7:00 am</option>
+                <option value="8:00 am" <?php echo isset($fila['hora_inicio']) && $fila['hora_inicio'] == '8:00 am' ? 'selected' : ''; ?>>8:00 am</option>
+                <option value="9:00 am" <?php echo isset($fila['hora_inicio']) && $fila['hora_inicio'] == '9:00 am' ? 'selected' : ''; ?>>9:00 am</option>
+                <option value="10:00 am" <?php echo isset($fila['hora_inicio']) && $fila['hora_inicio'] == '10:00 am' ? 'selected' : ''; ?>>10:00 am</option>
+                <option value="11:00 am" <?php echo isset($fila['hora_inicio']) && $fila['hora_inicio'] == '11:00 am' ? 'selected' : ''; ?>>11:00 am</option>
+                <option value="12:00 pm" <?php echo isset($fila['hora_inicio']) && $fila['hora_inicio'] == '12:00 pm' ? 'selected' : ''; ?>>12:00 pm</option>
+                <option value="1:00 pm" <?php echo isset($fila['hora_inicio']) && $fila['hora_inicio'] == '1:00 pm' ? 'selected' : ''; ?>>1:00 pm</option>
+                <option value="2:00 pm" <?php echo isset($fila['hora_inicio']) && $fila['hora_inicio'] == '2:00 pm' ? 'selected' : ''; ?>>2:00 pm</option>
+                <option value="3:00 pm" <?php echo isset($fila['hora_inicio']) && $fila['hora_inicio'] == '3:00 pm' ? 'selected' : ''; ?>>3:00 pm</option>
+                <option value="4:00 pm" <?php echo isset($fila['hora_inicio']) && $fila['hora_inicio'] == '4:00 pm' ? 'selected' : ''; ?>>4:00 pm</option>
+                <option value="5:00 pm" <?php echo isset($fila['hora_inicio']) && $fila['hora_inicio'] == '5:00 pm' ? 'selected' : ''; ?>>5:00 pm</option>
+                <option value="6:00 pm" <?php echo isset($fila['hora_inicio']) && $fila['hora_inicio'] == '6:00 pm' ? 'selected' : ''; ?>>6:00 pm</option>
+                <option value="7:00 pm" <?php echo isset($fila['hora_inicio']) && $fila['hora_inicio'] == '7:00 pm' ? 'selected' : ''; ?>>7:00 pm</option>
+                <option value="8:00 pm" <?php echo isset($fila['hora_inicio']) && $fila['hora_inicio'] == '8:00 pm' ? 'selected' : ''; ?>>8:00 pm</option>
+              </select>
+            </div>
 
-      <input type="submit" value="Guardar Cambios">
-    </form>
-  </div>
-</body>
-</html>
+            <div class="form-group">
+              <label for="hora_fin">Hora de fin</label>
+              <select name="hora_fin">
+                <option value="7:00 am" <?php echo isset($fila['hora_fin']) && $fila['hora_fin'] == '7:00 am' ? 'selected' : ''; ?>>7:00 am</option>
+                <option value="8:00 am" <?php echo isset($fila['hora_fin']) && $fila['hora_fin'] == '8:00 am' ? 'selected' : ''; ?>>8:00 am</option>
+                <option value="9:00 am" <?php echo isset($fila['hora_fin']) && $fila['hora_fin'] == '9:00 am' ? 'selected' : ''; ?>>9:00 am</option>
+                <option value="10:00 am" <?php echo isset($fila['hora_fin']) && $fila['hora_fin'] == '10:00 am' ? 'selected' : ''; ?>>10:00 am</option>
+                <option value="11:00 am" <?php echo isset($fila['hora_fin']) && $fila['hora_fin'] == '11:00 am' ? 'selected' : ''; ?>>11:00 am</option>
+                <option value="12:00 pm" <?php echo isset($fila['hora_fin']) && $fila['hora_fin'] == '12:00 pm' ? 'selected' : ''; ?>>12:00 pm</option>
+                <option value="1:00 pm" <?php echo isset($fila['hora_fin']) && $fila['hora_fin'] == '1:00 pm' ? 'selected' : ''; ?>>1:00 pm</option>
+                <option value="2:00 pm" <?php echo isset($fila['hora_fin']) && $fila['hora_fin'] == '2:00 pm' ? 'selected' : ''; ?>>2:00 pm</option>
+                <option value="3:00 pm" <?php echo isset($fila['hora_fin']) && $fila['hora_fin'] == '3:00 pm' ? 'selected' : ''; ?>>3:00 pm</option>
+                <option value="4:00 pm" <?php echo isset($fila['hora_fin']) && $fila['hora_fin'] == '4:00 pm' ? 'selected' : ''; ?>>4:00 pm</option>
+                <option value="5:00 pm" <?php echo isset($fila['hora_fin']) && $fila['hora_fin'] == '5:00 pm' ? 'selected' : ''; ?>>5:00 pm</option>
+                <option value="6:00 pm" <?php echo isset($fila['hora_fin']) && $fila['hora_fin'] == '6:00 pm' ? 'selected' : ''; ?>>6:00 pm</option>
+                <option value="7:00 pm" <?php echo isset($fila['hora_fin']) && $fila['hora_fin'] == '7:00 pm' ? 'selected' : ''; ?>>7:00 pm</option>
+                <option value="8:00 pm" <?php echo isset($fila['hora_fin']) && $fila['hora_fin'] == '8:00 pm' ? 'selected' : ''; ?>>8:00 pm</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="turno">Turno</label>
+              <select name="turno" id="turno">
+                <option value="Matutino">Matutino</option>
+                <option value="Vespertino">Vespertino</option>
+              </select>
+            </div>
+
+            <input type="submit" value="Guardar Cambios">
+          </form>
+        </div>
+      </body>
+
+      </html>
 
 
 
 
-<?php
+    <?php
     } else {
       echo "No se encontró ningún registro con el ID proporcionado";
     }
@@ -609,10 +643,11 @@ class Horario
 
 
 
-  
 
-  function searchCliente($busqueda){
-    
+
+  function searchCliente($busqueda)
+  {
+
     // Consulta SQL para buscar en la base de datos
     $sql = "SELECT * FROM $this->table WHERE nombre_laboratorio LIKE '%$busqueda%'";
     $resultado = $this->conn->query($sql);
@@ -632,9 +667,9 @@ class Horario
 
     // Crear la tabla de horarios
     echo "<h1 style='text-align: center; font-family:Arial; color: black;'>$nombre_laboratorio</h1>";
-?>
+    ?>
 
-    <?php
+<?php
     echo "<table border='4' style='border-collapse: collapse; width: 100%; background-color: #FFFFFF;'>";
     echo "<tr><th style='background-color: #073b4c; color: #FFFFFF; padding: 8px; text-align: center; font-family:Arial;'>Horario</th>";
     foreach (['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'] as $dia) {
@@ -655,8 +690,6 @@ class Horario
           foreach ($horario[$dia] as $hora) {
             if ($i >= (int)$hora['hora_inicio'] && $i <=  (int)$hora['hora_fin'] - 1) {
               echo '<a href="ControllerShowProfile.php?nombre=' . $hora["maestro"] . '" style="margin-right: 10px; text-decoration: none; color: black ;">' . $hora["maestro"] . '</a>';
-              
-              
             }
           }
         }
@@ -667,5 +700,4 @@ class Horario
 
     echo "</table>";
   }
-
 }
