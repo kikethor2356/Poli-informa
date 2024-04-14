@@ -46,7 +46,7 @@ $user = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM registro WHERE id 
                 <span id="passwordError" class="error-message"></span>
             </tr>
             <tr>
-                <td><input type="submit" name="submit" value="edit" >Editar</td>
+                <td><input type="submit" name="submit" value="Editar" >Editar</td>
                 <td><a href="AdControlR.php"><i class="fa-solid fa-right-to-bracket"></i></a></td>
             </tr>
         </table>
