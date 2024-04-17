@@ -1,7 +1,7 @@
 <?php
 require 'ConexFuncion.php';
 $id = $_GET["id"];
-$user = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM registro WHERE id = $id"));
+$user = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM registroalu WHERE id = $id"));
 ?>
 <html>
 <head>
@@ -14,27 +14,27 @@ $user = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM registro WHERE id 
         <table border="1">
             <tr>
                 <td>Codigo:</td>
-                <td><input type="text" maxlength="9" minlength="9" name="AdCode" placeholder="123456789" value ="<?php echo $user["AdCode"]; ?>" id="soloNumeros" oninput="vaslidarLonCo(this)" required></td>
+                <td><input type="text" maxlength="9" minlength="9" name="CodeAlu" placeholder="123456789" value ="<?php echo $user["CodeAlu"]; ?>" id="soloNumeros" oninput="vaslidarLonCo(this)" required></td>
             </tr>
             <tr>
                 <td>Nombre:</td>
-                <td><input type="text" maxlength="15" name="AdNombre" placeholder="Anonimo" value ="<?php echo $user["AdNombre"]; ?>" onkeypress="validarInput(event)" required></td>
+                <td><input type="text" maxlength="15" name="AluNom" placeholder="Anonimo" value ="<?php echo $user["AluNom"]; ?>" onkeypress="validarInput(event)" required></td>
             </tr>
             <tr>
                 <td>Apellido Paterno:</td>
-                <td><input type="text" maxlength="15" name="AdApellidoP" placeholder="Anonimato" value ="<?php echo $user["AdApellidoP"]; ?>" onkeypress="validarInput(event)" required></td>
+                <td><input type="text" maxlength="15" name="AluApellidoP" placeholder="Anonimato" value ="<?php echo $user["AluApellidoP"]; ?>" onkeypress="validarInput(event)" required></td>
             </tr>
             <tr>
                 <td>Apellido Materno:</td>
-                <td><input type="text" maxlength="15" name="AdApellidoM" placeholder="Anonimatario" value ="<?php echo $user["AdApellidoM"]; ?>" onkeypress="validarInput(event)" required></td>
+                <td><input type="text" maxlength="15" name="AluApellidoM" placeholder="Anonimatario" value ="<?php echo $user["AluApellidoM"]; ?>" onkeypress="validarInput(event)" required></td>
             </tr>
             <tr>
                 <td>Carrera:</td>
-                <td><input type="text" maxlength="7" name="AdCarrera" placeholder="TPSI" value ="<?php echo $user["AdCarrera"]; ?>" required></td>
+                <td><input type="text" maxlength="7" name="AluCarrera" placeholder="TPSI" value ="<?php echo $user["AluCarrera"]; ?>" required></td>
             </tr>
             <tr>
                 <td>Correo:</td>
-                <td><input type="email" name="AdCorreo" placeholder="anonimato@gmail.com" value ="<?php echo $user["AdCorreo"]; ?>" required></td>
+                <td><input type="email" name="AluCorreo" placeholder="anonimato@gmail.com" value ="<?php echo $user["AluCorreo"]; ?>" required></td>
             </tr>
             <tr>
                 <td>Imagen Administrador:</td>
@@ -42,12 +42,12 @@ $user = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM registro WHERE id 
             </tr>
             <tr>
                 <td>Contraseña:</td>
-                <td><input type="password" name="AdPassword" id="password" placeholder="Anonimato123" value ="<?php echo $user["AdPassword"]; ?>" onblur="validarPassword()" required></td>
+                <td><input type="password" name="AluPassword" id="password" placeholder="Anonimato123" value ="<?php echo $user["AluPassword"]; ?>" onblur="validarPassword()" required></td>
                 <span id="passwordError" class="error-message"></span>
             </tr>
             <tr>
                 <td><input type="submit" name="submit" value="edit" >Editar</td>
-                <td><a href="AdControlR.php"><i class="fa-solid fa-right-to-bracket"></i></a></td>
+                <td><a href="AluControlR.php"><i class="fa-solid fa-right-to-bracket"></i></a></td>
             </tr>
         </table>
     </form>

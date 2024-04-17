@@ -1,32 +1,29 @@
 <?php
-
-include "../../Conexion/conexion.php";
-$database = new Database;
-$conn =  $database->connect();
+$conn = mysqli_connect("localhost", "root", "", "poli_informa");
 
 if(isset($_POST["submit"])){
     if($_POST["submit"] == "add"){
         add();
     }
     
-    else if($_POST["submit"] == "edit"){
+    else if($_POST["submit"] == "Editar"){
         edit();
     }
-    else{
+    else if($_POST["submit"] == "borrar"){
         delete();
     }
 }
 
 function add(){
     global $conn;
-
+    
     $AdCode= $_POST ['AdCode'];
     $AdNombre= $_POST ['AdNombre'];
     $AdApellidoP= $_POST ['AdApellidoP'];
     $AdApellidoM= $_POST ['AdApellidoM'];
     $AdCarrera= $_POST ['AdCarrera'];
     $AdCorreo= $_POST ['AdCorreo'];
-    $AdPassword= $_POST ['AdPassword'];
+    $AdPassword= md5($_POST ['AdPassword']);
     $filename = $_FILES["file"]["AdNombre"];
     $tmpName = $_FILES["file"]["tmp_name"];
 
@@ -47,14 +44,14 @@ function add(){
 function edit(){
     global $conn;
 
-    $id = $_GET["id"];
+    $id = $_POST["idUsuario"];
     $AdCode= $_POST['AdCode'];
     $AdNombre= $_POST['AdNombre'];
     $AdApellidoP= $_POST['AdApellidoP'];
     $AdApellidoM= $_POST['AdApellidoM'];
     $AdCarrera= $_POST['AdCarrera'];
     $AdCorreo= $_POST['AdCorreo'];
-    $AdPassword= $_POST['AdPassword'];
+    $AdPassword= md5($_POST ['AdPassword']);
 
     if($_FILES["file"]["error"] !=8){
         $filename = $_FILES["file"]["name"];
@@ -81,9 +78,10 @@ function edit(){
 
 
 function delete(){
+
     global $conn;
 
-    $id = $_POST["submit"];
+    $id = $_POST["idEliminar"];
 
     $query = "DELETE FROM registro WHERE id = $id";
     mysqli_query($conn, $query);

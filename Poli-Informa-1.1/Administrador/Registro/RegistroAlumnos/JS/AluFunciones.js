@@ -31,3 +31,4 @@ function validarPassword(){
         window.alert("La contraseña no cumple no cumple con los requisitos: De 6-9 caracteres, 1 letra mayúscula y 1 número");
     }
 }
+

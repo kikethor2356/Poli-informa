@@ -14,7 +14,7 @@
             <form class="" action="" method="post" enctype="multipart/form-data">
                 <table>
                     <h1 class="tit">Registrate!</h1>
-                    <a href="AdControl.php">Control Administrador</a>
+                    <a href="AdControlR.php">Control Administrador</a>
                     <div class="input-group">
                         <label>Codigo:</label>
                         <input type="text" maxlength="9" minlength="9" name="AdCode" placeholder="123456789" id="soloNumeros" oninput="validarLonCo(this)" required>

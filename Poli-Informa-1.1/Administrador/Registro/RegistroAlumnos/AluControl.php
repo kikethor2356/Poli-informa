@@ -2,12 +2,13 @@
 
 <html>
     <head>
-    <link rel="stylesheet" href="style/AdAgregar.css">
+    <link rel="stylesheet" href="style/AluAgregar.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="style/AluControl.css">
     <script src="https://kit.fontawesome.com/d6736406d6.js" crossorigin="anonymous"></script>
     </head>
     <body>
-        <h1 class="tit">Control de Administrador</h1>
+        <h1 class="tit">Control de Alumnos</h1>
         <form class="" action="" method="post" enctype="multipart/form-data">
 
         <!-- Button trigger modal -->
@@ -27,27 +28,27 @@
                 <table>
                     <tr>
                         <td>Codigo:</td>
-                        <td><input type="text" maxlength="9" minlength="9" name="AdCode" placeholder="123456789" id="soloNumeros" oninput="validarLonCo(this)" required></td>
+                        <td><input type="text" maxlength="9" minlength="9" name="CodeAlu" placeholder="123456789" id="soloNumeros" oninput="validarLonCo(this)" required></td>
                     </tr>
                     <tr>
                         <td>Nombre:</td>
-                        <td><input type="text" maxlength="15" name="AdNombre" placeholder="Anonimo" onkeypress="validarInput(event)" required></td>
+                        <td><input type="text" maxlength="15" name="AluNom" placeholder="Anonimo" onkeypress="validarInput(event)" required></td>
                     </tr>
                     <tr>
                         <td>Apellido Paterno:</td>
-                        <td><input type="text" maxlength="15"  name="AdApellidoP" placeholder="Anonimato" onkeypress="validarInput(event)" required></td>
+                        <td><input type="text" maxlength="15"  name="AluApellidoP" placeholder="Anonimato" onkeypress="validarInput(event)" required></td>
                     </tr>
                     <tr>
                         <td>Apellido Materno:</td>
-                        <td><input type="text" maxlength="15" name="AdApellidoM" placeholder="Anonimatario" onkeypress="validarInput(event)" required></td>
+                        <td><input type="text" maxlength="15" name="AluApellidoM" placeholder="Anonimatario" onkeypress="validarInput(event)" required></td>
                     </tr>
                     <tr>
                         <td>Carrera:</td>
-                        <td><input type="text"  maxlength="7" name="AdCarrera" placeholder="TPSI" onkeypress="validarInput(event)" required></td>
+                        <td><input type="text"  maxlength="7" name="AluCarrera" placeholder="TPSI" onkeypress="validarInput(event)" required></td>
                     </tr>
                     <tr>
                         <td>Correo:</td>
-                        <td><input type="email" name="AdCorreo" placeholder="anonimato@gmail.com" required></td>
+                        <td><input type="email" name="AluCorreo" placeholder="anonimato@gmail.com" required></td>
                     </tr>
                     <tr>
                         <td>Imagen Administrador:</td>
@@ -55,7 +56,7 @@
                     </tr>
                     <tr>
                         <td>Contraseña:</td>
-                        <td><input type="password" name="AdPassword" id="password" placeholder="Anonimato123" onblur="validarPassword()" required></td>
+                        <td><input type="password" name="AluPassword" id="password" placeholder="Anonimato123" onblur="validarPassword()" required></td>
                         <span id="passwordError" class="error-message"></span>
                     </tr>
                 </table>
@@ -83,33 +84,26 @@
                     <th scope="col">Opciones</th>
                 </tr>
                 <?php
-                $registro = mysqli_query($conn, "SELECT * FROM registro");
+                $registro = mysqli_query($conn, "SELECT * FROM registroalu");
                 $i = 1;
 
                 foreach($registro as $user) :
                 ?>
                 <tr>
                     <td> <?php echo $i++; ?> </td>
-                    <td> <?php echo $user["AdCode"]; ?> </td>
-                    <td> <?php echo $user["AdNombre"]; ?> </td>
-                    <td> <?php echo $user["AdApellidoP"]; ?> </td>
-                    <td> <?php echo $user["AdApellidoM"]; ?> </td>
-                    <td> <?php echo $user["AdCarrera"]; ?> </td>
-                    <td> <?php echo $user["AdCorreo"]; ?> </td>
-                    <td> <img src="imagenes/<?php echo $user["AdImagen"]; ?>" width="200"> </td>
-                    <td> <?php echo $user["AdPassword"]; ?> </td>
+                    <td> <?php echo $user["CodeAlu"]; ?> </td>
+                    <td> <?php echo $user["AluNom"]; ?> </td>
+                    <td> <?php echo $user["AluApellidoP"]; ?> </td>
+                    <td> <?php echo $user["AluApellidoM"]; ?> </td>
+                    <td> <?php echo $user["AluCarrera"]; ?> </td>
+                    <td> <?php echo $user["AluCorreo"]; ?> </td>
+                    <td> <?php echo $user["AluImage"]; ?></td>
+                    <td> <?php echo $user["AluPassword"]; ?> </td>
                     <td>
-                        <a href="AdEditar.php?id=<?php echo $user["id"]; ?>" class="btn btn-samll btn-warning"><i class="fa-regular fa-pen-to-square"></i></a>
-                        <button class="btn_abrir" onclick="mostrar()">Abrir ventana</button>
-    
-                        <div class="modal">
-                            <div class="contenedor">
-                                <h3>MODAL</h3><br>
-                                <button class="btn_cerrar">Cerrar</button>
-                            </div>
-                        </div>
+                        <a href="AluEditar.php?id=<?php echo $user["id"]; ?>" class="btn btn-samll btn-warning"><i class="fa-regular fa-pen-to-square"></i></a>
+
                         <form class="" action="" method="post">
-                            <button class="btn btn-samll btn-danger"  type="submit" name="submit" value = <?php echo $user["id"]?>><i class="fa-regular fa-trash-can"></i></button>
+                            <button class="btn btn-samll btn-danger" type="submit" name="submit" value = <?php echo $user["id"]?>><i class="fa-regular fa-trash-can"></i></button>
                         </form>
                     </td>
                 </tr>
@@ -117,9 +111,7 @@
             </table>
         </form>    
         <br>
-
+        <script src="JS/AluFunciones.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-        
-        <script src="JS/AdFunciones.js"></script>
     </body>
 </html>
