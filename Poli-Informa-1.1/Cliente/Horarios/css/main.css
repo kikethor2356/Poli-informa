@@ -11,7 +11,7 @@ body, html {
 }
 
 .hero {
-    background-image: url('https://www.comunidadbaratz.com/wp-content/uploads/Sabes-cuales-son-los-libros-mas-vendidos-de-2017-a-traves-de-Internet-en-Espana.jpg');
+    background-image: url('../img/Hero.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
