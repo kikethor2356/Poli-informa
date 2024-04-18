@@ -1,16 +1,20 @@
 <?php
 require 'ConexFuncion.php';
 $id = $_GET["id"];
-$user = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM registro WHERE id = $id"));
+$user = mysqli_fetch_assoc(mysqli_query($conexion, "SELECT * FROM registro WHERE id = $id"));
+
+$db = new Database();
+$conexion = $db->connect();
 ?>
 <html>
 <head>
     <link rel="stylesheet" href="style/AdEditar.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/d6736406d6.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
-    <form class="col-4 p-3 m-auto" action="" method="post" enctype="multipart/form-data">
+    <form class="col-4 p-3 m-auto" action="ConexFuncion.php" method="post" enctype="multipart/form-data">
         <table border="1">
             <tr>
                 <td>Codigo:</td>
