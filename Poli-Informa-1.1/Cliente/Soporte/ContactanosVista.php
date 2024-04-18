@@ -40,33 +40,11 @@
                         Guadalajara, Jalisco, México
                     </a>
                 </div>
-                <form action="Contactanos.php" method="post" autocomplete="off">
-                    <input type="text" name="nombre" placeholder="Ingresa tu nombre" class="campo">
-                    <input type="email" name="email" placeholder="Ingresa el email" class="campo">
-                    <textarea name="mensaje" placeholder="Ingresa un mensaje"></textarea>
-                    <input type="submit" name="enviar" value="Enviar mensaje" class="btn-enviar">
-                </form>
             </div>
         </div>
     </div>
     
-    <script>
-        // Verificar si la URL tiene el parámetro enviado=true
-        const urlParams = new URLSearchParams(window.location.search);
-        const enviado = urlParams.get('enviado');
-
-        // Si el correo se ha enviado correctamente, mostrar una ventana emergente personalizada
-        if (enviado === 'true') {
-            // Mensaje de éxito personalizado con SweetAlert
-            Swal.fire({ 
-                title: '¡Correo enviado!',
-                text: 'Tu mensaje se ha enviado correctamente. Nos pondremos en contacto contigo pronto.',
-                icon: 'success',
-                confirmButtonText: 'Aceptar'
-            });
-        }
-
-    </script>
+  
 </body>
 
 </html>
