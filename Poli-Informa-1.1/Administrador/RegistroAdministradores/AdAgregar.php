@@ -1,4 +1,8 @@
-<?php require 'ConexFuncion.php'; ?>
+<?php require 'ConexFuncion.php'; 
+
+$db = new Database();
+$conexion = $db->connect();
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -6,12 +10,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/AdReg.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Registro Administradores</title>
 </head>
 <body>
     <div class="envoltura">
         <div class="registroEnvoltura">
-            <form class="" action="" method="post" enctype="multipart/form-data">
+            <form class="" action="ConexFuncion.php" method="POST" enctype="multipart/form-data">
                 <table>
                     <h1 class="tit">Registrate!</h1>
                     <a href="AdControlR.php">Control Administrador</a>
@@ -41,15 +46,22 @@
                     </div>
                     <div class="input-group">
                         <label>Imagen Administrador:</label>
-                        <input type="file" name="file" required>
+                        <!-- <input type="file" name="file" required>
                     </div>
+
+                    <div id="contenedor-imagen">                    -->
+                        <input type="file" name="AdImagen" id="AdImagen" required> 
+                        <!-- <label for="imagenInput" id="AdImagen"><i class="fa-solid fa-upload"></i>Seleccionar Imagen</label> -->
+                        <!-- <img src="" id="imagenPreview" alt="Imagen del producto"> -->
+                        <!-- <input type="text" id="nombreArchivo" readonly> -->
+                    </div>
+                    
                     <div class="input-group">
                         <label>Contraseña:</label>
                         <input type="password" name="AdPassword" id="password" placeholder="Anonimato123" onblur="validarPassword()" required>
                         <span id="passwordError" class="error-message"></span>
                     </div>
-
-                        <button type="submit" name="submit" value="add">Guardar</button>
+                        <button type="submit" name="submit" value="Agregar">Agregar</button>
                         <button type="reset">Borrar</button>
                 </table>
             </form>

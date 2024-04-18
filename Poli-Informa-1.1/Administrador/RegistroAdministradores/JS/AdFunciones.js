@@ -31,38 +31,96 @@ function validarPassword(){
         window.alert("La contraseña no cumple no cumple con los requisitos: De 6-9 caracteres, 1 letra mayúscula y 1 número");
     }
 }
+ 
+function mostrarEditar(id, codigo, nombre, apellidoPaterno, apellidoMaterno, carrera, correo, imagen, contraseña, nombre_imagen){
+    // Abrir ventana modal
+    let abrir = event.target; 
+    let modal = document.querySelector('.modal_editar');
+    let abrirModal = document.getElementById(`abrirModal_${codigo}`);
+    let cerrarModal = document.querySelector('.cerrarModal');
+    modal.classList.add('modal-mostrar-editar');
 
-function mostrarEditar(codigo, nombre, apellidoPaterno, apellidoMaterno, carrera, correo, contraseña, id){
-
+    let idUsuario = document.getElementById('idUsuario');
     let codigoUsuario = document.getElementById('soloNumeros');
     let nombresUsuario = document.getElementById('campoNombre');
     let apellidoPaternoUsuario = document.getElementById('campoApellidoPaterno');
     let apellidoMaternoUsuario = document.getElementById('campoApellidoMaterno');
     let carreraUsuario = document.getElementById('campoCarrera');
     let correoUsuario = document.getElementById('campoCorreo');
+    var imagenOldInput = document.getElementById("AdImagen_old");
     let passwordUsuario = document.getElementById('password');
-    let idUsuario = document.getElementById('idUsuario');
+    var imagenPreview = document.getElementById('imagenPreviewEditar');
 
+    idUsuario.value = id;
     codigoUsuario.value = codigo;
     nombresUsuario.value = nombre;
     apellidoPaternoUsuario.value = apellidoPaterno;
     apellidoMaternoUsuario.value = apellidoMaterno;
     carreraUsuario.value = carrera;
     correoUsuario.value = correo;
+    imagenOldInput.value = imagen;
     passwordUsuario.value = contraseña;
-    idUsuario.value = id;
 
+    // Establecer la imagen previa
+    if (imagen) {
+        imagenPreview.src = "imagenes/" + imagen;
+    } else {
+        imagenPreview.src = "";
+    }
 
-    let modal = document.querySelector('.modal_editar');
-    let abrirModal = document.getElementById(`abrirModal_${codigo}`);
-    let cerrarModal = document.querySelector('.cerrarModal');
-    abrirModal.addEventListener("click", (e)=>{
-        modal.classList.add('modal-mostrar-editar');
-    });
-    cerrarModal.addEventListener("click", (e)=>{
-        modal.classList.remove('modal-mostrar-editar');
-    });
+    // Establecer el valor del campo de entrada de imagen en blanco para que no muestre la imagen anterior
+    document.getElementById('imagenInputEditar').value = '';
 
+    // Eliminar los atributos readonly después de establecer los valores de los campos
+    nombresUsuario.removeAttribute('readonly');
+    apellidoPaternoUsuario.removeAttribute('readonly');
+    apellidoMaternoUsuario.removeAttribute('readonly');
+    carreraUsuario.removeAttribute('readonly');
+    correoUsuario.removeAttribute('readonly');
+    imagenOldInput.removeAttribute('readonly');
+    passwordUsuario.removeAttribute('readonly');
+
+    if (imagen) {
+        imagenPreview.src = "imagenes/" + imagen;
+    } else {
+        imagenPreview.src = "";
+    }
+
+    // Establecer el valor del campo de entrada de imagen en blanco para que no muestre la imagen anterior
+    document.getElementById('imagenInputEditar').value = '';
+
+    // Llama a previewImageEditar con el nombre de la imagen
+    previewImageEditar(nombre_imagen);
+}
+function previewImageEditar(input) {
+    var filenameInput = document.getElementById('nombreArchivoEditar');
+    var file;
+
+    if (input instanceof File) {
+        file = input;
+        filenameInput.value = file.name;
+    } else {
+        filenameInput.value = input;
+        var files = input.files;
+        if (files.length > 0) {
+            file = files[0];
+        } else {
+            filenameInput.value = "";
+            return;
+        }
+    }
+
+    filenameInput.value = file.name;
+
+    var reader = new FileReader();
+    reader.onload = function(e) {
+        document.getElementById('imagenPreviewEditar').src = e.target.result;
+    };
+
+    reader.readAsDataURL(file);
+}
+function cerrarVentanaEditar() {
+    document.querySelector(".modal_editar").classList.remove('modal-mostrar-editar'); // Oculta la ventana de edición
 }
 
 // modal_abrir_editar_producto_${id}`

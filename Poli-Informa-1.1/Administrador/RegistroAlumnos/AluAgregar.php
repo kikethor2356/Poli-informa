@@ -1,4 +1,8 @@
-<?php require 'ConexFuncion.php'; ?>
+<?php require 'ConexFuncion.php'; 
+
+$db = new Database();
+$conexion = $db->connect();
+?>
 
 <!DOCTYPE html>
 <html lang="en">

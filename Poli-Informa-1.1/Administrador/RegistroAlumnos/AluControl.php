@@ -1,16 +1,21 @@
-<?php require 'ConexFuncion.php'; ?>
+<?php require 'ConexFuncion.php'; 
+
+$db = new Database();
+$conexion = $db->connect();
+?>
 
 <html>
     <head>
     <link rel="stylesheet" href="style/AluAgregar.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="style/AluControl.css">
+    <link rel="stylesheet" href="../menu.css">
     <script src="https://kit.fontawesome.com/d6736406d6.js" crossorigin="anonymous"></script>
     </head>
     <body>
         <h1 class="tit">Control de Alumnos</h1>
         <form class="" action="" method="post" enctype="multipart/form-data">
-
+        <?php include '../menu.html'; ?>
         <!-- Button trigger modal -->
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
             <i class="fa-solid fa-user-plus"></i>
@@ -84,7 +89,7 @@
                     <th scope="col">Opciones</th>
                 </tr>
                 <?php
-                $registro = mysqli_query($conn, "SELECT * FROM registroalu");
+                $registro = mysqli_query($conexion, "SELECT * FROM registroalu");
                 $i = 1;
 
                 foreach($registro as $user) :

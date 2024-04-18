@@ -1,5 +1,7 @@
 <?php
-$conn = mysqli_connect("localhost", "root", "", "poli_informa");
+include('../../Conexion/conexion.php');
+$db = new Database();
+$conexion = $db->connect();
 
 if(isset($_POST["submit"])){
     if($_POST["submit"] == "add"){
@@ -15,7 +17,7 @@ if(isset($_POST["submit"])){
 }
 
 function add(){
-    global $conn;
+    global $conexion;
 
     $CodeAlu= $_POST ['CodeAlu'];
     $AluNom= $_POST ['AluNom'];
@@ -32,7 +34,7 @@ function add(){
     move_uploaded_file($tmpName, 'imagenes/' . $newfilename);
     $query = "INSERT INTO registroalu VALUES('', '$CodeAlu', '$AluNom', '$AluApellidoP', '$AluApellidoM', '$AluCarrera', '$AluCorreo', '$newfilename', '$AluPassword')";
     
-    mysqli_query($conn, $query);
+    mysqli_query($conexion, $query);
 
     echo
     "
@@ -42,7 +44,7 @@ function add(){
 }
 
 function edit(){
-    global $conn;
+    global $conexion;
 
     $id = $_GET["id"];
     $CodeAlu= $_POST ['CodeAlu'];
@@ -61,12 +63,12 @@ function edit(){
 
         move_uploaded_file($tmpName, 'imagenes/' . $newfilename);
         $query = "UPDATE registroalu SET AluImage = '$newfilename' WHERE id = $id";
-        mysqli_query($conn, $query);
+        mysqli_query($conexion, $query);
 
     }
     $query = "UPDATE registroalu SET CodeAlu = '$CodeAlu',  AluNom = '$AluNom', AluApellidoP = '$AluApellidoP', AluApellidoM = '$AluApellidoM', AluCarrera = '$AluCarrera', AluCorreo = '$AluCorreo', AluPassword = '$AluPassword' WHERE id like $id";
 
-    mysqli_query($conn, $query);
+    mysqli_query($conexion, $query);
     echo
     "
     <script> alert('Usuario editado exitosamente ;)'); document.location.href = 'AluControlR.php'; </script>
@@ -75,12 +77,12 @@ function edit(){
 }
 
 function delete(){
-    global $conn;
+    global $conexion;
 
     $id = $_POST["submit"];
 
     $query = "DELETE FROM registroalu WHERE id = $id";
-    mysqli_query($conn, $query);
+    mysqli_query($conexion, $query);
 
     echo
     "

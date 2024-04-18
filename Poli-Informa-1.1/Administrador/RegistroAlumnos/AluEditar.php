@@ -1,7 +1,10 @@
 <?php
 require 'ConexFuncion.php';
 $id = $_GET["id"];
-$user = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM registroalu WHERE id = $id"));
+$user = mysqli_fetch_assoc(mysqli_query($conexion, "SELECT * FROM registroalu WHERE id = $id"));
+
+$db = new Database();
+$conexion = $db->connect();
 ?>
 <html>
 <head>
