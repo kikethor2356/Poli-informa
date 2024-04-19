@@ -43,18 +43,24 @@ $conexion = $db->connect();
                             $registro = mysqli_query($conexion, "SELECT * FROM registro");
 
                             while($mostrar = mysqli_fetch_array($registro)){
+                                
+                             foreach($resultado as $row){
+                            // DETERMINA LA CLASE QUE SE ASIGNARÁ A CADA FILA EN FUNCIÓN DE SI ES PAR O IMPAR
+                            $clase_fila = ($contador % 2 == 0) ? 'fila2' : 'fila1';
+                                            
+                            
                             ?>
 
                             <tr>
                                 
-                                <td> <?php echo $mostrar["AdCode"]; ?> </td>
-                                <td> <?php echo $mostrar["AdNombre"]; ?> </td>
-                                <td> <?php echo $mostrar["AdApellidoP"]; ?> </td>
-                                <td> <?php echo $mostrar["AdApellidoM"]; ?> </td>
-                                <td> <?php echo $mostrar["AdCarrera"]; ?> </td>
-                                <td> <?php echo $mostrar["AdCorreo"]; ?> </td>
-                                <td> <?php echo $mostrar["AdImagen"]; ?></td>
-                                <td> <?php echo $mostrar["AdPassword"]; ?> </td>
+                                <td class="<?php echo $clase_fila; ?>"> <?php echo $mostrar["AdCode"]; ?> </td>
+                                <td class="<?php echo $clase_fila; ?>"> <?php echo $mostrar["AdNombre"]; ?> </td>
+                                <td class="<?php echo $clase_fila; ?>"> <?php echo $mostrar["AdApellidoP"]; ?> </td>
+                                <td class="<?php echo $clase_fila; ?>"> <?php echo $mostrar["AdApellidoM"]; ?> </td>
+                                <td class="<?php echo $clase_fila; ?>"> <?php echo $mostrar["AdCarrera"]; ?> </td>
+                                <td class="<?php echo $clase_fila; ?>"> <?php echo $mostrar["AdCorreo"]; ?> </td>
+                                <td class="<?php echo $clase_fila; ?>"> <?php echo $mostrar["AdImagen"]; ?></td>
+                                <td class="<?php echo $clase_fila; ?>"> <?php echo $mostrar["AdPassword"]; ?> </td>
                                 <td>
 
                                     <button type="button" class="btn btn-samll btn-warning" onclick="mostrarEditar('<?php echo $mostrar['id']; ?>' ,'<?php echo $mostrar['AdCode']; ?>', 
@@ -73,7 +79,8 @@ $conexion = $db->connect();
                                 </td>
                             </tr>
                             <?php 
-                            
+                                $contador++;
+                            }
                                 }//FIN WHILE
                                 
                             ?>

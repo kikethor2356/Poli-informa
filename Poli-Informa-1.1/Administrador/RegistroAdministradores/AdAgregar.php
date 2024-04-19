@@ -2,6 +2,7 @@
 
 $db = new Database();
 $conexion = $db->connect();
+
 ?>
 
 <!DOCTYPE html>

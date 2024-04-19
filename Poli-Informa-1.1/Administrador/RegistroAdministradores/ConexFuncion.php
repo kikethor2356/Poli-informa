@@ -28,10 +28,22 @@ function add(){
     $AdCarrera= $_POST ['AdCarrera'];
     $AdCorreo= $_POST ['AdCorreo'];
     $AdImagen = $_FILES['AdImagen']['name'];
-    $AdPassword= md5($_POST ['AdPassword']);
+    $AdPassword= $_POST ['AdPassword'];
+    $AdPassword_encriptada = sha1($AdPassword);//captura la contraseña y la encripta
+    $sqlcode = "SELECT  id FROM  registro
+                        WHERE   AdCode = '$AdCode'";
+    $resultadocode = $conexion->query($sqlcode);
+    $filas = $resultadocode->num_rows;
 
-    $query = "INSERT INTO registro (AdCode, AdNombre, AdApellidoP, AdApellidoM, AdCarrera, AdCorreo, AdImagen, AdPassword) VALUES('$AdCode', '$AdNombre', '$AdApellidoP', '$AdApellidoM', '$AdCarrera', '$AdCorreo', '$AdImagen', '$AdPassword')";
-    $resultado = mysqli_query($conexion, $query);
+    if ($filas > 0){
+        echo "<script>
+            alert('El usuario ya esta registrado');
+        </script>";
+    }else{
+        $query = "INSERT INTO registro (AdCode, AdNombre, AdApellidoP, AdApellidoM, AdCarrera, AdCorreo, AdImagen, AdPassword) VALUES('$AdCode', '$AdNombre', '$AdApellidoP', '$AdApellidoM', '$AdCarrera', '$AdCorreo', '$AdImagen', '$AdPassword')";
+        $resultado = mysqli_query($conexion, $query);
+    }
+
 
     if ($resultado) {
         move_uploaded_file($_FILES["AdImagen"]["tmp_name"], "imagenes/".$_FILES["AdImagen"]["name"]);
