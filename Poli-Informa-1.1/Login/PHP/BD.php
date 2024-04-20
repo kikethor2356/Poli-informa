@@ -17,7 +17,7 @@
             $_SESSION['contraseña']=$row['contraseña'];
             header("Location: ../../Cliente/Avisos/Avisos.php?codigo=" . $_SESSION['codigo'] . "&nombre=" . $_SESSION['nombre']);
         }else{
-            header("Location: ../index.php");
+            header("Location: ../index.php?message=error");
         }//FIN IF-ELSE
     }//FIN IF
-?>
+?> 
