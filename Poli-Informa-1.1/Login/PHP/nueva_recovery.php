@@ -7,7 +7,7 @@
     $id = $_POST['id'];
     $pass = $_POST['new_pass'];
 
-    $sql = "UPDATE usuarios SET contraseña = '$pass' WHERE id = $id";
+    $sql = "UPDATE registroalu SET AluPassword = '$pass' WHERE id = $id";
     $conexion->query($sql);
 
     header("Location: ../index.php?message=success_password");

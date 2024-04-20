@@ -1,7 +1,7 @@
 <?php 
     
     session_start();
-    if(!empty($_SESSION['codigo'])){
+    if(!empty($_SESSION['CodeAlu'])){
         header("Location: ../Cliente/Avisos/Avisos.php");
     }
 
@@ -31,13 +31,13 @@
             </div>
             <form action="PHP/BD.php" method="post" enctype="multipart/form-data">
                 <div class="elemento">
-                    <input type="text" name="codigo" id="codigo" placeholder=" ">
-                    <label for="codigo">Código</label>
+                    <input type="text" name="CodeAlu" id="CodeAlu" placeholder=" ">
+                    <label for="CodeAlu">Código</label>
                     <i class="fa-regular fa-user"></i>
                 </div>
                 <div class="elemento">
-                    <input type="password" name="contraseña" id="contraseña" placeholder=" ">
-                    <label for="contraseña">Contraseña</label>
+                    <input type="password" name="AluPassword" id="AluPassword" placeholder=" ">
+                    <label for="AluPassword">Contraseña</label>
                     <i class="fa-solid fa-lock"></i>
                     <a href="#" id="link_ver_contraseña"><i class="fa-regular fa-eye"></i></a>
                 </div>

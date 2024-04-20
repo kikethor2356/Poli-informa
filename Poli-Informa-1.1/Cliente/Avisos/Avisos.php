@@ -11,12 +11,12 @@
     <div class="home">
         <div class="text">
         <?php 
-            if(empty($_GET['codigo'])){
+            if(empty($_GET['CodeAlu']||$_GET['AluNom'])){
                 // No se pasó ningún código en la URL
             } else {
-                echo "Bienvenido " . $_GET['nombre']; // Mostrar el nombre de usuario
+                echo "Bienvenido: " . $_GET['AluNom']; // Mostrar el nombre de usuario
                 echo "<br>";
-                echo "Tu código es: " . $_GET['codigo']; // Mostrar el código de usuario
+                echo "Tu código es: " . $_GET['CodeAlu']; // Mostrar el código de usuario
             }
         ?>
         </div>

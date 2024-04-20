@@ -1,12 +1,12 @@
 <?php 
 
     session_start();
-    if(empty($_SESSION['codigo'])){
+    if(empty($_SESSION['CodeAlu'])){
         header("Location: index.php");
     }
 
     echo "Bienvenido "; 
-    echo $_SESSION['codigo']; 
+    echo $_SESSION['CodeAlu']; 
 
 ?>
 

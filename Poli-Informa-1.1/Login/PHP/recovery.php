@@ -12,9 +12,9 @@
     $db = new Database();
     $conexion = $db->connect();
     
-    $email = $_POST['correo'];
+    $email = $_POST['AluCorreo'];
 
-    $sql = "SELECT * FROM usuarios WHERE correo = '$email'";
+    $sql = "SELECT * FROM registroalu WHERE AluCorreo = '$email'";
     $result = $conexion->query($sql);
         
     // Verificar si se recuperaron filas        

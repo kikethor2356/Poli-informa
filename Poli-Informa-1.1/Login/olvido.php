@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-mx">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,8 +21,8 @@
             </div>
             <form action="PHP/recovery.php" method="post" enctype="multipart/form-data">
                 <div class="elemento">
-                    <input type="text" name="correo" id="correo" placeholder=" ">
-                    <label for="correo">Correo electronico</label>
+                    <input type="text" name="AluCorreo" id="AluCorreo" placeholder=" ">
+                    <label for="AluCorreo">Correo electronico</label>
                     <i class="fa-regular fa-user"></i>
                 </div>
                 <div class="elemento">
