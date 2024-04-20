@@ -6,6 +6,13 @@
     <title>Modulo A</title>
 </head>
 <body>
-    <?php include '../Partes/MenuUsuario.html'?>
+    <?php include '../Partes/MenuUsuario.php'?>
+    <div class="home">
+        <div class="text">
+            hola
+
+        </div>
+    </div>
+    <?php include '../Partes/footer-page/index.html';?>
 </body>
 </html>

@@ -6,6 +6,6 @@
     <title>Canchas</title>
 </head>
 <body>
-    <?php include '../Partes/MenuUsuario.html'?>
+    <?php include '../Partes/MenuUsuario.php'?>
 </body>
 </html>

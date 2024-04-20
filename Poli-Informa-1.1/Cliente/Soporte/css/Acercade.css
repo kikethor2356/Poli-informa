@@ -6,11 +6,15 @@
     box-sizing: border-box;
 } */
 
+body{
+    background-color: rgb(230, 230, 230);
+}
+
 #logo{
     position: absolute;
-    top: 1%;
-    left: 9%;
-    
+    top: 6%;
+    /* left: 9%;    */
+    margin-left: 60%;
 }
 
 h1,h2{
@@ -24,16 +28,17 @@ p{
 
 .sub-contenido-1{
     margin-left: 20%;
-    color: white;
+    color: rgb(255, 0, 0);
     margin-top: 5%;
     font-size: 23px;
 }
 
 .contenido-2{
     height: 100%;
-    background-color:white;
-    width: 70%;
-    margin-left: 15%;
+    /* background-color:white; */
+    /* width: 100%; */
+    margin-left: 5%;
+    margin-right: 5%;
     border-radius: 10px;
     color: black;
     margin-top: 5%;
@@ -44,9 +49,10 @@ p{
 
 .contenido-3{
     height: auto;
-    background-color:white;
-    width: 70%;
-    margin-left: 15%;
+    /* background-color:white; */
+    width: 80%;
+    margin-left: 10%;
+    /* margin-right: 59%; */
     border-radius: 10px;
     color: black;
     text-align: justify;
@@ -60,7 +66,7 @@ a{
 
 .open{
     position: absolute;
-    right: 17%;
+    right: 13%;
 }
 
 .regresar{

@@ -3,15 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="Acercade.css">
+    <link rel="stylesheet" href="css/Acercade.css">
+    <link rel="stylesheet" href="../Partes/footer-page/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Acerca de</title>
 </head>
 <body>
-    <?php include '../Partes/MenuUsuario.html'; ?>
+    <?php include '../Partes/MenuUsuario.php'; ?>
     <!-- Inicio del menu -->
-    <section class="home">
+    <div class="home">
         <div class="text">
+
             <!-- Contenido de todos -->
             <div class="contenido-1">
                 <div class="sub-contenido-1">
@@ -30,18 +32,27 @@
             </div>
             
             <div class="contenido-3">
-                <div class="sub-contenido-3">
-                    <p>Aqui algunas referencias por si quieres ver a más a detalle cada cosa del portal.</p>
+                <div class="sub-contenido-3"><br>
+                    <p>Para más conocimiento del portal puedes visitar estas referencias.</p><br>
+                    <!-- <p>Aqui algunas referencias por si quieres ver a más a detalle cada apartado del portal.</p> -->
+                    <hr>
                     <a href="" class="referencia1"><p>Preguntas frecuentes <i class="fa-solid fa-arrow-up-right-from-square open"></i></p></a>
+                    <hr>
                     <a href="" class="referencia2"><p>Terminos y condiciones <i class="fa-solid fa-arrow-up-right-from-square open"></i></p></a>
-                    <a href="" class="referencia3"><p>Quejas y sugerencias <i class="fa-solid fa-arrow-up-right-from-square open"></i></p></a>
+                    <hr>
+                    <a href="" class="referencia3"><p>Comuniación y sugerencias <i class="fa-solid fa-arrow-up-right-from-square open"></i></p></a>
+                    <hr><br>
                 </div>
-            </div>
+            </div><br><br><br><br>
             <!-- Fin de su contenido -->
             
         <!-- Fin del menu -->
         </div>
-    </section>
+    </div>
+
+    <?php include '../Partes/footer-page/index.html';?>
+
+
     
 
 
