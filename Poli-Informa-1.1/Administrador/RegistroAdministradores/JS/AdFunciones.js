@@ -92,6 +92,7 @@ function mostrarEditar(id, codigo, nombre, apellidoPaterno, apellidoMaterno, car
     // Llama a previewImageEditar con el nombre de la imagen
     previewImageEditar(nombre_imagen);
 }
+
 function previewImageEditar(input) {
     var filenameInput = document.getElementById('nombreArchivoEditar');
     var file;

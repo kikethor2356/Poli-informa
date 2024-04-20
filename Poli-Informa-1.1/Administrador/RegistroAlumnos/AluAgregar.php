@@ -2,6 +2,7 @@
 
 $db = new Database();
 $conexion = $db->connect();
+
 ?>
 
 <!DOCTYPE html>
@@ -9,8 +10,9 @@ $conexion = $db->connect();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style/AdReg.css">
-    <title>Registro Administradores</title>
+    
+    <link rel="stylesheet" href="style/AluReg.css">
+    <title>Registro Usuarios</title>
 </head>
 <body>
     <div class="envoltura">
@@ -18,7 +20,7 @@ $conexion = $db->connect();
             <form class="" action="" method="post" enctype="multipart/form-data">
                 <table>
                     <h1 class="tit">Registrate!</h1>
-                    <a href="AluControlR.php">Control Administrador</a>
+                    <a href="AluControl.php">Control Usuario</a>
                     <div class="input-group">
                         <label>Codigo:</label>
                         <input type="text" maxlength="9" minlength="9" name="CodeAlu" placeholder="123456789" id="soloNumeros" oninput="validarLonCo(this)" required>
@@ -44,22 +46,30 @@ $conexion = $db->connect();
                         <input type="email" name="AluCorreo" placeholder="anonimato@gmail.com" required>
                     </div>
                     <div class="input-group">
-                        <label>Imagen Administrador:</label>
-                        <input type="file" name="file" required>
+                        <label>Imagen Usuario:</label>
+                        <!-- <input type="file" name="file" required>
                     </div>
+
+                    <div id="contenedor-imagen">                    -->
+                    <input type="file" name="AdImagen" id="AdImagen" required> 
+                        <!-- <label for="imagenInput" id="AdImagen"><i class="fa-solid fa-upload"></i>Seleccionar Imagen</label> -->
+                        <!-- <img src="" id="imagenPreview" alt="Imagen del producto"> -->
+                        <!-- <input type="text" id="nombreArchivo" readonly> -->
+                    </div>
+
                     <div class="input-group">
                         <label>Contraseña:</label>
                         <input type="password" name="AluPassword" id="password" placeholder="Anonimato123" onblur="validarPassword()" required>
                         <span id="passwordError" class="error-message"></span>
                     </div>
 
-                        <button type="submit" name="submit" value="add">Guardar</button>
+                        <button type="submit" name="submit" value="Agregar">Agregar</button>
                         <button type="reset">Borrar</button>
                 </table>
             </form>
         </div>
     </div>
-<script src="JS/AdFunciones.js"></script>
+<script src="JS/AluFunciones.js"></script>
 </body>
 
 </html>

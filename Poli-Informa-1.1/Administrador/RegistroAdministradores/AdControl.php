@@ -14,7 +14,7 @@ $conexion = $db->connect();
     <link rel="stylesheet" href="../menu.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://kit.fontawesome.com/d6736406d6.js" crossorigin="anonymous"></script>
-    <title>Registro</title>
+    <title>Registro Administrador</title>
 </head>
 <body>
     <div id="productos">
@@ -43,11 +43,7 @@ $conexion = $db->connect();
                             $registro = mysqli_query($conexion, "SELECT * FROM registro");
 
                             while($mostrar = mysqli_fetch_array($registro)){
-                                
-                             foreach($resultado as $row){
-                            // DETERMINA LA CLASE QUE SE ASIGNARÁ A CADA FILA EN FUNCIÓN DE SI ES PAR O IMPAR
-                            $clase_fila = ($contador % 2 == 0) ? 'fila2' : 'fila1';
-                                            
+                                       
                             
                             ?>
 
@@ -79,8 +75,6 @@ $conexion = $db->connect();
                                 </td>
                             </tr>
                             <?php 
-                                $contador++;
-                            }
                                 }//FIN WHILE
                                 
                             ?>
