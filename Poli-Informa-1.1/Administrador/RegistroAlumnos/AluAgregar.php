@@ -51,7 +51,7 @@ $conexion = $db->connect();
                     </div>
 
                     <div id="contenedor-imagen">                    -->
-                    <input type="file" name="AdImagen" id="AdImagen" required> 
+                    <input type="file" name="AluImage" id="AluImage" required> 
                         <!-- <label for="imagenInput" id="AdImagen"><i class="fa-solid fa-upload"></i>Seleccionar Imagen</label> -->
                         <!-- <img src="" id="imagenPreview" alt="Imagen del producto"> -->
                         <!-- <input type="text" id="nombreArchivo" readonly> -->

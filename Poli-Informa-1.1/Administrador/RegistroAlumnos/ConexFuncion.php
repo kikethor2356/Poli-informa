@@ -46,7 +46,7 @@ function add(){
 
 
     if ($resultado) {
-        move_uploaded_file($_FILES["c"]["tmp_name"], "imagenes/".$_FILES["AluImage"]["name"]);
+        move_uploaded_file($_FILES["c"]["tmp_name"], "imagenes1/".$_FILES["AluImage"]["name"]);
         $_SESSION['success'] = true;
         header("location: AluControl.php");
     } else {
@@ -78,7 +78,7 @@ function edit(){
         // Genera un nombre único para la nueva imagen
         $AluImage = uniqid().'_'.$_FILES['AluImage']['name'];
         // Mueve la nueva imagen a la carpeta temporal con el nombre único
-        move_uploaded_file($_FILES["AluImage"]["tmp_name"], "imagenes/".$AluImage);
+        move_uploaded_file($_FILES["AluImage"]["tmp_name"], "imagenes1/".$AluImage);
 
         if($old_imagen != ''){
             $check_sql = "SELECT COUNT(*) as count FROM registroalu WHERE AluImage = '$old_imagen' AND id != '$id'";
@@ -88,7 +88,7 @@ function edit(){
     
             // Si la imagen no está siendo utilizada por otro registro, elimínala
             if(!$imageInUse) {
-                unlink("imagenes/".$old_imagen);
+                unlink("imagenes1/".$old_imagen);
             }
         }
     } else {
@@ -102,7 +102,7 @@ function edit(){
 
     //     $newfilename = uniqid() . "-" . $filename;
 
-    //     move_uploaded_file($tmpName, 'imagenes/' . $newfilename);
+    //     move_uploaded_file($tmpName, 'imagenes1/' . $newfilename);
     //     $query = "UPDATE registro SET AluImage = '$newfilename' WHERE id = $id";
     //     mysqli_query($conexion, $query);
 
@@ -142,7 +142,7 @@ function delete(){
 
     if ($resultado) {
         if(!$imageInUse){
-            unlink("imagenes/".$eliminar_imagen);
+            unlink("imagenes1/".$eliminar_imagen);
         }
         $_SESSION['success2'] = true;
         header("location: AluControl.php");

@@ -142,7 +142,7 @@ $conexion = $db->connect();
                                     <td>Imagen</td>
                                     <td>
                                         <input type="file" name="AluImage" id="imagenInputEditar" onchange="previewImageEditar(this)">
-                                        <input type="hidden" name="AdImagen_old" id="AdImagen_old">
+                                        <input type="hidden" name="AluImagen_old" id="AluImagen_old">
                                         <!-- <label for="imagenInputEditar" id="imagen1"><i class="fa-solid fa-upload"></i>Seleccionar Imagen</label> -->
                                         <img src="" alt="" id="imagenPreviewEditar" width="120px" height="120px">
                                         <input type="text" id="nombreArchivoEditar" readonly>

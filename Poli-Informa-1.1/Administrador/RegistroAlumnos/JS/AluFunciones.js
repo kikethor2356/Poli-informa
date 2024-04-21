@@ -63,7 +63,7 @@ function mostrarEditar(id, codigo, nombre, apellidoPaterno, apellidoMaterno, car
 
     // Establecer la imagen previa
     if (imagen) {
-        imagenPreview.src = "imagenes/" + imagen;
+        imagenPreview.src = "imagenes1/" + imagen;
     } else {
         imagenPreview.src = "";
     }
@@ -81,7 +81,7 @@ function mostrarEditar(id, codigo, nombre, apellidoPaterno, apellidoMaterno, car
     passwordUsuario.removeAttribute('readonly');
 
     if (imagen) {
-        imagenPreview.src = "imagenes/" + imagen;
+        imagenPreview.src = "imagenes1/" + imagen;
     } else {
         imagenPreview.src = "";
     }
@@ -165,7 +165,7 @@ function mostrarBorrar(id){
 //         $nombreFoto = $_FILES['archivoEditarProducto']['name'];
 //         $temporal = $_FILES['archivoEditarProducto']['tmp_name'];
 
-//         $carpeta = 'imagenes';
+//         $carpeta = 'imagenes1';
 //         $miCarpeta = opendir($carpeta);
 //         $urlFoto = $carpeta. '/' .$nombreFoto;
 
