@@ -15,7 +15,7 @@
             $row = $result->fetch_assoc();
             $_SESSION['CodeAlu']=$row['CodeAlu'];
             $_SESSION['AluPassword']=$row['AluPassword'];
-            header("Location: ../../Cliente/Avisos/Avisos.php");
+            header("Location: ../../Administrador/Avisos/vista_categoria.php");
         }else{
             header("Location: ../index.php?message=error");
         }//FIN IF-ELSE

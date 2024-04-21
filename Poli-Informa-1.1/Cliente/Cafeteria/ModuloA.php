@@ -1,4 +1,4 @@
-<?php include '../../Login/inicio.php'; ?>
+<?php include '../../LoginUsuario/inicio.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

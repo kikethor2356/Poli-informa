@@ -1,7 +1,7 @@
 <?php 
     session_start();
     if(!empty($_SESSION['CodeAlu'])){
-        header("Location: ../Cliente/Avisos/Avisos.php");
+        header("Location: ../Administrador/Avisos/vista_categoria.php");
     }
 ?>
 
@@ -42,9 +42,9 @@
                 <div class="elemento">
                     <button type="submit" id="btn_iniciar_sesion" name="btn_iniciar_sesion">Iniciar sesión</button>
                 </div>
-                <div class="elemento">
+                <!-- <div class="elemento">
                     <a href="olvido.php">¿Olvidaste tu contraseña?</a>
-                </div>
+                </div> -->
             </form>
         </div>
 

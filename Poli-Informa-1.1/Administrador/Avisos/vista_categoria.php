@@ -4,6 +4,8 @@ session_start();
 $db = new Database();
 $conexion = $db->connect();
 ?>
+<?php include '../../LoginAdministrador/inicio.php'; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
