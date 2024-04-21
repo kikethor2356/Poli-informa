@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-    let contraseña = document.getElementById('AluPassword');
+    let contraseña = document.getElementById('AdPassword');
     let verContraseña = document.getElementById('link_ver_contraseña');
     verContraseña.addEventListener("mousedown", ()=>{
         contraseña.type = "text";
