@@ -139,14 +139,14 @@ $conexion = $db->connect();
                                     <td>Correo:</td>
                                     <td><input type="email" name="AluCorreo" placeholder="anonimato@gmail.com" value="" id="campoCorreo"  required></td>
                                 </tr>
-                                <tr>
-                                    <td>Imagen</td>
-                                    <td>
-                                        <input type="file" name="AluImage" id="imagenInputEditar" onchange="previewImageEditar(this)">
-                                        <input type="hidden" name="AluImagen_old" id="AluImagen_old">
+                                <tr class="caja_imagen">
+                                    <td class="cajita_textImagen">Imagen</td>
+                                    <td class="caja_atributos_imagen">
+                                        <input type="hidden" name="AluImagen_old" id="AluImagen_old"><br>
                                         <!-- <label for="imagenInputEditar" id="imagen1"><i class="fa-solid fa-upload"></i>Seleccionar Imagen</label> -->
-                                        <img src="" alt="" id="imagenPreviewEditar" width="120px" height="120px">
-                                        <input type="text" id="nombreArchivoEditar" readonly>
+                                        <img src="" alt="" id="imagenPreviewEditar" width="100%" height="60%"><br>
+                                        <div class="envoltura_imag_1"><input type="text" id="nombreArchivoEditar" readonly></div>
+                                        <div class="envoltura_imag_2"><input type="file" name="AluImage" id="imagenInputEditar" onchange="previewImageEditar(this)"></div>
                                     </td>
                                 </tr>
                                 <tr>
