@@ -1,10 +1,8 @@
 <?php 
-    
     session_start();
     if(!empty($_SESSION['CodeAlu'])){
         header("Location: ../Cliente/Avisos/Avisos.php");
     }
-
 ?>
 
 <!DOCTYPE html>

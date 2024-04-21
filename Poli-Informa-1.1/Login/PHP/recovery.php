@@ -11,6 +11,9 @@
     include('../../Conexion/conexion.php');
     $db = new Database();
     $conexion = $db->connect();
+
+    // Después de abrir la conexión con la base de datos
+    mysqli_set_charset($conexion, "utf8");
     
     $email = $_POST['AluCorreo'];
 
@@ -34,6 +37,9 @@
             $mail->SMTPSecure = 'tls'; //PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
             $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
         
+            // Set the charset
+            $mail->CharSet = 'UTF-8';                                   //Lenguaje
+
             //Recipients
             $mail->setFrom('poliinforma1@gmail.com', 'POLI-INFORMA');
             $mail->addAddress($email);     //Add a recipient
