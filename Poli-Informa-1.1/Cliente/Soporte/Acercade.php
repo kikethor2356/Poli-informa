@@ -13,42 +13,54 @@
     <?php include '../Partes/MenuUsuario.php'; ?>
     <!-- Inicio del menu -->
     <div class="home">
-        <div class="text">
-
+        <!-- <div class="text"> -->
             <!-- Contenido de todos -->
-            <div class="contenido-1">
-                <div class="sub-contenido-1">
-                    <h1>Acerca de POLI-INFORMA</h1>
-                    <img src="imagenes/image.png" alt="Logo de POLI-INFORMA" id="logo">
-                    <p id="version">POLI-INFORMA versión 2.0</p>
+            <header class="cabecera">
+                <img class="cabecera__imagen"  src="imagenes/hero.jpg" alt="imagen terminos y condiciones">
+                <div class="cabecera__hero">
+                    <h1 class="cabecera__titulo">Acerca de POLI-INFORMA</h1>
                 </div>
-            </div>
+            </header>
 
-            <div class="contenido-2">
-                <div class="sub-contenido-2">
-                    <p>POLI-INFORMA un portal informativo para aquellos estudiantes que quieran conocer adetalle información sobre la escuela, como tambien a que conozca sus horarios y en que manera pueden llegar desde la entrada de la escuela asta el aula (Laboratorio, Taller o Area academica) que quiera ir o le toque en horarario de clase.</p>
-                    <p>Una gran ayuda para los estudiantes que no saben que puedan vender dentro de la escuela, en este portal informativo tendra las secciones de <a href="">"Cafeteria"</a> y de <a href=""><span>"Poli-commerce"</span></a> el cual ayuda a los estudiantes que quieran vender dentro de las escuela en un horario y sepan que pueden comerte.</p>
-                    <p>En terminos de avisos se tendran en tiempo y en forma para aquellos estudiantes que no encuentra toda la información, donde a su vez tendra un mapeo para que sepan donde se encuentra cada cosa o que hay en cada instalación de la escuela y como llegar.</p>
+            <main class="contenedor">
+                <div class="acercade">
+                    <div class="acercade_informacion">
+                        <h2 class="acercade_subtitulo">Acerca de POLI-INFORMA</h2>
+                        <!-- <img src="imagenes/image.png" alt="Logo de POLI-INFORMA" id="logo"> -->
+                        <p>POLI-INFORMA versión 2.0</p>
+                        <p>Hablemos un poco de POLI-INFORMA, es un portal que ayuda a los estudiantes de la Escuela Politecnica de Guadalajara a que conoscan un poco más sobre la escuela, independiente si eres de nuevo ingreso o que estes dentro de la escuela.</p>
+                        <p>En este portal conoceras a detalle lo que puedes hacer y en que te puede ayudar.</p>
+                    </div><br>
+
+                    <div class="acercade_informacion">
+                        <h2 class="acercade_subtitulo">¿Que es?</h2>
+                        <p>POLI-INFORMA es un portal informativo para quellos estudiantes que quieran conocer un poco más sobre su escuela, ya que este portal puede ver datos muy importantes en la sessión de <a href="../Avisos/Avisos.php">Avisos</a> podras ver la información importante ya sea desde becas o dias de descanso o cuando son eventos importante.</p>
+                        <p>Tambien en este portal podras ver lo que los horarios de los laboratorios, talleres o areas academicas, tambien puedes interactuar con las sessiones <a href="../Cafeteria/ModuloA.php">Cafeteria</a> y <a href="../Poli-Commerce/index.php">Poli-Commerce</a> hay podras ver productos que estan disponibles en la escuela, en "Cafeteria" hay dos sessiones las cuales podra tener diferentes productos o en "Poli-Commerce" el caul podras ver productos que vende los estudiantes de la escuela.</p><br>
+    
+                        <!-- <p>POLI-INFORMA un portal informativo para aquellos estudiantes que quieran conocer adetalle información sobre la escuela, como tambien a que conozca sus horarios y en que manera pueden llegar desde la entrada de la escuela asta el aula (Laboratorio, Taller o Area academica) que quiera ir o le toque en horarario de clase.</p><br> -->
+                        <h3>¿Ayuda?</h3>
+                        <p>Una gran ayuda para los estudiantes que no saben que puedan vender dentro de la escuela en la sessión <a href="../Poli-Commerce/index.php"><span>"Poli-commerce"</span></a> el cual ayuda a los estudiantes que quieran vender dentro de las escuela en un horario y sepan que pueden comerte.<br>
+                        Tambien puedes ver los horarios y podras ver un mapeo dentro de la escuela de como llegar al igual que al inicio de la página abajo de avisos podras ver un mapeo de la escuela en como llegar o como se ve el area por medio de un croquis.</p><br>
+                    </div><br>
+                
+                    <div class="acercade_informacion">
+                        <h2 class="acercade_subtitulo">Más información</h2>
+                        <p>Para conocer más de POLI-INFORMA puedes navegar en las siguientes referencias</p><br>
+                        <!-- <p>Aqui algunas referencias por si quieres ver a más a detalle cada apartado del portal.</p> -->
+                        
+                        <a href="" class="referencia1"><p>Preguntas frecuentes <i class="fa-solid fa-arrow-up-right-from-square open"></i></p></a>
+                        <hr>
+                        <a href="" class="referencia2"><p>Terminos y condiciones <i class="fa-solid fa-arrow-up-right-from-square open"></i></p></a>
+                        <hr>
+                        <a href="" class="referencia3"><p>Comuniación y sugerencias <i class="fa-solid fa-arrow-up-right-from-square open"></i></p></a>
+                        <br>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="contenido-3">
-                <div class="sub-contenido-3"><br>
-                    <p>Para más conocimiento del portal puedes visitar estas referencias.</p><br>
-                    <!-- <p>Aqui algunas referencias por si quieres ver a más a detalle cada apartado del portal.</p> -->
-                    <hr>
-                    <a href="" class="referencia1"><p>Preguntas frecuentes <i class="fa-solid fa-arrow-up-right-from-square open"></i></p></a>
-                    <hr>
-                    <a href="" class="referencia2"><p>Terminos y condiciones <i class="fa-solid fa-arrow-up-right-from-square open"></i></p></a>
-                    <hr>
-                    <a href="" class="referencia3"><p>Comuniación y sugerencias <i class="fa-solid fa-arrow-up-right-from-square open"></i></p></a>
-                    <hr><br>
-                </div>
-            </div><br><br><br><br>
+            </main>
             <!-- Fin de su contenido -->
             
         <!-- Fin del menu -->
-        </div>
+        <!-- </div> -->
     </div>
 
     <?php include '../Partes/footer-page/index.html';?>

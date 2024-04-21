@@ -29,13 +29,13 @@
             </div>
             <form action="PHP/BD.php" method="post" enctype="multipart/form-data">
                 <div class="elemento">
-                    <input type="text" name="CodeAlu" id="CodeAlu" placeholder=" ">
-                    <label for="CodeAlu">Código</label>
+                    <input type="text" name="AdCode" id="AdCode" placeholder=" ">
+                    <label for="AdCode">Código</label>
                     <i class="fa-regular fa-user"></i>
                 </div>
                 <div class="elemento">
-                    <input type="password" name="AluPassword" id="AluPassword" placeholder=" ">
-                    <label for="AluPassword">Contraseña</label>
+                    <input type="password" name="AdPassword" id="AdPassword" placeholder=" ">
+                    <label for="AdPassword">Contraseña</label>
                     <i class="fa-solid fa-lock"></i>
                     <a href="#" id="link_ver_contraseña"><i class="fa-regular fa-eye"></i></a>
                 </div>
@@ -54,35 +54,13 @@
                     <div>
                         <?php
                             switch ($_GET['message']){
-                                case 'ok':
-                                    echo "<script>
-                                        Swal.fire({
-                                            title: 'Revisa',
-                                            text: 'Porfavor revisa tu correo',
-                                            icon: 'warning',
-                                            confirmButtonText: 'Aceptar'
-                                        });
-                                    </script>";
-                                break;
-
-                                case 'success_password':
-                                    echo "<script>
-                                        Swal.fire({
-                                            title: 'Revisa',
-                                            text: 'Inicia sesion con tu nueva contraseña',
-                                            icon: 'success',
-                                            confirmButtonText: 'Aceptar'
-                                        });
-                                    </script>";
-                                break;
-
-                                default:
+                                case 'error':
                                     echo "<script>
                                         Swal.fire({
                                             title: 'Error',
-                                            text: 'Algo salio mal, intentelo de nuevo',
                                             icon: 'error',
-                                            confirmButtonText: 'Cerrar'
+                                            text: 'Contraseña o codigo equivocada',
+                                            confirmButtonText: 'Aceptar'
                                         });
                                     </script>";
                                 break;
