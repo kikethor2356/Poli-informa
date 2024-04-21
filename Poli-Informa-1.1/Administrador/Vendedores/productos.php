@@ -10,7 +10,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/ventanaAdministradores.css">
-    <link rel="stylesheet" href="../menu.css">
+    <link rel="stylesheet" href="../Menu/menu.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="style/diseño.css">
@@ -20,7 +20,7 @@
 <body>
     <div id="cafeteria">
         <!-- OPCIONES DEL ADMINISTRADOR -->
-        <?php include '../menu.html'; ?>
+        <?php include '../Menu/menu.html'; ?>
         
         <!-- ÁREA DE TRABAJO -->
         <main id="principal-productos">

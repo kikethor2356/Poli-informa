@@ -1,0 +1,7 @@
+RewriteEngine On
+RewriteBase /
+
+# Si la URL solicitada no es para Login/index.php
+RewriteCond %{REQUEST_URI} !^/Login/index\.php$
+# Redirigir a Login/index.php
+RewriteRule ^.*$ /Login/index.php [L]
