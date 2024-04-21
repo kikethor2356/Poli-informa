@@ -23,7 +23,7 @@ class Maestro extends Database
         }
 
         // Preparar la consulta con marcadores de posición
-        $sql = "INSERT INTO maestros (Nombre, Apellidos, Correo, Codigo, Imagen_croquis)
+        $sql = "INSERT INTO maestros (Nombre, Apellidos, Correo, Codigo, Imagen)
                 VALUES (?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($sql);
 
@@ -107,6 +107,10 @@ class Maestro extends Database
                         object-fit: cover;
                     }
 
+                    p{
+                        font-size: 20px;
+                    }
+
                     .social-links a {
                         font-size: 1.75rem;
                         margin-right: 0.5rem;
@@ -127,22 +131,22 @@ class Maestro extends Database
                                 <div class="card mb-3" style="border-radius: .5rem;">
                                     <div class="row g-0">
                                         <div class="col-md-4 gradient-custom text-center text-white" style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
-                                            <img src="../Maestros/ImgCroquis/<?php echo $row['Imagen_croquis']; ?>" alt="Avatar" class="img-fluid my-5" style="width: 80px;" />
+                                            <img src="../Maestros/ImgCroquis/<?php echo $row['Imagen']; ?>" alt="Avatar" class="img-fluid my-5" style="width: 120px;" />
                                             <h5><?php echo $row["Nombre"] ?></h5>
                                             <p><?php echo $row["Apellidos"] ?></p>
                                             <i class="far fa-edit mb-5"></i>
                                         </div>
                                         <div class="col-md-8">
                                             <div class="card-body p-4">
-                                                <h6>Información personal</h6>
+                                                <h4>Información personal</h4>
                                                 <hr class="mt-0 mb-4">
                                                 <div class="row pt-1">
                                                     <div class="col-6 mb-3">
-                                                        <h6>Email</h6>
+                                                        <h5>Email</h5>
                                                         <p class="text-muted"><?php echo $row["Correo"] ?></p>
                                                     </div>
                                                     <div class="col-6 mb-3">
-                                                        <h6>Codigo UDG</h6>
+                                                        <h5>Codigo UDG</h5>
                                                         <p class="text-muted"><?php echo $row["Codigo"] ?></p>
                                                     </div>
                                                 </div>
@@ -150,19 +154,15 @@ class Maestro extends Database
                                                 <hr class="mt-0 mb-4">
                                                 <div class="row pt-1">
                                                     <div class="col-6 mb-3">
-                                                        <h6>Nombre</h6>
+                                                        <h5>Nombre</h5>
                                                         <p class="text-muted"><?php echo $row["Nombre"] ?></p>
                                                     </div>
                                                     <div class="col-6 mb-3">
-                                                        <h6>Apelidos</h6>
+                                                        <h5>Apelidos</h5>
                                                         <p class="text-muted"><?php echo $row["Apellidos"] ?></p>
                                                     </div>
                                                 </div>
-                                                <div class="d-flex justify-content-start">
-                                                    <a href="#!"><i class="fab fa-facebook-f fa-lg me-3"></i></a>
-                                                    <a href="#!"><i class="fab fa-twitter fa-lg me-3"></i></a>
-                                                    <a href="#!"><i class="fab fa-instagram fa-lg"></i></a>
-                                                </div>
+                                               
                                             </div>
                                         </div>
                                     </div>
@@ -262,7 +262,7 @@ class Maestro extends Database
                 echo '<td>' . $row["Apellidos"] . '</td>';
                 echo '<td>' . $row["Codigo"] . '</td>';
                 echo '<td>' . $row["Correo"] . '</td>';
-                echo '<td><img src="ImgCroquis/' . $row["Imagen_croquis"] . '" alt="Imagen de Maestro"></td>';
+                echo '<td><img src="ImgCroquis/' . $row["Imagen"] . '" alt="Imagen de Maestro"></td>';
                 echo '<td><a href="formularioEdit.php?id=' . $row["id"] . '" class="btn">Editar</a></td>';
                 echo '<td><a href="ControllerDelete.php?id=' . $row["id"] . '" class="btn">Eliminar</a></td>';
                 echo '</tr>';
@@ -283,7 +283,7 @@ class Maestro extends Database
     function editarRegistro($id, $nombre, $apellidos, $correo, $codigo, $imagen)
     {
         // Consulta SQL para actualizar el registro en la base de datos
-        $sql = "UPDATE maestros SET Nombre=?, Apellidos=?, Correo=?, Codigo=?, Imagen_croquis= $imagen WHERE id=?";
+        $sql = "UPDATE maestros SET Nombre=?, Apellidos=?, Correo=?, Codigo=?, Imagen= $imagen WHERE id=?";
         $conn = $this->connect();
         $stmt = $conn->prepare($sql);
 

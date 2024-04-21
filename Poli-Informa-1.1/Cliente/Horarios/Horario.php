@@ -19,7 +19,6 @@
     include "../Partes/MenuUsuario.php";  
 
     ?>
-
     <section class="hero">
         <div class="content">
             <h1>Bienvenido a la sección de horarios</h1>
@@ -136,7 +135,7 @@
             </div>
         </section>
     </div>
-     <?php include "../Partes/footer-page/index.html";  ?> 
+     <?php include "footer.html";  ?> 
 
     <script src="script/main.js"></script>
 </body>
