@@ -4,6 +4,8 @@ include "Componentes/ComboBoxMaestros.php";
 $database = new Database();
 $db = $database->connect();
 ?>
+<!-- <?php include '../../LoginAdministrador/inicio.php'; ?> -->
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -11,7 +13,7 @@ $db = $database->connect();
   <meta charset="UTF-8">
   <script src="script.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../menu.css">
+  <link rel="stylesheet" href="../Menu/menu.css">
   <title>Poli-Informa Admin</title>
 </head>
 
@@ -81,7 +83,7 @@ h2 {
 
     <main id="principal-productos">
       <section id="section-productos">
-        <?php include '../menu.html'; ?>
+        <?php include '../Menu/menu.html'; ?>
         <div class="content">
           <div id="añadirHor" class="subcontent">
             <h2>¿Qué horario desea encontrar?</h2>

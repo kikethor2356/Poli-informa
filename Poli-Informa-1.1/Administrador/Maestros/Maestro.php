@@ -1,3 +1,5 @@
+<!-- <?php include '../../LoginAdministrador/inicio.php'; ?> -->
+
 <?php
 require_once '../../Conexion/conexion.php'; // Asegúrate de incluir tu clase Database aquí
 
@@ -196,7 +198,7 @@ class Maestro extends Database
         $result = $conn->query($sql);
 
         ?>
-        <link rel="stylesheet" href="../menu.css">
+        <link rel="stylesheet" href="../Menu/menu.css">
 
     <style>
         #productos{
@@ -223,7 +225,7 @@ class Maestro extends Database
 
     <main id="principal-productos">
         <section id="section-productos">
-        <?php include '../menu.html';?>
+        <?php include '../Menu/menu.html';?>
 
         <?php
 

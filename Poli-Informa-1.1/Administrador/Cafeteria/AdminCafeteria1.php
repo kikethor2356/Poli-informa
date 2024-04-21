@@ -176,7 +176,7 @@ $conexion = $db->connect();
 
     <div id="productos">
         <!-- OPCIONES DEL ADMINISTRADOR -->
-        <?php include '../menu.html'; ?>
+        <?php include '../Menu/menu.html'; ?>
 
         <!-- ÁREA DE TRABAJO -->
         <main id="principal-productos">

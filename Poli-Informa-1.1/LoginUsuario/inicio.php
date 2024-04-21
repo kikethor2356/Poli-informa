@@ -1,6 +1,7 @@
 <?php 
-    session_start();
-    
+    if (!isset($_SESSION)) {
+        session_start();
+    }    
     // Verificar si no hay una sesión activa
     if(empty($_SESSION['CodeAlu'])){
         // Redireccionar a la página de inicio de sesión si no hay sesión activa
