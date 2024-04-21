@@ -84,7 +84,7 @@ if ($resultado->num_rows > 0) {
 
 <body>
     <h2>Editando a <?php echo $fila['Nombre']?></h2>
-    <form method="post" action="ControllerEdit.php" enctype="multipart/form-data" >
+    <form method="post" action="ControllerEdit.php" id="editForm" enctype="multipart/form-data" >
         <input type="hidden" name="id" value="<?php echo $fila['id']; ?>">
 
         <label for="Nombre">Nombre del maestro:</label>

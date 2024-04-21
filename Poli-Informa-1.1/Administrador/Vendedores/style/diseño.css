@@ -646,7 +646,7 @@
     background: rgb(238, 237, 237);
 }
 
-#mostrarProductos #iconoEliminar, #mostrarProductos #iconoEditar{
+#mostrarProductos #iconoEliminar, #mostrarProductos #iconoEditar, #mostrarProductos #iconoVerVendedor, #mostrarProductos #iconoAceptarVendedor{
     position: relative;
     margin-top: 3%;
     width: 12.5%;
@@ -661,6 +661,16 @@
 #mostrarProductos #iconoEditar{
     background: blue;
     margin-left: 5%;
+}
+
+#mostrarProductos #iconoVerVendedor{
+    background: green;
+    margin-left: 1%;
+}
+
+#mostrarProductos #iconoAceptarVendedor{
+    background: green;
+    margin-left: 1%;
 }
 
 #mostrarProductos #buscar-producto{
@@ -770,20 +780,31 @@
     text-align: center;
 }
 
-#mostrarVendedores #iconoEliminarVendedor, #mostrarVendedores #iconoEditarVendedor{
+#mostrarVendedores #iconoEliminarVendedor, #mostrarVendedores #iconoEditarVendedor, #mostrarVendedores #iconVerVendedor, #mostrarVendedores #iconAceptarVendedor{
     position: relative;
     margin-top: 3%;
-    width: 15.5%;
+    width: 20%;
     border-radius: 5px;
     padding: 1.5%;
     background: red;
     cursor: pointer;
     user-select: none;
-    margin-left: 2%;
+    /* margin-left: 2%; */
 }
 
 #mostrarVendedores #iconoEditarVendedor{
     background: blue;
+    margin-left: 5%;
+}
+#mostrarVendedores #iconVerVendedor{
+    background: green;
+    margin-left: 1%;
+    /* margin-top: -10vh; */
+}
+#mostrarVendedores #iconAceptarVendedor{
+    background: green;
+    margin-left: 1%;
+    /* margin-top: -10vh; */
 }
 
 #mostrarVendedores .fila1{

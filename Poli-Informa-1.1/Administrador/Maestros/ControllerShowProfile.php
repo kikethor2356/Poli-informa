@@ -12,6 +12,7 @@ if(isset($_GET['id'])) {
     $database = new Database();
     $db = $database->connect();
 
+   
     // Llamar al método PerfilMaestros() con el ID del maestro
     $maestro->PerfilMaestros($id,$db);
 } else {

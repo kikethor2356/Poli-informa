@@ -1,6 +1,6 @@
+<?php include '../../Login/inicio.php'; ?>
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,20 +10,15 @@
 
     <title>Bienvenido a la seccion de horarios</title>
 </head>
-
 <body>
-
 <style>
-    
-   
 </style>
 
     <?php
 
-    include "../Partes/MenuUsuario.html";  
+    include "../Partes/MenuUsuario.php";  
 
     ?>
-
     <section class="hero">
         <div class="content">
             <h1>Bienvenido a la sección de horarios</h1>
@@ -140,7 +135,7 @@
             </div>
         </section>
     </div>
-     <?php include "../Partes/footer-page/index.html";  ?> 
+     <?php include "footer.html";  ?> 
 
     <script src="script/main.js"></script>
 </body>
