@@ -50,14 +50,14 @@ $conexion = $db->connect();
 
                             <tr>
                                 
-                                <td class="<?php echo $clase_fila; ?>"> <?php echo $mostrar["CodeAlu"]; ?> </td>
-                                <td class="<?php echo $clase_fila; ?>"> <?php echo $mostrar["AluNom"]; ?> </td>
-                                <td class="<?php echo $clase_fila; ?>"> <?php echo $mostrar["AluApellidoP"]; ?> </td>
-                                <td class="<?php echo $clase_fila; ?>"> <?php echo $mostrar["AluApellidoM"]; ?> </td>
-                                <td class="<?php echo $clase_fila; ?>"> <?php echo $mostrar["AluCarrera"]; ?> </td>
-                                <td class="<?php echo $clase_fila; ?>"> <?php echo $mostrar["AluCorreo"]; ?> </td>
-                                <td class="<?php echo $clase_fila; ?>"> <?php echo $mostrar["AluImage"]; ?></td>
-                                <td class="<?php echo $clase_fila; ?>"> <?php echo $mostrar["AluPassword"]; ?> </td>
+                                <td> <?php echo $mostrar["CodeAlu"]; ?> </td>
+                                <td> <?php echo $mostrar["AluNom"]; ?> </td>
+                                <td> <?php echo $mostrar["AluApellidoP"]; ?> </td>
+                                <td> <?php echo $mostrar["AluApellidoM"]; ?> </td>
+                                <td> <?php echo $mostrar["AluCarrera"]; ?> </td>
+                                <td> <?php echo $mostrar["AluCorreo"]; ?> </td>
+                                <td> <?php echo $mostrar["AluImage"]; ?></td>
+                                <td> <?php echo $mostrar["AluPassword"]; ?> </td>
                                 <td>
 
                                     <button type="button" class="btn btn-samll btn-warning" onclick="mostrarEditar('<?php echo $mostrar['id']; ?>' ,'<?php echo $mostrar['CodeAlu']; ?>', 

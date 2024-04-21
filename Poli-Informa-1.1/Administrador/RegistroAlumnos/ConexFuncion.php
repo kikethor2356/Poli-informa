@@ -46,7 +46,7 @@ function add(){
 
 
     if ($resultado) {
-        move_uploaded_file($_FILES["c"]["tmp_name"], "imagenes1/".$_FILES["AluImage"]["name"]);
+        move_uploaded_file($_FILES["AluImage"]["tmp_name"], "imagenes1/".$_FILES["AluImage"]["name"]);
         $_SESSION['success'] = true;
         header("location: AluControl.php");
     } else {
