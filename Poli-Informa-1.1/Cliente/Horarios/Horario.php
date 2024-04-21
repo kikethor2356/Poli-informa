@@ -20,7 +20,7 @@
 
     <?php
 
-    include "../Partes/MenuUsuario.html";  
+    include "../Partes/MenuUsuario.php";  
 
     ?>
     <section class="hero">

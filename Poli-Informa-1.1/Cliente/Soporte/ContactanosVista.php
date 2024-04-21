@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contactanos</title>
-    <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="css/estilos.css">
     <script src="https://kit.fontawesome.com/eb496ab1a0.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <?php include '../Partes/MenuUsuario.html'?>
+    <?php include '../Partes/MenuUsuario.php'?>
 
     <div class="home">
         <div class="text">
@@ -47,7 +47,7 @@
 
     
     
+    <?php include '../Partes/footer-page/index.html';?>
   
 </body>
-
 </html>

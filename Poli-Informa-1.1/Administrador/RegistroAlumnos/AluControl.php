@@ -4,119 +4,244 @@ $db = new Database();
 $conexion = $db->connect();
 ?>
 
-<html>
-    <head>
-    <link rel="stylesheet" href="style/AluAgregar.css">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="style/AluControl.css">
     <link rel="stylesheet" href="../menu.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://kit.fontawesome.com/d6736406d6.js" crossorigin="anonymous"></script>
-    </head>
-    <body>
-        <h1 class="tit">Control de Alumnos</h1>
-        <form class="" action="" method="post" enctype="multipart/form-data">
-        <?php include '../menu.html'; ?>
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            <i class="fa-solid fa-user-plus"></i>
-            </button>
+    <title>Registro Usuario</title>
+</head>
+<body>
+    <div id="productos">
+        <main id="principal-productos">
+            <section id="section-productos">
+                <?php include '../menu.html'; ?>
 
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Registrate</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                <table>
-                    <tr>
-                        <td>Codigo:</td>
-                        <td><input type="text" maxlength="9" minlength="9" name="CodeAlu" placeholder="123456789" id="soloNumeros" oninput="validarLonCo(this)" required></td>
-                    </tr>
-                    <tr>
-                        <td>Nombre:</td>
-                        <td><input type="text" maxlength="15" name="AluNom" placeholder="Anonimo" onkeypress="validarInput(event)" required></td>
-                    </tr>
-                    <tr>
-                        <td>Apellido Paterno:</td>
-                        <td><input type="text" maxlength="15"  name="AluApellidoP" placeholder="Anonimato" onkeypress="validarInput(event)" required></td>
-                    </tr>
-                    <tr>
-                        <td>Apellido Materno:</td>
-                        <td><input type="text" maxlength="15" name="AluApellidoM" placeholder="Anonimatario" onkeypress="validarInput(event)" required></td>
-                    </tr>
-                    <tr>
-                        <td>Carrera:</td>
-                        <td><input type="text"  maxlength="7" name="AluCarrera" placeholder="TPSI" onkeypress="validarInput(event)" required></td>
-                    </tr>
-                    <tr>
-                        <td>Correo:</td>
-                        <td><input type="email" name="AluCorreo" placeholder="anonimato@gmail.com" required></td>
-                    </tr>
-                    <tr>
-                        <td>Imagen Administrador:</td>
-                        <td><input type="file" name="file" required></td>
-                    </tr>
-                    <tr>
-                        <td>Contraseña:</td>
-                        <td><input type="password" name="AluPassword" id="password" placeholder="Anonimato123" onblur="validarPassword()" required></td>
-                        <span id="passwordError" class="error-message"></span>
-                    </tr>
-                </table>
-                </div>
-                <div class="modal-footer">
-                    <tr>
-                        <td><input type="submit" name="submit" value="add"></td>
-                        <td><input type="reset"></td>
-                    </tr>
-                </div>
-                </div>
-            </div>
-            </div> 
-            <table class="table" cellpadding = 10 cellspacing = 0>
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Codigo</th>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Ap. Parteno</th>
-                    <th scope="col">Ap. Materno</th>
-                    <th scope="col">Carrera</th>
-                    <th scope="col">Correo</th>
-                    <th scope="col">Imagen</th>
-                    <th scope="col">Password</th>
-                    <th scope="col">Opciones</th>
-                </tr>
-                <?php
-                $registro = mysqli_query($conexion, "SELECT * FROM registroalu");
-                $i = 1;
+                    <h1 class="tit">Control de Usuarios</h1>
+                    <form class="ConexFuncion.php" action="" method="post" enctype="multipart/form-data">
 
-                foreach($registro as $user) :
-                ?>
-                <tr>
-                    <td> <?php echo $i++; ?> </td>
-                    <td> <?php echo $user["CodeAlu"]; ?> </td>
-                    <td> <?php echo $user["AluNom"]; ?> </td>
-                    <td> <?php echo $user["AluApellidoP"]; ?> </td>
-                    <td> <?php echo $user["AluApellidoM"]; ?> </td>
-                    <td> <?php echo $user["AluCarrera"]; ?> </td>
-                    <td> <?php echo $user["AluCorreo"]; ?> </td>
-                    <td> <?php echo $user["AluImage"]; ?></td>
-                    <td> <?php echo $user["AluPassword"]; ?> </td>
-                    <td>
-                        <a href="AluEditar.php?id=<?php echo $user["id"]; ?>" class="btn btn-samll btn-warning"><i class="fa-regular fa-pen-to-square"></i></a>
+                    <a href="AluAgregar.php" class="btn btn-primary" ><i class="fa-solid fa-mostrar-plus">Agregar</i></a>
 
-                        <form class="" action="" method="post">
-                            <button class="btn btn-samll btn-danger" type="submit" name="submit" value = <?php echo $user["id"]?>><i class="fa-regular fa-trash-can"></i></button>
-                        </form>
-                    </td>
-                </tr>
-                <?php endforeach; ?>
-            </table>
-        </form>    
-        <br>
-        <script src="JS/AluFunciones.js"></script>
+                        <table class="table" cellpadding = 10 cellspacing = 0>
+                            <tr>
+                                <th scope="col">Codigo</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Ap. Parteno</th>
+                                <th scope="col">Ap. Materno</th>
+                                <th scope="col">Carrera</th>
+                                <th scope="col">Correo</th>
+                                <th scope="col">Imagen</th>
+                                <th scope="col">Password</th>
+                                <th scope="col">Opciones</th>
+                            </tr>
+                            <?php
+                            $registro = mysqli_query($conexion, "SELECT * FROM registroalu");
+
+                            while($mostrar = mysqli_fetch_array($registro)){
+                                
+                                            
+                            
+                            ?>
+
+                            <tr>
+                                
+                                <td class="<?php echo $clase_fila; ?>"> <?php echo $mostrar["CodeAlu"]; ?> </td>
+                                <td class="<?php echo $clase_fila; ?>"> <?php echo $mostrar["AluNom"]; ?> </td>
+                                <td class="<?php echo $clase_fila; ?>"> <?php echo $mostrar["AluApellidoP"]; ?> </td>
+                                <td class="<?php echo $clase_fila; ?>"> <?php echo $mostrar["AluApellidoM"]; ?> </td>
+                                <td class="<?php echo $clase_fila; ?>"> <?php echo $mostrar["AluCarrera"]; ?> </td>
+                                <td class="<?php echo $clase_fila; ?>"> <?php echo $mostrar["AluCorreo"]; ?> </td>
+                                <td class="<?php echo $clase_fila; ?>"> <?php echo $mostrar["AluImage"]; ?></td>
+                                <td class="<?php echo $clase_fila; ?>"> <?php echo $mostrar["AluPassword"]; ?> </td>
+                                <td>
+
+                                    <button type="button" class="btn btn-samll btn-warning" onclick="mostrarEditar('<?php echo $mostrar['id']; ?>' ,'<?php echo $mostrar['CodeAlu']; ?>', 
+                                    '<?php echo $mostrar['AluNom']; ?>', '<?php echo $mostrar['AluApellidoP']; ?>', '<?php echo $mostrar['AluApellidoM']; ?>', 
+                                    '<?php echo $mostrar['AluCarrera']; ?>', '<?php echo $mostrar['AluCorreo']; ?>', '<?php echo $mostrar['AluImage']; ?>', 
+                                    '<?php echo $mostrar['AluPassword']; ?>', '<?php echo $mostrar['AluImage']; ?>')"><i class="fa-regular fa-pen-to-square"></i></button>
+                                    <!-- Button trigger modal -->
+                                    <form id="eliminarForm_<?php echo $mostrar['id']; ?>" action="ConexFuncion.php" method="POST" enctype="multipart/form-data">
+                                        <input type="hidden" name="idEliminar" value="<?php echo $mostrar['id']; ?>">
+                                        <input type="hidden" name="eliminar_imagen" value="<?php echo $mostrar['AluImage']; ?>">
+
+                                        <button type="button" class="btn btn-primary btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="mostrarBorrar(<?php echo $mostrar['id']; ?>)">
+                                            <i class="fa-regular fa-trash-can"></i>
+                                        </button>   
+                                    </form>
+                                </td>
+                            </tr>
+                            <?php 
+                            
+                                }//FIN WHILE
+                                
+                            ?>
+                        </table>
+                    </form>    
+                    <br>
+                    
+                    <!-- Modal Eliminar -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <form class="" action="ConexFuncion.php" method="post" enctype="multipart/form-data">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Eliminar Usuario</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <input type="text" name="idEliminar" id="idEliminar" value="" hidden>
+                                        ¿Seguro que quieres eliminar este registro?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button class="btn btn-samll btn-danger" type="submit" name="submit" value="borrar">Eliminar</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Modal editar -->
+                    <div class="modal_editar">
+                        <div class="contenidoVentanaEmergente">
+                            <div class="contenidoFooter">
+                                <h2>Editar Usuario</h2>
+                            </div>
+                            <form action="ConexFuncion.php" method="post" enctype="multipart/form-data" class="formulario_modal">
+                            <table>
+                                <input type="hidden" value="" id="idUsuario" name="idUsuario" >
+                                <tr>
+                                    <td>Codigo:</td>
+                                    <td><input type="text" maxlength="9" minlength="9" name="CodeAlu" placeholder="123456789" value="" id="soloNumeros" oninput="vaslidarLonCo(this)" required></td>
+                                </tr>
+                                <tr>
+                                    <td>Nombre:</td>
+                                    <td><input type="text" maxlength="15" name="AluNom" placeholder="Anonimo" value="" id="campoNombre"  onkeypress="validarInput(event)" required></td>
+                                </tr>
+                                <tr>
+                                    <td>Apellido Paterno:</td>
+                                    <td><input type="text" maxlength="15" name="AluApellidoP" placeholder="Anonimato" value="" id="campoApellidoPaterno" onkeypress="validarInput(event)" required></td>
+                                </tr>
+                                <tr>
+                                    <td>Apellido Materno:</td>
+                                    <td><input type="text" maxlength="15" name="AluApellidoM" placeholder="Anonimatario" value="" id="campoApellidoMaterno" onkeypress="validarInput(event)" required></td>
+                                </tr>
+                                <tr>
+                                    <td>Carrera:</td>
+                                    <td><input type="text" maxlength="7" name="AluCarrera" placeholder="TPSI" value="" id="campoCarrera"  required></td>
+                                </tr>
+                                <tr>
+                                    <td>Correo:</td>
+                                    <td><input type="email" name="AluCorreo" placeholder="anonimato@gmail.com" value="" id="campoCorreo"  required></td>
+                                </tr>
+                                <tr>
+                                    <td>Imagen</td>
+                                    <td>
+                                        <input type="file" name="AluImage" id="imagenInputEditar" onchange="previewImageEditar(this)">
+                                        <input type="hidden" name="AdImagen_old" id="AdImagen_old">
+                                        <!-- <label for="imagenInputEditar" id="imagen1"><i class="fa-solid fa-upload"></i>Seleccionar Imagen</label> -->
+                                        <img src="" alt="" id="imagenPreviewEditar" width="120px" height="120px">
+                                        <input type="text" id="nombreArchivoEditar" readonly>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Contraseña:</td>
+                                    <td><input type="password" name="AluPassword" id="password" placeholder="Anonimato123" value="" onblur="validarPassword()" required></td>
+                                    <span id="passwordError" class="error-message"></span>
+                                </tr>
+                                <tr>
+                                    <td><button type="button" class="cerrarModal" onclick="cerrarVentanaEditar()">Cancelar</button></td>
+                                    <td><input type="submit" name="submit" value="Editar"></td>
+                                </tr>
+                            </table>
+                            </form>
+                        </div>
+                    </div> <!-- .modal_editar -->
+                </section>
+            </main>
+        </div>
+
+
+
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+        
+        <script src="JS/AluFunciones.js"></script>
+    
+        <!-- Agregar -->
+            <?php
+        if(isset($_SESSION['success']) && $_SESSION['success']) {
+            echo "<script>
+                    Swal.fire({
+                        title: 'Agregar',
+                        text: 'El Usuario fue agregado exitosamente',
+                        icon: 'success',
+                        confirmButtonText: 'Aceptar'
+                    });
+                </script>";
+            unset($_SESSION['success']); // Eliminar la variable de sesión
+        } else if(isset($_SESSION['error']) && $_SESSION['error']) {
+            echo "<script>
+                    Swal.fire({
+                        title: 'Error',
+                        text: 'No fue posible agregarlo, inténtelo de nuevo',
+                        icon: 'error',
+                        confirmButtonText: 'Cerrar'
+                    });
+                </script>";
+            unset($_SESSION['error']); // Eliminar la variable de sesión
+        }
+        ?>
+        <!-- Editar -->
+        <?php
+        if(isset($_SESSION['success1']) && $_SESSION['success1']) {
+            echo "<script>
+                    Swal.fire({
+                        title: 'Editar',
+                        text: 'La edición fue todo un exito',
+                        icon: 'success',
+                        confirmButtonText: 'Aceptar'
+                    });
+                </script>";
+            unset($_SESSION['success1']); // Eliminar la variable de sesión
+        } else if(isset($_SESSION['error1']) && $_SESSION['error1']) {
+            echo "<script>
+                    Swal.fire({
+                        title: 'Error',
+                        text: 'No fue posible editarlo, inténtelo de nuevo',
+                        icon: 'error',
+                        confirmButtonText: 'Cerrar'
+                    });
+                </script>";
+            unset($_SESSION['error1']); // Eliminar la variable de sesión
+        }
+        ?>
+        <!-- Eliminar -->
+        <?php
+        if(isset($_SESSION['success2']) && $_SESSION['success2']) {
+            echo "<script>
+                    Swal.fire({
+                        title: 'Eliminar',
+                        text: 'La eliminación fue todo un exito',
+                        icon: 'success',
+                        confirmButtonText: 'Aceptar'
+                    });
+                </script>";
+            unset($_SESSION['success2']); // Eliminar la variable de sesión
+        } else if(isset($_SESSION['error2']) && $_SESSION['error2']) {
+            echo "<script>
+                    Swal.fire({
+                        title: 'Error',
+                        text: 'No fue posible eliminarlo, inténtelo de nuevo',
+                        icon: 'error',
+                        confirmButtonText: 'Cerrar'
+                    });
+                </script>";
+            unset($_SESSION['error2']); // Eliminar la variable de sesión
+        }
+        ?>
     </body>
 </html>

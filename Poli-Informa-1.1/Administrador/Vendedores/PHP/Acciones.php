@@ -38,11 +38,11 @@ if($metodoAccion == 1){
 
         if ($stmt->execute()) {
             $_SESSION['success'] = true;
-            header("Location: ../index.php");
+            header("Location: ../vendedores.php");
             exit(); // Salir del script después de la redirección
         } else {
             $_SESSION['error'] = true;
-            header("Location: ../index.php");
+            header("Location: ../vendedores.php");
             exit(); // Salir del script después de la redirección
         }
 
@@ -98,11 +98,11 @@ if($metodoAccion == 2){
 
     if ($resultadoUpdate) {
         $_SESSION['success1'] = true;
-        header("Location: ../index.php");
+        header("Location: ../vendedores.php");
         exit(); // Salir del script después de la redirección
     } else {
         $_SESSION['error1'] = true;
-        header("Location: ../index.php");
+        header("Location: ../vendedores.php");
         exit(); // Salir del script después de la redirección
     }
 
@@ -131,11 +131,11 @@ if($metodoAccion == 3){
     
     if ($resultDeleteAlumno) {
         $_SESSION['success2'] = true;
-        header("Location: ../index.php");
+        header("Location: ../vendedores.php");
         exit(); // Salir del script después de la redirección
     } else {
         $_SESSION['error2'] = true;
-        header("Location: ../index.php");
+        header("Location: ../vendedores.php");
         exit(); // Salir del script después de la redirección
     } 
 }//FIN MÉTODOACCIÓN3

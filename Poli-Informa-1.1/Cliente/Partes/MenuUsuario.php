@@ -14,7 +14,7 @@
             <div class="menu-btn">
                 <i class="fa-solid fa-angle-right"></i>
             </div>
-            <header>
+            <div class="heade">
                 <div class="user-img">
                     <img src="../Partes/imagenes/Poli.png" alt="">
                 </div>
@@ -22,13 +22,13 @@
                     <p class="title">Menu</p>
                     <p class="name">POLI-INFORMA</p>
                 </div>
-            </header>
+            </div>
             <nav>
                 <div class="menu">
                     <p class="title">Main</p>
                     <ul>
                         <li>
-                            <a href="#">
+                            <a href="../../Cliente/Avisos/Avisos.php">
                                 <i class="icon fa-solid fa-house"></i>
                                 <span class="text">Avisos</span>
                             </a>
@@ -53,8 +53,8 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="#">
-                                <i class="icon fa-regular fa-user"></i>
+                            <a href="../../Cliente/Poli-Commerce/index.php">
+                                <i class="icon fa-solid fa-store"></i>
                                 <span class="text">Poli-commerce</span>
                             </a>
                         </li>
@@ -85,8 +85,8 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="../Soporte/">
-                                        <span class="text">Quejas y sugerencias</span>
+                                    <a href="../Soporte/ContactanosVista.php">
+                                        <span class="text">Contactanos y Sugerencias</span>
                                     </a>
                                 </li>
                             </ul>
@@ -95,34 +95,21 @@
                 </div>
             </nav>
             <div class="menu">
-                <p class="title">Comunicate</p>
+                <p class="title">Perfil</p>
                 <ul>
                     <li>
                         <a href="../Soporte/ContactanosVista.php">
-                            <i class="icon fa-solid fa-phone-volume"></i>
-                            <span class="text">Contactanos</span>
+                            <i class="icon fa-solid fa-user"></i>
+                            <span class="text">Perfil</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="../../Login/controlador_cerrar_sesion.php">
                             <i class="icon fa-solid fa-arrow-right-from-bracket"></i>
-                            <span class="text">Salir</span>
+                            <span class="text">Cerra Sesión</span>
                         </a>
                     </li>
                 </ul>
-            </div>
-        </div>
-    </div>
-
-    <!-- Perfil -->
-    <div class="profile-box">
-        <div class="header1">
-            <div class="user-img1">
-                <img src="../Partes/imagenes/Poli.png" alt="Logo">
-            </div>
-            <div class="user-details1">
-                <a href="#" class="title1">Nombre de usuario</a>
-                <p class="name1">Nose xd</p> <!-- No es necesario este campo-->
             </div>
         </div>
     </div>
@@ -152,10 +139,10 @@
         @import url(https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900);
 
         * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: "Inter", sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Inter", sans-serif;
         }
         body {
             display: grid;
@@ -182,10 +169,10 @@
             flex-shrink: 0; /* No permitir que el menú se reduzca*/
             border: 1px solid #000;
         }
-        .sidebar header {
+        .sidebar .heade {
             display: flex;
             gap: 20%;
-            padding-bottom: 5%;
+            padding-bottom: 3%;
             border-bottom: 1px solid #f6f6f6;
         }
         .user-img {
@@ -218,7 +205,7 @@
         .menu ul li {
             position: relative;
             list-style: none;
-            margin-bottom: 5px;
+            margin-bottom: 2.8px;
         }
         .menu ul li a {
             display: flex;
@@ -228,7 +215,7 @@
             font-weight: 500;
             color: #757575;
             text-decoration: none;
-            padding: 2% 4%;
+            padding: 3px 8px;
             border-radius: 10px;
             transition: all 0.3s;
         }
@@ -268,7 +255,7 @@
         }
         .menu-btn {
             position: absolute;
-            right: -4%;
+            right: -1%;
             top: 3.5%;
             width: 28px;
             height: 28px;
@@ -342,82 +329,29 @@
             position: absolute;
             top: 0;
             left: 60%;
-            width: 200%;
+            width: 350%;
             border-radius: 20px;
             padding: 10% 20%;
-            border: 1px solid #f6f6f6;
+            border: 1px solid #000;
             background-color: #fff;
             box-shadow: 0px 10px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
         } 
 
         /* Cuerpo */
         .home {
-            padding: .5%;
-            margin-left: 7%;
-            position: absolute;
-            width: 91%;
+            padding-top: -1%;
+            margin-left: auto;
+            position: relative;
+            width: 92%;
+            /* border: 1px solid #000; */
+            /* margin-top: 7%; */
+
         }
 
         .home .text {
-            margin-top: 6.5%;
-            padding: .9%;
-            width: 100%;
-            position: absolute;
-        }
-
-        /* Menu arriba */
-        .profile-box {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        padding: 20px;
-        background-color: #406a74;
-        display: flex;
-        align-items: center;
-        justify-content: right;
-        border-bottom: 1px solid #f6f6f6;
-        z-index: 99;
-        }
-
-        .header1 {
-        display: flex;
-        align-items: center;
-        gap: 20px;
-        }
-
-        .user-img1 {
-        width: 44px;
-        height: 44px;
-        border-radius: 50%;
-        overflow: hidden;
-        border: 1px solid #000;
-        }
-
-        .user-img1 img {
-        width: 100%;
-        object-fit: cover;
-        }
-
-        .user-details1 {
-        text-align: right;
-        }
-
-        .user-details1 .title1 {
-        font-size: 10px;
-        font-weight: 500;
-        color: #757575;
-        text-transform: uppercase;
-        }
-
-        .user-details1 .name1 {
-        font-size: 14px;
-        font-weight: 500;
-        }
-
-        .user-details1 a {
-        text-decoration: none;
-        cursor: pointer;
+            padding-top: 1%;
+            position: relative;
         }
 
     </style>

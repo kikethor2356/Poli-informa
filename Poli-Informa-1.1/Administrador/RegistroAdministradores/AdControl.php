@@ -14,7 +14,7 @@ $conexion = $db->connect();
     <link rel="stylesheet" href="../menu.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://kit.fontawesome.com/d6736406d6.js" crossorigin="anonymous"></script>
-    <title>Registro</title>
+    <title>Registro Administrador</title>
 </head>
 <body>
     <div id="productos">
@@ -43,18 +43,20 @@ $conexion = $db->connect();
                             $registro = mysqli_query($conexion, "SELECT * FROM registro");
 
                             while($mostrar = mysqli_fetch_array($registro)){
+                                       
+                            
                             ?>
 
                             <tr>
                                 
-                                <td> <?php echo $mostrar["AdCode"]; ?> </td>
-                                <td> <?php echo $mostrar["AdNombre"]; ?> </td>
-                                <td> <?php echo $mostrar["AdApellidoP"]; ?> </td>
-                                <td> <?php echo $mostrar["AdApellidoM"]; ?> </td>
-                                <td> <?php echo $mostrar["AdCarrera"]; ?> </td>
-                                <td> <?php echo $mostrar["AdCorreo"]; ?> </td>
-                                <td> <?php echo $mostrar["AdImagen"]; ?></td>
-                                <td> <?php echo $mostrar["AdPassword"]; ?> </td>
+                                <td class="<?php echo $clase_fila; ?>"> <?php echo $mostrar["AdCode"]; ?> </td>
+                                <td class="<?php echo $clase_fila; ?>"> <?php echo $mostrar["AdNombre"]; ?> </td>
+                                <td class="<?php echo $clase_fila; ?>"> <?php echo $mostrar["AdApellidoP"]; ?> </td>
+                                <td class="<?php echo $clase_fila; ?>"> <?php echo $mostrar["AdApellidoM"]; ?> </td>
+                                <td class="<?php echo $clase_fila; ?>"> <?php echo $mostrar["AdCarrera"]; ?> </td>
+                                <td class="<?php echo $clase_fila; ?>"> <?php echo $mostrar["AdCorreo"]; ?> </td>
+                                <td class="<?php echo $clase_fila; ?>"> <?php echo $mostrar["AdImagen"]; ?></td>
+                                <td class="<?php echo $clase_fila; ?>"> <?php echo $mostrar["AdPassword"]; ?> </td>
                                 <td>
 
                                     <button type="button" class="btn btn-samll btn-warning" onclick="mostrarEditar('<?php echo $mostrar['id']; ?>' ,'<?php echo $mostrar['AdCode']; ?>', 
@@ -73,7 +75,6 @@ $conexion = $db->connect();
                                 </td>
                             </tr>
                             <?php 
-                            
                                 }//FIN WHILE
                                 
                             ?>

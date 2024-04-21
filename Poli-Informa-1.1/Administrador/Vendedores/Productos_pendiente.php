@@ -93,6 +93,10 @@
                                         '<?php echo $mostrar['nombre'];?>', '<?php echo $mostrar['codigoVendedor'];?>', '<?php echo $mostrar['precio'];?>', 
                                         '<?php echo $mostrar['descripcion'];?>', '<?php echo $mostrar['nombreImagen'];?>', '<?php echo $mostrar['categoria'];?>')">
                                         <img src="iconos/editar.png" alt="editar" id="iconoEditar" title="Editar registro"></a>
+
+                                        <a class="modal_abrir_ver_vendedor"_<?php echo $mostrar['ID']; ?> href="">
+                                            <img src="iconos/aceptar.png" alt="aceptar" id="iconoAceptarVendedor" title="Aceptar vendedor">
+                                        </a>
                                     </td>
                                 </tr>
                                 <?php

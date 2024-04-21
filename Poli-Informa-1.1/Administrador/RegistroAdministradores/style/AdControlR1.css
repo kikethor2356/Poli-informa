@@ -90,3 +90,7 @@ button{
     background: rgb(2, 151, 215);
     color: white;
 }
+
+#mostrarProductos .fila1{
+    background: rgb(187, 187, 187);
+}
