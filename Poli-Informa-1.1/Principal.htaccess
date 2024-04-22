@@ -1,12 +1,12 @@
 RewriteEngine On
 RewriteBase /
 
-# Si la URL solicitada no es para Login/index.php
-RewriteCond %{REQUEST_URI} !^/Cliente/Login/index\.php$
-# Redirigir a Login/index.php
-RewriteRule ^.*$ /Cliente/Login/index.php [L]
+# Si la URL solicitada no es para LoginU/index.php
+RewriteCond %{REQUEST_URI} !^/Cliente/LoginU/index\.php$
+# Redirigir a LoginU/index.php
+RewriteRule ^.*$ /Cliente/LoginU/index.php [L]
 
 # Si la URL solicitada no es para Login/index.php
-RewriteCond %{REQUEST_URI} !^/Administrador/Login/index\.php$
-# Redirigir a Login/index.php
-RewriteRule ^.*$ /Administrador/Login/index.php [L]
+RewriteCond %{REQUEST_URI} !^/Administrador/LoginA/index\.php$
+# Redirigir a LoginA/index.php
+RewriteRule ^.*$ /Administrador/LoginA/index.php [L]
