@@ -8,5 +8,7 @@
 </head>
 <body>
     <?php include '../Partes/MenuUsuario.php'?>
+
+    <?php include '../Partes/footer-page/index.html' ?>
 </body>
 </html>
