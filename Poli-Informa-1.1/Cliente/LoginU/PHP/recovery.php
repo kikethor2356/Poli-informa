@@ -3,12 +3,12 @@
     use PHPMailer\PHPMailer\Exception;
     use PHPMailer\PHPMailer\SMTP;
         
-    require '../../PHPMailer/Exception.php';
-    require '../../PHPMailer/PHPMailer.php';
-    require '../../PHPMailer/SMTP.php';
+    require '../PHPMailer/Exception.php';
+    require '../PHPMailer/PHPMailer.php';
+    require '../PHPMailer/SMTP.php';
     
     session_start();
-    include('../../Conexion/conexion.php');
+    include('../../../Conexion/conexion.php');
     $db = new Database();
     $conexion = $db->connect();
 
@@ -56,7 +56,7 @@
             $mail->isHTML(true);                                  //Set email format to HTML
             $mail->Subject = 'Recuperarción de contraseña';
             $mail->Body    = 'El motivo de este correo es para confirmar el cambio de contraseña del portal POLI-IFORMA<br>
-            del siguiente enlace, <a href="localhost/Proyecto/Poli-informa/Poli-Informa-1.1/LoginUsuario/new_password.php?id='.$row['id'].'">Haz clic aquí para cambiar tu contraseña</a>
+            del siguiente enlace, <a href="localhost/Proyecto/Poli-informa/Poli-Informa-1.1/Cliente/LoginU/new_password.php?id='.$row['id'].'">Haz clic aquí para cambiar tu contraseña</a>
             <br>De no ser el caso, ignora este correo o verifica si tramitó el cambio de contraseña.';    
             // $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
         

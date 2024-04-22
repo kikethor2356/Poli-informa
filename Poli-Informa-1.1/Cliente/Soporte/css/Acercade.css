@@ -98,3 +98,39 @@ h3{
     font-weight: 500;
     border-radius: 10px 40px 40px 10px;
 }
+
+/* REFERENCIAS */
+.ref{
+    height: auto;
+    background-color: white;
+    width: 50%;
+    margin-left: 30%;
+    border-radius: 10px;
+    color: black;
+    text-align: justify;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+.ref a{
+    text-decoration: none;
+}
+.ref i{
+    position: absolute;
+    right: 17%;
+    color: #000;
+    margin-top: .5%;
+}
+
+.ref .referencia1, .referencia2, .referencia3{
+    position: relative;
+    color: #5b3c3c;
+    left: 7%;
+}
+
+.ref a:hover{
+    background-color: var(--secundario); /* Cambia el color de fondo al color secundario */
+    color: #2196F3; /* Cambia el color del texto a blanco */
+}
+
+.ref a:hover .fa-solid {
+    color: #2196F3; /* Cambia el color del icono a blanco */
+}

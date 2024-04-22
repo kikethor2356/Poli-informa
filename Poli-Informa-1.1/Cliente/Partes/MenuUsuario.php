@@ -104,7 +104,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="../../LoginUsuario/controlador_cerrar_sesion.php">
+                        <a href="../LoginU/controlador_cerrar_sesion.php">
                             <i class="icon fa-solid fa-arrow-right-from-bracket"></i>
                             <span class="text">Cerra Sesión</span>
                         </a>

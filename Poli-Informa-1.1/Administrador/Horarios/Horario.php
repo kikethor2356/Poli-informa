@@ -1,4 +1,4 @@
-<!-- <?php include '../../LoginAdministrador/inicio.php'; ?> -->
+<!-- <?php include '../LoginA/inicio.php'; ?> -->
 
 <?php
 
