@@ -23,7 +23,7 @@
                     <p class="name">POLI-INFORMA</p>
                 </div>
             </div>
-            <nav>
+            <div class="nav">
                 <div class="menu">
                     <p class="title">Main</p>
                     <ul>
@@ -93,7 +93,7 @@
                         </li>
                     </ul>
                 </div>
-            </nav>
+            </div>
             <div class="menu">
                 <p class="title">Perfil</p>
                 <ul>
@@ -199,7 +199,7 @@
             font-weight: 500;
             width: 100%;
         }
-        nav {
+        .nav {
             flex: 1;
         }
         .menu ul li {
