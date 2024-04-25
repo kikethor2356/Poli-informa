@@ -55,7 +55,7 @@ $conexion = $db->connect();
 
                 <textarea id="descripcion" name="descripcion" required placeholder="Descripción"></textarea>
 
-                <p>Precio $<input type="text" id="precio" name="precio" required placeholder="$00.00"> MXN</p>
+                <p>Precio $<input type="number" id="precio" name="precio" required placeholder="$00.00"> MXN</p>
 
                 <div id="contenedor-imagen">                   
                     <input type="file" name="imagen" id="imagenInput" onchange="previewImage()" required> 
@@ -118,7 +118,7 @@ $conexion = $db->connect();
                 <p>Descripción</p> 
                 <textarea name="descripcion" id="descripcion1" placeholder="Descripción del producto"></textarea>
 
-                <p>Precio $<input type="text" id="precio1" name="precio" placeholder="$00.00"> MXN</p>
+                <p>Precio $<input type="number" id="precio1" name="precio" placeholder="$00.00"> MXN</p>
 
                 <div id="contenedor-imagen1">
                     <label for="" id="imagen_mos">Imagen</label>
