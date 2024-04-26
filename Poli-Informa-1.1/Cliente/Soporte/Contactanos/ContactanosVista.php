@@ -1,4 +1,5 @@
-<?php include '../../LoginUsuario/inicio.php'; ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,11 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contactanos</title>
     <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="css/Cotactanos.css">
     <script src="https://kit.fontawesome.com/eb496ab1a0.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
 <body>
-    <?php include '../Partes/MenuUsuario.php'?>
+    <?php include '../../Partes/MenuUsuario.php'?>
 
     <div class="home">
         <div class="text">
@@ -41,10 +43,24 @@
         </div>
     </div>
 
+    <div class="contenedor">
+        <form action="UsInsertar.php" method="post">
+            <h1>Quejas y sugerencias</h1>
+
+            <label>Nombre:</label>
+            <input type="text" name="UsNombre" required><br>
+
+            <label>Correo:</label>
+            <input type="email" name="UsCorreo" required><br>
+
+            <label>Comentario:</label>
+            <textarea id="message" name="UsComentario" rows="4" required></textarea>
+
+            <button class="boton" type="submit" value="registrar" name="registro">Enviar</button>
+        </form>
+    </div>
 
     
     
-    <?php include '../Partes/footer-page/index.html';?>
-  
 </body>
 </html>
