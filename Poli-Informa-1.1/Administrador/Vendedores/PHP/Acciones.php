@@ -284,4 +284,66 @@ if($metodoAccion == 6){
     }     
 }//FIN MÉTODOACCIÓN 6
 
+
+
+//ELIMINA AL VENDEDOR PENDIENTE
+if($metodoAccion == 7){
+
+    $idVendedor = (int) filter_var($_REQUEST['idEliminarVendedorPendiente'], FILTER_SANITIZE_NUMBER_INT);
+    $nombreFoto = filter_var($_REQUEST['fotoEliminarVendedorPendiente'], FILTER_SANITIZE_STRING);
+
+    $sqlDeleteVendedor = ("DELETE FROM VENDEDORES_PENDIENTES WHERE id = '$idVendedor' ");
+    $resultDeleteVendedorPendiente = mysqli_query($conexion, $sqlDeleteVendedor);
+
+    $fotoVendedor = "imagenes/".$nombreFoto;
+
+    if(file_exists($fotoVendedor)){
+
+        if($resultDeleteVendedorPendiente != 0){
+            unlink($fotoVendedor);
+        }
+    }
+
+    header("Location: ../Vendedores_pendientes.php");
+
+    if ($resultDeleteVendedorPendiente) {
+        $_SESSION['success7'] = true;
+        header("Location: ../productos.php");
+        exit(); // Salir del script después de la redirección
+    } else {
+        $_SESSION['error7'] = true;
+        header("Location: ../productos.php");
+        exit(); // Salir del script después de la redirección
+    } 
+    
+}
+
+// AGREGA AL VENDEDOR PENDIENTE A LA TABLA DE VENDEDORES
+if($metodoAccion == 8){
+
+    $idVendedor = $_POST['idAceptarVendedorPendiente'];
+
+    $stmt = $conexion->prepare("INSERT INTO VENDEDORES (codigoVendedor, nombre, descripcion, correo, telefono, horaInicio, horaFin, foto) SELECT codigoVendedor, nombre, descripcion, correo, telefono, horaInicio, horaFin, foto FROM VENDEDORES_PENDIENTES WHERE id = ?");
+    $stmt->bind_param("i", $idVendedor);
+    $stmt->execute();
+    $stmt->close();
+
+    $sqlDeleteVendedor = ("DELETE FROM VENDEDORES_PENDIENTES WHERE id = '$idVendedor' ");
+    $resultDeleteVendedorPendiente1 = mysqli_query($conexion, $sqlDeleteVendedor);
+
+    $conexion->close();
+
+
+    if ($resultDeleteVendedorPendiente1) {
+        $_SESSION['success8'] = true;
+        header("Location: ../Vendedores_pendientes.php");
+        exit();
+    } else {
+        $_SESSION['error8'] = true;
+        header("Location: ../Vendedores_pendientes.php");
+        exit();
+    } 
+    
+}//FIN MÉTODOACCIÓN 8
+    
 ?>
