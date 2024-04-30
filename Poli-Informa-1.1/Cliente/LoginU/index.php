@@ -19,7 +19,6 @@
     <title>Iniciar sesión</title>
 </head>
 <body>
-    
     <img src="Img/fondo.png" alt="fondo" id="fondo">
     <div class="contenedor_inicio_sesion">
         <div class="inicio_sesion">
@@ -95,6 +94,5 @@
             }
         ?>
     </div>
-
 </body>
 </html>

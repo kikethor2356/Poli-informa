@@ -1,6 +1,4 @@
 <?php
-    include '../LoginU/inicio.php';
-
     use PHPMailer\PHPMailer\PHPMailer;
     use PHPMailer\PHPMailer\Exception;
     use PHPMailer\PHPMailer\SMTP;
@@ -14,8 +12,6 @@
     $db = new Database();
     $conexion = $db->connect();
 
-    $token = bin2hex(random_bytes(16)); // Genera un token aleatorio de 32 caracteres hexadecimales
-
     // Después de abrir la conexión con la base de datos
     mysqli_set_charset($conexion, "utf8");
     
@@ -26,13 +22,7 @@
         
     // Verificar si se recuperaron filas        
     if ($result && $result->num_rows > 0) {
-        // Almacena el token en la base de datos junto con la información del usuario
         $row = $result->fetch_assoc();
-        $id = $row['id'];
-        $token_expiration = date('Y-m-d H:i:s', strtotime('+1 hour')); // Ejemplo: el token expira en 1 hora
-        $sql_update_token = "UPDATE registroalu SET recovery_token = '$token', token_expiration = '$token_expiration' WHERE id = $id";
-        $conexion->query($sql_update_token);
-        
         //Create an instance; passing `true` enables exceptions
         $mail = new PHPMailer(true);
         
@@ -73,9 +63,9 @@
             //Content
             $mail->isHTML(true);                                  //Set email format to HTML
             $mail->Subject = 'Recuperarción de contraseña';
-            $mail->Body = 'El motivo de este correo es para confirmar el cambio de contraseña del portal POLI-IFORMA<br>
-            del siguiente enlace, <a href="localhost/Proyecto/Poli-informa/Poli-Informa-1.1/Cliente/LoginU/new_password.php?token='.$token.'">Haz clic aquí para cambiar tu contraseña</a>
-            <br>De no ser el caso, ignora este correo o verifica si tramitó el cambio de contraseña.';
+            $mail->Body    = 'El motivo de este correo es para confirmar que fue aceptado como vendedor y ya puede publicar sus productos<br>
+            "<a href="localhost/Proyecto/Poli-informa/Poli-Informa-1.1/Cliente/LoginU/index.php">Iniciar sesión</a>" nuevamente y publique sus productos en el apartado "Perfil"
+            <br>De no ser el caso, ignora este correo o verifica si tramitó el cambio de contraseña.';    
             // $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
         
             $mail->send();
@@ -84,9 +74,7 @@
         } catch (Exception $e) {
             echo "Hubo un error a enviar el mensaje: ", $mail->ErrorInfo;
         }
-            // header("Location: ../index.php?message=not_found");
-    } else {
-        // Si el correo electrónico no está registrado, redirecciona a olvido.php con un mensaje de error
-        header("Location: ../olvido.php?message=correo");
-    }
+    } else{
+        header("Location: ../index.php?message=not_found");
+    }//FIN IF-ELSE
 ?>

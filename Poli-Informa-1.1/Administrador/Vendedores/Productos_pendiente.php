@@ -206,7 +206,7 @@
                     <div id="ventana-editar-producto">
                         <h1>Editar producto</h1>
                         <div id="iconoSalir" class="modal_cerrar_editar_producto">✖</div>
-                        <form action="PHP/Acciones.php?metodo=2" method="POST" id="formulario-editar" enctype="multipart/form-data">
+                        <form action="PHP/Acciones.php?metodo=9" method="POST" id="formulario-editar" enctype="multipart/form-data">
                             <label for="idProducto" id="paraId" hidden>ID: </label>
                             <input type="text" id="idEditarProducto" name="idEditarProducto" value="" hidden><br>
                             <label for="nombre">Nombre:</label>
@@ -235,7 +235,7 @@
                 <!--  FIN DE LA VENTANA MODAL PARA EDITAR PRODUCTOS -->
                 <!-- VENATANA DE VERIFICACION -->
                 <?php
-                if(isset($_SESSION['success1']) && $_SESSION['success1']) {
+                if(isset($_SESSION['success9']) && $_SESSION['success9']) {
                     echo "<script>
                             Swal.fire({
                                 title: 'Editar',
@@ -244,8 +244,8 @@
                                 confirmButtonText: 'Aceptar'
                             });
                         </script>";
-                    unset($_SESSION['success1']); // Eliminar la variable de sesión
-                } else if(isset($_SESSION['error1']) && $_SESSION['error1']) {
+                    unset($_SESSION['success9']); // Eliminar la variable de sesión
+                } else if(isset($_SESSION['error9']) && $_SESSION['error9']) {
                     echo "<script>
                             Swal.fire({
                                 title: 'Error',
@@ -254,7 +254,7 @@
                                 confirmButtonText: 'Cerrar'
                             });
                         </script>";
-                    unset($_SESSION['error1']); // Eliminar la variable de sesión
+                    unset($_SESSION['error9']); // Eliminar la variable de sesión
                 }
                 ?>
                 <!-- FIN DE VENTANA DE VERIFICACION -->
@@ -266,7 +266,7 @@
                         <h1>Eliminar registro</h1>
                         <div id="salir" class="modal_cerrar_borrar_producto">✖</div>
                         <div id="raya1"></div>
-                        <form action="PHP/Acciones.php?metodo=3" method="post" enctype="multipart/form-data" id="formulario-eliminar">
+                        <form action="PHP/Acciones.php?metodo=10" method="post" enctype="multipart/form-data" id="formulario-eliminar">
                             <div id="contenedor-eliminar">
                                 <p>¿Desea eliminar el producto?</p>
                             </div>
@@ -281,7 +281,7 @@
                 <!-- FIN DE VENTANA MODAL PARA ELIMINAR AL VENDEDOR --> 
                 <!-- VENATANA DE VERIFICACION -->
                 <?php
-                if(isset($_SESSION['success2']) && $_SESSION['success2']) {
+                if(isset($_SESSION['success10']) && $_SESSION['success10']) {
                     echo "<script>
                             Swal.fire({
                                 title: 'Eliminar',
@@ -290,8 +290,8 @@
                                 confirmButtonText: 'Aceptar'
                             });
                         </script>";
-                    unset($_SESSION['success2']); // Eliminar la variable de sesión
-                } else if(isset($_SESSION['error2']) && $_SESSION['error2']) {
+                    unset($_SESSION['success10']); // Eliminar la variable de sesión
+                } else if(isset($_SESSION['error10']) && $_SESSION['error10']) {
                     echo "<script>
                             Swal.fire({
                                 title: 'Error',
@@ -300,17 +300,12 @@
                                 confirmButtonText: 'Cerrar'
                             });
                         </script>";
-                    unset($_SESSION['error2']); // Eliminar la variable de sesión
+                    unset($_SESSION['error10']); // Eliminar la variable de sesión
                 }
                 ?>
                 <!-- FIN DE VENTANA DE VERIFICACION -->                                               
             </section>
         </main>
-
-        <!-- PIE DE PÁGINA -->
-        <footer id="pie-productos">
-        </footer>            
-
     </div>
 </body>
 </html>

@@ -52,7 +52,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="../../Cliente/Poli-Commerce/index.php">
+                            <a href="../../Cliente/Poli-Commerce/poli-commerce.php">
                                 <i class="icon fa-solid fa-store"></i>
                                 <span class="text">Poli-commerce</span>
                             </a>

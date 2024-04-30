@@ -1,3 +1,28 @@
+<?php 
+include '../LoginU/inicio.php';
+include '../../Conexion/conexion.php';
+$db = new Database();
+$conexion = $db->connect();
+
+// Verificar si el código del estudiante está presente en la sesión
+if(isset($_SESSION['CodeAlu'])) {
+    // Obtener el código de usuario de la sesión
+    $codeAlu = $_SESSION['CodeAlu'];
+
+    // Consultar la base de datos para obtener los datos del usuario
+    $stmt = $conexion->prepare("SELECT AluNom, AluCorreo FROM registroalu WHERE CodeAlu = ?");
+    $stmt->bind_param("s", $codeAlu);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $userData = $result->fetch_assoc();
+    $stmt->close();
+} else {
+    // Manejar el caso en el que el código del estudiante no está presente en la sesión
+    echo "Error: El código del estudiante no está presente en la sesión.";
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -10,39 +35,34 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">    <title>Vendedores</title>
 </head>
 <body>
-
-    
-    <?php include"../Partes/MenuUsuario.php"; ?>
-
- 
+    <?php include "../Partes/MenuUsuario.php"; ?> 
     <div class="home">
         <div class="text">
-
             <main class="contenedor-principal">
                 <h1>Registro de vendedores</h1>
                 <a href="Perfil.php">Regresar</a>
-                <form class="formulario" action="almacenarVendedores" method="post" enctype="multipart/form-data">
+                <form class="formulario" action="almacenarVendedores.php" method="post" enctype="multipart/form-data">
                     <fieldset class="fieldset">
                         <h2 class="fieldset__titulo">Información del vendedor</h2>
                         <div class="campo">
+                            <label for="codigo">Código de estudiante</label>
+                            <input type="text" id="codigo" name="codigo" value="<?php echo isset($codeAlu) ? $codeAlu : ''; ?>" readonly>
+                        </div> <!-- .campo -->
+                        <div class="campo">
                             <label for="nombre">Nombre</label>
-                            <input type="text" id="nombre" name="nombre" required>
-                        </div> <!-- .campo -->
-                        <div class="campo">
-                            <label for="codigo">Codigo de estudiante</label>
-                            <input type="tel" id="codigo" name="codigo" required>
-                        </div> <!-- .campo -->
-                        <div class="campo">
-                            <label for="correo">Correo institucional</label>
-                            <input type="email" id="correo" name="correo" required>
-                        </div> <!-- .campo -->
-                        <div class="campo">
-                            <label for="telefono">Teléfono</label>
-                            <input type="tel" id="telefono" name="telefono" required>
+                            <input type="text" id="nombre" name="nombre" value="<?php echo isset($userData['AluNom']) ? htmlspecialchars($userData['AluNom']) : ''; ?>" readonly>
                         </div> <!-- .campo -->
                         <div class="campo">
                             <label for="descripcion">Descripción</label>
                             <textarea name="descripcion" id="descripcion" required></textarea>
+                        </div> <!-- .campo -->
+                        <div class="campo">
+                            <label for="correo">Correo institucional</label>
+                            <input type="email" id="correo" name="correo" value="<?php echo isset($userData['AluCorreo']) ? htmlspecialchars($userData['AluCorreo']) : ''; ?>" readonly>
+                        </div> <!-- .campo -->
+                        <div class="campo">
+                            <label for="telefono">Teléfono</label>
+                            <input type="tel" id="telefono" name="telefono" required>
                         </div> <!-- .campo -->
                         <div class="campo">
                             <label for="hora-inicio">Hora de inicio de ventas</label>
@@ -92,17 +112,9 @@
                         <input type="submit" name="guardar" id="guardar">
                     </fieldset>
                 </form>
-
-
             </main>
-
-
         </div> <!-- .text -->
     </div> <!-- .home -->
-
     <?php include "../Partes/footer-page/index.html"; ?>
-
-
-
 </body>
 </html>

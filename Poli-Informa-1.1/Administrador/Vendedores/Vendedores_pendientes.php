@@ -29,7 +29,7 @@
         <main id="principal-productos">
             <section id="section-productos">
                 <div class="mostrarVendedoresPendientes" id="mostrarVendedoresPendientes">
-                    <h1>Lista de vendedores</h1>
+                    <h1>Lista de vendedores pendientes</h1>
                         
                     <!-- Controles de paginación -->
                     <div id="paginacion">
@@ -213,7 +213,7 @@
                     <div id="ventana-borrar-vendedor-pendiente">
                         <h1>Borrar registro</h1>
                         <div id="cerrarBorrarVendedorPendiente" class="modal_cerrar_borrar_vendedor_pendiente">✖</div>
-                        <form action="../PHP/BD/Acciones.php?metodo=7" id="formulario-borrar-vendedor-pendiente" enctype="multipart/form-data" method="post">
+                        <form action="PHP/Acciones.php?metodo=7" id="formulario-borrar-vendedor-pendiente" enctype="multipart/form-data" method="post">
                             <div id="contenedorEliminarVendedorPendiente">
                                 <p id="informacionVendedorPendiente">¿Desea eliminar el registro?</p>
                                 <input type="text" id="fotoEliminarVendedorPendiente" name="fotoEliminarVendedorPendiente" value="" hidden>

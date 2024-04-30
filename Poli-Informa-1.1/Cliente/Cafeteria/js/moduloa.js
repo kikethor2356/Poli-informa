@@ -117,31 +117,3 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
-
-function mostrarDetalleProducto(contenedor) {
-    // Obtener la información del producto desde el atributo data-producto
-    let producto = JSON.parse(contenedor.dataset.producto);
-
-    // Construir el contenido de la ventana emergente con los detalles del producto
-    let ventanaEmergente = `
-        <div class="popup">
-            <div class="popup-content">
-                <span class="close" onclick="cerrarVentanaEmergente()">&times;</span>
-                <h2>${producto.nombre_producto}</h2>
-                <p>${producto.descripcion}</p>
-                <h3>$${producto.precio}</h3>
-                <!-- Puedes agregar más detalles aquí si es necesario -->
-            </div>
-        </div>
-    `;
-
-    // Agregar la ventana emergente al final del body
-    document.body.insertAdjacentHTML('beforeend', ventanaEmergente);
-}
-
-// Función para cerrar la ventana emergente
-function cerrarVentanaEmergente() {
-    let ventanaEmergente = document.querySelector('.popup');
-    ventanaEmergente.parentNode.removeChild(ventanaEmergente);
-}
-

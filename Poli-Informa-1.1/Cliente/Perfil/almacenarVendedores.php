@@ -1,14 +1,16 @@
 <?php 
+include('../../Conexion/conexion.php');
+$db = new Database();
+$conexion = $db->connect();
+session_start();
 
-    $conexion = new mysqli("localhost", "root", "", "poli_informa");
-
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if(isset($_POST['guardar'])){
-
-        $nombre = $_POST['nombre'];
         $codigoEstudiante = $_POST['codigo'];
+        $nombre = $_POST['nombre'];
+        $descripcion = $_POST['descripcion'];
         $correo = $_POST['correo'];
         $telefono = $_POST['telefono'];
-        $descripcion = $_POST['descripcion'];
         $horaInicio = $_POST['hora-inicio'];
         $horaFin = $_POST['hora-fin'];
         $archivo = $_FILES['imagen']['name'];
@@ -16,36 +18,25 @@
         $carpeta = 'imagenes';
 
         if(!empty($archivo) && !empty($temporal)){
-
             if(!file_exists($carpeta)){
-
                 mkdir($carpeta, 0777, true);
-
             }
-
             $ruta = $carpeta . "/" . $archivo;
-
             if(!move_uploaded_file($temporal, $ruta)){
-                echo "Ocurrio un error al enviar la imagen";
+                echo "Ocurrió un error al enviar la imagen";
             }
-
-
         }
 
         $stmt = $conexion->prepare("INSERT INTO VENDEDORES_PENDIENTES (codigoVendedor, nombre, descripcion, correo, telefono, horaInicio, horaFin, foto) VALUES (?,?,?,?,?,?,?,?)");
-        $stmt->bind_param("ssssssss", $nombre, $codigoEstudiante, $correo, $telefono, $descripcion, $horaInicio, $horaFin, $archivo);
-
+        $stmt->bind_param("ssssssss", $codigoEstudiante, $nombre, $descripcion, $correo, $telefono, $horaInicio, $horaFin, $archivo);
         $stmt->execute();
-
         $stmt->close();
-        
         $conexion->close();
-
-        header("Location: perfil.php");
-        
+        header("Location: Perfil.php");    
         exit();
-
+    } else {
+        // Manejar el caso en el que 'idVendedorPendiente' no está definido
+        echo "Error: El ID del vendedor pendiente no está definido.";
     }
-
-
+}
 ?>
