@@ -12,7 +12,7 @@ $conexion = $db->connect();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <link rel="stylesheet" href="style/AluReg.css">
+    <link rel="stylesheet" href="css/AluReg.css">
     <title>Registro Usuarios</title>
 </head>
 <body>

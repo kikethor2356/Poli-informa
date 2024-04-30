@@ -1,7 +1,6 @@
 <?php
     include '../LoginU/inicio.php';
     include('../../Conexion/conexion.php');
-    session_start();
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -118,7 +117,7 @@
                 </section> <!-- .servicios -->
                 
                 <section class="vendedores contenedor">
-                    <a href="vendedores.php">Vendedores</a>
+                    <a href="../Perfil/vendedorespen.php">Vendedores</a>
                 </section>
 
             </main>
