@@ -1,8 +1,8 @@
 <?php
+    include '../LoginU/inicio.php';
     include('../../Conexion/conexion.php');
     session_start();
 ?>
-<?php include '../LoginU/inicio.php'; ?>
 <!DOCTYPE html>
 <html lang="es">
 <head> 

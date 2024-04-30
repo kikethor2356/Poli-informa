@@ -3,7 +3,6 @@
     include('../../Conexion/conexion.php');
     $db = new Database();
     $conexion = $db->connect();
-    session_start();
 ?>
 <?php include '../LoginU/inicio.php'; ?>
 <!DOCTYPE html>

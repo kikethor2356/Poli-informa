@@ -313,5 +313,50 @@
             </section>
         </main>            
     </div>
+
+    <?php
+            if(isset($_GET['message'])){
+                ?>
+                    <div>
+                        <?php
+                            switch ($_GET['message']){
+                                case 'ok':
+                                    echo "<script>
+                                        Swal.fire({
+                                            title: 'Revisa',
+                                            text: 'Porfavor revisa tu correo',
+                                            icon: 'warning',
+                                            confirmButtonText: 'Aceptar'
+                                        });
+                                    </script>";
+                                break;
+
+                                case 'success_password':
+                                    echo "<script>
+                                        Swal.fire({
+                                            title: 'Revisa',
+                                            text: 'Inicia sesion con tu nueva contraseña',
+                                            icon: 'success',
+                                            confirmButtonText: 'Aceptar'
+                                        });
+                                    </script>";
+                                break;
+
+                                default:
+                                    echo "<script>
+                                        Swal.fire({
+                                            title: 'Error',
+                                            text: 'Algo salio mal, intentelo de nuevo',
+                                            icon: 'error',
+                                            confirmButtonText: 'Cerrar'
+                                        });
+                                    </script>";
+                                break;
+                            }
+                        ?>
+                    </div>
+                <?php
+            }
+        ?>
 </body>
 </html>

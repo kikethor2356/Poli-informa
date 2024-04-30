@@ -1,4 +1,4 @@
-<?php 
+<?php
     include("../../../Conexion/conexion.php");
     $db = new Database();
     $conexion = $db->connect();
@@ -250,7 +250,6 @@ if($metodoAccion == 6){
     header("Location: ../vendedores.php");
     exit();
 }//FIN MÉTODOACCIÓN 6
-
 
 
 // Apartado de vendedores pendientes
