@@ -1,4 +1,4 @@
-<?php include '../../LoginUsuario/inicio.php'; ?>
+<?php include '../LoginU/inicio.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,5 +8,7 @@
 </head>
 <body>
     <?php include '../Partes/MenuUsuario.php'?>
+
+    <?php include '../Partes/footer-page/index.html' ?>
 </body>
 </html>

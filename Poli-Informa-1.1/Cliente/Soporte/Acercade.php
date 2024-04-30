@@ -1,4 +1,4 @@
-<?php include '../../LoginUsuario/inicio.php'; ?>
+<?php include '../LoginU/inicio.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,12 +47,13 @@
                         <h2 class="acercade_subtitulo">Más información</h2>
                         <p>Para conocer más de POLI-INFORMA puedes navegar en las siguientes referencias</p><br>
                         <!-- <p>Aqui algunas referencias por si quieres ver a más a detalle cada apartado del portal.</p> -->
-                        
-                        <a href="" class="referencia1"><p>Preguntas frecuentes <i class="fa-solid fa-arrow-up-right-from-square open"></i></p></a>
-                        <hr>
-                        <a href="" class="referencia2"><p>Terminos y condiciones <i class="fa-solid fa-arrow-up-right-from-square open"></i></p></a>
-                        <hr>
-                        <a href="" class="referencia3"><p>Comuniación y sugerencias <i class="fa-solid fa-arrow-up-right-from-square open"></i></p></a>
+                        <div class="ref">
+                            <a href="../Soporte/" class="referencia1"><p>Preguntas frecuentes <i class="fa-solid fa-arrow-up-right-from-square open"></i></p></a>
+                            <hr>
+                            <a href="../Soporte/Terminos_Condiciones.php" class="referencia2"><p>Terminos y condiciones <i class="fa-solid fa-arrow-up-right-from-square open"></i></p></a>
+                            <hr>
+                            <a href="../Soporte/ContactanosVista.php" class="referencia3"><p>Comuniación y sugerencias <i class="fa-solid fa-arrow-up-right-from-square open"></i></p></a>
+                        </div>
                         <br>
                     </div>
                 </div>
@@ -64,36 +65,5 @@
     </div>
 
     <?php include '../Partes/footer-page/index.html';?>
-
-
-    
-
-
-    <!-- <script>
-        const body = document.querySelector('body'),
-        sidebar = body.querySelector('nav'),
-        toggle = body.querySelector('.toggle'),
-        searchBtn = body.querySelector('.search-box'),
-        modeSwtich = body.querySelector('.toggle-switch'),
-        modeText = body.querySelector('.mode-text');
-
-        toggle.addEventListener("click", () => {
-            sidebar.classList.toggle("close");
-        })
-
-        searchBtn.addEventListener("click", () => {
-            sidebar.classList.remove("close");
-        })
-
-        modeSwtich.addEventListener("click", () => {
-
-            body.classList.toggle("dark");
-            if(body.classList.contains("dark")){
-                modeText.innerText = "Modo Brilloso";
-            } else{
-                modeText.innerText = "Modo Oscuro";
-            }
-        })
-    </script> -->
 </body>
 </html>

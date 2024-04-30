@@ -23,7 +23,7 @@
                     <p class="name">POLI-INFORMA</p>
                 </div>
             </div>
-            <nav>
+            <div class="nav">
                 <div class="menu">
                     <p class="title">Main</p>
                     <ul>
@@ -93,7 +93,7 @@
                         </li>
                     </ul>
                 </div>
-            </nav>
+            </div>
             <div class="menu">
                 <p class="title">Perfil</p>
                 <ul>
@@ -104,7 +104,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="../../LoginUsuario/controlador_cerrar_sesion.php">
+                        <a href="../LoginU/controlador_cerrar_sesion.php">
                             <i class="icon fa-solid fa-arrow-right-from-bracket"></i>
                             <span class="text">Cerra Sesión</span>
                         </a>
@@ -199,7 +199,7 @@
             font-weight: 500;
             width: 100%;
         }
-        nav {
+        .nav {
             flex: 1;
         }
         .menu ul li {

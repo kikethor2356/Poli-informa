@@ -4,7 +4,7 @@ include "Componentes/ComboBoxMaestros.php";
 $database = new Database();
 $db = $database->connect();
 ?>
-<!-- <?php include '../../LoginAdministrador/inicio.php'; ?> -->
+<!-- <?php include '../LoginA/inicio.php'; ?> -->
 
 <!DOCTYPE html>
 <html lang="es">
