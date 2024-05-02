@@ -206,5 +206,111 @@ function modalBorrarVendedor(id, foto){
     });
 }
 
+function modalVerVendedor(id, codigo, nombre, descripcion, correo, telefono, horaInicio, horaFin, foto){
+    let codigoVendedor = document.getElementById('codigoVerVendedor');
+    let nombreVendedor = document.getElementById('nombreVerVendedor');
+    let descripcionVendedor = document.getElementById('descripcionVerVendedor');
+    let correoVendedor = document.getElementById('correoVerVendedor');
+    let telefonoVendedor = document.getElementById('telefonoVerVendedor');
+    let horaInicioVendedor = document.getElementById('horaInicioVerVendedor');
+    let horaFinVendedor = document.getElementById('horaFinVerVendedor');
+    let fotoVendedor = document.getElementById('imagenVerVendedor');
+
+    codigoVendedor.value = codigo;
+    nombreVendedor.value = nombre;
+    descripcionVendedor.value = descripcion;
+    correoVendedor.value = correo;
+    telefonoVendedor.value = telefono;
+    horaInicioVendedor.value = horaInicio;
+    horaFinVendedor.value = horaFin;
+    fotoVendedor.src = "PHP/imagenes/" + foto;
+    
+    const abrirModal = document.querySelector(`.modal_abrir_ver_vendedor_${id}`);
+    const modal = document.querySelector(".modal_ver_vendedor");
+    const cerrarModal = document.querySelector(".modal_cerrar_ver_vendedor");
+    abrirModal.addEventListener("click", (e)=>{
+        e.preventDefault();
+        modal.classList.add("modal--show--ver--vendedor");
+    });
+    cerrarModal.addEventListener("click", (e)=>{
+        e.preventDefault();
+        modal.classList.remove("modal--show--ver--vendedor");
+    });
+}
 
 
+
+// Vendedor pendiente
+function modalVerVendedorPendiente(id, codigo, nombre, descripcion, correo, telefono, horaInicio, horaFin, foto){
+
+    let codigoVendedor = document.getElementById('codigoVerVendedorPendiente');
+    let nombreVendedor = document.getElementById('nombreVerVendedorPendiente');
+    let descripcionVendedor = document.getElementById('descripcionVerVendedorPendiente');
+    let correoVendedor = document.getElementById('correoVerVendedorPendiente');
+    let telefonoVendedor = document.getElementById('telefonoVerVendedor');
+    let horaInicioVendedor = document.getElementById('horaInicioVendedorPendiente');
+    let horaFinVendedor = document.getElementById('horaFinVendedorPendiente');
+    let fotoVendedor = document.getElementById('imagenVendedorPendiente');
+
+    codigoVendedor.value = codigo;
+    nombreVendedor.value = nombre;
+    descripcionVendedor.value = descripcion;
+    correoVendedor.value = correo;
+    telefonoVendedor.value = telefono;
+    horaInicioVendedor.value = horaInicio;
+    horaFinVendedor.value = horaFin;
+    fotoVendedor.src = "PHP/imagenes/" + foto;
+    
+    const abrirModal = document.querySelector(`.modal_abrir_ver_vendedor_pendiente_${id}`);
+    const modal = document.querySelector(".modal_ver_vendedor_pendiente");
+    const cerrarModal = document.querySelector(".modal_cerrar_ver_vendedor_pendiente");
+    abrirModal.addEventListener("click", (e)=>{
+        e.preventDefault();
+        modal.classList.add("modal--show--ver--vendedor--pendiente");
+    });
+    cerrarModal.addEventListener("click", (e)=>{
+        e.preventDefault();
+        modal.classList.remove("modal--show--ver--vendedor--pendiente");
+    });
+}
+
+function modalBorrarVendedorPendiente(id, foto){
+
+    let idVendedor = document.getElementById('idEliminarVendedorPendiente');
+    let fotoVendedor = document.getElementById('fotoEliminarVendedorPendiente');
+
+    idVendedor.value = id;
+    fotoVendedor.value = foto;
+
+    const abrirModal = document.querySelector(`.modal_abrir_borrar_vendedor_pendiente_${id}`);
+    const modal = document.querySelector('.modal_borrar_vendedor_pendiente');
+    const cerrarModal = document.querySelector('.modal_cerrar_borrar_vendedor_pendiente');
+    abrirModal.addEventListener("click", (e)=>{
+        e.preventDefault();
+        modal.classList.add("modal--show--borrar--vendedor--pendiente");
+    });
+    
+    cerrarModal.addEventListener("click", (e)=>{
+        e.preventDefault();
+        modal.classList.remove("modal--show--borrar--vendedor--pendiente");
+    });
+
+}
+
+function modalAceptarVendedorPendiente(id){
+    
+    let idVendedor = document.getElementById('idAceptarVendedorPendiente');
+    idVendedor.value = id;
+    
+    console.log(id);
+    const abrirModal = document.querySelector(`.modal_abrir_aceptar_vendedor_pendiente_${id}`);
+    const modal = document.querySelector(".modal_aceptar_vendedor_pendiente");
+    const cerrarModal = document.querySelector(".modal_cerrar_aceptar_vendedor_pendiente");
+    abrirModal.addEventListener("click", ()=>{
+        modal.classList.add("modal--show--aceptar--vendedor--pendiente");
+    });
+    cerrarModal.addEventListener("click", ()=>{
+        modal.classList.remove("modal--show--aceptar--vendedor--pendiente");
+    });
+    
+}

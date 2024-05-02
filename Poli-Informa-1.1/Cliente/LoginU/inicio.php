@@ -1,7 +1,6 @@
-<?php 
-    if (!isset($_SESSION)) {
-        session_start();
-    }    
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
     // Verificar si no hay una sesión activa
     if(empty($_SESSION['CodeAlu'])){
         // Redireccionar a la página de inicio de sesión si no hay sesión activa
@@ -13,4 +12,4 @@
         header("Location: ../LoginU/index.php");
         exit();
     }
-?> 
+?>

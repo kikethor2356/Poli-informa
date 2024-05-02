@@ -7,10 +7,7 @@ $value = isset($_GET['categoria']) ? $_GET['categoria'] : "";
 $search = isset($_GET['search']) ? $_GET['search'] : "";
 $price = isset($_GET['price']) ? $_GET['price'] : "";
 
-$query_productos = "SELECT p.*, c.categoria_nombre 
-                    FROM cafeteriamodulo_a p 
-                    LEFT JOIN categorias_cafeteria c 
-                    ON p.prodcategoria_id = c.categoria_id";
+$query_productos = "SELECT p.*, c.categoria_nombre FROM cafeteriamodulo_a p LEFT JOIN categorias_cafeteria c ON p.prodcategoria_id = c.categoria_id";
 
 // Modificar la consulta para incluir la condición de la categoría
 if ($value !== "Todo") {
