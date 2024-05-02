@@ -29,7 +29,6 @@ function add(){
     $AluCorreo= $_POST ['AluCorreo'];
     $AluImage = $_FILES['AluImage']['name'];
     $AluPassword= $_POST ['AluPassword'];
-    $AluPassword_encriptada = sha1($AluPassword);//captura la contraseña y la encripta
     $sqlcode = "SELECT  id FROM  registroalu
                         WHERE   CodeAlu = '$CodeAlu'";
     $resultadocode = $conexion->query($sqlcode);
@@ -72,7 +71,7 @@ function edit(){
     $new_imagen  = $_FILES['AluImage']['name'];
     $old_imagen = $_POST['AluImagen_old'];
 
-    $AluPassword= md5($_POST ['AluPassword']);
+    $AluPassword= $_POST ['AluPassword'];
 
     if($new_imagen != ''){
         // Genera un nombre único para la nueva imagen
