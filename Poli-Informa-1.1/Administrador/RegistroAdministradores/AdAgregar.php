@@ -40,11 +40,11 @@ $conexion = $db->connect();
                     </div>
                     <div class="input-group">
                         <label>Carrera:</label>
-                        <input type="text"  maxlength="7" name="AdCarrera" placeholder="TPSI" onkeypress="validarInput(event)" required>
+                        <input type="text"  maxlength="7" name="AdCarrera" placeholder="TPSI (Solo si eres estudiante)" onkeypress="validarInput(event)">
                     </div>
                     <div class="input-group">
                         <label>Correo:</label>
-                        <input type="email" name="AdCorreo" placeholder="anonimato@gmail.com" required>
+                        <input type="email" name="AdCorreo" placeholder="anonimato@alumnos.udg.mx" required>
                     </div>
                     <div class="input-group">
                         <label>Imagen Administrador:</label>

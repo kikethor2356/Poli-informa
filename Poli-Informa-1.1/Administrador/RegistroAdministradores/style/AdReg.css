@@ -18,8 +18,8 @@ body {
 
 .envoltura {
     position: relative;
-    width: 400px;
-    height: 600px;
+    width: 25%;
+    height: 70%;
     background: #000;
     border-radius: 20px;
     box-shadow: 0 0 50px #0ef;
@@ -73,6 +73,7 @@ h1 {
 }
 
 button {
+    margin-right: 5%;
     position: relative;
     width: 45%;
     height: 40px;

@@ -137,7 +137,7 @@ $conexion = $db->connect();
                                 </tr>
                                 <tr>
                                     <td>Correo:</td>
-                                    <td><input type="email" name="AluCorreo" placeholder="anonimato@gmail.com" value="" id="campoCorreo"  required></td>
+                                    <td><input type="email" name="AluCorreo" placeholder="anonimato@alumnos.udg.mx" value="" id="campoCorreo"  required></td>
                                 </tr>
                                 <tr class="caja_imagen">
                                     <td class="cajita_textImagen">Imagen</td>

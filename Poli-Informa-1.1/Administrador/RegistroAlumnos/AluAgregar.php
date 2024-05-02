@@ -44,7 +44,7 @@ $conexion = $db->connect();
                     </div>
                     <div class="input-group">
                         <label>Correo:</label>
-                        <input type="email" name="AluCorreo" placeholder="anonimato@gmail.com" required>
+                        <input type="email" name="AluCorreo" placeholder="anonimato@alumnos.udg.mx" required>
                     </div>
                     <div class="input-group">
                         <label>Imagen Usuario:</label>

@@ -131,11 +131,11 @@ $conexion = $db->connect();
                                 </tr>
                                 <tr>
                                     <td>Carrera:</td>
-                                    <td><input type="text" maxlength="7" name="AdCarrera" placeholder="TPSI" value="" id="campoCarrera"  required></td>
+                                    <td><input type="text" maxlength="7" name="AdCarrera" placeholder="TPSI(Solo si eres estudiante)" value="" id="campoCarrera" ></td>
                                 </tr>
                                 <tr>
                                     <td>Correo:</td>
-                                    <td><input type="email" name="AdCorreo" placeholder="anonimato@gmail.com" value="" id="campoCorreo"  required></td>
+                                    <td><input type="email" name="AdCorreo"  placeholder="anonimato@alumnos.udg.mx" value="" id="campoCorreo"  required></td>
                                 </tr>
         
                                 <tr>
