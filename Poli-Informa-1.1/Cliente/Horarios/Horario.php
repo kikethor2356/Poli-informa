@@ -39,8 +39,8 @@
                     académicas de manera eficiente.
                 </p>
             </div>
-            <div class="contenido_horarios">
-                <form action="" method="POST">
+            <div class="contenido_horarios" id="horarios">
+                <form action="#horarios" method="POST">
                     <?php
                     include "../../Conexion/conexion.php";  //incluir la conexión
                     $database = new Database(); 
@@ -54,10 +54,19 @@
                     foreach ($opciones as $opcion) {
                         ?>
                             <option class="option" value='<?php echo $opcion;?>'><?php echo $opcion; ?></option>
+                           
+
+                        <
                         <?php
                     }
                     ?>
+                    
                     </select>
+                    <select name="turno" id="turno" class="selector-lab">
+                            <option value="Matutino">Matutino</option>
+                            <option value="Vespertino">Vespertino</option>
+                        </select>
+                        <br>
                     <button class="button" type="submit">Buscar</button>
                 </form>
 
@@ -67,71 +76,141 @@
                 // Mostrar el horario cuando se carga la página inicialmente
                 if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $nombre_laboratorio = $_POST['nombre_laboratorio'];
-                    $query = "SELECT id, dias, hora_inicio, hora_fin, maestro FROM horarios WHERE nombre_laboratorio = ?";
+                    $turno = $_POST['turno'];
+                    $query = "SELECT id, dias, hora_inicio, hora_fin, maestro, turno FROM horarios WHERE nombre_laboratorio = ? && turno = ?";
                     $stmt = $db->prepare($query);
-                    $stmt->bind_param('s', $nombre_laboratorio);
+                    $stmt->bind_param('ss', $nombre_laboratorio, $turno);
                     $stmt->execute();
                     $resultado = $stmt->get_result();
 
-                    $horario = array(
-                        'Lunes' => array(),
-                        'Martes' => array(),
-                        'Miercoles' => array(),
-                        'Jueves' => array(),
-                        'Viernes' => array(),
-                        'Sabado' => array(),
-                    );
-
-                    while ($fila = $resultado->fetch_assoc()) {
-                        $id = $fila['id'];
-                        $dias = $fila['dias'];
-                        $hora_inicio = $fila['hora_inicio'];
-                        $hora_fin = $fila['hora_fin'];
-                        $maestro = $fila['maestro'];
-
-                        // Agregar el horario al día correspondiente
-                        if (isset($horario[$dias])) {
-                            $horario[$dias][] = array('id' => $id, 'hora_inicio' => $hora_inicio, 'hora_fin' => $hora_fin, 'maestro' => $maestro);
-                        } else {
-                            // Si el día no está configurado correctamente, mostrar un mensaje de error
-                            echo "Error: Día inválido: $dias";
-                        }
-                    }
-
-                    // Mostrar la tabla de horarios
-                    echo "<h1 class='h1-lab'>$nombre_laboratorio</h1>";
-                    echo "<table  border:'4 '; class='table'>";
-                    echo "<tr><th style='background-color: #1e071e; color: #FFFFFF; padding: 8px; text-align: center; font-family:Arial;'>Horario</th>";
-                    foreach (['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'] as $dia) {
-                        echo "<th style='background-color: #1e071e; color: #FFFFFF; padding: 8px; text-align: center; font-family:Arial;'>$dia</th>";
-                    }
-                    echo "</tr>";
-
-                    // Generar las filas de la tabla
-                    for ($i = 7; $i < 20; $i++) {
-                        echo "<tr>";
-                        $hora_inicio = str_pad($i, 2, "0", STR_PAD_LEFT) . ":00";
-                        $hora_fin = str_pad(($i + 1), 2, "0", STR_PAD_LEFT) . ":00";
-                        echo "<td style=' border: 1px solid black; background-color: #781c77; color: black; padding: 8px; text-align: center; font-family:Arial; color:	#f8f9fa;'>$hora_inicio - $hora_fin</td>";
-
-                        foreach (['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'] as $dia) {
-                            echo "<td style='background-color: #FFFFFF; color: black; padding: 8px; text-align: center; font-family:Arial; border: 1px solid black'>";
-                            if (isset($horario[$dia])) {
-                                foreach ($horario[$dia] as $hora) {
-                                    if ($i >= (int)$hora['hora_inicio'] && $i <=  (int)$hora['hora_fin'] - 1) {
-                                        echo '<a href="../../Administrador/Horarios/ControllerShowProfile.php?nombre=' . $hora["maestro"] . '" style="margin-right: 10px; text-decoration: none; color: black ;">' . $hora["maestro"] . '</a>';
-                                    }
-                                }
+                    if($turno == "Matutino"){
+                        $horario = array(
+                            'Lunes' => array(),
+                            'Martes' => array(),
+                            'Miercoles' => array(),
+                            'Jueves' => array(),
+                            'Viernes' => array(),
+                            'Sabado' => array(),
+                        );
+    
+                        while ($fila = $resultado->fetch_assoc()) {
+                            $id = $fila['id'];
+                            $dias = $fila['dias'];
+                            $hora_inicio = $fila['hora_inicio'];
+                            $hora_fin = $fila['hora_fin'];
+                            $maestro = $fila['maestro'];
+    
+                            // Agregar el horario al día correspondiente
+                            if (isset($horario[$dias])) {
+                                $horario[$dias][] = array('id' => $id, 'hora_inicio' => $hora_inicio, 'hora_fin' => $hora_fin, 'maestro' => $maestro);
+                            } else {
+                                // Si el día no está configurado correctamente, mostrar un mensaje de error
+                                echo "Error: Día inválido: $dias";
                             }
-                            echo "</td>";
+                        }
+    
+                        // Mostrar la tabla de horarios
+                        echo "<h1 class='h1-lab'>$nombre_laboratorio</h1>";
+                        echo "<h2>$turno</h2>";
+                        echo "<table  border:'4 '; class='table'>";
+                        echo "<tr><th style='background-color: #1e071e; color: #FFFFFF; padding: 8px; text-align: center; font-family:Arial;'>Horario</th>";
+                        foreach (['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'] as $dia) {
+                            echo "<th style='background-color: #1e071e; color: #FFFFFF; padding: 8px; text-align: center; font-family:Arial;'>$dia</th>";
                         }
                         echo "</tr>";
+    
+                        // Generar las filas de la tabla
+                        for ($i = 7; $i < 14; $i++) {
+                            echo "<tr>";
+                            $hora_inicio = str_pad($i, 2, "0", STR_PAD_LEFT) . ":00";
+                            $hora_fin = str_pad(($i + 1), 2, "0", STR_PAD_LEFT) . ":00";
+                            echo "<td style=' border: 1px solid black; background-color: #781c77; color: black; padding: 8px; text-align: center; font-family:Arial; color:	#f8f9fa;'>$hora_inicio - $hora_fin</td>";
+    
+                            foreach (['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'] as $dia) {
+                                echo "<td style='background-color: #FFFFFF; color: black; padding: 8px; text-align: center; font-family:Arial; border: 1px solid black'>";
+                                if (isset($horario[$dia])) {
+                                    foreach ($horario[$dia] as $hora) {
+                                        if ($i >= (int)$hora['hora_inicio'] && $i <=  (int)$hora['hora_fin'] - 1) {
+                                            echo '<a href="../../Administrador/Horarios/ControllerShowProfile.php?nombre=' . $hora["maestro"] . '" style="margin-right: 10px; text-decoration: none; color: black ;">' . $hora["maestro"] . '</a>';
+                                        }
+                                    }
+                                }
+                                echo "</td>";
+                            }
+                            echo "</tr>";
+                        }
+    
+                        echo "</table>";
+                        echo "<br>";
+                    
                     }
 
-                    echo "</table>";
-                    echo "<br>";
+                    if ($turno == "Vespertino"){
+
+                        $horario = array(
+                            'Lunes' => array(),
+                            'Martes' => array(),
+                            'Miercoles' => array(),
+                            'Jueves' => array(),
+                            'Viernes' => array(),
+                            'Sabado' => array(),
+                        );
+    
+                        while ($fila = $resultado->fetch_assoc()) {
+                            $id = $fila['id'];
+                            $dias = $fila['dias'];
+                            $hora_inicio = $fila['hora_inicio'];
+                            $hora_fin = $fila['hora_fin'];
+                            $maestro = $fila['maestro'];
+    
+                            // Agregar el horario al día correspondiente
+                            if (isset($horario[$dias])) {
+                                $horario[$dias][] = array('id' => $id, 'hora_inicio' => $hora_inicio, 'hora_fin' => $hora_fin, 'maestro' => $maestro);
+                            } else {
+                                // Si el día no está configurado correctamente, mostrar un mensaje de error
+                                echo "Error: Día inválido: $dias";
+                            }
+                        }
+    
+                        // Mostrar la tabla de horarios
+                        echo "<h1 class='h1-lab'>$nombre_laboratorio</h1>";
+                        echo "<h2>$turno</h2>";
+                        echo "<table  border:'4 '; class='table'>";
+                        echo "<tr><th style='background-color: #1e071e; color: #FFFFFF; padding: 8px; text-align: center; font-family:Arial;'>Horario</th>";
+                        foreach (['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'] as $dia) {
+                            echo "<th style='background-color: #1e071e; color: #FFFFFF; padding: 8px; text-align: center; font-family:Arial;'>$dia</th>";
+                        }
+                        echo "</tr>";
+    
+                        // Generar las filas de la tabla
+                        for ($i = 14; $i < 21; $i++) {
+                            echo "<tr>";
+                            $hora_inicio = str_pad($i, 2, "0", STR_PAD_LEFT) . ":00";
+                            $hora_fin = str_pad(($i + 1), 2, "0", STR_PAD_LEFT) . ":00";
+                            echo "<td style=' border: 1px solid black; background-color: #781c77; color: black; padding: 8px; text-align: center; font-family:Arial; color:	#f8f9fa;'>$hora_inicio - $hora_fin</td>";
+    
+                            foreach (['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'] as $dia) {
+                                echo "<td style='background-color: #FFFFFF; color: black; padding: 8px; text-align: center; font-family:Arial; border: 1px solid black'>";
+                                if (isset($horario[$dia])) {
+                                    foreach ($horario[$dia] as $hora) {
+                                        if ($i >= (int)$hora['hora_inicio'] && $i <=  (int)$hora['hora_fin'] - 1) {
+                                            echo '<a href="../../Administrador/Horarios/ControllerShowProfile.php?nombre=' . $hora["maestro"] . '" style="margin-right: 10px; text-decoration: none; color: black ;">' . $hora["maestro"] . '</a>';
+                                        }
+                                    }
+                                }
+                                echo "</td>";
+                            }
+                            echo "</tr>";
+                        }
+    
+                        echo "</table>";
+                        echo "<br>";
+                    }
                 }
-                ?>
+                    ?>
+                    
+
+                  
             </div>
         </section>
     </div>

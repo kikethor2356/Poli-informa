@@ -84,14 +84,16 @@ body, html {
 }
 
 .selector-lab {
-    width: 300px;
+    margin-top: 5%;
+    margin-bottom: 1%;
+    width: 200px;
     padding: 10px;
     border: 2px solid #000;
     border-radius: 10px;
     font-size: 16px;
     color: #333;
     background-color: #fff;
-    margin-left:5% ;
+
 
 }
 
@@ -102,10 +104,10 @@ body, html {
 }
 
 .button {
-    background-color: #007bff;
+    background-color:  #007bff;
     height: 47px;
-    width: 100px;
-    margin: 5%;
+    width: 50%;
+    
     color: #fff;
     margin-left: 0;
     border-radius: 10px;
@@ -117,7 +119,7 @@ body, html {
 
 
 .button:hover {
-    background-color: #2967e1;
+    background-color: #0056b3;
 
 }
 
@@ -131,7 +133,7 @@ body, html {
     border-collapse: collapse;
     width: 90%;
     background-color: #FFFFFF;
-    margin-left: 5%;
+    margin-left: 9%;
     
     
 }
