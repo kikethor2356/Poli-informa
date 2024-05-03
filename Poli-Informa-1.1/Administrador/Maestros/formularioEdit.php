@@ -99,6 +99,9 @@ if ($resultado->num_rows > 0) {
         <label for="Codigo">Codigo del maestro:</label>
         <input type="text" name="Codigo" value="<?php echo $fila['Codigo']; ?>"><br>
 
+        <label for="Imagen_croquis2">Imagen Croquis:</label>
+        <input type="file" name="imagen_croquis"><br>
+
         <label for="Imagen_croquis">Imagen:</label>
         <input type="file" name="imagen"><br>
         <!-- <img id="imagePreview" alt="Previsualización de la imagen"> -->

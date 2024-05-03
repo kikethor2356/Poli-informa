@@ -72,10 +72,14 @@
         <label for="correo_maestro">Correo Electrónico:</label>
         <input type="email" id="correo_maestro" name="correo_maestro" required>
 
-        <label for="imagen_croquis">Cargar Imagen (solo imágenes):</label>
-        <input type="file" id="imagen_croquis" name="imagen_croquis" accept="image/*" required onchange="previsualizarImagen()">
+        <label for="imagen_croquis2">Imagen Croquis (solo imágenes):</label>
+        <input type="file" id="imagen_croquis2" name="imagen_croquis2" accept="image/*" required onchange="previsualizarImagen()">
+      
 
+        <label for="imagen_croquis">Imagen Profesor (solo imágenes):</label>
+        <input type="file" id="imagen_croquis" name="imagen_croquis" accept="image/*" required onchange="previsualizarImagen()">
         <img id="imagen_preview" src="#" alt="Vista previa de la imagen">
+        
 
         <input type="submit" value="Enviar">
     </form>

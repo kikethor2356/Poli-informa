@@ -5,7 +5,7 @@ require_once '../../Conexion/conexion.php'; // Asegúrate de incluir tu clase Da
 
 class Maestro extends Database
 {
-    public function crearMaestro($nombre, $apellidos, $correo, $codigo, $imagen)
+    public function crearMaestro($nombre, $apellidos, $correo, $codigo, $imagen,$imagen_croquis)
     {
         $conn = $this->connect();
 
@@ -13,24 +13,34 @@ class Maestro extends Database
         $directorio_destino = "ImgCroquis/";
 
         // Obtener el nombre del archivo y la ubicación temporal
+
+        $nombre_archivo_croquis = $_FILES["imagen_croquis2"]["name"];
+        $ubicacion_temporal_croquis = $_FILES["imagen_croquis2"]["tmp_name"];
+
         $nombre_archivo = $_FILES["imagen_croquis"]["name"];
         $ubicacion_temporal = $_FILES["imagen_croquis"]["tmp_name"];
 
         // Mover el archivo al directorio de destino
         $ruta_destino = $directorio_destino . $nombre_archivo;
+        $ruta_destino_croquis = $directorio_destino . $nombre_archivo_croquis;
         if (move_uploaded_file($ubicacion_temporal, $ruta_destino)) {
             echo "Imagen subida correctamente.";
+            if (move_uploaded_file($ubicacion_temporal_croquis, $ruta_destino_croquis)) {
+                echo "Imagen subida correctamente.";
+            } else {
+                echo "Error al subir la imagen.";
+            }
         } else {
             echo "Error al subir la imagen.";
         }
 
         // Preparar la consulta con marcadores de posición
-        $sql = "INSERT INTO maestros (Nombre, Apellidos, Correo, Codigo, Imagen)
-                VALUES (?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO maestros (Nombre, Apellidos, Correo, Codigo, Imagen, imagen_croquis)
+                VALUES (?, ?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($sql);
 
         // Vincular parámetros
-        $stmt->bind_param("sssss", $nombre, $apellidos, $correo, $codigo, $nombre_archivo);
+        $stmt->bind_param("ssssss", $nombre, $apellidos, $correo, $codigo, $nombre_archivo, $nombre_archivo_croquis);
 
         // Ejecutar la consulta
         if ($stmt->execute()) {
@@ -254,6 +264,7 @@ class Maestro extends Database
             echo '<th>Apellidos</th>';
             echo '<th>Código</th>';
             echo '<th>Correo</th>';
+            echo '<th>Croquis</th>';
             echo '<th>Imagen</th>';
             echo '<th>Editar</th>';
             echo '<th>Eliminar</th>';
@@ -264,6 +275,7 @@ class Maestro extends Database
                 echo '<td>' . $row["Apellidos"] . '</td>';
                 echo '<td>' . $row["Codigo"] . '</td>';
                 echo '<td>' . $row["Correo"] . '</td>';
+                echo '<td><img src="ImgCroquis/' . $row["imagen_croquis"] . '" alt="Imagen de croquis"></td>';
                 echo '<td><img src="ImgCroquis/' . $row["Imagen"] . '" alt="Imagen de Maestro"></td>';
                 echo '<td><a href="formularioEdit.php?id=' . $row["id"] . '" class="btn">Editar</a></td>';
                 echo '<td><a href="ControllerDelete.php?id=' . $row["id"] . '" class="btn">Eliminar</a></td>';
