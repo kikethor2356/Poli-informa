@@ -98,7 +98,7 @@
                                     <option value="Servicios">Servicios</option>
                                 </select>
                             </div> <!-- .campo -->
-                            <input type="submit" name="guardar" id="guardar">
+                            <input type="submit" name="enviar" id="enviar">
                         </fieldset>
                     </form>
                 </main>

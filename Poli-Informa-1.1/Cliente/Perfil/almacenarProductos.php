@@ -5,7 +5,7 @@ $conexion = $db->connect();
 session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if(isset($_POST['guardar'])){
+    if(isset($_POST['enviar'])){
         $codigoEstudiante = $_POST['codigovendedor'];
         $nombre = $_POST['nombre'];
         $descripcion = $_POST['descripcion'];
