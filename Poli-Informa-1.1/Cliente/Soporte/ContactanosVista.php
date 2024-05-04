@@ -38,25 +38,26 @@
                     </a>
                 </div>
             </div>
+
+            <div class="contenedor">
+                <form action="Contactanos/UsInsertar.php" method="post">
+                    <h1>Poli-informa</h1>
+                    <h2>Quejas y sugerencias</h2>
+
+                    <label>Nombre:</label>
+                    <input type="text" name="UsNombre" required><br>
+
+                    <label>Correo:</label>
+                    <input type="email" name="UsCorreo" required><br>
+
+                    <label>Comentario:</label>
+                    <textarea id="message" name="UsComentario" rows="4" required></textarea>
+
+                    <button class="boton" type="submit" value="registrar" name="registro">Enviar</button>
+                </form>
+            </div>
+
         </div>
-    </div>
-
-    <div class="contenedor">
-        <form action="Contactanos/UsInsertar.php" method="post">
-            <h1>Poli-informa</h1>
-            <h2>Quejas y sugerencias</h2>
-
-            <label>Nombre:</label>
-            <input type="text" name="UsNombre" required><br>
-
-            <label>Correo:</label>
-            <input type="email" name="UsCorreo" required><br>
-
-            <label>Comentario:</label>
-            <textarea id="message" name="UsComentario" rows="4" required></textarea>
-
-            <button class="boton" type="submit" value="registrar" name="registro">Enviar</button>
-        </form>
     </div>
     
     <?php include '../Partes/footer.php'; ?>
