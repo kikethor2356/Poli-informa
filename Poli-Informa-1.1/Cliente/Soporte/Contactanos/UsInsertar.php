@@ -1,5 +1,5 @@
 <?php
-    include('../../Conexion/conexion.php');
+    include('../../../Conexion/conexion.php');
     $db = new Database();
     $conexion = $db->connect();
     session_start();
@@ -15,6 +15,6 @@
         echo "No se inserto!";
     } 
     else{
-        header("Location: ContactanosVista.php");
+        header("Location: ../ContactanosVista.php");
     }
 ?>
