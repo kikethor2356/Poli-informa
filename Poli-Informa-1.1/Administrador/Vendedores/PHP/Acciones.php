@@ -326,4 +326,60 @@ if($metodoAccion == 8){
         exit();
     }
 }//FIN MÉTODOACCIÓN 8
+
+
+if($metodoAccion == 9){
+    $idProducto = (int) filter_var($_REQUEST['idEliminarProductoPendiente'], FILTER_SANITIZE_NUMBER_INT);
+    $nombreFoto = filter_var($_REQUEST['archivoEliminarProductoPendiente'], FILTER_SANITIZE_STRING);
+
+    $sqlDeleteVendedor = ("DELETE FROM PRODUCTOS_PENDIENTES WHERE ID = '$idProducto' ");
+    $resultDeleteVendedorPendiente = mysqli_query($conexion, $sqlDeleteVendedor);
+
+    $fotoVendedor = "imagenes/".$nombreFoto;
+    if(file_exists($fotoVendedor)){
+
+        if($resultDeleteVendedorPendiente != 0){
+            unlink($fotoVendedor);
+        }
+    }
+    header("Location: ../Productos_pendiente.php");
+    if ($resultDeleteVendedorPendiente) {
+        $_SESSION['success9'] = true;
+        header("Location: ../Productos_pendiente.php");
+        exit(); // Salir del script después de la redirección
+    } else {
+        $_SESSION['error9'] = true;
+        header("Location: ../Productos_pendiente.php");
+        exit(); // Salir del script después de la redirección
+    } 
+}
+
+if ($metodoAccion == 10) {
+
+    $idProducto = (int) filter_var($_REQUEST['idAceptarProductoPendiente'], FILTER_SANITIZE_NUMBER_INT);
+
+    $stmt = $conexion->prepare("INSERT INTO PRODUCTOS (nombre, codigoVendedor, precio, descripcion, nombreImagen, categoria) SELECT nombre, codigoVendedor, precio, descripcion, nombreImagen, categoria FROM PRODUCTOS_PENDIENTES WHERE ID = ?");
+    $stmt->bind_param("i", $idProducto);
+    $resultado = $stmt->execute();
+    $stmt->close();
+    
+    $stmtDeleteVendedor = $conexion->prepare("DELETE FROM PRODUCTOS_PENDIENTES WHERE ID = ?");
+    $stmtDeleteVendedor->bind_param("i", $idProducto);
+    $resultDeleteVendedor = $stmtDeleteVendedor->execute();
+    $stmtDeleteVendedor->close();
+
+    header("Location: ../Productos_pendiente.php");
+    if ($resultado) {
+        $_SESSION['success10'] = true;
+        header("Location: ../Productos_pendiente.php");
+        exit(); // Salir del script después de la redirección
+    } else {
+        $_SESSION['error10'] = true;
+        header("Location: ../Productos_pendiente.php");
+        exit(); // Salir del script después de la redirección
+    }
+}
+
+
+
 ?>

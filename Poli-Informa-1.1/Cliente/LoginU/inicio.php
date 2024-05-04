@@ -1,4 +1,3 @@
-Porque según yo lo mande de esta manera
 <?php
 if (session_status() === PHP_SESSION_NONE) {
     session_start();

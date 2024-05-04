@@ -7,7 +7,7 @@
 </head>
 <body>
     <div>
-        <a href="ContactanosVista.php">Agregar</a>
+        <a href="../ContactanosVista.php">Agregar</a>
         <table border="1">
             <tr>
                 <td>ID</td>
@@ -17,7 +17,10 @@
                 <td>Opciones</td>
             </tr>
             <?php
-                $cnx = mysqli_connect("localhost", "root", "", "poli_informa");
+                include('../../Conexion/conexion.php');
+                $db = new Database();
+                $conexion = $db->connect();
+
                 $sql = "SELECT id, UsNombre, UsCorreo, UsComentario FROM venqys order by id desc";
                 $rta = mysqli_query($conexion, $sql);
                 while ($mostrar = mysqli_fetch_row($rta)) {

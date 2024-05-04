@@ -1,0 +1,597 @@
+@import url("https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+
+h1{
+    text-align: center;
+}
+
+.menuC {
+    position: relative;
+    left: 70%;
+    top: -32em;
+    width: 25%; /* Ajusta el ancho según tu preferencia */
+    height: 30em;
+    overflow: scroll;
+    overflow-x: hidden;
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: rgb(247, 247, 181);
+}
+.opcion {
+    padding: 19px;    
+}
+.titulo1 .titu,
+.opcion .titu {
+    font-size: 60%;
+    font-weight: 500;
+    color: #757575;
+    text-transform: uppercase;
+    margin-bottom: 1%;
+}
+.opcion ul li {
+    position: relative;
+    list-style: none;
+    margin-bottom: 2px;
+}
+.opcion ul li a {
+    display: flex;
+    align-items: center;
+    gap: 10%;
+    font-size: 80%;
+    font-weight: 500;
+    color: #757575;
+    text-decoration: none;
+    padding: 5% 2%;
+    border-radius: 80px;
+    transition: all 0.3s;
+}
+.opcion ul li > a:hover,
+.opcion ul li.acti > a {
+    color: #000;
+    background-color: #f6f6f6;
+}
+.opcion ul li .icon {
+    font-size: 180%;
+}
+.opcion ul li .subtitulo {
+    flex: 1;
+}
+.opcion ul li .hilo {
+    font-size: 125%;
+    transition: all 0.3s;
+}
+.opcion ul li.acti .hilo {
+    transform: rotate(180deg);
+}
+.opcion .sub-opcion { 
+    display: none;
+    margin-left: 20%;
+    padding-left: 1%;
+    padding-top: 1%;
+    border-left: 1px solid #000;
+}
+.opcion .sub-opcion li a {
+    padding: 5% 8%;
+    font-size: 70%;
+}
+.opcion .sub-opcion2 { 
+    display: none;
+    margin-left: 20%;
+    padding-left: 1%;
+    padding-top: 1%;
+    border-left: 1px solid #000;
+}
+.opcion .sub-opcion2 li a {
+    padding: 10px 16px;
+    font-size: 70%;
+}
+.opcion:not(:last-child) {
+    padding-bottom: 5%;
+    margin-bottom: 10%;
+    border-bottom: 2px solid #f6f6f6;
+}
+/* Fin de menu de scrot */
+
+/*  */
+.secciones-escuela{
+    position: relative;
+    margin-top: 4em;
+    height: 40em;
+}
+/*  */
+
+
+/* contenedor img del corquis */
+#croquis {
+    position: relative;
+    left: 5%; /* Ajusta el porcentaje para que empiece donde termina el menú */
+    top: 0;
+    width: 50%; /* Ajusta el ancho según tu preferencia */
+    height: 35em;
+    overflow: hidden;
+    border-radius: 10%;
+    border: 2px solid black;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+/* REFERENCIA DE IMAGEN */
+
+.clase1{
+    position: absolute;
+    top: 0%;
+    width: 100%;
+    height: 100%;
+}
+
+.clase2{
+    position: absolute;
+    top: 110%;
+    width: 100%;
+    height: 100%;
+}
+
+.clase3{
+    position: absolute;
+    top: 220%;
+    width: 100%;
+    height: 100%;
+}
+
+.clase4{
+    position: absolute;
+    top: 330%;
+    width: 100%;
+    height: 100%;
+}
+
+.clase5{
+    position: absolute;
+    top: 440%;
+    width: 100%;
+    height: 100%;
+}
+
+.clase6{
+    position: absolute;
+    top: 550%;
+    width: 100%;
+    height: 100%;
+}
+
+.clase7{
+    position: absolute;
+    top: 660%;
+    width: 100%;
+    height: 100%;
+}
+
+.clase8{
+    position: absolute;
+    top: 770%;
+    width: 100%;
+    height: 100%;
+}
+
+.clase9{
+    position: absolute;
+    top: 880%;
+    width: 100%;
+    height: 100%;
+}
+
+.clase10{
+    position: absolute;
+    top: 990%;
+    width: 100%;
+    height: 100%;
+}
+
+.clase11{
+    position: absolute;
+    top: 1100%;
+    width: 100%;
+    height: 100%;
+}
+
+.clase12{
+    position: absolute;
+    top: 1210%;
+    width: 100%;
+    height: 100%;
+}
+
+.clase13{
+    position: absolute;
+    top: 1320%;
+    width: 100%;
+    height: 100%;
+}
+
+.clase14{
+    position: absolute;
+    top: 1430%;
+    width: 100%;
+    height: 100%;
+}
+
+.clase15{
+    position: absolute;
+    top: 1540%;
+    width: 100%;
+    height: 100%;
+}
+
+.clase16{
+    position: absolute;
+    top: 1650%;
+    width: 100%;
+    height: 100%;
+}
+
+.clase17{
+    position: absolute;
+    top: 1760%;
+    width: 100%;
+    height: 100%;
+}
+
+.clase18{
+    position: absolute;
+    top: 1870%;
+    width: 100%;
+    height: 100%;
+}
+
+.clase19{
+    position: absolute;
+    top: 1980%;
+    width: 100%;
+    height: 100%;
+}
+
+.clase20{
+    position: absolute;
+    top: 2090%;
+    width: 100%;
+    height: 100%;
+}
+
+.clase21{
+    position: absolute;
+    top: 2200%;
+    width: 100%;
+    height: 100%;
+}
+
+.clase22{
+    position: absolute;
+    top: 2310%;
+    width: 100%;
+    height: 100%;
+}
+
+.clase23{
+    position: absolute;
+    top: 2420%;
+    width: 100%;
+    height: 100%;
+}
+
+.clase24{
+    position: absolute;
+    top: 2530%;
+    width: 100%;
+    height: 100%;
+}
+
+.clase25{
+    position: absolute;
+    top: 2640%;
+    width: 100%;
+    height: 100%;
+}
+
+.clase26{
+    position: absolute;
+    top: 2750%;
+    width: 100%;
+    height: 100%;
+}
+
+.clase27{
+    position: absolute;
+    top: 2860%;
+    width: 100%;
+    height: 100%;
+}
+
+.clase28{
+    position: absolute;
+    top: 2970%;
+    width: 100%;
+    height: 100%;
+}
+
+.clase29{
+    position: absolute;
+    top: 3080%;
+    width: 100%;
+    height: 100%;
+}
+
+.clase30{
+    position: absolute;
+    top: 3190%;
+    width: 100%;
+    height: 100%;
+}
+
+.clase31{
+    position: absolute;
+    top: 3300%;
+    width: 100%;
+    height: 100%;
+}
+
+.clase32{
+    position: absolute;
+    top: 3410%;
+    width: 100%;
+    height: 100%;
+}
+
+.clase33{
+    position: absolute;
+    top: 3520%;
+    width: 100%;
+    height: 100%;
+}
+
+.clase34{
+    position: absolute;
+    top: 3630%;
+    width: 100%;
+    height: 100%;
+}
+
+.clase35{
+    position: absolute;
+    top: 3740%;
+    width: 100%;
+    height: 100%;
+}
+
+.clase36{
+    position: absolute;
+    top: 3850%;
+    width: 100%;
+    height: 100%;
+}
+
+/* REFERENCIA */
+
+.llamado1{
+    position: absolute;
+    top: 0%;
+    left: 0%;
+}
+
+.llamado2{
+    position: absolute;
+    top: 110%;
+    left: 0%;
+}
+
+.llamado3{
+    position: absolute;
+    top: 220%;
+    left: 0%;
+}
+
+.llamado4{
+    position: absolute;
+    top: 330%;
+    left: 0%;
+}
+
+.llamado5{
+    position: absolute;
+    top: 440%;
+    left: 0%;
+}
+
+.llamado6{
+    position: absolute;
+    top: 550%;
+    left: 0%;
+}
+
+.llamado7{
+    position: absolute;
+    top: 660%;
+    left: 0%;
+}
+
+.llamado8{
+    position: absolute;
+    top: 770%;
+    left: 0%;
+}
+
+.llamado9{
+    position: absolute;
+    top: 880%;
+    left: 0%;
+}
+
+.llamado10{
+    position: absolute;
+    top: 990%;
+    left: 0%;
+}
+
+.llamado11{
+    position: absolute;
+    top: 1100%;
+    left: 0%;
+}
+
+.llamado12{
+    position: absolute;
+    top: 1210%;
+    left: 0%;
+}
+
+.llamado13{
+    position: absolute;
+    top: 1320%;
+    left: 0%;
+}
+
+.llamado14{
+    position: absolute;
+    top: 1430%;
+    left: 0%;
+}
+
+.llamado15{
+    position: absolute;
+    top: 1540%;
+    left: 0%;
+}
+
+.llamado16{
+    position: absolute;
+    top: 1650%;
+    left: 0%;
+}
+
+.llamado17{
+    position: absolute;
+    top: 1760%;
+    left: 0%;
+}
+
+.llamado18{
+    position: absolute;
+    top: 1870%;
+    left: 0%;
+}
+
+.llamado19{
+    position: absolute;
+    top: 1980%;
+    left: 0%;
+}
+
+.llamado20{
+    position: absolute;
+    top: 2090%;
+    left: 0%;
+}
+
+.llamado21{
+    position: absolute;
+    top: 2200%;
+    left: 0%;
+}
+
+.llamado22{
+    position: absolute;
+    top: 2310%;
+    left: 0%;
+}
+
+.llamado23{
+    position: absolute;
+    top: 2420%;
+    left: 0%;
+}
+
+.llamado24{
+    position: absolute;
+    top: 2530%;
+    left: 0%;
+}
+
+.llamado25{
+    position: absolute;
+    top: 2640%;
+    left: 0%;
+}
+
+.llamado26{
+    position: absolute;
+    top: 2750%;
+    left: 0%;
+}
+
+.llamado27{
+    position: absolute;
+    top: 2860%;
+    left: 0%;
+}
+
+.llamado28{
+    position: absolute;
+    top: 2970%;
+    left: 0%;
+}
+
+.llamado29{
+    position: absolute;
+    top: 3080%;
+    left: 0%;
+}
+
+.llamado30{
+    position: absolute;
+    top: 3190%;
+    left: 0%;
+}
+
+.llamado31{
+    position: absolute;
+    top: 3300%;
+    left: 0%;
+}
+
+.llamado32{
+    position: absolute;
+    top: 3410%;
+    left: 0%;
+}
+
+.llamado33{
+    position: absolute;
+    top: 3520%;
+    left: 0%;
+}
+
+.llamado34{
+    position: absolute;
+    top: 3630%;
+    left: 0%;
+}
+
+.llamado35{
+    position: absolute;
+    top: 3740%;
+    left: 0%;
+}
+
+.llamado36{
+    position: absolute;
+    top: 3850%;
+    left: 0%;
+}

@@ -10,7 +10,7 @@
 #productos{
     position: absolute;
     left: 0%;
-    top: 0%;
+    top: -5%;
     width: 100%;
     height: 100vh;
 }
@@ -48,14 +48,11 @@
     border: none;
     cursor: pointer;
 }
-#nuevoProducto:hover{
-    transform: scale(0.9);
-}
 
 #mostrarProductos table{
     width: 95%;
     margin-left: 2%;
-    margin-top: 3%;
+    margin-top: 7%;
 
 }
 
@@ -78,30 +75,61 @@
 }
 
 /* Diseño de columna */
-#mostrarProductos #cabezaNombre{
-    width: 10%;
-}
-
-#mostrarProductos #cabezaDescripcion{
-    width: 15%;
-}
-
-#mostrarProductos #cabezaPrecio{
+#mostrarProductos h1{
     text-align: center;
-    width: 6%;
+    margin-top: 3%;
+}
+
+#mostrarProductos #nuevoProducto{
+    position: absolute;
+    top: 18%;
+    left: 85%;
+    padding-left: 1%;
+    padding-right: 1%;
+    padding-top: .5%;
+    padding-bottom: .5%;
+    background: rgb(143, 0, 0);
+    color: white;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+#mostrarProductos table{
+    width: 95%;
+    margin-left: 2%;
+    margin-top: 7%;
+}
+
+#mostrarProductos table, th, td{
+    border-collapse: collapse;
+    border: none ;
+}
+
+#mostrarProductos th{
+    border-bottom: 1px solid black;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    text-align: left;
+    font-weight: 600;
+}
+
+#mostrarProductos  td{
+    padding-top: .2%;
+    padding-bottom: .2%;
+}
+
+#mostrarProductos #cabezaNombre{
+    width: 30%;
 }
 
 #mostrarProductos #cabezaImagen{
-    width: 17%;
-}
-
-#mostrarProductos #cabezaCategoria{
-    width: 5%;
+    width: 10%;
 }
 
 #mostrarProductos #cabezaAcciones{
     text-align: center;
-    width: 12%;
+    width: 5%;
 }
 
 
@@ -171,10 +199,7 @@
     display: flex;
     justify-content: space-evenly;
 }
-.iconoEliminar:hover, .iconoEditar:hover, .iconoVer:hover{
-    transform: scale(0.9);
-}
-
+/* Fin de Estilo Andres */
 
 /* Ventana de Agregar */
 @media screen and (max-width: 768px) {
@@ -232,12 +257,13 @@
     padding: 1%;
     padding-left: 3%;
     text-align: center;
+    text-align: center;
 }
 
 .contenidoVentanaEmergente {
     display: inline;
-    width: 120vh;
-    height: 80vh;
+    width: 130vh;
+    height: 70vh;
     margin: auto;
     border-radius: 10px;
     background: rgb(255, 255, 255);
@@ -247,7 +273,7 @@
     transition: var(--transition);
 }
 
-.contenidoVentanaEmergente #nombre{
+.contenidoVentanaEmergente #informacion{
     position: absolute;
     width: 35%;
     height: 30%;
@@ -263,7 +289,7 @@
 
 .contenidoVentanaEmergente #Agregar1{
     margin-left: 5vh;
-    margin-top: 60vh;
+    margin-top: 44vh;
     width: 30vh;
     padding: 1vh;
     user-select: none;
@@ -331,14 +357,11 @@
     border-radius: 5px;
     position: fixed;
     width: 35vh;
-    right: 6%;
+    right: 9%;
 }
 
 #contenedor-imagen #imagen i{
     font-size: 100%;
-}
-#imagen:hover {
-    transform: scale(0.9);
 }
 
 #contenedor-imagen{
@@ -428,8 +451,8 @@
 
 .contenidoVentanaEditarProducto {
     display: inline;
-    width: 120vh;
-    height: 80vh;
+    width: 130vh;
+    height: 75vh;
     margin: auto;
     border-radius: 10px;
     background: rgb(255, 255, 255);
@@ -443,7 +466,7 @@
     position: absolute;
     width: 35%;
     height: 30%;
-    margin-top: .5vh;
+    margin-top: 10vh;
     padding-top: .6%;
     margin-left: 7.5vh;
     border-radius: 5px;
@@ -455,7 +478,7 @@
 
 .contenidoVentanaEditarProducto #Guardar {
     margin-left: 5vh;
-    margin-top: 50vh;
+    margin-top: 49vh;
     width: 30vh;
     padding: 1vh;
     user-select: none;
@@ -542,8 +565,8 @@
 #contenedor-imagen1{
     display: flex;
     position: absolute;
-    left: 51.5%;
-    top: 10vh;
+    left: 55.5%;
+    top: 15vh;
     flex-direction: column;
     background-color: white;
     width: 40vh;
@@ -724,6 +747,7 @@
     float: right;
     font-size: 28px;
     font-weight: bold;
+    margin-right: 1em;
 }
 
 .close:hover,
@@ -809,7 +833,6 @@
 .contenedor-eliminar button:hover {
     transform: scale(0.9);
 }
-
 
 /* Botones de pagina para los productos */
 #paginacion {

@@ -11,11 +11,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/ventanaAdministradores.css">
+    <link rel="stylesheet" href="style/ventanaAdministradores.css">
     <link rel="stylesheet" href="../Menu/menu.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <link rel="stylesheet" href="css/diseño.css">
+    <link rel="stylesheet" href="style/diseño.css">
     <script src="js/productos.js"></script>
     <title>Administrador - Productos</title>
 </head>
@@ -27,10 +27,10 @@
         <!-- ÁREA DE TRABAJO -->
         <main id="principal-productos">
             <section id="section-productos">
-                    <div id="mostrarProductos">
-                        <h1>Lista de productos</h1>
-                        <input type="text" id="buscar-producto" placeholder="Ingresar nombre del producto">
-                        <a class="modal_abrir_agregar_producto" onclick="modalAgregarProducto()"><button id="nuevoProducto" name="nuevoProducto"><i class="fa-solid fa-plus"></i>&nbsp;Agregar producto</button></a>
+                    <div id="mostrarProductosPendientes">
+                        <h1>Lista de productos pendientes</h1>
+                        <!-- <input type="text" id="buscar-producto" placeholder="Ingresar nombre del producto"> -->
+                        <!-- <a class="modal_abrir_agregar_producto" onclick="modalAgregarProducto()"><button id="nuevoProducto" name="nuevoProducto"><i class="fa-solid fa-plus"></i>&nbsp;Agregar producto</button></a> -->
 
                         <!-- Controles de paginación -->
                         <div id="paginacion">
@@ -56,21 +56,21 @@
                             $total_resultados = $fila['total'];
                             $total_paginas = ceil($total_resultados / $resultados_por_pagina);
 
-                            $consulta = "SELECT * FROM productos LIMIT $inicio, $resultados_por_pagina";
+                            $consulta = "SELECT * FROM productos_pendientes LIMIT $inicio, $resultados_por_pagina";
                             $resultado = mysqli_query($conexion, $consulta);
                             ?>
                         </div>
 
-                        <table id="tablaProductos" border="1px">
-                            <thead id="cabeceraTabla">
+                        <table id="tablaProductosPendientes" border="1px">
+                            <thead id="cabeceraTablaProductoPendiente">
                                 <tr>
-                                    <th id="cabezaNombre">Producto</th>
-                                    <th id="cabezaVendedor">Vendedor</th>
-                                    <th id="cabezaPrecio">Precio</th>
-                                    <th id="cabezaDescripcion">Descripción</th>
-                                    <th id="cabezaImagen">Imagen</th>
-                                    <th id="cabezaCategoria">Categoría</th>
-                                    <th id="cabezaAcciones">Acciones</th>
+                                    <th id="cabezaNombreProductoPendiente">Producto</th>
+                                    <th id="cabezaVendedorProductoPendiente">Vendedor</th>
+                                    <th id="cabezaPrecioProductoPendiente">Precio</th>
+                                    <th id="cabezaDescripcionProductoPendiente">Descripción</th>
+                                    <th id="cabezaImagenProductoPendiente">Imagen</th>
+                                    <th id="cabezaCategoriaProductoPendiente">Categoría</th>
+                                    <th id="cabezaAccionesProductoPendiente">Acciones</th>
                                 </tr>
                             </thead>
                             <?php 
@@ -80,24 +80,24 @@
                                 $clase_fila = ($contador % 2 == 0) ? 'fila2' : 'fila1';
                                 ?>
                                 <tr>
-                                    <td class="<?php echo $clase_fila; ?>"><input type="text" id="campoNombre" name="campoNombre" value="<?php echo $mostrar['nombre']?>" readonly></td>
-                                    <td class="<?php echo $clase_fila; ?>"><input type="text" id="campoVendedor" name="campoVendedor" value="<?php echo $mostrar['codigoVendedor']?>" readonly></td>
-                                    <td class="<?php echo $clase_fila; ?>"><input type="text" id="campoPrecio" name="campoPrecio" value="<?php echo $mostrar['precio']?>" readonly></td>
-                                    <td class="<?php echo $clase_fila; ?>"><input type="text" id="campoDescripcion" name="campoDescripcion" value="<?php echo $mostrar['descripcion']?>" readonly></td>
-                                    <td class="<?php echo $clase_fila; ?>"><input type="text" id="campoImagen" name="campoImagen" value="<?php echo $mostrar['nombreImagen']?>" readonly></td>
-                                    <td class="<?php echo $clase_fila; ?>"><input type="text" id="campoCategoria" name="campoCategoria" value="<?php echo $mostrar['categoria']?>" readonly></td>
-                                    <td id="campoAcciones" name="campoAcciones" class="<?php echo $clase_fila; ?>">
-                                        <a class="modal_abrir_borrar_producto_<?php echo $mostrar['ID'];?>" onclick="modalBorrarProducto('<?php echo $mostrar['ID'];?>', 
+                                    <td class="<?php echo $clase_fila; ?>"><input type="text" id="campoNombreProductoPendiente" name="campoNombreProductoPendiente" value="<?php echo $mostrar['nombre']?>" readonly></td>
+                                    <td class="<?php echo $clase_fila; ?>"><input type="text" id="campoVendedorProductoPendiente" name="campoVendedorProductoPendiente" value="<?php echo $mostrar['codigoVendedor']?>" readonly></td>
+                                    <td class="<?php echo $clase_fila; ?>"><input type="text" id="campoPrecioProductoPendiente" name="campoPrecioProductoPendiente" value="<?php echo $mostrar['precio']?>" readonly></td>
+                                    <td class="<?php echo $clase_fila; ?>"><input type="text" id="campoDescripcionProductoPendiente" name="campoDescripcionProductoPendiente" value="<?php echo $mostrar['descripcion']?>" readonly></td>
+                                    <td class="<?php echo $clase_fila; ?>"><input type="text" id="campoImagenProductoPendiente" name="campoImagenProductoPendiente" value="<?php echo $mostrar['nombreImagen']?>" readonly></td>
+                                    <td class="<?php echo $clase_fila; ?>"><input type="text" id="campoCategoriaProductoPendiente" name="campoCategoriaProductoPendiente" value="<?php echo $mostrar['categoria']?>" readonly></td>
+                                    <td id="campoAccionesProductoPendiente" name="campoAccionesProductoPendiente" class="<?php echo $clase_fila; ?>">
+                                        <a class="modal_abrir_borrar_producto_pendiente_<?php echo $mostrar['ID'];?>" onclick="modalBorrarProductoPendiente('<?php echo $mostrar['ID'];?>', 
                                         '<?php echo $mostrar['nombreImagen'];?>')">
                                         <img src="iconos/basura.png" alt="eliminar" id="iconoEliminar" title="Eliminar registro"></a>
                                         
-                                        <a class="modal_abrir_editar_producto_<?php echo $mostrar['ID'];?>" onclick="modalEditarProducto('<?php echo $mostrar['ID'];?>', 
+                                        <a class="modal_abrir_ver_producto_pendiente_<?php echo $mostrar['ID'];?>" onclick="modalVerProductoPendiente('<?php echo $mostrar['ID'];?>', 
                                         '<?php echo $mostrar['nombre'];?>', '<?php echo $mostrar['codigoVendedor'];?>', '<?php echo $mostrar['precio'];?>', 
                                         '<?php echo $mostrar['descripcion'];?>', '<?php echo $mostrar['nombreImagen'];?>', '<?php echo $mostrar['categoria'];?>')">
-                                        <img src="iconos/editar.png" alt="editar" id="iconoEditar" title="Editar registro"></a>
+                                        <img src="iconos/ver.png" alt="ver" id="iconoVer" title="Ver registro"></a>
 
-                                        <a class="modal_abrir_ver_vendedor"_<?php echo $mostrar['ID']; ?> href="">
-                                            <img src="iconos/aceptar.png" alt="aceptar" id="iconoAceptarVendedor" title="Aceptar vendedor">
+                                        <a class="modal_abrir_aceptar_producto_pendiente_<?php echo $mostrar['ID']; ?>" onclick="modalAceptarProductoPendiente('<?php echo $mostrar['ID'];?>')">
+                                            <img src="iconos/aceptar.png" alt="aceptar" id="iconoAceptarProductoPendiente" title="Aceptar producto">
                                         </a>
                                     </td>
                                 </tr>
@@ -201,45 +201,68 @@
                 ?>
                 <!-- FIN DE VENTANA DE VERIFICACION -->
 
-                <!-- VENTANA MODAL PARA EDITAR PRODUCTO -->
-                <div class="modal_editar_producto">    
-                    <div id="ventana-editar-producto">
-                        <h1>Editar producto</h1>
-                        <div id="iconoSalir" class="modal_cerrar_editar_producto">✖</div>
-                        <form action="PHP/Acciones.php?metodo=9" method="POST" id="formulario-editar" enctype="multipart/form-data">
-                            <label for="idProducto" id="paraId" hidden>ID: </label>
-                            <input type="text" id="idEditarProducto" name="idEditarProducto" value="" hidden><br>
-                            <label for="nombre">Nombre:</label>
-                            <input type="text" id="nombreEditarProducto" name="nombreEditarProducto" class="texto" value=""><br><br>
+                <!-- VENTANA MODAL PARA VER PRODUCTO PENDIENTE-->
+                <div class="modal_ver_producto_pendiente">    
+                    <div id="ventana-ver-producto-pendiente">
+                        <h1>Producto pendiente</h1>
+                        <div id="iconoSalirProductoPendiente" class="modal_cerrar_ver_producto_pendiente">✖</div>
+                        <form action="PHP/Acciones.php?metodo=9" method="POST" id="formulario-ver-producto-pendiente" enctype="multipart/form-data">
+                            <label for="idProductopendiente" id="paraIdProductoPendiente" hidden>ID: </label>
+                            <input type="text" id="idVerProducto" name="idVerProducto" value="" hidden><br>
+                            <label for="nombreVerProductoPendiente">Nombre:</label>
+                            <input type="text" id="nombreVerProductoPendiente" name="nombreVerProductoPendiente" class="texto" value="" readonly><br><br>
                             <label for="vendedor">Vendedor:</label>
-                            <input type="text" id="vendedorEditarProducto" name="vendedorEditarProducto" class="texto" value=""><br><br>   
+                            <input type="text" id="vendedorVerProductoPendiente" name="vendedorVerProductoPendiente" class="texto" value="" readonly><br><br>   
                             <label for="precio">Precio: </label>
-                            <input type="text" id="precioEditarProducto" name="precioEditarProducto" class="texto" value=""><br><br>
+                            <input type="text" id="precioVerProductoPendiente" name="precioVerProductoPendiente" class="texto" value="" readonly><br><br>
                             <label for="descripcionEditar">Descripción: </label><br>
-                            <textarea name="descripcionEditarProducto" id="descripcionEditarProducto"></textarea><br><br>
-                            <input type="file" id="archivoEditarProducto" name="archivoEditarProducto" onchange="mostrarArchivoEnEditar(event)" accept="image/jpeg, image/png">
-                            <label for="archivoEditarProducto" id="label-archivo">Imagen</label>
-                            <input type="text" id="rutaArchivoEditarProducto" name="rutaArchivoEditarProducto" disabled value=""><br><br>
-                            <label for="comboBoxCategoriaEditarProducto">Categoria: </label>
-                            <select id="comboBoxCategoriaEditarProducto" name="comboBoxCategoriaEditarProducto">
+                            <textarea name="descripcionVerProductoPendiente" id="descripcionVerProductoPendiente" readonly></textarea><br><br>
+                            <input type="file" id="archivoVerProductoPendiente" name="archivoVerProductoPendiente" onchange="mostrarArchivoEnEditar(event)" accept="image/jpeg, image/png">
+                            <label for="archivoEditarProducto" id="label-archivo-producto-pendiente">Imagen</label>
+                            <input type="text" id="rutaArchivoVerProductoPendiente" name="rutaArchivoVerProductoPendiente" readonly value=""><br><br>
+                            <label for="comboBoxCategoriaVerProductoPendiente">Categoria: </label>
+                            <!-- <select id="comboBoxCategoriaVerProductoPendiente" name="comboBoxCategoriaVerProductoPendiente">
                                 <option value="Dulce">Dulce</option>
                                 <option value="Salado">Salado</option>
                                 <option value="Mezclado">Mezclado</option>
                                 <option value="Tecnología">Tecnología</option>
-                            </select>
-                            <div id="rayaEditarProducto"></div>
-                            <input type="submit" id="editarProducto" name="editarProducto" value="Guardar">
+                            </select> -->
+                            <input type="text" id="categoriaVerProductoPendiente" name="categoriaVerProductoPendiente" class="texto" readonly>
+                            <div id="rayaVerProductoPendiente"></div>
+                            <!-- <input type="submit" id="verProductoPendiente" name="verProductoPendiente" value="Guardar"> -->
                         </form>     
                     </div>
                 </div>
-                <!--  FIN DE LA VENTANA MODAL PARA EDITAR PRODUCTOS -->
+                <!--  FIN DE LA VENTANA MODAL PARA VER PRODUCTOS PENDIENTES-->
+               
+
+
+                <!-- VENTANA MODAL PARA BORRAR PRODUCTOS -->
+                <div class="modal_borrar_producto_pendiente">
+                    <div id="ventana-eliminar-producto-pendiente">
+                        <h1>Eliminar registro</h1>
+                        <div id="salirProductoPendiente" class="modal_cerrar_borrar_producto_pendiente">✖</div>
+                        <div id="raya1ProductoPendiente"></div>
+                        <form action="PHP/Acciones.php?metodo=9" method="post" enctype="multipart/form-data" id="formulario-eliminar">
+                            <div id="contenedor-eliminar-producto-pendiente">
+                                <p>¿Desea eliminar el producto pendiente?</p>
+                            </div>
+                            <input type="text" id="idEliminarProductoPendiente" name="idEliminarProductoPendiente" value="" hidden>                            
+                            <input type="text" id="archivoEliminarProductoPendiente" name="archivoEliminarProductoPendiente" value="" hidden>
+                            <input type="submit" name="borrarProductoPendiente" id="borrarProductoPendiente" value="Borrar">
+                            
+                        </form>
+                        <div id="raya2ProductoPendiente"></div>
+                    </div>
+                </div>           
+                <!-- FIN DE LA VENTANA MODAL PARA BORRAR PRODUCTOS PENDIENTES--> 
                 <!-- VENATANA DE VERIFICACION -->
                 <?php
                 if(isset($_SESSION['success9']) && $_SESSION['success9']) {
                     echo "<script>
                             Swal.fire({
-                                title: 'Editar',
-                                text: 'La editación fue todo un éxito',
+                                title: 'Eliminar',
+                                text: 'La eliminación fue todo un éxito',
                                 icon: 'success',
                                 confirmButtonText: 'Aceptar'
                             });
@@ -249,7 +272,7 @@
                     echo "<script>
                             Swal.fire({
                                 title: 'Error',
-                                text: 'No fue posible editarlo, inténtelo de nuevo',
+                                text: 'No fue posible eliminarlo, inténtelo de nuevo',
                                 icon: 'error',
                                 confirmButtonText: 'Cerrar'
                             });
@@ -257,35 +280,33 @@
                     unset($_SESSION['error9']); // Eliminar la variable de sesión
                 }
                 ?>
-                <!-- FIN DE VENTANA DE VERIFICACION -->
-
-
-                <!-- VENTANA MODAL PARA BORRAR PRODUCTOS -->
-                <div class="modal_borrar_producto">
-                    <div id="ventana-eliminar-producto">
-                        <h1>Eliminar registro</h1>
-                        <div id="salir" class="modal_cerrar_borrar_producto">✖</div>
-                        <div id="raya1"></div>
-                        <form action="PHP/Acciones.php?metodo=10" method="post" enctype="multipart/form-data" id="formulario-eliminar">
-                            <div id="contenedor-eliminar">
-                                <p>¿Desea eliminar el producto?</p>
+                <!-- FIN DE VENTANA DE VERIFICACION -->      
+                
+                <!-- VENTANA MODAL PARA ACEPTAR PRODUCTOS PENDIENTES -->
+                <div class="modal_aceptar_producto_pendiente">
+                    <div id="ventana-aceptar-producto-pendiente">
+                        <h1>Aceptar producto</h1>
+                        <div id="salirProductoPendiente" class="modal_cerrar_aceptar_producto_pendiente">✖</div>
+                        <div id="raya1ProductoPendiente"></div>
+                        <form action="PHP/Acciones.php?metodo=10" method="post" enctype="multipart/form-data" id="formulario-aceptar-producto-pendiente">
+                            <div id="contenedor-aceptar-producto-pendiente">
+                                <p>¿Desea confirmar el producto?</p>
                             </div>
-                            <input type="text" id="idEliminarProducto" name="idEliminarProducto" value="" hidden>                            
-                            <input type="text" id="archivoEliminarProducto" name="archivoEliminarProducto" value="" hidden>
-                            <input type="submit" name="borrarProducto" id="borrarProducto" value="Borrar">
+                            <input type="text" id="idAceptarProductoPendiente" name="idAceptarProductoPendiente" value="" hidden>                            
+                            <input type="text" id="archivoAceptarProductoPendiente" name="archivoAceptarProductoPendiente" value="" hidden>
+                            <input type="submit" name="aceptarProductoPendiente" id="aceptarProductoPendiente" value="Agregar">
                         </form>
-                        <div id="raya2"></div>
+                        <div id="raya2ProductoPendiente"></div>
                     </div>
                 </div>           
-                <!-- FIN DE LA VENTANA MODAL PARA BORRAR PRODUCTOS -->
-                <!-- FIN DE VENTANA MODAL PARA ELIMINAR AL VENDEDOR --> 
+                <!-- FIN DE LA VENTANA MODAL PARA ACEPTAR PRODUCTOS PENDIENTES--> 
                 <!-- VENATANA DE VERIFICACION -->
                 <?php
                 if(isset($_SESSION['success10']) && $_SESSION['success10']) {
                     echo "<script>
                             Swal.fire({
                                 title: 'Eliminar',
-                                text: 'La eliminación fue todo un éxito',
+                                text: 'Producto agregado',
                                 icon: 'success',
                                 confirmButtonText: 'Aceptar'
                             });
@@ -295,7 +316,7 @@
                     echo "<script>
                             Swal.fire({
                                 title: 'Error',
-                                text: 'No fue posible eliminarlo, inténtelo de nuevo',
+                                text: 'No fue posible agregarlo, inténtelo de nuevo',
                                 icon: 'error',
                                 confirmButtonText: 'Cerrar'
                             });
@@ -303,7 +324,10 @@
                     unset($_SESSION['error10']); // Eliminar la variable de sesión
                 }
                 ?>
-                <!-- FIN DE VENTANA DE VERIFICACION -->                                               
+                <!-- FIN DE VENTANA DE VERIFICACION -->
+
+
+
             </section>
         </main>
     </div>

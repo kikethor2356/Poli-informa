@@ -21,7 +21,7 @@ if(isset($_SESSION['CodeAlu'])) {
     echo "Error: El código del estudiante no está presente en la sesión.";
     exit();
 }
-?>
+?> 
 
 <!DOCTYPE html>
 <html lang="es">

@@ -128,6 +128,111 @@ function modalBorrarProducto(id, foto){
 
 }
 
+function modalVerProducto(id, nombre, codigo, precio, descripcion, foto, categoria) {
+
+    let nombreProducto = document.getElementById('nombreVerProducto');
+    let codigoProducto = document.getElementById('vendedorVerProducto');
+    let precioProducto = document.getElementById('precioVerProducto');
+    let descripcionProducto = document.getElementById('descripcionVerProducto');
+    let fotoProducto = document.getElementById('rutaArchivoVerProducto');
+    let categoriaProducto = document.getElementById('categoriaVerProducto');
+
+    nombreProducto.value = nombre;
+    codigoProducto.value = codigo;
+    precioProducto.value = precio;
+    descripcionProducto.value = descripcion;
+    fotoProducto.value = foto;
+    categoriaProducto.value = categoria;
+
+    const abrirModal = document.querySelector(`.modal_abrir_ver_producto_${id}`);
+    const modal = document.querySelector('.modal_ver_producto');
+    const cerrarModal = document.querySelector('.modal_cerrar_ver_producto');
+
+    abrirModal.addEventListener("click", (e)=>{
+        e.preventDefault();
+        modal.classList.add("modal--show--ver--producto");
+    });
+    cerrarModal.addEventListener("click", (e)=>{
+        e.preventDefault();
+        modal.classList.remove("modal--show--ver--producto");
+    });
+
+}  
+
+
+
+
+
+// BORRAR PRODUCTOS PENDIENTES
+function modalBorrarProductoPendiente(id, foto){
+
+    let idProducto = document.getElementById('idEliminarProductoPendiente');
+    let fotoProducto = document.getElementById('archivoEliminarProductoPendiente');
+    idProducto.value = id;
+    fotoProducto.value = foto;
+
+    const abrirModal = document.querySelector(`.modal_abrir_borrar_producto_pendiente_${id}`);
+    const modal = document.querySelector('.modal_borrar_producto_pendiente');
+    const cerrarModal = document.querySelector('.modal_cerrar_borrar_producto_pendiente');
+    abrirModal.addEventListener("click", (e)=>{
+        e.preventDefault();
+        modal.classList.add("modal--show--borrar--producto--pendiente");
+    });
+    cerrarModal.addEventListener("click", (e)=>{
+        e.preventDefault();
+        modal.classList.remove("modal--show--borrar--producto--pendiente");
+    });
+}
+
+// VER PRODUCTO PENDIENTE
+function modalVerProductoPendiente(id, nombre, codigo, precio, descripcion, foto, categoria) {
+
+    let nombreProducto = document.getElementById('nombreVerProductoPendiente');
+    let codigoProducto = document.getElementById('vendedorVerProductoPendiente');
+    let precioProducto = document.getElementById('precioVerProductoPendiente');
+    let descripcionProducto = document.getElementById('descripcionVerProductoPendiente');
+    let fotoProducto = document.getElementById('rutaArchivoVerProductoPendiente');
+    let categoriaProducto = document.getElementById('categoriaVerProductoPendiente');
+    nombreProducto.value = nombre;
+    codigoProducto.value = codigo;
+    precioProducto.value = precio;
+    descripcionProducto.value = descripcion;
+    fotoProducto.value = foto;
+    categoriaProducto.value = categoria;
+
+    const abrirModal = document.querySelector(`.modal_abrir_ver_producto_pendiente_${id}`);
+    const modal = document.querySelector('.modal_ver_producto_pendiente');
+    const cerrarModal = document.querySelector('.modal_cerrar_ver_producto_pendiente');
+    abrirModal.addEventListener("click", (e)=>{
+        e.preventDefault();
+        modal.classList.add("modal--show--ver--producto--pendiente");
+    });
+    cerrarModal.addEventListener("click", (e)=>{
+        e.preventDefault();
+        modal.classList.remove("modal--show--ver--producto--pendiente");
+    });
+}
+
+function modalAceptarProductoPendiente(id) {
+    let idProducto = document.getElementById('idAceptarProductoPendiente');
+    idProducto.value = id;
+
+    const abrirModal = document.querySelector(`.modal_abrir_aceptar_producto_pendiente_${id}`);
+    const modal = document.querySelector('.modal_aceptar_producto_pendiente');
+    const cerrarModal = document.querySelector('.modal_cerrar_aceptar_producto_pendiente');
+
+    abrirModal.addEventListener("click", (e) =>{
+        e.preventDefault();
+        modal.classList.add("modal--show--aceptar--producto--pendiente");
+    });
+    cerrarModal.addEventListener("click", (e) =>{
+        e.preventDefault();
+        modal.classList.remove("modal--show--aceptar--producto--pendiente");
+    });
+}
+
+
+
 
 function modalAgregarVendedor(){
 
@@ -302,7 +407,7 @@ function modalAceptarVendedorPendiente(id){
     let idVendedor = document.getElementById('idAceptarVendedorPendiente');
     idVendedor.value = id;
     
-    console.log(id);
+    // console.log(id);
     const abrirModal = document.querySelector(`.modal_abrir_aceptar_vendedor_pendiente_${id}`);
     const modal = document.querySelector(".modal_aceptar_vendedor_pendiente");
     const cerrarModal = document.querySelector(".modal_cerrar_aceptar_vendedor_pendiente");

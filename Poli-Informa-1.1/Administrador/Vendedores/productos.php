@@ -11,11 +11,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/ventanaAdministradores.css">
+    <link rel="stylesheet" href="style/ventanaAdministradores.css">
     <link rel="stylesheet" href="../Menu/menu.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <link rel="stylesheet" href="css/diseño.css">
+    <link rel="stylesheet" href="style/diseño.css">
     <script src="js/productos.js"></script>
     <title>Administrador - Productos</title>
 </head>
@@ -29,7 +29,7 @@
             <section id="section-productos">
                     <div id="mostrarProductos">
                         <h1>Lista de productos</h1>
-                        <input type="text" id="buscar-producto" placeholder="Ingresar nombre del producto">
+                        <!-- <input type="text" id="buscar-producto" placeholder="Ingresar nombre del producto"> -->
                         <!-- <a class="modal_abrir_agregar_producto" onclick="modalAgregarProducto()"><button id="nuevoProducto" name="nuevoProducto"><i class="fa-solid fa-plus"></i>&nbsp;Agregar producto</button></a> -->
 
                         <!-- Controles de paginación -->
@@ -96,8 +96,10 @@
                                         '<?php echo $mostrar['descripcion'];?>', '<?php echo $mostrar['nombreImagen'];?>', '<?php echo $mostrar['categoria'];?>')">
                                         <img src="iconos/editar.png" alt="editar" id="iconoEditar" title="Editar registro"></a>
 
-                                        <a class="modal_abrir_ver_vendedor"_<?php echo $mostrar['ID']; ?> href="">
-                                            <img src="iconos/ver.png" alt="ver" id="iconoVerVendedor" title="Ver vendedor">
+                                        <a class="modal_abrir_ver_producto_<?php echo $mostrar['ID']; ?>" onclick="modalVerProducto('<?php echo $mostrar['ID'];?>', 
+                                        '<?php echo $mostrar['nombre'];?>', '<?php echo $mostrar['codigoVendedor'];?>', '<?php echo $mostrar['precio'];?>', 
+                                        '<?php echo $mostrar['descripcion'];?>', '<?php echo $mostrar['nombreImagen'];?>', '<?php echo $mostrar['categoria'];?>')">
+                                            <img src="iconos/ver.png" alt="ver" id="iconoVerProducto" title="Ver registro">
                                         </a>
                                     </td>
                                 </tr>
@@ -148,22 +150,26 @@
                             <h2>Categoría del producto</h2>
                             <ul>
                                 <li>
-                                    <input type="radio" name="categoria" id="Dulce" value="Dulce" checked>
-                                    <label for="Dulce">Dulce</label>
+                                    <input type="radio" name="categoria" id="alimentos" value="Alimentos y bebidas" checked>
+                                    <label for="alimentos">Alimentos y bebidas</label>
 
                                 </li>
                                 <li>
-                                    <input type="radio" name="categoria" id="Salado" value="Salado">
-                                    <label for="Salado">Salado</label>
+                                    <input type="radio" name="categoria" id="tecnologia" value="Tecnología">
+                                    <label for="tecnologia">Tecnología</label>
 
                                 </li>
                                 <li>
-                                    <input type="radio" name="categoria" id="Mezclado" value="Mezclado">
-                                    <label for="Mezclado">Mezclado</label>
+                                    <input type="radio" name="categoria" id="ropa" value="Ropa y moda">
+                                    <label for="ropa">Ropa y moda</label>
                                 </li>
                                 <li>
-                                    <input type="radio" name="categoria" id="Tecnología" value="Tecnología">
-                                    <label for="Tecnología">Tecnología</label>
+                                    <input type="radio" name="categoria" id="joyeria" value="Joyería y accesorios">
+                                    <label for="joyeria">Joyería y accesorios</label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="categoria" id="servicios" value="Servicios">
+                                    <label for="servicios">Servicios</label>
                                 </li>
                             </ul>
                         <!-- FIN DIV AGREGAR CATEGORÍA -->
@@ -222,10 +228,11 @@
                             <input type="text" id="rutaArchivoEditarProducto" name="rutaArchivoEditarProducto" disabled value=""><br><br>
                             <label for="comboBoxCategoriaEditarProducto">Categoria: </label>
                             <select id="comboBoxCategoriaEditarProducto" name="comboBoxCategoriaEditarProducto">
-                                <option value="Dulce">Dulce</option>
-                                <option value="Salado">Salado</option>
-                                <option value="Mezclado">Mezclado</option>
+                                <option value="Alimentos y bebidas">Alimentos y bebidas</option>
                                 <option value="Tecnología">Tecnología</option>
+                                <option value="Ropa y moda">Ropa y moda</option>
+                                <option value="Joyería y accesorios">Joyería y accesorios</option>
+                                <option value="Servicios">Servicios</option>
                             </select>
                             <div id="rayaEditarProducto"></div>
                             <input type="submit" id="editarProducto" name="editarProducto" value="Guardar">
@@ -303,7 +310,42 @@
                     unset($_SESSION['error2']); // Eliminar la variable de sesión
                 }
                 ?>
-                <!-- FIN DE VENTANA DE VERIFICACION -->                                               
+                <!-- FIN DE VENTANA DE VERIFICACION -->    
+                
+                <!-- VENTANA MODAL PARA VER EL PRODUCTO-->
+                <div class="modal_ver_producto">    
+                    <div id="ventana-ver-producto">
+                        <h1>Producto</h1>
+                        <div id="iconoSalirProducto" class="modal_cerrar_ver_producto">✖</div>
+                        <form action="PHP/Acciones.php?metodo=11" method="POST" id="formulario-ver-producto" enctype="multipart/form-data">
+                            <label for="idProducto" id="paraIdProducto" hidden>ID: </label>
+                            <input type="text" id="idVerProducto" name="idVerProducto" value="" hidden><br>
+                            <label for="nombreVerProducto">Nombre:</label>
+                            <input type="text" id="nombreVerProducto" name="nombreVerProducto" class="texto" value="" readonly><br><br>
+                            <label for="vendedor">Vendedor:</label>
+                            <input type="text" id="vendedorVerProducto" name="vendedorVerProducto" class="texto" value="" readonly><br><br>   
+                            <label for="precio">Precio: </label>
+                            <input type="text" id="precioVerProducto" name="precioVerProducto" class="texto" value="" readonly><br><br>
+                            <label for="descripcionEditar">Descripción: </label><br>
+                            <textarea name="descripcionVerProducto" id="descripcionVerProducto" readonly></textarea><br><br>
+                            <input type="file" id="archivoVerProducto" name="archivoVerProducto" onchange="mostrarArchivoEnEditar(event)" accept="image/jpeg, image/png">
+                            <label for="archivoEditarProduct" id="label-archivo-producto" disabled>Imagen</label>
+                            <input type="text" id="rutaArchivoVerProducto" name="rutaArchivoVerProducto" readonly value=""><br><br>
+                            <label for="comboBoxCategoriaVerProducto">Categoria: </label>
+                            <!-- <select id="comboBoxCategoriaVerProducto" name="comboBoxCategoriaVerProducto">
+                                <option value="Dulce">Dulce</option>
+                                <option value="Salado">Salado</option>
+                                <option value="Mezclado">Mezclado</option>
+                                <option value="Tecnología">Tecnología</option>
+                            </select> -->
+                            <input type="text" id="categoriaVerProducto" name="categoriaVerProducto" class="texto" readonly>
+                            <div id="rayaVerProducto"></div>
+                            <!-- <input type="submit" id="verProducto" name="verProducto" value="Guardar"> -->
+                        </form>     
+                    </div>
+                </div>
+                <!--  FIN DE LA VENTANA MODAL PARA VER PRODUCTOS-->
+
             </section>
         </main>
 

@@ -105,6 +105,17 @@ select{
     outline: none;
 }
 
+#categoria{
+    border-radius: 50px;
+    border: 2px solid black;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    padding-left: 3%;
+    padding-right: 9%;
+    cursor: pointer;
+    color: black;
+}
+
 input[type=submit]{
     margin-top: 4rem;
     border: none;

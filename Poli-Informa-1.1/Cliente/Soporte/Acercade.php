@@ -16,7 +16,7 @@
         <!-- <div class="text"> -->
             <!-- Contenido de todos -->
             <header class="cabecera">
-                <img class="cabecera__imagen"  src="imagenes/hero.jpg" alt="imagen terminos y condiciones">
+                <img class="cabecera__imagen"  src="imagenes/Acercade.jpg" alt="imagen terminos y condiciones">
                 <div class="cabecera__hero">
                     <h1 class="cabecera__titulo">Acerca de POLI-INFORMA</h1>
                 </div>
@@ -48,7 +48,7 @@
                         <p>Para conocer más de POLI-INFORMA puedes navegar en las siguientes referencias</p><br>
                         <!-- <p>Aqui algunas referencias por si quieres ver a más a detalle cada apartado del portal.</p> -->
                         <div class="ref">
-                            <a href="../Soporte/" class="referencia1"><p>Preguntas frecuentes <i class="fa-solid fa-arrow-up-right-from-square open"></i></p></a>
+                            <a href="../Soporte/Preguntas_frecuentes.php" class="referencia1"><p>Preguntas frecuentes <i class="fa-solid fa-arrow-up-right-from-square open"></i></p></a>
                             <hr>
                             <a href="../Soporte/Terminos_Condiciones.php" class="referencia2"><p>Terminos y condiciones <i class="fa-solid fa-arrow-up-right-from-square open"></i></p></a>
                             <hr>

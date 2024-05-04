@@ -58,7 +58,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="../../Cliente/Horarios/Horario.php">
+                            <a href="../../Cliente/Horarios/Horarios.php">
                                 <i class="icon fa-solid fa-clock"></i>
                                 <span class="text">Horarios</span>
                             </a>
@@ -79,7 +79,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="../Soporte/">
+                                    <a href="../Soporte/Preguntas_frecuentes.php">
                                         <span class="text">Preguntas frecuentes</span>
                                     </a>
                                 </li>

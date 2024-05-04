@@ -1,6 +1,8 @@
 <?php
+    include '../LoginU/inicio.php';
     include('../../Conexion/conexion.php');
-    session_start();
+    $db = new Database();
+    $conexion = $db->connect();
 
     $idProducto = (int) filter_var($_REQUEST['dnf'], FILTER_SANITIZE_NUMBER_INT);
 
@@ -32,7 +34,7 @@
 </head>
 <body>
     
-    <?php include("MenuUsuario.php"); ?>
+    <?php include("../Partes/MenuUsuario.php"); ?>
 
     <div class="home">
         <div class="text">

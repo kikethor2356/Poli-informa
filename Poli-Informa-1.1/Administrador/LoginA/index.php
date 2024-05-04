@@ -2,7 +2,7 @@
     session_start();
     // Verificar si hay una sesión activa como administrador
     if (!empty($_SESSION['AdCode'])) {
-        header("Location: ../Avisos/vista_categoria.php");
+        header("Location: ../Avisos/AdminAvisos.php");
         exit();
     }
 ?>

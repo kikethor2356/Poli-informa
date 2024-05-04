@@ -53,7 +53,7 @@
                         $esVendedor = $mostrar['esVendedor'];                
                         // Mostrar enlaces según el valor de esVendedor
                         if ($esVendedor) {    
-                            echo '<section class="productos"><a href="#productos" onclick="formularioproducto(1)">Subir productos</a></section>';
+                            echo '<section class="productos"><a href="#productos" onclick="formularioproducto()">Subir productos</a></section>';
                         } else {
                             echo '<section class="vendedores"><a href="vendedorespen.php">Registrarse como vendedor</a></section>';
                         }
@@ -65,7 +65,7 @@
                 <!-- Formulario de productos -->
                 <main id="contenedor-principal" hidden>
                     <h1><a name="productos"></a>Registro de productos</h1>
-                    <form class="formulario" action="almacenarVendedores.php" method="post" enctype="multipart/form-data">
+                    <form class="formulario" action="../../Administrador/Vendedores/PHP/Acciones.php?metodo=10" method="post" enctype="multipart/form-data">
                         <fieldset class="fieldset">
                             <h2 class="fieldset__titulo">Información del producto</h2>
                             <div class="campo">
@@ -83,10 +83,20 @@
                             <div class="campo">
                                 <label for="descripcion">Descripción del producto</label>
                                 <textarea name="descripcion" id="descripcion" required></textarea>
-                            </div> <!-- .campo -->                        
+                            </div> <!-- .campo -->                   
                             <div class="campo">
                                 <label for="imagen">Fotografía</label>
                                 <input type="file" name="imagen" id="imagen" accept="image/*" required>
+                            </div> <!-- .campo -->
+                            <div class="campo">
+                                <label for="categoria">Categoria: </label>
+                                <select id="categoria" name="categoria" required>
+                                    <option value="Alimentos y bebidas">Alimentos y bebidas</option>
+                                    <option value="Tecnología">Tecnología</option>
+                                    <option value="Ropa y moda">Ropa y moda</option>
+                                    <option value="Joyería y accesorios">Joyería y accesorios</option>
+                                    <option value="Servicios">Servicios</option>
+                                </select>
                             </div> <!-- .campo -->
                             <input type="submit" name="guardar" id="guardar">
                         </fieldset>
