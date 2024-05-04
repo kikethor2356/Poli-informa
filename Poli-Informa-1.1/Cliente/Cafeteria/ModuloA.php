@@ -124,6 +124,6 @@
             </div><br>
         </div>
     </div>
-    <?php include '../Partes/footer-page/index.html';?>
+    <?php include '../Partes/footer.php';?>
 </body>
 </html>

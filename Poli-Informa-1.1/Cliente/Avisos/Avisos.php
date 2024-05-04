@@ -707,7 +707,7 @@
         </div><!-- Fin de text -->
     </div><!-- Fin de home -->
 
-    <?php include '../Partes/footer-page/index.html'; ?>
+    <?php include '../Partes/footer.php'; ?>
 
     <!-- Script para los botones del menu -->
     <script>

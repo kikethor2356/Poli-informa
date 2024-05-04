@@ -145,7 +145,7 @@
             }//while
             $conexion->close();
         }//mostrarProductos
-        include("../Partes/footer-page/index.html");
+        include("../Partes/footer.php");
     ?>
 </body>
 </html>

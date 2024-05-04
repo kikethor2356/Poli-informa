@@ -147,7 +147,7 @@
             $conexion->close();
         }//mostrarProductos
         $conexion->close();
-        include("../Partes/footer-page/index.html");
+        include("../Partes/footer.php");
     ?>
 
 </body>
