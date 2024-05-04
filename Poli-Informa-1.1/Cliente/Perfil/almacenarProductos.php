@@ -6,16 +6,15 @@ session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if(isset($_POST['guardar'])){
-        $codigoEstudiante = $_POST['codigo'];
+        $codigoEstudiante = $_POST['codigovendedor'];
         $nombre = $_POST['nombre'];
         $descripcion = $_POST['descripcion'];
         $correo = $_POST['correo'];
-        $telefono = $_POST['telefono'];
-        $horaInicio = $_POST['hora-inicio'];
-        $horaFin = $_POST['hora-fin'];
+        $precio = $_POST['precio'];        
         $archivo = $_FILES['imagen']['name'];
         $temporal = $_FILES['imagen']['tmp_name'];
         $carpeta = 'imagenes';
+        $categoria = $_POST['categoria'];
 
         if(!empty($archivo) && !empty($temporal)){
             if(!file_exists($carpeta)){
@@ -27,8 +26,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         }
 
-        $stmt = $conexion->prepare("INSERT INTO VENDEDORES_PENDIENTES (codigoVendedor, nombre, descripcion, correo, telefono, horaInicio, horaFin, foto) VALUES (?,?,?,?,?,?,?,?)");
-        $stmt->bind_param("ssssssss", $codigoEstudiante, $nombre, $descripcion, $correo, $telefono, $horaInicio, $horaFin, $archivo);
+        $stmt = $conexion->prepare("INSERT INTO productos_pendientes (nombre, codigoVendedor, precio, descripcion, nombreImagen, categoria) VALUES (?,?,?,?,?,?)");
+        $stmt->bind_param("ssssssss", $nombre, $codigoEstudiante, $precio, $descripcion, $archivo, $categoria);
         $stmt->execute();
         $stmt->close();
         $conexion->close();

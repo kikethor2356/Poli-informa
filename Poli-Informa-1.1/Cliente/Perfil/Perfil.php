@@ -65,7 +65,7 @@
                 <!-- Formulario de productos -->
                 <main id="contenedor-principal" hidden>
                     <h1><a name="productos"></a>Registro de productos</h1>
-                    <form class="formulario" action="../../Administrador/Vendedores/PHP/Acciones.php?metodo=10" method="post" enctype="multipart/form-data">
+                    <form class="formulario" action="almacenarProductos.php" method="post" enctype="multipart/form-data">
                         <fieldset class="fieldset">
                             <h2 class="fieldset__titulo">Información del producto</h2>
                             <div class="campo">
@@ -73,12 +73,12 @@
                                 <input type="text" id="nombre" name="nombre" required>
                             </div> <!-- .campo -->
                             <div class="campo">
-                                <label for="nombre">Nombre del vendedor</label>
-                                <input type="text" id="nombrevendedor" name="nombrevendedor" required>
+                                <label for="nombre">Codigo del vendedor</label>
+                                <input type="text" id="codigovendedor" name="codigovendedor" value="<?php echo isset($codeAlu) ? $codeAlu : ''; ?>" readonly>
                             </div> <!-- .campo -->
                             <div class="campo">
                                 <label for="nombre">Precio del producto</label>
-                                <input type="text" id="precio" name="precio" required>
+                                <input type="number" min="1" id="precio" name="precio" required>
                             </div> <!-- .campo -->
                             <div class="campo">
                                 <label for="descripcion">Descripción del producto</label>
@@ -105,5 +105,6 @@
             </div>
         </div>
     </div>
+    <?php include '../Partes/footer-page/index.html'; ?>
 </body>
 </html>
