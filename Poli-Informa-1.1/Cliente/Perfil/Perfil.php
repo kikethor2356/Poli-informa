@@ -35,7 +35,7 @@
                         // Mostrar los datos del usuario
                         ?>
                         <div class="contenidoImg">
-                            <?php echo htmlspecialchars($mostrar["AluImage"]); ?>
+                            <img src="../../Administrador/RegistroAlumnos/imagenes1/<?php echo htmlspecialchars($mostrar["AluImage"]); ?>" alt="">
                         </div><br>
                         <div class="c_code">
                             <h3><?php echo htmlspecialchars($mostrar["CodeAlu"]); ?></h3>

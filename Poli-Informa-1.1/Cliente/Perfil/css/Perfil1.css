@@ -29,6 +29,10 @@ body{
     background-color: rgb(161, 178, 178);
     border: 1px solid black;
 }
+.contenidoImg img{
+    width: 100%;
+    height: 100%;
+}
 
 
 .c_nombre{
