@@ -10,7 +10,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/Perfil.css">
+    <link rel="stylesheet" href="css/Perfil1.css">
     <link rel="stylesheet" href="css/diseño.css">
     <link rel="stylesheet" href="css/vendedores.css">
     <script src="js/perfil.js"></script>
@@ -102,6 +102,40 @@
                         </fieldset>
                     </form>
                 </main>
+                <section class="productos-relacionados contenedor">
+                    <div class="productos">
+                    <?php
+                        // $consultaProducto = "SELECT * FROM productos where ID = $idProducto";
+                        $resultado = mysqli_query($conexion, $consultaProducto);
+                        $mostrar = mysqli_fetch_array($resultado);
+                        $categoriaProducto = $mostrar['categoria'];
+                        $consulta = "SELECT * FROM productos WHERE categoria = '$categoriaProducto' AND ID != $idProducto ";
+                        mostrarProductos($consulta);
+                    ?>
+                    </div> <!-- .productos -->
+                </section> <!-- .productos-relacionados -->
+
+                <?php
+                    function mostrarProductos($consulta){
+                        $db = new Database();
+                        $conexion = $db->connect();
+                        
+                        $resultado = mysqli_query($conexion, $consulta);
+                        while($mostrar=mysqli_fetch_array($resultado)){
+                ?>
+                            <div class="producto">
+                                <a href="producto.php?dnf=<?php echo $mostrar['ID']; ?>"><img class="producto__imagen" src="img/<?php echo $mostrar['nombreImagen']; ?>" alt="imagen del producto"></a>
+                                <a class="producto__nombre" href="producto.php?dnf=<?php echo $mostrar['ID']; ?>"><h3><?php echo $mostrar['nombre'];?></h3></a>
+                                <p class="producto__precio">$<?php echo $mostrar['precio'];?></p>
+                                <a class="producto__enlace" href="producto.php?dnf=<?php echo $mostrar['ID']; ?>">Ver mas</a>
+                            </div> <!-- .producto -->
+                <?php
+                        }//while
+                        $conexion->close();
+                    }//mostrarProductos
+                    $conexion->close();
+                    include("../Partes/footer.php");
+                ?>
             </div>
         </div>
     </div>

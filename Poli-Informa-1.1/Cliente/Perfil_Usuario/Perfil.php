@@ -36,6 +36,19 @@
         <?php                
             }//FIN WHILE
         ?>
+        <section class="productos-relacionados contenedor">
+            <h2 class="subtitulo">Más productos en <?php echo $categoriaProducto ?></h2>
+            <div class="productos">
+                <?php
+                    // $consultaProducto = "SELECT * FROM productos where ID = $idProducto";
+                    $resultado = mysqli_query($conexion, $consultaProducto);
+                    $mostrar = mysqli_fetch_array($resultado);
+                    $categoriaProducto = $mostrar['categoria'];
+                    $consulta = "SELECT * FROM productos WHERE categoria = '$categoriaProducto' AND ID != $idProducto ";
+                    mostrarProductos($consulta);
+                ?>
+            </div> <!-- .productos -->
+        </section> <!-- .productos-relacionados -->
     </div>
 </body>
 </html>
