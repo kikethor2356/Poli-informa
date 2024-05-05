@@ -9,7 +9,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $codigoEstudiante = $_POST['codigovendedor'];
         $nombre = $_POST['nombre'];
         $descripcion = $_POST['descripcion'];
-        $correo = $_POST['correo'];
         $precio = $_POST['precio'];        
         $archivo = $_FILES['imagen']['name'];
         $temporal = $_FILES['imagen']['tmp_name'];
@@ -27,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         $stmt = $conexion->prepare("INSERT INTO productos_pendientes (nombre, codigoVendedor, precio, descripcion, nombreImagen, categoria) VALUES (?,?,?,?,?,?)");
-        $stmt->bind_param("ssssssss", $nombre, $codigoEstudiante, $precio, $descripcion, $archivo, $categoria);
+        $stmt->bind_param("ssssss", $nombre, $codigoEstudiante, $precio, $descripcion, $archivo, $categoria);
         $stmt->execute();
         $stmt->close();
         $conexion->close();
