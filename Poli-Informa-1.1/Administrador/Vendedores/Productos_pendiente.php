@@ -50,7 +50,7 @@
 
                             $inicio = ($pagina_actual - 1) * $resultados_por_pagina;
 
-                            $sql = "SELECT COUNT(*) AS total FROM productos";
+                            $sql = "SELECT COUNT(*) AS total FROM productos_pendientes";
                             $resultado = mysqli_query($conexion, $sql);
                             $fila = mysqli_fetch_assoc($resultado);
                             $total_resultados = $fila['total'];

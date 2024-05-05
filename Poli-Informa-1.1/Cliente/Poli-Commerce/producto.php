@@ -47,13 +47,13 @@
             <main class="contenedor-principal">
 
                 <section class="contenedor-producto contenedor">
-                    <img class="contenedor-producto__imagen" src="img/<?php echo $mostrarProducto['nombreImagen']; ?>" alt="imagen del producto">
+                    <img class="contenedor-producto__imagen" src="../../Administrador/Vendedores/PHP/imagenes/<?php echo $mostrarProducto['nombreImagen']; ?>" alt="imagen del producto">
                     <div class="contenido-producto">
                         <h2 class="contenido-producto__titulo"><?php echo $mostrarProducto['nombre']; ?></h2>
                         <p class="contenido-producto__precio">Precio: $<?php echo $mostrarProducto['precio']; ?></p>
                         <h3 class="contenido-producto__subtitulo">Descripción del producto</h3>
                         <p class="contenido-producto__descripcion"><?php echo $mostrarProducto['descripcion']; ?></p>
-                        <a class="contenido-producto__enlace" href="#"><i class="fa-solid fa-message"></i>&nbsp;&nbsp;Informar sobre un problema con este producto</a>
+                        <a class="contenido-producto__enlace" href="../Soporte/ContactanosVista.php"><i class="fa-solid fa-message"></i>&nbsp;&nbsp;Informar sobre un problema con este producto</a>
                     </div> <!-- .producto -->
                 </section> <!-- .contenedor-producto -->
 
@@ -88,7 +88,7 @@
                             </div> <!-- .grid-contactos -->
                         </div> <!-- .contenido-vendedor-1 -->
                         <div class="contenido-vendedor-2">
-                            <img class="contenido-vendedor__imagen" src="img/<?php echo $mostrarVendedor['foto']; ?>" alt="imagen del vendedor">
+                            <img class="contenido-vendedor__imagen" src="../../Administrador/Vendedores/PHP/imagenes/<?php echo $mostrarVendedor['foto']; ?>" alt="imagen del vendedor">
                         </div> <!-- .contenido-vendedor-2 -->
                     </div> <!-- .grid-vendedor -->
                 </section> <!-- .contenedor-vendedor -->
@@ -137,7 +137,7 @@
             while($mostrar=mysqli_fetch_array($resultado)){
     ?>
                 <div class="producto">
-                    <a href="producto.php?dnf=<?php echo $mostrar['ID']; ?>"><img class="producto__imagen" src="img/<?php echo $mostrar['nombreImagen']; ?>" alt="imagen del producto"></a>
+                    <a href="producto.php?dnf=<?php echo $mostrar['ID']; ?>"><img class="producto__imagen" src="../../Administrador/Vendedores/PHP/imagenes/<?php echo $mostrar['nombreImagen']; ?>" alt="imagen del producto"></a>
                     <a class="producto__nombre" href="producto.php?dnf=<?php echo $mostrar['ID']; ?>"><h3><?php echo $mostrar['nombre'];?></h3></a>
                     <p class="producto__precio">$<?php echo $mostrar['precio'];?></p>
                     <a class="producto__enlace" href="producto.php?dnf=<?php echo $mostrar['ID']; ?>">Ver mas</a>

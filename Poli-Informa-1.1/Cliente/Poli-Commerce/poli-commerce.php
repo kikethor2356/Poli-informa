@@ -136,7 +136,7 @@
             while($mostrar=mysqli_fetch_array($resultado)){
     ?>
                 <div class="producto">
-                    <a href="producto.php?dnf=<?php echo $mostrar['ID']; ?>"><img class="producto__imagen" src="img/<?php echo $mostrar['nombreImagen']; ?>" alt="imagen del producto"></a>
+                    <a href="producto.php?dnf=<?php echo $mostrar['ID']; ?>"><img class="producto__imagen" src="../../Administrador/Vendedores/PHP/imagenes/<?php echo $mostrar['nombreImagen']; ?>" alt="imagen del producto"></a>
                     <a class="producto__nombre" href="producto.php?dnf=<?php echo $mostrar['ID']; ?>"><h3><?php echo $mostrar['nombre'];?></h3></a>
                     <p class="producto__precio">$<?php echo $mostrar['precio'];?></p>
                     <a class="producto__enlace" href="producto.php?dnf=<?php echo $mostrar['ID']; ?>">Ver más</a>
