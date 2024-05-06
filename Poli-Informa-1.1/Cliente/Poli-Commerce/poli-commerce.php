@@ -52,7 +52,7 @@
                             mostrarProductos("Alimentos y bebidas");
                         ?>
                     </div> <!-- .productos -->
-                </section> <!-- .alimentos -->
+               </section> <!-- .alimentos -->
 
                 <section class="contenedor-publicidad contenedor">
                     <h2 class="contenedor-publicidad__titulo subtitulo">Encuentra todo lo que buscas</h2>

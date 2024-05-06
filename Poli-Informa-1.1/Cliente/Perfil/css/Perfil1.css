@@ -13,13 +13,13 @@ body{
     background: rgb(231, 224, 224);
 
 }
-
-/*.contenedor{
+/*
+.contenedor{
     position: absolute;
     width: 100%;
     height: 100%;
 }
-*/
+
 .contenidoImg{
     position: absolute;
     top: 12%;
@@ -79,4 +79,4 @@ body{
     border: 1px solid black;
 }
 
-
+*/

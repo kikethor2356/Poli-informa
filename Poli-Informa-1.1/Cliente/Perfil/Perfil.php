@@ -62,83 +62,58 @@
                         echo "<p>No se encontraron datos de usuario.</p>";
                     }
                 ?>
-                <!-- Formulario de productos -->
-                <main id="contenedor-principal" hidden>
-                    <h1><a name="productos"></a>Registro de productos</h1>
-                    <form class="formulario" action="almacenarProductos.php" method="post" enctype="multipart/form-data">
-                        <fieldset class="fieldset">
-                            <h2 class="fieldset__titulo">Información del producto</h2>
-                            <div class="campo">
-                                <label for="nombre">Nombre del producto</label>
-                                <input type="text" id="nombre" name="nombre" required>
-                            </div> <!-- .campo -->
-                            <div class="campo">
-                                <label for="nombre">Codigo del vendedor</label>
-                                <input type="text" id="codigovendedor" name="codigovendedor" value="<?php echo isset($codeAlu) ? $codeAlu : ''; ?>" readonly>
-                            </div> <!-- .campo -->
-                            <div class="campo">
-                                <label for="nombre">Precio del producto</label>
-                                <input type="number" min="1" id="precio" name="precio" required>
-                            </div> <!-- .campo -->
-                            <div class="campo">
-                                <label for="descripcion">Descripción del producto</label>
-                                <textarea name="descripcion" id="descripcion" required></textarea>
-                            </div> <!-- .campo -->                   
-                            <div class="campo">
-                                <label for="imagen">Fotografía</label>
-                                <input type="file" name="imagen" id="imagen" accept="image/*" required>
-                            </div> <!-- .campo -->
-                            <div class="campo">
-                                <label for="categoria">Categoria: </label>
-                                <select id="categoria" name="categoria" required>
-                                    <option value="Alimentos y bebidas">Alimentos y bebidas</option>
-                                    <option value="Tecnología">Tecnología</option>
-                                    <option value="Ropa y moda">Ropa y moda</option>
-                                    <option value="Joyería y accesorios">Joyería y accesorios</option>
-                                    <option value="Servicios">Servicios</option>
-                                </select>
-                            </div> <!-- .campo -->
-                            <input type="submit" name="enviar" id="enviar">
-                        </fieldset>
-                    </form>
-                </main>
-                <section class="productos-relacionados contenedor">
+                <section class="productos-vendedor contenedor">
+                    <h2 class="subtitulo">Mis productos: <?php echo $mostrar["AluNom"]?></h2>
                     <div class="productos">
                     <?php
-                        // $consultaProducto = "SELECT * FROM productos where ID = $idProducto";
-                        $resultado = mysqli_query($conexion, $consultaProducto);
-                        $mostrar = mysqli_fetch_array($resultado);
-                        $categoriaProducto = $mostrar['categoria'];
-                        $consulta = "SELECT * FROM productos WHERE categoria = '$categoriaProducto' AND ID != $idProducto ";
+
+                        
+                        // $consultaVendedor = "SELECT v.*
+                        // FROM vendedores v
+                        // JOIN productos p ON v.codigoVendedor = p.codigoVendedor
+                        // WHERE p.ID = '$idProducto'";
+                        // $resultadoVendedor = mysqli_query($conexion, $consultaVendedor);
+                        // $mostrarVendedor=mysqli_fetch_array($resultadoVendedor);
+                        
+
+                        // $codigoVendedor = $mostrarVendedor['codigoVendedor'];
+                        $consulta = "SELECT productos.* 
+                        FROM productos JOIN vendedores ON 
+                        productos.codigoVendedor = vendedores.codigoVendedor 
+                        WHERE vendedores.codigoVendedor = $codeAlu";
                         mostrarProductos($consulta);
                     ?>
                     </div> <!-- .productos -->
-                </section> <!-- .productos-relacionados -->
-
-                <?php
-                    function mostrarProductos($consulta){
-                        $db = new Database();
-                        $conexion = $db->connect();
-                        
-                        $resultado = mysqli_query($conexion, $consulta);
-                        while($mostrar=mysqli_fetch_array($resultado)){
-                ?>
-                            <div class="producto">
-                                <a href="producto.php?dnf=<?php echo $mostrar['ID']; ?>"><img class="producto__imagen" src="img/<?php echo $mostrar['nombreImagen']; ?>" alt="imagen del producto"></a>
-                                <a class="producto__nombre" href="producto.php?dnf=<?php echo $mostrar['ID']; ?>"><h3><?php echo $mostrar['nombre'];?></h3></a>
-                                <p class="producto__precio">$<?php echo $mostrar['precio'];?></p>
-                                <a class="producto__enlace" href="producto.php?dnf=<?php echo $mostrar['ID']; ?>">Ver mas</a>
-                            </div> <!-- .producto -->
-                <?php
-                        }//while
-                        $conexion->close();
-                    }//mostrarProductos
-                    $conexion->close();
-                    include("../Partes/footer.php");
-                ?>
+                </section> <!-- .productos-vendedor -->
             </div>
         </div>
     </div>
-    <?php include '../Partes/footer.php'; ?>
+
+    <?php
+        function mostrarProductos($consulta){
+            $db = new Database();
+            $conexion = $db->connect();
+            
+            $resultado = mysqli_query($conexion, $consulta);
+            while($mostrar=mysqli_fetch_array($resultado)){
+    ?>
+                <div class="producto">
+                    <a href="producto.php?dnf=<?php echo $mostrar['ID']; ?>"><img class="producto__imagen" src="../../Administrador/Vendedores/PHP/imagenes/<?php echo $mostrar['nombreImagen']; ?>" alt="imagen del producto"></a>
+                    <a class="producto__nombre" href="producto.php?dnf=<?php echo $mostrar['ID']; ?>"><h3><?php echo $mostrar['nombre'];?></h3></a>
+                    <p class="producto__precio">$<?php echo $mostrar['precio'];?></p>
+                    <a class="producto__enlace" href="producto.php?dnf=<?php echo $mostrar['ID']; ?>">Ver mas</a>
+                </div> <!-- .producto -->
+    <?php
+            }//while
+            // $conexion->close();
+        }//mostrarProductos
+        // $conexion->close();
+        // include("../Partes/footer.php");
+    ?>
+
+
 </body>
 </html>
+
+
+
