@@ -221,12 +221,26 @@ if($metodoAccion == 6){
     $stmtCodigoVendedor->bind_result($codigoVendedorEliminado);
     $stmtCodigoVendedor->fetch();
     $stmtCodigoVendedor->close();
+    
+    $stmtCodigo = $conexion->prepare("SELECT codigoVendedor FROM vendedores WHERE id = ?");
+    $stmtCodigo->bind_param("s", $idVendedor);
+    $stmtCodigo->execute();
+    $resultCodigo = $stmtCodigo->get_result();
+    $mostrar = $resultCodigo->fetch_assoc();
+
+
+    // Elimina los productos en la tabla de productos oficiales relacionados al vendedor
+    $stmtDeleteProductos = $conexion->prepare("DELETE FROM productos WHERE codigoVendedor = ?");
+    $stmtDeleteProductos->bind_param("i", $mostrar['codigoVendedor']);
+    $resultDeleteProductos = $stmtDeleteProductos->execute();
+    $stmtDeleteProductos->close();
 
     // Eliminar al vendedor
     $stmtDeleteVendedor = $conexion->prepare("DELETE FROM VENDEDORES WHERE id = ?");
     $stmtDeleteVendedor->bind_param("i", $idVendedor);
     $resultDeleteVendedor = $stmtDeleteVendedor->execute();
     $stmtDeleteVendedor->close();
+
 
     // Si la eliminación fue exitosa, actualizar el estado en la tabla registroalu
     if ($resultDeleteVendedor) {
