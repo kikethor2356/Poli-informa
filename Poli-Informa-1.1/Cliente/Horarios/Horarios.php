@@ -241,7 +241,8 @@
         .modal-content {
             position: relative;
             background-color: transparent;
-            margin: 1% 33%;
+            margin: 1%;
+            margin-left: 30%;
             padding: 20px;
             border: 1px solid transparent;
             width: 50%;
