@@ -28,10 +28,18 @@ if(isset($_POST['btn_iniciar_sesion'])){
     if($result->num_rows === 1){
         $row = $result->fetch_assoc();
         if($login_as_admin) {
+            if(password_verify($contraseña, $row['AdPassword'])) {
+                // Iniciar sesión como administrador y redirigir a la página principal del administrador
+                $_SESSION['AdCode'] = $row['AdCode'];
+                header("Location: ../../../Administrador/Avisos/AdminAvisos.php");
+            } else {
+                // Contraseña incorrecta
+                header("Location: ../index.php?message=error");
+            }
             // Iniciar sesión como administrador y redirigir a la página principal del administrador
             $_SESSION['AdCode'] = $row['AdCode'];
-            $_SESSION['AdPassword'] = $row['AdPassword'];
-            header("Location: ../../../Administrador/Avisos/vista_categoria.php");
+            // $_SESSION['AdPassword'] = $row['AdPassword'];
+            header("Location: ../../../Administrador/Avisos/AdminAvisos.php");
         } else {
             // Iniciar sesión como cliente y redirigir a la página principal del cliente
             $_SESSION['CodeAlu'] = $row['CodeAlu'];

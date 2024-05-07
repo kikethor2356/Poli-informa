@@ -43,6 +43,7 @@
                             $index++;
                         }
                     } else {
+                        echo 'No hay publicaciónes nuevas o actualizadas';
                     }
                 ?>
             <a class="anterior" onclick="anteriorBT()">﹤</a>
@@ -128,6 +129,11 @@
                         <img class="clase8" src="imagenes/labMA.jpg" alt="">
                     </div>
 
+                    <div>
+                        <a name="almacenLab" class="llamado37"></a>
+                        <img class="clase37" src="imagenes/almacenLab.jpg" alt="">
+                    </div>
+
                     <!-- Modulo B -->
                     <div>
                         <a name="enfermeria" class="llamado9"></a>
@@ -164,6 +170,17 @@
                         <img class="clase15" src="imagenes/auditorio.jpg" alt="">
                     </div>
 
+                    <div>
+                        <a name="bodegB" class="llamado38"></a>
+                        <img class="clase38" src="imagenes/bodegB.jpg" alt="">
+                    </div>
+
+                    <div>
+                        <a name="labBio" class="llamado39"></a>
+                        <img class="clase39" src="imagenes/labBio.jpg" alt="">
+                    </div>
+
+
                     <!-- Modulo C -->
                     <div>
                         <a name="bañoMC" class="llamado16"></a>
@@ -184,6 +201,22 @@
                         <a name="salonesC1" class="llamado19"></a>
                         <img class="clase19" src="imagenes/salonesC1.jpg" alt="">
                     </div>
+
+                    <div>
+                        <a name="labAnalisis" class="llamado40"></a>
+                        <img class="clase40" src="imagenes/labAnalisis.jpg" alt="">
+                    </div>
+
+                    <div>
+                        <a name="labMicrobiologia" class="llamado41"></a>
+                        <img class="clase41" src="imagenes/labMicrobiologia.jpg" alt="">
+                    </div>
+
+                    <div>
+                        <a name="labTecAlimentos" class="llamado42"></a>
+                        <img class="clase42" src="imagenes/labTecAlimentos.jpg" alt="">
+                    </div>
+
 
                     <!-- Modulo D -->
                     <div>
@@ -211,6 +244,11 @@
                         <img class="clase24" src="imagenes/labEspecializado.jpg" alt="">
                     </div>
 
+                    <div>
+                        <a name="lab" class="llamado55"></a>
+                        <img class="clase55" src="imagenes/lab.jpg" alt="">
+                    </div>
+
                     <!-- Modulo E -->
                     <div>
                         <a name="bañoME" class="llamado25"></a>
@@ -223,8 +261,8 @@
                     </div>
 
                     <div>
-                        <a name="labE" class="llamado27"></a>
-                        <img class="clase27" src="imagenes/labE.jpg" alt="">
+                        <a name="labAlimentosE" class="llamado27"></a>
+                        <img class="clase27" src="imagenes/labAlimentosE.jpg" alt="">
                     </div>
 
                     <div>
@@ -243,8 +281,8 @@
                     </div>
 
                     <div>
-                        <a name="lab" class="llamado31"></a>
-                        <img class="clase31" src="imagenes/lab.jpg" alt="">
+                        <a name="labElectricistasE" class="llamado31"></a>
+                        <img class="clase31" src="imagenes/labElectricistasE.jpg" alt="">
                     </div>
 
                     <div>
@@ -272,6 +310,71 @@
                         <a name="salonesF12" class="llamado36"></a>
                         <img class="clase36" src="imagenes/salonesF12.jpg" alt="">
                     </div>
+
+                    <!-- Modulo G -->
+                    <div>
+                        <a name="tallerMecanico" class="llamado43"></a>
+                        <img class="clase43" src="imagenes/tallerMecanico.jpg" alt="">
+                    </div>
+
+                    <!-- Modulo H -->
+                    <div>
+                        <a name="tallerSoldadura" class="llamado44"></a>
+                        <img class="clase44" src="imagenes/tallerSoldadura.jpg" alt="">
+                    </div>
+
+                    <div>
+                        <a name="labMetalurgia" class="llamado45"></a>
+                        <img class="clase45" src="imagenes/labMetalurgia.jpg" alt="">
+                    </div>
+
+                    <div>
+                        <a name="labTecnologia" class="llamado46"></a>
+                        <img class="clase46" src="imagenes/labTecnologia.jpg" alt="">
+                    </div>
+
+                    <!-- Modulo I -->
+                    <div>
+                        <a name="labEnsayos" class="llamado47"></a>
+                        <img class="clase47" src="imagenes/labEnsayos.jpg" alt="">
+                    </div>
+
+                    <div>
+                        <a name="labPrueba" class="llamado48"></a>
+                        <img class="clase48" src="imagenes/labPrueba.jpg" alt="">
+                    </div>
+
+                    <div>
+                        <a name="tallerFundicion" class="llamado49"></a>
+                        <img class="clase49" src="imagenes/tallerFundicion.jpg" alt="">
+                    </div>
+
+                    <div>
+                        <a name="tallerEmbobinado" class="llamado50"></a>
+                        <img class="clase50" src="imagenes/tallerEmbobinado.jpg" alt="">
+                    </div>
+
+                    <div>
+                        <a name="tallerSubestaciones" class="llamado51"></a>
+                        <img class="clase51" src="imagenes/tallerSubestaciones.jpg" alt="">
+                    </div>
+
+                    <!-- Modulo J -->
+                    <div>
+                        <a name="plasticos" class="llamado52"></a>
+                        <img class="clase52" src="imagenes/plasticos.jpg" alt="">
+                    </div>
+
+                    <div>
+                        <a name="hardware" class="llamado53"></a>
+                        <img class="clase53" src="imagenes/hardware.jpg" alt="">
+                    </div>
+
+                    <div>
+                        <a name="emprendimiento" class="llamado54"></a>
+                        <img class="clase54" src="imagenes/emprendimiento.jpg" alt="">
+                    </div>
+
                 </div>
                 <!-- Fin de croquis-->
 
@@ -339,8 +442,18 @@
                                     </li>
                                     <li>
                                         <a href="#labMA">
-                                            <span class="subtitulo">Laboratorio quimicos</span>
+                                            <span class="subtitulo">Laboratorio de Quimicos</span>
                                         </a>
+                                    </li>
+                                    <li class="submenu2">
+                                        <a href="#almacenLab">
+                                            <span class="subtitulo">Almacenes A-B-C-D-E de Laboratorios de Quimicos</span>
+                                            <i class="hilo fa-solid fa-angle-down"></i>
+                                        </a>
+                                        <ul class="sub-opcion2">
+                                            <span class="titu">Como llegar</span>
+                                            <a><span class="subtitulo">Desde donde el croquis marca se encuentra el almacen A, por todo el pasillo estan los demas.</span></a>                                
+                                        </ul>
                                     </li>
                                 </ul>
                             </li>  
@@ -373,12 +486,12 @@
                                     </li>
                                     <li>
                                         <a href="#salonesBPB">
-                                            <span class="subtitulo">Salones B(x-x)</span>
+                                            <span class="subtitulo">Salones B(1-8)</span>
                                         </a>
                                     </li>
                                     <li class="submenu2">
                                         <a href="#SalBibOfi">
-                                            <span class="subtitulo">Salones B(x-x)</span>
+                                            <span class="subtitulo">Salones B(9-14)</span>
                                             <i class="hilo fa-solid fa-angle-down"></i>
                                         </a>
                                         <ul class="sub-opcion2">
@@ -405,6 +518,16 @@
                                             <span class="titu">Como llegar</span>
                                             <a><span class="subtitulo">Subir las escaleras y al lado derechio estara control escolar.</span></a>                                
                                         </ul>
+                                    </li>
+                                    <li>
+                                        <a href="#bodegaB">
+                                            <span class="subtitulo">Bodega FabLab</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#labBio">
+                                            <span class="subtitulo">Laboratorio de Biotecnologia</span>
+                                        </a>
                                     </li>
                                     <li class="submenu2">
                                         <a href="#SalBibOfi">
@@ -446,13 +569,23 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#labC">
-                                            <span class="subtitulo">Laboratorio</span>
+                                        <a href="#labAnalisis">
+                                            <span class="subtitulo">Laboratorio de Analisis de Alimentos</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#labMicrobiologia">
+                                            <span class="subtitulo">Laboratorio de Microbiologia I</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#labTecAlimentos">
+                                            <span class="subtitulo">Taller de Tecnologia de Alimentos</span>
                                         </a>
                                     </li>
                                     <li class="submenu2">
                                         <a href="#salonesC1">
-                                            <span class="subtitulo">Salones C(x-x)</span>
+                                            <span class="subtitulo">Salones C(1-5)</span>
                                             <i class="hilo fa-solid fa-angle-down"></i>
                                         </a>
                                         <ul class="sub-opcion2">
@@ -526,7 +659,12 @@
                                     </li>
                                     <li>
                                         <a href="#salonD">
-                                            <span class="subtitulo">Salon D(x)</span>
+                                            <span class="subtitulo">Salon D(1)</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#lab">
+                                            <span class="subtitulo">Laboratorios</span>
                                         </a>
                                     </li>
                                     <li class="submenu2">
@@ -569,8 +707,13 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#lab">
-                                            <span class="subtitulo">Laboratorios</span>
+                                        <a href="#labAlimentosE">
+                                            <span class="subtitulo">Laboratorio de Alimentos</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#labElectricistasE">
+                                            <span class="subtitulo">Laboratorio de Electricistas</span>
                                         </a>
                                     </li>
                                     <li>
@@ -595,7 +738,7 @@
                                     </li>
                                     <li class="submenu2">
                                         <a href="#salonesE">
-                                            <span class="subtitulo">salones E(x-x) </span>
+                                            <span class="subtitulo">salones E(1-4) </span>
                                             <i class="hilo fa-solid fa-angle-down"></i>
                                         </a>
                                         <ul class="sub-opcion2">
@@ -605,7 +748,7 @@
                                     </li>
                                     <li class="submenu2">
                                         <a href="#salonesE">
-                                            <span class="subtitulo">salones E(x-x) </span>
+                                            <span class="subtitulo">salones E(5-x) </span>
                                             <i class="hilo fa-solid fa-angle-down"></i>
                                         </a>
                                         <ul class="sub-opcion2">
@@ -634,12 +777,12 @@
                                     </li>
                                     <li>
                                         <a href="#salonesFPB">
-                                            <span class="subtitulo">Salones F(x-x)</span>
+                                            <span class="subtitulo">Salones F(1-4)</span>
                                         </a>
                                     </li>
                                     <li class="submenu2">
                                         <a href="#salonesF12">
-                                            <span class="subtitulo">Salones F(x-x)</span>
+                                            <span class="subtitulo">Salones F(5-10)</span>
                                             <i class="hilo fa-solid fa-angle-down"></i>
                                         </a>
                                         <ul class="sub-opcion2">
@@ -649,7 +792,7 @@
                                     </li>
                                     <li class="submenu2">
                                         <a href="#salonesF12">
-                                            <span class="subtitulo">Salones F(x-x)</span>
+                                            <span class="subtitulo">Salones F(11-15)</span>
                                             <i class="hilo fa-solid fa-angle-down"></i>
                                         </a>
                                         <ul class="sub-opcion2">
@@ -666,7 +809,11 @@
                                     <i class="hilo fa-solid fa-angle-down"></i>
                                 </a>
                                 <ul class="sub-opcion"> 
-                                    
+                                    <li>
+                                        <a href="#tallerMecanico">
+                                            <span class="subtitulo">Taller Mecanico</span>
+                                        </a>
+                                    </li>
                                 </ul>
                             </li>
                             <!-- Modulo H -->
@@ -676,7 +823,21 @@
                                     <i class="hilo fa-solid fa-angle-down"></i>
                                 </a>
                                 <ul class="sub-opcion"> 
-                                    
+                                    <li>
+                                        <a href="#tallerSoldadura">
+                                            <span class="subtitulo">Taller de Soldadura</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#labMetalurgia">
+                                            <span class="subtitulo">Laboratorio de Metalurgia</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#labTecnologia">
+                                            <span class="subtitulo">Laboratorio de Tecnologia Industrial</span>
+                                        </a>
+                                    </li>
                                 </ul>
                             </li>
                             <!-- Modulo I -->
@@ -686,7 +847,31 @@
                                     <i class="hilo fa-solid fa-angle-down"></i>
                                 </a>
                                 <ul class="sub-opcion"> 
-                                    
+                                    <li>
+                                        <a href="#labEnsayos">
+                                            <span class="subtitulo">Laboratorio de Ensayos Metalograficos</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#labPrueba">
+                                            <span class="subtitulo">Laboratorio de Prueba de Arenas</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#tallerFundicion">
+                                            <span class="subtitulo">Taller Fundicion</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#tallerEmbobinado">
+                                            <span class="subtitulo">Taller de Embobinado</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#tallerSubestaciones">
+                                            <span class="subtitulo">Taller de Subestaciones</span>
+                                        </a>
+                                    </li>
                                 </ul>
                             </li>
                             <!-- Modulo J -->
@@ -696,14 +881,27 @@
                                     <i class="hilo fa-solid fa-angle-down"></i>
                                 </a>
                                 <ul class="sub-opcion"> 
-                                    
+                                    <li>
+                                        <a href="#plasticos">
+                                            <span class="subtitulo">Plasticos</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#hardware">
+                                            <span class="subtitulo">Taller de Hardware</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#emprendimiento">
+                                            <span class="subtitulo">Aula de Emprendimiento</span>
+                                        </a>
+                                    </li>
                                 </ul>
                             </li>
                         </ul>
                     </div>
                 </div><!-- Fin de menu de sessiones-->
             </div>
-            
         </div><!-- Fin de text -->
     </div><!-- Fin de home -->
 
