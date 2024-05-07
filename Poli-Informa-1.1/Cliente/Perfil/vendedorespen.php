@@ -115,6 +115,6 @@ if(isset($_SESSION['CodeAlu'])) {
             </main>
         </div> <!-- .text -->
     </div> <!-- .home -->
-    <?php include "../Partes/footer-page/index.html"; ?>
+    <?php include "../Partes/footer.php"; ?>
 </body>
 </html>
