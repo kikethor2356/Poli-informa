@@ -28,8 +28,9 @@ function add(){
     $AdCorreo= $_POST ['AdCorreo'];
     $AdImagen = $_FILES['AdImagen']['name'];
     $AdPassword= $_POST ['AdPassword'];
-    $sqlcode = "SELECT  id FROM  registro
-                        WHERE   AdCode = '$AdCode'";
+    $hashed_password = password_hash($AdPassword, PASSWORD_DEFAULT);
+
+    $sqlcode = "SELECT  id FROM  registro WHERE AdCode = '$AdCode'";
     $resultadocode = $conexion->query($sqlcode);
     $filas = $resultadocode->num_rows;
 
@@ -38,7 +39,7 @@ function add(){
             alert('El usuario ya esta registrado');
         </script>";
     }else{
-        $query = "INSERT INTO registro (AdCode, AdNombre, AdApellidoP, AdApellidoM, AdCorreo, AdImagen, AdPassword) VALUES('$AdCode', '$AdNombre', '$AdApellidoP', '$AdApellidoM', '$AdCorreo', '$AdImagen', '$AdPassword')";
+        $query = "INSERT INTO registro (AdCode, AdNombre, AdApellidoP, AdApellidoM, AdCarrera, AdCorreo, AdImagen, AdPassword) VALUES('$AdCode', '$AdNombre', '$AdApellidoP', '$AdApellidoM', '$AdCarrera', '$AdCorreo', '$AdImagen', ' $AdPassword')";
         $resultado = mysqli_query($conexion, $query);
     }
 
@@ -70,6 +71,7 @@ function edit(){
     $old_imagen = $_POST['AdImagen_old'];
 
     $AdPassword= $_POST ['AdPassword'];
+    $hashed_password = password_hash($AdPassword, PASSWORD_DEFAULT);
 
     if($new_imagen != ''){
         // Genera un nombre único para la nueva imagen
@@ -105,7 +107,7 @@ function edit(){
 
     // }
 
-    $sql = "UPDATE registro SET AdCode = '$AdCode',  AdNombre = '$AdNombre', AdApellidoP = '$AdApellidoP', AdApellidoM = '$AdApellidoM', AdCorreo = '$AdCorreo', AdImagen = '$AdImagen', AdPassword = '$AdPassword' WHERE id = '$id'";
+    $sql = "UPDATE registro SET AdCode = '$AdCode',  AdNombre = '$AdNombre', AdApellidoP = '$AdApellidoP', AdApellidoM = '$AdApellidoM', AdCarrera = '$AdCarrera', AdCorreo = '$AdCorreo', AdImagen = '$AdImagen', AdPassword = '$AdPassword' WHERE id = '$id'";
     $resultado = mysqli_query($conexion, $sql);
 
     if ($resultado) {
@@ -118,7 +120,6 @@ function edit(){
     }
         
 }
-
 
 
 function delete(){

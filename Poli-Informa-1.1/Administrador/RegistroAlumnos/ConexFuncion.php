@@ -28,19 +28,21 @@ function add(){
     $AluCarrera = mysqli_real_escape_string($conexion, $_POST['AluCarrera']);
     $AluCorreo = mysqli_real_escape_string($conexion, $_POST['AluCorreo']);
     $AluImage = $_FILES['AluImage']['name'];
-    $AluPassword = password_hash($_POST['AluPassword'], PASSWORD_DEFAULT); // Aplicando hash a la contraseña
-    
-    $sqlcode = "SELECT id FROM registroalu WHERE CodeAlu = '$CodeAlu'";
+    $AluPassword= $_POST ['AluPassword'];
+    $sqlcode = "SELECT  id FROM  registroalu
+                        WHERE   CodeAlu = '$CodeAlu'";
     $resultadocode = $conexion->query($sqlcode);
     $filas = $resultadocode->num_rows;
 
     if ($filas > 0){
-        echo "<script>alert('El usuario ya esta registrado');</script>";
-    } else {
-        $query = "INSERT INTO registroalu (CodeAlu, AluNom, AluApellidoP, AluApellidoM, AluCarrera, AluCorreo, AluImage, AluPassword) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-        $stmt = $conexion->prepare($query);
-        $stmt->bind_param("ssssssss", $CodeAlu, $AluNom, $AluApellidoP, $AluApellidoM, $AluCarrera, $AluCorreo, $AluImage, $AluPassword);
-        $resultado = $stmt->execute();
+        echo "<script>
+            alert('El usuario ya esta registrado');
+        </script>";
+    }else{
+        $query = "INSERT INTO registroalu (CodeAlu, AluNom, AluApellidoP, AluApellidoM, AluCarrera , AluCorreo, AluImage, AluPassword) VALUES('$CodeAlu', '$AluNom', '$AluApellidoP', '$AluApellidoM', '$AluCarrera', '$AluCorreo', '$AluImage', '$AluPassword')";
+        $resultado = mysqli_query($conexion, $query);
+    }
+
 
         if ($resultado) {
             move_uploaded_file($_FILES["AluImage"]["tmp_name"], "imagenes1/" . $_FILES["AluImage"]["name"]);
@@ -70,7 +72,7 @@ function edit(){
     $new_imagen  = $_FILES['AluImage']['name'];
     $old_imagen = $_POST['AluImagen_old'];
 
-    $AluPassword = password_hash($_POST['AluPassword'], PASSWORD_DEFAULT);
+    $AluPassword= $_POST ['AluPassword'];
 
     if($new_imagen != ''){
         // Genera un nombre único para la nueva imagen
@@ -93,20 +95,7 @@ function edit(){
         $AluImage = $old_imagen;
     }
 
-    // if($_FILES["file"]["error"] !=8){
-    //     $filename = $_FILES["file"]["name"];
-    //     $tmpName = $_FILES["file"]["tmp_name"];
-    //     // Esto es esto sip, gracias
-
-    //     $newfilename = uniqid() . "-" . $filename;
-
-    //     move_uploaded_file($tmpName, 'imagenes1/' . $newfilename);
-    //     $query = "UPDATE registro SET AluImage = '$newfilename' WHERE id = $id";
-    //     mysqli_query($conexion, $query);
-
-    // }
-
-    $sql = "UPDATE registroalu SET CodeAlu = '$CodeAlu',  AluNom = '$AluNom', AluApellidoP = '$AluApellidoP', AluApellidoM = '$AluApellidoM', AluCarrera  = '$AluCarrera ', AluCorreo = '$AluCorreo', AluImage = '$AluImage', AluPassword = '$AluPassword' WHERE id = '$id'";
+    $sql = "UPDATE registroalu SET CodeAlu = '$CodeAlu',  AluNom = '$AluNom', AluApellidoP = '$AluApellidoP', AluApellidoM = '$AluApellidoM', AluCarrera  = '$AluCarrera ', AluCorreo = '$AluCorreo', AluImage = '$AluImage', AluPassword = '$hashed_password' WHERE id = '$id'";
     $resultado = mysqli_query($conexion, $sql);
 
     if ($resultado) {

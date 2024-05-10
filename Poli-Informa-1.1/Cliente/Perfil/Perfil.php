@@ -62,6 +62,49 @@
                         echo "<p>No se encontraron datos de usuario.</p>";
                     }
                 ?>
+
+                <!-- Formulario de productos -->
+                <main id="contenedor-principal" hidden>
+                    <h1><a name="productos"></a>Registro de productos</h1>
+                    <form class="formulario" action="almacenarProductos.php" method="post" enctype="multipart/form-data">
+                        <fieldset class="fieldset">
+                            <h2 class="fieldset__titulo">Información del producto</h2>
+                            <div class="campo">
+                                <label for="nombre">Nombre del producto</label>
+                                <input type="text" id="nombre" name="nombre" required>
+                            </div> <!-- .campo -->
+                            <div class="campo">
+                                <label for="nombre">Codigo del vendedor</label>
+                                <input type="text" id="codigovendedor" name="codigovendedor" value="<?php echo isset($codeAlu) ? $codeAlu : ''; ?>" readonly>
+                            </div> <!-- .campo -->
+                            <div class="campo">
+                                <label for="nombre">Precio del producto</label>
+                                <input type="number" min="1" id="precio" name="precio" required>
+                            </div> <!-- .campo -->
+                            <div class="campo">
+                                <label for="descripcion">Descripción del producto</label>
+                                <textarea name="descripcion" id="descripcion" required></textarea>
+                            </div> <!-- .campo -->                   
+                            <div class="campo">
+                                <label for="imagen">Fotografía</label>
+                                <input type="file" name="imagen" id="imagen" accept="image/*" required>
+                            </div> <!-- .campo -->
+                            <div class="campo">
+                                <label for="categoria">Categoria: </label>
+                                <select id="categoria" name="categoria" required>
+                                    <option value="Alimentos y bebidas">Alimentos y bebidas</option>
+                                    <option value="Tecnología">Tecnología</option>
+                                    <option value="Ropa y moda">Ropa y moda</option>
+                                    <option value="Joyería y accesorios">Joyería y accesorios</option>
+                                    <option value="Servicios">Servicios</option>
+                                </select>
+                            </div> <!-- .campo -->
+                            <input type="submit" name="enviar" id="enviar">
+                        </fieldset>
+                    </form>
+                </main>
+                
+                <!-- Sessicón para ver los productos del vendedor -->
                 <section class="productos-vendedor contenedor">
                     <h2 class="subtitulo">Mis productos: <?php echo $mostrar["AluNom"]?></h2>
                     <div class="productos">
@@ -107,7 +150,7 @@
             // $conexion->close();
         }//mostrarProductos
         // $conexion->close();
-        // include("../Partes/footer.php");
+        include("../Partes/footer.php");
     ?>
 
 
