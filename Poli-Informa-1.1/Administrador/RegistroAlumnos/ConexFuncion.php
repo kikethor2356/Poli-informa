@@ -54,7 +54,7 @@ function add(){
             die("Datos NO eliminados: " . mysqli_error($conexion));
         }
     }
-}
+
 
 
 
