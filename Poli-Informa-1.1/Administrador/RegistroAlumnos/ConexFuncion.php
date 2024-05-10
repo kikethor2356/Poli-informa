@@ -54,10 +54,6 @@ function add(){
         header("location: AluControl.php");
         die("Datos NO eliminados: " . mysqli_error($conexion));
     }
-<<<<<<< HEAD
-
-=======
->>>>>>> 575a3c3005368c34762cd577bf27bc3f3ae7694a
 
 }
 
