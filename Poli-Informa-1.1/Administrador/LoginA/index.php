@@ -45,9 +45,6 @@
                 <div class="elemento">
                     <button type="submit" id="btn_iniciar_sesion" name="btn_iniciar_sesion">Iniciar sesión</button>
                 </div>
-                <!-- <div class="elemento">
-                    <a href="olvido.php">¿Olvidaste tu contraseña?</a>
-                </div> -->
             </form>
         </div>
 

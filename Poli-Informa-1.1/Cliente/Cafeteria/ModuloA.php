@@ -17,11 +17,18 @@
     <?php include '../Partes/MenuUsuario.php'?>
     <div class="home">
         <div class="text">
-            <div class="acerca">
+            <div class="acerca">   
+                <!-- Imagen de fondo -->
+                <div class="imagen_fondo">
+                    <div class="conten">
+                        <h1>Cafeteria Modulo A</h1>
+                        <p>Encontrarás algunos productos los cuales esperamos que sean de tu gusto. Solamente podrás ver productos y no podrás pagarlos, pero puedes consultar qué es lo que se te antoja e ir a la cooperativa que está al lado de las escaleras del Modulo A.</p>
+                        <a href="#buttons" class="boton_explorar">Explorar</a>
+                    </div>
+                </div>
+                
+                <!-- Interfaz de cafeteria -->
                 <div class="wrapper">
-                    <h1>Cafeteria Modulo A</h1><br><br><br>
-                    <p>Encontrarás algunos productos los cuales esperamos que sean de tu gusto. Solamente podrás ver productos y no podrás pagarlos, pero puedes consultar qué es lo que se te antoja e ir a la cooperativa que está al lado de las escaleras del Modulo A.</p>
-
                     <!-- Contenedor de elementos -->
                     <div id="search-container"> <!-- Buscador -->
                         <input type="search" id="search-input" placeholder="Buscar por el nombre del producto o descripción aquí...">

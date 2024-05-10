@@ -4,6 +4,17 @@
     $conexion = $db->connect();
     session_start();
 
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\Exception;
+    use PHPMailer\PHPMailer\SMTP;
+
+    require '../../../PHPMailer/Exception.php';
+    require '../../../PHPMailer/PHPMailer.php';
+    require '../../../PHPMailer/SMTP.php';
+
+    // Después de abrir la conexión con la base de datos
+    mysqli_set_charset($conexion, "utf8");
+
     $metodoAccion = (int) filter_var($_REQUEST['metodo'], FILTER_SANITIZE_NUMBER_INT);
 
 
@@ -214,6 +225,14 @@ if($metodoAccion == 6){
     $idVendedor = (int) filter_var($_REQUEST['idEliminarVendedor'], FILTER_SANITIZE_NUMBER_INT);
     $nombreFoto = filter_var($_REQUEST['fotoEliminarVendedor'], FILTER_SANITIZE_STRING);
 
+    // Obtener el correo electrónico del vendedor eliminado
+    $stmtCorreoVendedor = $conexion->prepare("SELECT correo FROM VENDEDORES WHERE id = ?");
+    $stmtCorreoVendedor->bind_param("i", $idVendedor);
+    $stmtCorreoVendedor->execute();
+    $stmtCorreoVendedor->bind_result($emailVendedor);
+    $stmtCorreoVendedor->fetch();
+    $stmtCorreoVendedor->close();
+        
     // Obtener el código del vendedor eliminado
     $stmtCodigoVendedor = $conexion->prepare("SELECT codigoVendedor FROM VENDEDORES WHERE id = ?");
     $stmtCodigoVendedor->bind_param("i", $idVendedor);
@@ -249,16 +268,49 @@ if($metodoAccion == 6){
         $resultUpdateEstado = $updateEstado->execute();
         $updateEstado->close();
 
-        if ($resultUpdateEstado) {
+        //Create an instance; passing `true` enables exceptions
+        $mail = new PHPMailer(true);
+                
+        try {
+            //Server settings
+            $mail->isSMTP();                                            //Send using SMTP
+            $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+            $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+            $mail->Username   = 'poliinforma1@gmail.com';                     //SMTP username
+            $mail->Password   = 'slhfpbzycafzxfhs';                               //SMTP password
+            $mail->SMTPSecure = 'tls'; //PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+            $mail->Port       = 587; 
+
+            // Agregar opciones para desactivar la verificación del certificado SSL
+            $mail->SMTPOptions = array(
+                'ssl' => array(
+                    'verify_peer' => false,
+                    'verify_peer_name' => false,
+                    'allow_self_signed' => true
+                )
+            );
+                        
+            // Set the charset
+            $mail->CharSet = 'UTF-8'; //Lenguaje
+
+            //Recipients
+            $mail->setFrom('poliinforma1@gmail.com', 'POLI-INFORMA');
+            $mail->addAddress($emailVendedor);     //Add a recipient
+
+            //Content
+            $mail->isHTML(true);     //Set email format to HTML
+            $mail->Subject = 'Eliminación como vendedor';
+            $mail->Body = 'Lamentamos informarte que has sido eliminado como vendedor en nuestro portal POLI-INFORMA.';
+            
+            $mail->send();
+            // echo 'El mensaje se envio correctamente';
             $_SESSION['success5'] = true;
-            header("Location: ../vendedores.php");
-        } else {
+        } catch (Exception $e) {
+            echo "Hubo un error a enviar el mensaje: ", $mail->ErrorInfo;
             $_SESSION['error5'] = true;
-            header("Location: ../vendedores.php");
         }
     } else {
         $_SESSION['error5'] = true;
-        header("Location: ../vendedores.php");
     }
 
     header("Location: ../vendedores.php");
@@ -297,8 +349,19 @@ if($metodoAccion == 7){
 
 // AGREGA AL VENDEDOR PENDIENTE A LA TABLA DE VENDEDORES
 if($metodoAccion == 8){
+    
     if(isset($_POST['idAceptarVendedorPendiente'])) {
         $idVendedor = $_POST['idAceptarVendedorPendiente'];
+
+        // Obtener información del vendedor
+        $stmtGetVendedorInfo = $conexion->prepare("SELECT * FROM VENDEDORES_PENDIENTES WHERE id = ?");
+        $stmtGetVendedorInfo->bind_param("i", $idVendedor);
+        $stmtGetVendedorInfo->execute();
+        $resultVendedor = $stmtGetVendedorInfo->get_result();
+        $vendedorData = $resultVendedor->fetch_assoc();
+        $stmtGetVendedorInfo->close();
+
+        $email = $vendedorData['correo'];
 
         // Copiar datos del vendedor pendiente a la tabla de vendedores
         $stmt = $conexion->prepare("INSERT INTO VENDEDORES (codigoVendedor, nombre, descripcion, correo, telefono, horaInicio, horaFin, foto) SELECT codigoVendedor, nombre, descripcion, correo, telefono, horaInicio, horaFin, foto FROM VENDEDORES_PENDIENTES WHERE id = ?");
@@ -306,23 +369,59 @@ if($metodoAccion == 8){
         $resultInsertVendedor = $stmt->execute();
         $stmt->close();
 
-        if ($resultInsertVendedor) {
-            // Actualizar el estado del vendedor pendiente a 1 en la tabla de registro de alumnos
-            $updateEstado = $conexion->prepare("UPDATE registroalu SET esVendedor = 1 WHERE CodeAlu = (SELECT codigoVendedor FROM VENDEDORES_PENDIENTES WHERE id = ?)");
-            $updateEstado->bind_param("i", $idVendedor);
-            $resultUpdateEstado = $updateEstado->execute();
-            $updateEstado->close();
+        // Actualizar el estado del vendedor pendiente a 1 en la tabla de registro de alumnos
+        $updateEstado = $conexion->prepare("UPDATE registroalu SET esVendedor = 1 WHERE CodeAlu = ?");
+        $updateEstado->bind_param("s", $vendedorData['codigoVendedor']);
+        $resultUpdateEstado = $updateEstado->execute();
+        $updateEstado->close();
 
-            if ($resultUpdateEstado) {
+        if ($resultInsertVendedor) {
                 // Eliminar al vendedor pendiente de la tabla de vendedores pendientes
                 $stmtDeleteVendedor = $conexion->prepare("DELETE FROM VENDEDORES_PENDIENTES WHERE id = ?");
                 $stmtDeleteVendedor->bind_param("i", $idVendedor);
                 $resultDeleteVendedor = $stmtDeleteVendedor->execute();
                 $stmtDeleteVendedor->close();
 
-                if ($resultDeleteVendedor) {
+            if ($resultUpdateEstado) {
+                //Create an instance; passing `true` enables exceptions
+                $mail = new PHPMailer(true);
+                            
+                try {
+                    //Server settings
+                    $mail->isSMTP();                                            //Send using SMTP
+                    $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+                    $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+                    $mail->Username   = 'poliinforma1@gmail.com';                     //SMTP username
+                    $mail->Password   = 'slhfpbzycafzxfhs';                               //SMTP password
+                    $mail->SMTPSecure = 'tls'; //PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+                    $mail->Port       = 587; 
+
+                    // Agregar opciones para desactivar la verificación del certificado SSL
+                    $mail->SMTPOptions = array(
+                        'ssl' => array(
+                            'verify_peer' => false,
+                            'verify_peer_name' => false,
+                            'allow_self_signed' => true
+                        )
+                    );
+                                
+                    // Set the charset
+                    $mail->CharSet = 'UTF-8';                                   //Lenguaje
+
+                    //Recipients
+                    $mail->setFrom('poliinforma1@gmail.com', 'POLI-INFORMA');
+                    $mail->addAddress($email);     //Add a recipient
+
+                    //Content
+                    $mail->isHTML(true);                                  //Set email format to HTML
+                    $mail->Subject = 'Aceptación como vendedor';
+                    $mail->Body = '¡Felicidades! Has sido aceptado como vendedor en nuestro portal POLI-INFORMA. Ahora puedes comenzar a vender tus productos.';
+                    
+                    $mail->send();
+                    // echo 'El mensaje se envio correctamente';
                     $_SESSION['success8'] = true;
-                } else {
+                } catch (Exception $e) {
+                    echo "Hubo un error a enviar el mensaje: ", $mail->ErrorInfo;
                     $_SESSION['error8'] = true;
                 }
             } else {
@@ -393,7 +492,4 @@ if ($metodoAccion == 10) {
         exit(); // Salir del script después de la redirección
     }
 }
-
-
-
 ?>
