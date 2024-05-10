@@ -25,7 +25,6 @@ function add(){
     $AdNombre= $_POST ['AdNombre'];
     $AdApellidoP= $_POST ['AdApellidoP'];
     $AdApellidoM= $_POST ['AdApellidoM'];
-    $AdCarrera= $_POST ['AdCarrera'];
     $AdCorreo= $_POST ['AdCorreo'];
     $AdImagen = $_FILES['AdImagen']['name'];
     $AdPassword= $_POST ['AdPassword'];
@@ -39,7 +38,7 @@ function add(){
             alert('El usuario ya esta registrado');
         </script>";
     }else{
-        $query = "INSERT INTO registro (AdCode, AdNombre, AdApellidoP, AdApellidoM, AdCarrera, AdCorreo, AdImagen, AdPassword) VALUES('$AdCode', '$AdNombre', '$AdApellidoP', '$AdApellidoM', '$AdCarrera', '$AdCorreo', '$AdImagen', ' $AdPassword')";
+        $query = "INSERT INTO registro (AdCode, AdNombre, AdApellidoP, AdApellidoM, AdCorreo, AdImagen, AdPassword) VALUES('$AdCode', '$AdNombre', '$AdApellidoP', '$AdApellidoM', '$AdCorreo', '$AdImagen', '$AdPassword')";
         $resultado = mysqli_query($conexion, $query);
     }
 
@@ -65,7 +64,6 @@ function edit(){
     $AdNombre= $_POST['AdNombre'];
     $AdApellidoP= $_POST['AdApellidoP'];
     $AdApellidoM= $_POST['AdApellidoM'];
-    $AdCarrera= $_POST['AdCarrera'];
     $AdCorreo= $_POST['AdCorreo'];
 
     $new_imagen  = $_FILES['AdImagen']['name'];
@@ -107,7 +105,7 @@ function edit(){
 
     // }
 
-    $sql = "UPDATE registro SET AdCode = '$AdCode',  AdNombre = '$AdNombre', AdApellidoP = '$AdApellidoP', AdApellidoM = '$AdApellidoM', AdCarrera = '$AdCarrera', AdCorreo = '$AdCorreo', AdImagen = '$AdImagen', AdPassword = '$AdPassword' WHERE id = '$id'";
+    $sql = "UPDATE registro SET AdCode = '$AdCode',  AdNombre = '$AdNombre', AdApellidoP = '$AdApellidoP', AdApellidoM = '$AdApellidoM', AdCorreo = '$AdCorreo', AdImagen = '$AdImagen', AdPassword = '$AdPassword' WHERE id = '$id'";
     $resultado = mysqli_query($conexion, $sql);
 
     if ($resultado) {

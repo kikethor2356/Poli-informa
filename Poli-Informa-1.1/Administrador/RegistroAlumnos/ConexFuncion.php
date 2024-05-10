@@ -21,40 +21,39 @@ if(isset($_POST["submit"])){
 function add(){
     global $conexion;
     
-    $CodeAlu= $_POST ['CodeAlu'];
-    $AluNom= $_POST ['AluNom'];
-    $AluApellidoP= $_POST ['AluApellidoP'];
-    $AluApellidoM= $_POST ['AluApellidoM'];
-    $AluCarrera= $_POST ['AluCarrera'];
-    $AluCorreo= $_POST ['AluCorreo'];
+    $CodeAlu = mysqli_real_escape_string($conexion, $_POST['CodeAlu']);
+    $AluNom = mysqli_real_escape_string($conexion, $_POST['AluNom']);
+    $AluApellidoP = mysqli_real_escape_string($conexion, $_POST['AluApellidoP']);
+    $AluApellidoM = mysqli_real_escape_string($conexion, $_POST['AluApellidoM']);
+    $AluCarrera = mysqli_real_escape_string($conexion, $_POST['AluCarrera']);
+    $AluCorreo = mysqli_real_escape_string($conexion, $_POST['AluCorreo']);
     $AluImage = $_FILES['AluImage']['name'];
-    $AluPassword= $_POST ['AluPassword'];
-    $sqlcode = "SELECT  id FROM  registroalu
-                        WHERE   CodeAlu = '$CodeAlu'";
+    $AluPassword = password_hash($_POST['AluPassword'], PASSWORD_DEFAULT); // Aplicando hash a la contraseña
+    
+    $sqlcode = "SELECT id FROM registroalu WHERE CodeAlu = '$CodeAlu'";
     $resultadocode = $conexion->query($sqlcode);
     $filas = $resultadocode->num_rows;
 
     if ($filas > 0){
-        echo "<script>
-            alert('El usuario ya esta registrado');
-        </script>";
-    }else{
-        $query = "INSERT INTO registroalu (CodeAlu, AluNom, AluApellidoP, AluApellidoM, AluCarrera , AluCorreo, AluImage, AluPassword) VALUES('$CodeAlu', '$AluNom', '$AluApellidoP', '$AluApellidoM', '$AluCarrera', '$AluCorreo', '$AluImage', '$AluPassword')";
-        $resultado = mysqli_query($conexion, $query);
-    }
-
-
-    if ($resultado) {
-        move_uploaded_file($_FILES["AluImage"]["tmp_name"], "imagenes1/".$_FILES["AluImage"]["name"]);
-        $_SESSION['success'] = true;
-        header("location: AluControl.php");
+        echo "<script>alert('El usuario ya esta registrado');</script>";
     } else {
-        $_SESSION['error'] = true;
-        header("location: AluControl.php");
-        die("Datos NO eliminados: " . mysqli_error($conexion));
-    }
+        $query = "INSERT INTO registroalu (CodeAlu, AluNom, AluApellidoP, AluApellidoM, AluCarrera, AluCorreo, AluImage, AluPassword) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        $stmt = $conexion->prepare($query);
+        $stmt->bind_param("ssssssss", $CodeAlu, $AluNom, $AluApellidoP, $AluApellidoM, $AluCarrera, $AluCorreo, $AluImage, $AluPassword);
+        $resultado = $stmt->execute();
 
+        if ($resultado) {
+            move_uploaded_file($_FILES["AluImage"]["tmp_name"], "imagenes1/" . $_FILES["AluImage"]["name"]);
+            $_SESSION['success'] = true;
+            header("location: AluControl.php");
+        } else {
+            $_SESSION['error'] = true;
+            header("location: AluControl.php");
+            die("Datos NO eliminados: " . mysqli_error($conexion));
+        }
+    }
 }
+
 
 
 function edit(){
@@ -71,7 +70,7 @@ function edit(){
     $new_imagen  = $_FILES['AluImage']['name'];
     $old_imagen = $_POST['AluImagen_old'];
 
-    $AluPassword= $_POST ['AluPassword'];
+    $AluPassword = password_hash($_POST['AluPassword'], PASSWORD_DEFAULT);
 
     if($new_imagen != ''){
         // Genera un nombre único para la nueva imagen

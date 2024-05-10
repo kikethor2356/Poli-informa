@@ -34,7 +34,6 @@ $conexion = $db->connect();
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Ap. Parteno</th>
                                 <th scope="col">Ap. Materno</th>
-                                <th scope="col">Carrera</th>
                                 <th scope="col">Correo</th>
                                 <th scope="col">Imagen</th>
                                 <th scope="col">Password</th>
@@ -54,7 +53,6 @@ $conexion = $db->connect();
                                 <td> <?php echo $mostrar["AdNombre"]; ?> </td>
                                 <td> <?php echo $mostrar["AdApellidoP"]; ?> </td>
                                 <td> <?php echo $mostrar["AdApellidoM"]; ?> </td>
-                                <td> <?php echo $mostrar["AdCarrera"]; ?> </td>
                                 <td> <?php echo $mostrar["AdCorreo"]; ?> </td>
                                 <td> <?php echo $mostrar["AdImagen"]; ?></td>
                                 <td> <?php echo $mostrar["AdPassword"]; ?> </td>
@@ -62,8 +60,8 @@ $conexion = $db->connect();
 
                                     <button type="button" class="btn btn-samll btn-warning" onclick="mostrarEditar('<?php echo $mostrar['id']; ?>' ,'<?php echo $mostrar['AdCode']; ?>', 
                                     '<?php echo $mostrar['AdNombre']; ?>', '<?php echo $mostrar['AdApellidoP']; ?>', '<?php echo $mostrar['AdApellidoM']; ?>', 
-                                    '<?php echo $mostrar['AdCarrera']; ?>', '<?php echo $mostrar['AdCorreo']; ?>', '<?php echo $mostrar['AdImagen']; ?>', 
-                                    '<?php echo $mostrar['AdPassword']; ?>', '<?php echo $mostrar['AdImagen']; ?>')"><i class="fa-regular fa-pen-to-square"></i></button>
+                                    '<?php echo $mostrar['AdCorreo']; ?>', '<?php echo $mostrar['AdImagen']; ?>', '<?php echo $mostrar['AdPassword']; ?>', 
+                                    '<?php echo $mostrar['AdImagen']; ?>')"><i class="fa-regular fa-pen-to-square"></i></button>
                                     <!-- Button trigger modal -->
                                     <form id="eliminarForm_<?php echo $mostrar['id']; ?>" action="ConexFuncion.php" method="POST" enctype="multipart/form-data">
                                         <input type="hidden" name="idEliminar" value="<?php echo $mostrar['id']; ?>">
@@ -128,10 +126,6 @@ $conexion = $db->connect();
                                 <tr>
                                     <td>Apellido Materno:</td>
                                     <td><input type="text" maxlength="15" name="AdApellidoM" placeholder="Anonimatario" value="" id="campoApellidoMaterno" onkeypress="validarInput(event)" required></td>
-                                </tr>
-                                <tr>
-                                    <td>Carrera:</td>
-                                    <td><input type="text" maxlength="7" name="AdCarrera" placeholder="TPSI(Solo si eres estudiante)" value="" id="campoCarrera" ></td>
                                 </tr>
                                 <tr>
                                     <td>Correo:</td>
