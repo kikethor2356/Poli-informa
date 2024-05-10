@@ -25,12 +25,12 @@ function add(){
     $AdNombre= $_POST ['AdNombre'];
     $AdApellidoP= $_POST ['AdApellidoP'];
     $AdApellidoM= $_POST ['AdApellidoM'];
-    $AdCarrera= $_POST ['AdCarrera'];
     $AdCorreo= $_POST ['AdCorreo'];
     $AdImagen = $_FILES['AdImagen']['name'];
     $AdPassword= $_POST ['AdPassword'];
-    $sqlcode = "SELECT  id FROM  registro
-                        WHERE   AdCode = '$AdCode'";
+    $hashed_password = password_hash($AdPassword, PASSWORD_DEFAULT);
+
+    $sqlcode = "SELECT  id FROM  registro WHERE AdCode = '$AdCode'";
     $resultadocode = $conexion->query($sqlcode);
     $filas = $resultadocode->num_rows;
 
@@ -39,7 +39,7 @@ function add(){
             alert('El usuario ya esta registrado');
         </script>";
     }else{
-        $query = "INSERT INTO registro (AdCode, AdNombre, AdApellidoP, AdApellidoM, AdCarrera, AdCorreo, AdImagen, AdPassword) VALUES('$AdCode', '$AdNombre', '$AdApellidoP', '$AdApellidoM', '$AdCarrera', '$AdCorreo', '$AdImagen', ' $AdPassword')";
+        $query = "INSERT INTO registro (AdCode, AdNombre, AdApellidoP, AdApellidoM, AdCorreo, AdImagen, AdPassword) VALUES('$AdCode', '$AdNombre', '$AdApellidoP', '$AdApellidoM', '$AdCorreo', '$AdImagen', ' $hashed_password')";
         $resultado = mysqli_query($conexion, $query);
     }
 
@@ -65,13 +65,13 @@ function edit(){
     $AdNombre= $_POST['AdNombre'];
     $AdApellidoP= $_POST['AdApellidoP'];
     $AdApellidoM= $_POST['AdApellidoM'];
-    $AdCarrera= $_POST['AdCarrera'];
     $AdCorreo= $_POST['AdCorreo'];
 
     $new_imagen  = $_FILES['AdImagen']['name'];
     $old_imagen = $_POST['AdImagen_old'];
 
     $AdPassword= $_POST ['AdPassword'];
+    $hashed_password = password_hash($AdPassword, PASSWORD_DEFAULT);
 
     if($new_imagen != ''){
         // Genera un nombre único para la nueva imagen
@@ -94,20 +94,7 @@ function edit(){
         $AdImagen = $old_imagen;
     }
 
-    // if($_FILES["file"]["error"] !=8){
-    //     $filename = $_FILES["file"]["name"];
-    //     $tmpName = $_FILES["file"]["tmp_name"];
-    //     // Esto es esto sip, gracias
-
-    //     $newfilename = uniqid() . "-" . $filename;
-
-    //     move_uploaded_file($tmpName, 'imagenes/' . $newfilename);
-    //     $query = "UPDATE registro SET AdImagen = '$newfilename' WHERE id = $id";
-    //     mysqli_query($conexion, $query);
-
-    // }
-
-    $sql = "UPDATE registro SET AdCode = '$AdCode',  AdNombre = '$AdNombre', AdApellidoP = '$AdApellidoP', AdApellidoM = '$AdApellidoM', AdCarrera = '$AdCarrera', AdCorreo = '$AdCorreo', AdImagen = '$AdImagen', AdPassword = '$AdPassword' WHERE id = '$id'";
+    $sql = "UPDATE registro SET AdCode = '$AdCode',  AdNombre = '$AdNombre', AdApellidoP = '$AdApellidoP', AdApellidoM = '$AdApellidoM', AdCorreo = '$AdCorreo', AdImagen = '$AdImagen', AdPassword = '$hashed_password' WHERE id = '$id'";
     $resultado = mysqli_query($conexion, $sql);
 
     if ($resultado) {
@@ -120,7 +107,6 @@ function edit(){
     }
         
 }
-
 
 
 function delete(){

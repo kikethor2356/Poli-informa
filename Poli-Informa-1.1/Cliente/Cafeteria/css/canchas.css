@@ -1,0 +1,334 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    font-family: "Poppins", sans-serif;
+}
+
+h1{
+    text-align: center;
+}
+
+.acerca{
+    position: relative;
+    margin-top: -1em;
+}
+
+/* Imagen fondo */
+.imagen_fondo{
+    background-image: url('../img/CafeteriaC.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    /* Fija la imagen de fondo */
+    height: 100%;
+    margin-top: -10em;
+}
+
+.conten {
+    text-align: center;
+    padding: 200px 100px;
+    /* Modifica el valor de padding para ajustar la posición vertical del texto */
+    color: white;
+}
+
+.conten h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+
+}
+
+.conten p {
+    font-size: 1.5em;
+    margin-bottom: 5%;
+}
+
+.boton_explorar {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.boton_explorar:hover {
+    background-color: #0056b3;
+}
+/* Fin de imagen fondo */
+
+body{
+    background-color: rgb(248, 248, 248);
+}
+.wrapper {
+    width: 95%;
+    margin: 0 auto;
+}
+
+/* Contenido del buscador */
+#search-container {
+    margin: 1em 0;
+}
+
+#search-container input {
+    background-color: transparent;
+    width: 35%;
+    border-bottom: 2px solid #110f29;
+    padding: 1em 0.3em;
+}
+
+#search-container input:focus {
+    border-bottom-color: #6759ff;
+}
+
+#search-container button {
+    padding: 1em 2em;
+    margin-left: 1em;
+    background-color: #6759ff;
+    color: #ffffff;
+    border-radius: 20px;
+    margin-top: 0.5em;
+}
+
+#search-container2 {
+    margin: -4em 0;
+    position: absolute;
+    margin-left: 50%;
+}
+
+#search-container2 input {
+    background-color: transparent;
+    width: 120%;
+    border-bottom: 2px solid #110f29;
+    padding: 1em 0.3em;
+}
+
+#search-container2 input:focus {
+    border-bottom-color: #6759ff;
+}
+
+#search-container2 button {
+    position: absolute;
+    padding: 1em 2em;
+    margin-left: 18em;
+    background-color: #6759ff;
+    color: #ffffff;
+    border-radius: 20px;
+    margin-top: -3.5em;
+}
+
+/* Contenido de las categorias */
+#buttons {
+    overflow-x: auto; /* Agregar desplazamiento horizontal si los botones son demasiados */
+    white-space: nowrap;
+    position: relative;
+    width: 68em;
+}
+
+/* Estilo de la barra de desplazamiento */
+#buttons::-webkit-scrollbar {
+    width: 12px; /* Ancho de la barra de desplazamiento */
+}
+
+#buttons::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Color de fondo de la barra de desplazamiento */
+}
+
+#buttons::-webkit-scrollbar-thumb {
+    background: #888; /* Color del "pulgarcito" de la barra de desplazamiento */
+}
+
+#buttons::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Cambio de color al pasar el ratón sobre la barra de desplazamiento */
+}
+
+
+.button-value {
+    border: 2px solid #6759ff;
+    padding: 1em 2.2em;
+    border-radius: 3em;
+    background-color: transparent;
+    color: #6759ff;
+    cursor: pointer;
+    display: inline-block; /* Hacer que los botones se muestren en línea */
+    margin-right: 0.5em; /* Espacio entre los botones */
+}
+
+.active1 {
+    background-color: #6759ff;
+    color: #ffffff;
+}
+
+/* Productos para mostrar */
+#productos {
+    width: 100%; /* Tamaño fijo para el contenedor de productos */
+    margin-top: 2em; /* Espacio superior */
+}
+
+#productos .descripcion-grande {
+    display: none; /* Ocultar la descripción grande por defecto */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 9999;
+    padding: 2em;
+    box-sizing: border-box;
+    overflow-y: auto; /* Habilitar el desplazamiento vertical si la descripción es muy larga */
+    color: #fff;
+}
+
+#productos .descripcion-grande img {
+    max-width: 100%;
+    object-fit: contain;
+    margin-bottom: 1em;
+}
+
+#productos .descripcion-grande .container {
+    position: relative;
+}
+
+#productos .descripcion-grande .close-btn {
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    cursor: pointer;
+}
+
+#productos .descripcion-grande .close-btn::before,
+#productos .descripcion-grande .close-btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 11px;
+    height: 22px;
+    width: 2px;
+    background-color: #fff;
+}
+
+#productos .descripcion-grande .close-btn::before {
+    transform: rotate(45deg);
+}
+
+#productos .descripcion-grande .close-btn::after {
+    transform: rotate(-45deg);
+}
+
+.card {
+    width: 250px; /* Establecer un ancho fijo */
+    height: 20em; /* Establecer una altura fija */
+
+    background-color: #ffffff;
+    max-width: 18em;
+    margin-top: 1em;
+    padding: 1em;
+    border-radius: 5px;
+    box-shadow: 1em 2em 2.5em rgba(1, 2, 68, 0.8);
+    border: 1px solid #000;
+    flex-grow: 1;
+    margin-right: 1em;
+    flex-basis: calc(20% - 1em);
+}
+.card .container {
+    max-height: 5em; /* Establecer una altura máxima para la descripción */
+    overflow: hidden; /* Ocultar el texto que no quepa */
+    position: relative;
+}
+
+.card.ampliado .container {
+    max-height: none; /* Eliminar la altura máxima cuando la tarjeta está ampliada */
+    overflow: visible; /* Mostrar todo el texto cuando la tarjeta está ampliada */
+}
+
+.image-container {
+    text-align: center;
+}
+
+img {
+    max-width: 100%;
+    object-fit: contain;
+    height: 15em;
+}
+
+.image-container img {
+    max-width: 100%;
+    object-fit: contain;
+    height: 10em;
+}
+
+.container {
+    position: relative;
+    padding-top: 2em;
+    color: #110f29;
+}
+
+.container h5 {
+    position: absolute;
+    font-weight: 900;
+    top: 0; /* Colocar el nombre del producto en la parte superior */
+    left: 0;
+    right: 0;
+    margin: auto; /* Centrar horizontalmente */
+    max-width: 100%;
+    text-align: center;
+}
+
+.container p {
+    margin-bottom: 1em; /* Espacio entre la descripción y el h6 */
+}
+
+.container h6 {
+    position: absolute;
+    bottom: 0; /* Colocar el h6 en la parte inferior */
+    left: 0;
+    right: 0;
+    margin: auto; /* Centrar horizontalmente */
+    text-align: center;
+}
+
+.hide {
+    display: none;
+}
+
+/* Estilo para el nombre de la categoría */
+.categoria-name {
+    margin-top: 1em; /* Añadir espacio entre las categorías */
+    margin-bottom: 0.5em;
+    width: 100%; /* Asegurar que ocupe todo el ancho disponible */
+}
+
+/* Estilo para el contenedor de productos de cada categoría */
+.categoria-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 1em;
+    margin-bottom: 2em;
+    background-color: #ece2e2;
+    padding: 3rem;
+    margin-bottom: 3rem;
+}
+
+
+@media screen and (max-width: 720px) {
+    img {
+        max-width: 100%;
+        object-fit: contain;
+        height: 10em;
+    }
+
+    .card {
+        max-width: 10em;
+        margin-top: 1em;
+    }
+
+    #productos {
+        grid-template-columns: auto auto auto;
+        grid-column-gap: 1em;
+    }
+}

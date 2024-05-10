@@ -33,10 +33,6 @@ $conexion = $db->connect();
                 <td><input type="text" maxlength="15" name="AdApellidoM" placeholder="Anonimatario" value ="<?php echo $user["AdApellidoM"]; ?>" onkeypress="validarInput(event)" required></td>
             </tr>
             <tr>
-                <td>Carrera:</td>
-                <td><input type="text" maxlength="7" name="AdCarrera" placeholder="TPSI" value ="<?php echo $user["AdCarrera"]; ?>" required></td>
-            </tr>
-            <tr>
                 <td>Correo:</td>
                 <td><input type="email" name="AdCorreo" placeholder="anonimato@gmail.com" value ="<?php echo $user["AdCorreo"]; ?>" required></td>
             </tr>

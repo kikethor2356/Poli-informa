@@ -10,7 +10,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/Perfil1.css">
+    <link rel="stylesheet" href="css/PerfilU.css">
     <link rel="stylesheet" href="css/diseño.css">
     <link rel="stylesheet" href="css/vendedores.css">
     <script src="js/perfil.js"></script>
@@ -35,7 +35,7 @@
                         // Mostrar los datos del usuario
                         ?>
                         <div class="contenidoImg">
-                            <img src="../../Administrador/RegistroAlumnos/imagenes1/<?php echo htmlspecialchars($mostrar["AluImage"]); ?>" alt="">
+                            <img src="../../Administrador/RegistroAlumnos/imagenes1/<?php echo htmlspecialchars($mostrar["AluImage"]); ?>" alt="" width="200px" height="250px">
                         </div><br>
                         <div class="c_code">
                             <h3><?php echo htmlspecialchars($mostrar["CodeAlu"]); ?></h3>
