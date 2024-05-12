@@ -156,40 +156,40 @@
                                 <div class="horaInicio">
                                     <label for="horaInicio">Hora de inicio:</label>
                                     <select name="horaInicioEditarVendedor" id="horaInicioEditarVendedor">
-                                        <option value="7:00 am">7:00 am</option>';
-                                        <option value="8:00 am">8:00 am</option>';
-                                        <option value="9:00 am">9:00 am</option>';
-                                        <option value="10:00 am">10:00 am</option>';
-                                        <option value="11:00 am">11:00 am</option>';
-                                        <option value="12:00 pm">12:00 pm</option>';
-                                        <option value="13:00 pm">13:00 pm</option>';
-                                        <option value="14:00 pm">14:00 pm</option>';
-                                        <option value="15:00 pm">15:00 pm</option>';
-                                        <option value="16:00 pm">16:00 pm</option>';
-                                        <option value="17:00 pm">17:00 pm</option>';
-                                        <option value="18:00 pm">18:00 pm</option>';
-                                        <option value="19:00 pm">19:00 pm</option>';
-                                        <option value="20:00 pm">20:00 pm</option>';
+                                        <option value="7:00 am">7:00 am</option>
+                                        <option value="8:00 am">8:00 am</option>
+                                        <option value="9:00 am">9:00 am</option>
+                                        <option value="10:00 am">10:00 am</option>
+                                        <option value="11:00 am">11:00 am</option>
+                                        <option value="12:00 pm">12:00 pm</option>
+                                        <option value="13:00 pm">13:00 pm</option>
+                                        <option value="14:00 pm">14:00 pm</option>
+                                        <option value="15:00 pm">15:00 pm</option>
+                                        <option value="16:00 pm">16:00 pm</option>
+                                        <option value="17:00 pm">17:00 pm</option>
+                                        <option value="18:00 pm">18:00 pm</option>
+                                        <option value="19:00 pm">19:00 pm</option>
+                                        <option value="20:00 pm">20:00 pm</option>
                                     </select>
                                 </div>
                                 <div class="horaFin">
                                     <label for="horaFin">Hora de finalización:</label>
                                     <select name="horaFinEditarVendedor" id="horaFinEditarVendedor">
-                                        <option value="7:00 am">7:00 am</option>';
-                                        <option value="8:00 am">8:00 am</option>';
-                                        <option value="9:00 am">9:00 am</option>';
-                                        <option value="10:00 am">10:00 am</option>';
-                                        <option value="11:00 am">11:00 am</option>';
-                                        <option value="12:00 pm">12:00 pm</option>';
-                                        <option value="13:00 pm">13:00 pm</option>';
-                                        <option value="14:00 pm">14:00 pm</option>';
-                                        <option value="15:00 pm">15:00 pm</option>';
-                                        <option value="16:00 pm">16:00 pm</option>';
-                                        <option value="17:00 pm">17:00 pm</option>';
-                                        <option value="18:00 pm">18:00 pm</option>';
-                                        <option value="19:00 pm">19:00 pm</option>';
-                                        <option value="20:00 pm">20:00 pm</option>';
-                                        <option value="21:00 pm">21:00 pm</option>';                        
+                                        <option value="7:00 am">7:00 am</option>
+                                        <option value="8:00 am">8:00 am</option>
+                                        <option value="9:00 am">9:00 am</option>
+                                        <option value="10:00 am">10:00 am</option>
+                                        <option value="11:00 am">11:00 am</option>
+                                        <option value="12:00 pm">12:00 pm</option>
+                                        <option value="13:00 pm">13:00 pm</option>
+                                        <option value="14:00 pm">14:00 pm</option>
+                                        <option value="15:00 pm">15:00 pm</option>
+                                        <option value="16:00 pm">16:00 pm</option>
+                                        <option value="17:00 pm">17:00 pm</option>
+                                        <option value="18:00 pm">18:00 pm</option>
+                                        <option value="19:00 pm">19:00 pm</option>
+                                        <option value="20:00 pm">20:00 pm</option>
+                                        <option value="21:00 pm">21:00 pm</option>                        
                                     </select>
                                 </div>
                                 <div class="fotoVendedor">
@@ -288,8 +288,8 @@
                                 </div>
                                 <div class="descripcionVerVendedor">
                                     <label for="descripcionVerVendedor">Descripción:</label><br>
-                                    <textarea name="descripcionVerVendedor" id="descripcionVerVendedor" readonly></textarea>                                </div>
-
+                                    <textarea name="descripcionVerVendedor" id="descripcionVerVendedor" readonly></textarea>                                
+                                </div>
                                 <div class="correoVerVendedor">
                                     <label for="correoVerVendedor">Correo electrónico:</label><br>
                                     <input type="text" id="correoVerVendedor" name="correoVerVendedor" value="" readonly>
