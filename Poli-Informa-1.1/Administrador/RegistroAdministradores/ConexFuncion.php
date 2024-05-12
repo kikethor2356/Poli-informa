@@ -30,7 +30,7 @@ function add(){
     $AdPassword= $_POST ['AdPassword'];
     $hashed_password = password_hash($AdPassword, PASSWORD_DEFAULT);
 
-    $sqlcode = "SELECT  id FROM  registro WHERE AdCode = '$AdCode'";
+    $sqlcode = "SELECT id FROM registro WHERE AdCode = '$AdCode'";
     $resultadocode = $conexion->query($sqlcode);
     $filas = $resultadocode->num_rows;
 
@@ -39,7 +39,7 @@ function add(){
             alert('El usuario ya esta registrado');
         </script>";
     }else{
-        $query = "INSERT INTO registro (AdCode, AdNombre, AdApellidoP, AdApellidoM, AdCorreo, AdImagen, AdPassword) VALUES('$AdCode', '$AdNombre', '$AdApellidoP', '$AdApellidoM', '$AdCorreo', '$AdImagen', ' $hashed_password')";
+        $query = "INSERT INTO registro (AdCode, AdNombre, AdApellidoP, AdApellidoM, AdCorreo, AdImagen, AdPassword) VALUES('$AdCode', '$AdNombre', '$AdApellidoP', '$AdApellidoM', '$AdCorreo', '$AdImagen', '$hashed_password')";
         $resultado = mysqli_query($conexion, $query);
     }
 
@@ -94,7 +94,7 @@ function edit(){
         $AdImagen = $old_imagen;
     }
 
-    $sql = "UPDATE registro SET AdCode = '$AdCode',  AdNombre = '$AdNombre', AdApellidoP = '$AdApellidoP', AdApellidoM = '$AdApellidoM', AdCorreo = '$AdCorreo', AdImagen = '$AdImagen', AdPassword = '$hashed_password' WHERE id = '$id'";
+    $sql = "UPDATE registro SET AdCode = '$AdCode', AdNombre = '$AdNombre', AdApellidoP = '$AdApellidoP', AdApellidoM = '$AdApellidoM', AdCorreo = '$AdCorreo', AdImagen = '$AdImagen', AdPassword = '$hashed_password' WHERE id = '$id'";
     $resultado = mysqli_query($conexion, $sql);
 
     if ($resultado) {

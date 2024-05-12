@@ -466,7 +466,7 @@
                                 <ul class="sub-opcion">
                                     <li>
                                         <a href="#enfermeria">
-                                            <span class="subtitulo">enfermeria</span>
+                                            <span class="subtitulo">Enfermeria</span>
                                         </a>
                                     </li>
                                     <li>
@@ -664,12 +664,12 @@
                                     </li>
                                     <li>
                                         <a href="#lab">
-                                            <span class="subtitulo">Laboratorios</span>
+                                            <span class="subtitulo">Laboratorios (En mantenimiento)</span>
                                         </a>
                                     </li>
                                     <li class="submenu2">
                                         <a href="#mayoriaD">
-                                            <span class="subtitulo">Salones D(x-x)</span>
+                                            <span class="subtitulo">Salones D(2-9)</span>
                                             <i class="hilo fa-solid fa-angle-down"></i>
                                         </a>
                                         <ul class="sub-opcion2">
@@ -679,7 +679,7 @@
                                     </li>
                                     <li class="submenu2">
                                         <a href="#mayoriaD">
-                                            <span class="subtitulo">salones D(x-x) </span>
+                                            <span class="subtitulo">Salones D(10-17) </span>
                                             <i class="hilo fa-solid fa-angle-down"></i>
                                         </a>
                                         <ul class="sub-opcion2">
@@ -708,7 +708,7 @@
                                     </li>
                                     <li>
                                         <a href="#labAlimentosE">
-                                            <span class="subtitulo">Laboratorio de Alimentos</span>
+                                            <span class="subtitulo">Laboratorio de Procesos Carnicos y Alimentos</span>
                                         </a>
                                     </li>
                                     <li>
@@ -738,7 +738,7 @@
                                     </li>
                                     <li class="submenu2">
                                         <a href="#salonesE">
-                                            <span class="subtitulo">salones E(1-4) </span>
+                                            <span class="subtitulo">Salones E(1-4) </span>
                                             <i class="hilo fa-solid fa-angle-down"></i>
                                         </a>
                                         <ul class="sub-opcion2">
@@ -748,7 +748,7 @@
                                     </li>
                                     <li class="submenu2">
                                         <a href="#salonesE">
-                                            <span class="subtitulo">salones E(5-x) </span>
+                                            <span class="subtitulo">Salones E(5-12) </span>
                                             <i class="hilo fa-solid fa-angle-down"></i>
                                         </a>
                                         <ul class="sub-opcion2">
