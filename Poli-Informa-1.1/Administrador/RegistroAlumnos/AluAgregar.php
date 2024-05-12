@@ -4,7 +4,7 @@ $db = new Database();
 $conexion = $db->connect();
 
 ?>
-<?php include '../LoginA/inicio.php'; ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -61,6 +61,8 @@ $conexion = $db->connect();
                     <div class="input-group">
                         <label>Contraseña:</label>
                         <input type="password" name="AluPassword" id="password" placeholder="Anonimato123" onblur="validarPassword()" required>
+                        <i class="fa-solid fa-lock"></i>
+                        <a href="#" id="link_ver_contraseña" color="white"><i class="fa-regular fa-eye"></i></a>
                         <span id="passwordError" class="error-message"></span>
                     </div>
 
@@ -71,6 +73,7 @@ $conexion = $db->connect();
         </div>
     </div>
 <script src="JS/AluFunciones.js"></script>
+
 </body>
 
 </html>

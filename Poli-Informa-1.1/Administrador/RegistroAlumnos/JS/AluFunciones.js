@@ -181,3 +181,4 @@ function mostrarBorrar(id){
 //     header("Location: ../index.php");
 
 // }//FIN METODOACCIÓN 2
+
