@@ -1,4 +1,4 @@
-<!-- <?php include '../LoginA/inicio.php'; ?> -->
+
 
 <?php
 
@@ -13,6 +13,8 @@ class Horario
   private $dias;
   private $nombre_laboratorio;
   private $turno;
+  private $grupo;
+  private $carrera;
 
   public function __construct($db)
   {
@@ -20,7 +22,7 @@ class Horario
   }
 
   // Método para establecer las variables del horario
-  public function setHorario($maestro, $hora_inicio, $hora_fin, $dias, $nombre_laboratorio, $turno)
+  public function setHorario($maestro, $hora_inicio, $hora_fin, $dias, $nombre_laboratorio, $turno, $grupo, $carrera)
   {
     $this->maestro = $maestro;
     $this->hora_inicio = $hora_inicio;
@@ -28,6 +30,10 @@ class Horario
     $this->dias = $dias;
     $this->nombre_laboratorio = $nombre_laboratorio;
     $this->turno = $turno;
+    $this->grupo = $grupo;
+    $this->carrera = $carrera;
+    
+
   }
 
   public function create()
@@ -46,9 +52,10 @@ class Horario
     }
 
     // Si no se encontró ningún registro, proceder con la inserción
-    $query_insert = 'INSERT INTO ' . $this->table . ' (maestro, nombre_laboratorio, hora_inicio, hora_fin, dias, turno) VALUES (?, ?, ?, ?, ?, ?)';
+
+    $query_insert = 'INSERT INTO ' . $this->table . ' (maestro, nombre_laboratorio, hora_inicio, hora_fin, dias, turno, grupo, carrera) VALUES (?,?,?,?,?,?,?,?)';
     $stmt_insert = $this->conn->prepare($query_insert);
-    $stmt_insert->bind_param('ssssss', $this->maestro, $this->nombre_laboratorio, $this->hora_inicio, $this->hora_fin, $this->dias, $this->turno);
+    $stmt_insert->bind_param('ssssssss', $this->maestro, $this->nombre_laboratorio, $this->hora_inicio, $this->hora_fin, $this->dias, $this->turno, $this->grupo, $this->carrera);
 
     if ($stmt_insert->execute()) {
       return true;
@@ -63,7 +70,7 @@ class Horario
 
   public function obtenerHorario($nombre_laboratorio)
   {
-    $query = "SELECT id, dias, hora_inicio, hora_fin, maestro FROM $this->table WHERE nombre_laboratorio = ?";
+    $query = "SELECT id, dias, hora_inicio, hora_fin, maestro, grupo, carrera FROM $this->table WHERE nombre_laboratorio = ?";
     $stmt = $this->conn->prepare($query);
     $stmt->bind_param('s', $nombre_laboratorio);
     $stmt->execute();
@@ -84,10 +91,13 @@ class Horario
       $hora_inicio = $fila['hora_inicio'];
       $hora_fin = $fila['hora_fin'];
       $maestro = $fila['maestro'];
-
+      $turno = $fila['turno'];
+      $grupo = $fila['grupo'];
+      $carrera = $fila['carrera'];
+      
       // Agregar el horario al día correspondiente
       if (isset($horario[$dias])) {
-        $horario[$dias][] = array('id' => $id, 'hora_inicio' => $hora_inicio, 'hora_fin' => $hora_fin, 'maestro' => $maestro);
+        $horario[$dias][] = array('id' => $id, 'hora_inicio' => $hora_inicio, 'hora_fin' => $hora_fin, 'maestro' => $maestro, 'carrera'=> $carrera, 'grupo'=> $grupo);
       } else {
         // Si el día no está configurado correctamente, mostrar un mensaje de error
         echo "Error: Día inválido: $dias";
@@ -223,6 +233,13 @@ class Horario
                 <option value="Matutino">Matutino</option>
                 <option value="Vespertino">Vespertino</option>
               </select>
+              <select name="grupo" id="grupo" style="margin: 10px; padding: 8px; background:#dc3545;border-radius: 10%;">
+                <option value="A">A</option>
+                <option value="B">B</option>
+              </select><select name="carrera" id="carrera" style="margin: 10px; padding: 8px; background:#ffc543;border-radius: 10%;">
+                <option value="TPSI">TPSI</option>
+                <option value="TPIQ">TPIQ</option>
+              </select>
               <input type="submit" name="submit" value="Guardar" style="margin-top: 10px; padding: 10px 16px; background-color: #343a40 ; color: #FFFFFF; border: none; border-radius: 10%; cursor: pointer;">
 
             </form>
@@ -253,7 +270,10 @@ class Horario
         if (isset($horario[$dia])) {
           foreach ($horario[$dia] as $hora) {
             if ($i >= (int)$hora['hora_inicio'] && $i <=  (int)$hora['hora_fin'] - 1) {
+              echo '<p>';
               echo '<a href="ControllerShowProfile.php?nombre=' . $hora["maestro"] . '" style="margin-right: 10px; text-decoration: none; color: black ;">' . $hora["maestro"] . '</a>';
+              echo  $hora['carrera'] .' Grupo:'. $hora['grupo'];
+              echo '</p>';
               echo "<a href='ControllerEdit.php?id=" . $hora['id'] . "' style='margin-right: 10px; display: inline-block; padding: 8px 16px; text-align: center; text-decoration: none; border-radius: 4px; background-color: #ffd166; color: #000; border: 1px solid #ffd166; transition: background-color 0.3s;'>Editar</a>";
               echo "<a href='ControllerDelete.php?id=" . $hora['id'] . "' style='display: inline-block; padding: 8px 16px; text-align: center; text-decoration: none; border-radius: 4px; background-color: #ef476f; color: #fff; border: 1px solid #ef476f; transition: background-color 0.3s;'>Eliminar</a>";
             }
@@ -430,16 +450,16 @@ class Horario
   }
 
 
-  function editarRegistro($id, $nombre_laboratorio, $maestro, $hora_inicio, $hora_fin, $turno)
+  function editarRegistro($id, $nombre_laboratorio, $maestro, $hora_inicio, $hora_fin, $turno, $grupo, $carrera)
   {
     $database = new Database();
     $db = $database->connect();
 
     // Crear una instancia de la clase Horario
     // Consulta SQL para actualizar el registro en la base de datos
-    $sql = "UPDATE $this->table SET nombre_laboratorio=?, maestro=?, hora_inicio=?, hora_fin=?, turno=? WHERE id=?";
+    $sql = "UPDATE $this->table SET nombre_laboratorio=?, maestro=?, hora_inicio=?, hora_fin=?, turno=?, grupo=?, carrera=? WHERE id=?";
     $stmt = $this->conn->prepare($sql);
-    $stmt->bind_param('ssssss', $nombre_laboratorio, $maestro, $hora_inicio, $hora_fin, $turno, $id);
+    $stmt->bind_param('ssssssss', $nombre_laboratorio, $maestro, $hora_inicio, $hora_fin, $turno, $grupo, $carrera, $id);
 
     if ($stmt->execute()) {
       // Actualizar el horario después de editar el registro
@@ -600,8 +620,25 @@ class Horario
             <div class="form-group">
               <label for="turno">Turno</label>
               <select name="turno" id="turno">
-                <option value="Matutino">Matutino</option>
-                <option value="Vespertino">Vespertino</option>
+                <option value="Matutino" <?php echo isset($fila['turno']) && $fila['turno'] == 'Matutino' ? 'selected' : ''; ?>>Matutino</option>
+                <option value="Vespertino" <?php echo isset($fila['turno']) && $fila['turno'] == 'Vespertino' ? 'selected' : ''; ?>>Vespertino</option>
+
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="grupo">Grupo</label>
+              <select name="grupo" id="grupo">
+              <option value="A" <?php echo isset($fila['grupo']) && $fila['grupo'] == 'A' ? 'selected' : ''; ?>>A</option>
+              <option value="B" <?php echo isset($fila['grupo']) && $fila['grupo'] == 'B' ? 'selected' : ''; ?>>B</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="carrera">Carrera</label>
+              <select name="carrera" id="carrera">
+              <option value="TPSI" <?php echo isset($fila['carrera']) && $fila['carrera'] == 'TPSI' ? 'selected' : ''; ?>>TPSI</option>
+              <option value="TPIQ" <?php echo isset($fila['carrera']) && $fila['carrera'] == 'TPIQ' ? 'selected' : ''; ?>></option>
+
               </select>
             </div>
 
@@ -661,6 +698,7 @@ class Horario
     $this->obtenerHorario($nombre_laboratorio);
     $this->mostrarHorarioCliente($nombre_laboratorio);
   }
+
 
   public function mostrarHorarioCliente($nombre_laboratorio)
   {

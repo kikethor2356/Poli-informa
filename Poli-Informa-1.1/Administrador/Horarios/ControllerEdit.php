@@ -19,10 +19,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $hora_inicio = $_POST['hora_inicio'];
     $hora_fin = $_POST['hora_fin'];
     $turno = $_POST['turno'];
+    $grupo = $_POST['grupo'];
+    $carrera = $_POST['carrera'];
 
 
     // Llamar a la función para editar el registro
-    $horario->editarRegistro($id, $nombre_laboratorio, $maestro, $hora_inicio, $hora_fin, $turno);
+    $horario->editarRegistro($id, $nombre_laboratorio, $maestro, $hora_inicio, $hora_fin, $turno, $grupo, $carrera);
    
 } else {
     // Mostrar el formulario de edición con los datos actuales del registro
