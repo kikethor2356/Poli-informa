@@ -1,8 +1,8 @@
 <?php
 // Incluir el archivo de conexión a la base de datos
+include '../LoginA/inicio.php';
 include "../../Conexion/conexion.php";
 include "Horario.php";
-
 
 $database = new Database();
 $db = $database->connect();

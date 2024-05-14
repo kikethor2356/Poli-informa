@@ -1,4 +1,6 @@
 
+<!-- <?php include '../LoginU/inicio.php'; ?> -->
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -19,6 +21,8 @@
     <?php
 
     include "../Partes/MenuUsuario.php";
+    
+    
 
     ?>
     <section class="hero">
@@ -151,7 +155,6 @@
                         echo "</table>";
                         echo "<br>";
                     }
-
                     if ($turno == "Vespertino") {
 
                         $horario = array(

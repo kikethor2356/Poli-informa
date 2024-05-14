@@ -1,4 +1,5 @@
 <?php
+include '../LoginA/inicio.php';
 include "../../Conexion/conexion.php";
 include "Componentes/ComboBoxMaestros.php";
 $database = new Database();
