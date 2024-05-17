@@ -1,4 +1,6 @@
+
 <!-- <?php include '../LoginU/inicio.php'; ?> -->
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -19,6 +21,8 @@
     <?php
 
     include "../Partes/MenuUsuario.php";
+    
+    
 
     ?>
     <section class="hero">
@@ -76,7 +80,7 @@
                 if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $nombre_laboratorio = $_POST['nombre_laboratorio'];
                     $turno = $_POST['turno'];
-                    $query = "SELECT id, dias, hora_inicio, hora_fin, maestro, turno FROM horarios WHERE nombre_laboratorio = ? && turno = ?";
+                    $query = "SELECT id, dias, hora_inicio, hora_fin, maestro, turno, grupo, carrera FROM horarios WHERE nombre_laboratorio = ? && turno = ?";
                     $stmt = $db->prepare($query);
                     $stmt->bind_param('ss', $nombre_laboratorio, $turno);
                     $stmt->execute();
@@ -98,10 +102,12 @@
                             $hora_inicio = $fila['hora_inicio'];
                             $hora_fin = $fila['hora_fin'];
                             $maestro = $fila['maestro'];
+                            $grupo = $fila['grupo'];
+                            $carrera = $fila['carrera'];
 
                             // Agregar el horario al día correspondiente
                             if (isset($horario[$dias])) {
-                                $horario[$dias][] = array('id' => $id, 'hora_inicio' => $hora_inicio, 'hora_fin' => $hora_fin, 'maestro' => $maestro);
+                                $horario[$dias][] = array('id' => $id, 'hora_inicio' => $hora_inicio, 'hora_fin' => $hora_fin, 'maestro' => $maestro, 'grupo' => $grupo, 'carrera' => $carrera);
                             } else {
                                 // Si el día no está configurado correctamente, mostrar un mensaje de error
                                 echo "Error: Día inválido: $dias";
@@ -131,7 +137,12 @@
                                     foreach ($horario[$dia] as $hora) {
                                         if ($i >= (int)$hora['hora_inicio'] && $i <=  (int)$hora['hora_fin'] - 1) {
                                         ?>
+                                        <p>
+                                            <?php
+                                            echo $hora['carrera'] . " Grupo: " . $hora['grupo'];
+                                            ?>
                                             <button id="btnModal" style="border-radius: 10px; width: 100%;    height: 30px; background-color: white; "><?php echo $hora["maestro"]; ?></button>
+                                        </p>
                                         <?php
                                         }
                                     }
@@ -144,7 +155,6 @@
                         echo "</table>";
                         echo "<br>";
                     }
-
                     if ($turno == "Vespertino") {
 
                         $horario = array(

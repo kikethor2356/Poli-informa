@@ -1,10 +1,11 @@
 <?php
+include '../LoginA/inicio.php';
 include "../../Conexion/conexion.php";
 include "Componentes/ComboBoxMaestros.php";
 $database = new Database();
 $db = $database->connect();
 ?>
-<!-- <?php include '../LoginA/inicio.php'; ?> -->
+
 
 <!DOCTYPE html>
 <html lang="es">
