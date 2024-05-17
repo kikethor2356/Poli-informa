@@ -31,8 +31,7 @@ function validarPassword(){
         window.alert("La contraseña no cumple no cumple con los requisitos: De 6-9 caracteres, 1 letra mayúscula y 1 número");
     }
 }
- 
-function mostrarEditar(id, codigo, nombre, apellidoPaterno, apellidoMaterno, carrera, correo, imagen, contraseña, nombre_imagen){
+function mostrarEditar(id, codigo, nombre, apellidoPaterno, apellidoMaterno, correo, imagen, nombre_imagen){
     // Abrir ventana modal
     let abrir = event.target; 
     let modal = document.querySelector('.modal_editar');
@@ -45,10 +44,8 @@ function mostrarEditar(id, codigo, nombre, apellidoPaterno, apellidoMaterno, car
     let nombresUsuario = document.getElementById('campoNombre');
     let apellidoPaternoUsuario = document.getElementById('campoApellidoPaterno');
     let apellidoMaternoUsuario = document.getElementById('campoApellidoMaterno');
-    let carreraUsuario = document.getElementById('campoCarrera');
     let correoUsuario = document.getElementById('campoCorreo');
     var imagenOldInput = document.getElementById("AdImagen_old");
-    let passwordUsuario = document.getElementById('password');
     var imagenPreview = document.getElementById('imagenPreviewEditar');
 
     idUsuario.value = id;
@@ -56,10 +53,8 @@ function mostrarEditar(id, codigo, nombre, apellidoPaterno, apellidoMaterno, car
     nombresUsuario.value = nombre;
     apellidoPaternoUsuario.value = apellidoPaterno;
     apellidoMaternoUsuario.value = apellidoMaterno;
-    carreraUsuario.value = carrera;
     correoUsuario.value = correo;
     imagenOldInput.value = imagen;
-    passwordUsuario.value = contraseña;
 
     // Establecer la imagen previa
     if (imagen) {
@@ -75,10 +70,8 @@ function mostrarEditar(id, codigo, nombre, apellidoPaterno, apellidoMaterno, car
     nombresUsuario.removeAttribute('readonly');
     apellidoPaternoUsuario.removeAttribute('readonly');
     apellidoMaternoUsuario.removeAttribute('readonly');
-    carreraUsuario.removeAttribute('readonly');
     correoUsuario.removeAttribute('readonly');
     imagenOldInput.removeAttribute('readonly');
-    passwordUsuario.removeAttribute('readonly');
 
     if (imagen) {
         imagenPreview.src = "imagenes/" + imagen;

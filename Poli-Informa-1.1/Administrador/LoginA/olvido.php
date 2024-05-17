@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="JS/java.js"></script>
-    <link rel="stylesheet" href="css/diseño.css">
+    <link rel="stylesheet" href="css/diseñologinAdmin.css">
     <title>Enviar Correo</title>
 </head>
 <body>
@@ -21,8 +21,8 @@
             </div>
             <form action="PHP/recovery.php" method="post" enctype="multipart/form-data">
                 <div class="elemento">
-                    <input type="email" name="AluCorreo" id="AluCorreo" placeholder=" ">
-                    <label for="AluCorreo">Correo electronico</label>
+                    <input type="email" name="AdCorreo" id="AdCorreo" placeholder=" ">
+                    <label for="AdCorreo">Correo electronico</label>
                     <i class="fa-regular fa-user"></i>
                 </div>
                 <div class="elemento">

@@ -1,30 +1,42 @@
 <?php
 session_start();
 include('../../../Conexion/conexion.php');
+include('functions.php');
 $db = new Database();
 $conexion = $db->connect();
 
 if(isset($_POST['btn_iniciar_sesion'])){
     $codigo = $_POST['AdCode'];
     $contraseña = $_POST['AdPassword'];
+    $hashed_password = md5($contraseña);
 
-    $stmt = $conexion->prepare("SELECT * FROM registro WHERE AdCode=?");
-    $stmt->bind_param("s", $codigo);
+    $login_status = handle_login_attempt($conexion, $codigo);
+
+    if ($login_status['status'] === 'locked') {
+        header("Location: ../index.php?message=locked_out&time_left=".$login_status['time_left']);
+        exit();
+    }
+
+    if ($login_status['status'] === 'locked_time') {
+        header("Location: ../index.php?message=locked_time&time_left=".$login_status['time_left']);
+        exit();
+    }
+
+    $stmt = $conexion->prepare("SELECT * FROM registro WHERE AdCode=? AND AdPassword=?");
+    $stmt->bind_param("ss", $codigo, $hashed_password);
     $stmt->execute();
     $result = $stmt->get_result();
 
     if($result->num_rows === 1){
         $row = $result->fetch_assoc();
-        // Iniciar sesión como cliente y redirigir a la página principal del cliente
-        if(password_verify($contraseña, $row['AdPassword'])){
-            $_SESSION['AdCode'] = $row['AdCode'];
-            header("Location: ../../../Administrador/Avisos/AdminAvisos.php");
-        } else{
-            header("Location: ../index.php?message=error");
-        }
+        $_SESSION['AdCode'] = $row['AdCode'];
+        reset_login_attempts($conexion, $codigo);
+        header("Location: ../../../Administrador/Avisos/AdminAvisos.php");
+        exit();
     } else {
-        // Si las credenciales son incorrectas, redirigir al usuario de vuelta a la página de inicio de sesión con un mensaje de error
+        increment_login_attempts($conexion, $codigo);
         header("Location: ../index.php?message=error");
+        exit();
     }
 }
 ?>

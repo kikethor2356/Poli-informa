@@ -1,6 +1,6 @@
 <?php 
     session_start();
-    // Verificar si hay una sesión activa
+    // Verificar si hay una sesión activa como alumno
     if (!empty($_SESSION['CodeAlu'])) {
         header("Location: ../Avisos/Avisos.php");
         exit();
@@ -48,50 +48,61 @@
                 </div>
             </form>
         </div>
-
+        <!-- Ventanas de emergencia para saber si ubo un error -->
         <?php
-            if(isset($_GET['message'])){
-                ?>
-                    <div>
-                        <?php
-                            switch ($_GET['message']){
-                                case 'ok':
-                                    echo "<script>
-                                        Swal.fire({
-                                            title: 'Revisa',
-                                            text: 'Porfavor revisa tu correo',
-                                            icon: 'warning',
-                                            confirmButtonText: 'Aceptar'
-                                        });
-                                    </script>";
-                                break;
-
-                                case 'success_password':
-                                    echo "<script>
-                                        Swal.fire({
-                                            title: 'Revisa',
-                                            text: 'Inicia sesion con tu nueva contraseña',
-                                            icon: 'success',
-                                            confirmButtonText: 'Aceptar'
-                                        });
-                                    </script>";
-                                break;
-
-                                default:
-                                    echo "<script>
-                                        Swal.fire({
-                                            title: 'Error',
-                                            text: 'Algo salio mal, intentelo de nuevo',
-                                            icon: 'error',
-                                            confirmButtonText: 'Cerrar'
-                                        });
-                                    </script>";
-                                break;
-                            }
-                        ?>
-                    </div>
+        if(isset($_GET['message'])){
+            ?>
+            <div>
                 <?php
-            }
+                switch ($_GET['message']){
+                    case 'ok':
+                        echo "<script>
+                            Swal.fire({
+                                title: 'Revisa',
+                                text: 'Por favor revisa tu correo',
+                                icon: 'warning',
+                                confirmButtonText: 'Aceptar'
+                            });
+                        </script>";
+                        break;
+                        
+                    case 'success_password':
+                        echo "<script>
+                            Swal.fire({
+                                title: 'Éxito',
+                                text: 'Inicia sesión con tu nueva contraseña',
+                                icon: 'success',
+                                confirmButtonText: 'Aceptar'
+                            });
+                        </script>";
+                        break;
+
+                    case 'locked_time':
+                        echo "<script>
+                            Swal.fire({
+                                title: 'Bloqueado',
+                                text: 'Has alcanzado el número máximo de intentos. Inténtalo de nuevo en 15 minutos.',
+                                icon: 'error',
+                                confirmButtonText: 'Cerrar'
+                            });
+                        </script>";
+                        break;
+
+                    default:
+                        echo "<script>
+                            Swal.fire({
+                                title: 'Error',
+                                text: 'Algo salió mal, inténtelo de nuevo',
+                                icon: 'error',
+                                confirmButtonText: 'Cerrar'
+                            });
+                        </script>";
+                        break;
+                }
+                ?>
+            </div>
+            <?php
+        }
         ?>
     </div>
 </body>

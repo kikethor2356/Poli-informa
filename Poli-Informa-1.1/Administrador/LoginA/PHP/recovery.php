@@ -1,5 +1,5 @@
 <?php
-    include '../LoginU/inicio.php';
+    include '../LoginA/inicio.php';
 
     use PHPMailer\PHPMailer\PHPMailer;
     use PHPMailer\PHPMailer\Exception;
@@ -19,9 +19,9 @@
     // Después de abrir la conexión con la base de datos
     mysqli_set_charset($conexion, "utf8");
     
-    $email = $_POST['AluCorreo'];
+    $email = $_POST['AdCorreo'];
 
-    $sql = "SELECT * FROM registroalu WHERE AluCorreo = '$email'";
+    $sql = "SELECT * FROM registro WHERE AdCorreo = '$email'";
     $result = $conexion->query($sql);
         
     // Verificar si se recuperaron filas        
@@ -30,7 +30,7 @@
         $row = $result->fetch_assoc();
         $id = $row['id'];
         $token_expiration = date('Y-m-d H:i:s', strtotime('+1 hour')); // Ejemplo: el token expira en 1 hora
-        $sql_update_token = "UPDATE registroalu SET recovery_token = '$token', token_expiration = '$token_expiration' WHERE id = $id";
+        $sql_update_token = "UPDATE registro SET recovery_token = '$token', token_expiration = '$token_expiration' WHERE id = $id";
         $conexion->query($sql_update_token);
         
         //Create an instance; passing `true` enables exceptions
@@ -75,7 +75,7 @@
             $mail->Subject = 'Recuperarción de contraseña';
             $mail->Body = 'El motivo de este correo es para confirmar el cambio de contraseña del portal POLI-INFORMA.<br>
             Para continuar, haz clic en el siguiente enlace y el token se guardará automáticamente en tu navegador: 
-            <a href="localhost/https/Poli-informa/Poli-Informa-1.1/Cliente/LoginU/guardar_token.php?token='.$token.'">Haz clic aquí para cambiar tu contraseña</a>
+            <a href="localhost/https/Poli-informa/Poli-Informa-1.1/Administrador/LoginA/guardar_token.php?token='.$token.'">Haz clic aquí para cambiar tu contraseña</a>
             <br>De no ser el caso, ignora este correo o verifica si tramitó el cambio de contraseña.';
             // $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
         

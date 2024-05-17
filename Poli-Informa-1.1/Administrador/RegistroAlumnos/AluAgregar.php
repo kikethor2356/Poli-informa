@@ -1,10 +1,8 @@
 <?php require 'ConexFuncion.php'; 
-
-$db = new Database();
-$conexion = $db->connect();
-
+    include '../LoginA/inicio.php';
+    $db = new Database();
+    $conexion = $db->connect();
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,7 +11,7 @@ $conexion = $db->connect();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" href="css/AluReg.css">
-    <title>Registro Usuarios</title>
+    <title>Registro Alumnos</title>
 </head>
 <body>
     <div class="envoltura">

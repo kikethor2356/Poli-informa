@@ -6,7 +6,7 @@ $conexion = $db->connect();
 
 if (isset($_COOKIE['recovery_token'])) {
     $token = $_COOKIE['recovery_token'];
-    $sql = "SELECT * FROM registroalu WHERE recovery_token = ? AND token_expiration > NOW()";
+    $sql = "SELECT * FROM registro WHERE recovery_token = ? AND token_expiration > NOW()";
     $stmt = $conexion->prepare($sql);
     $stmt->bind_param("s", $token);
     $stmt->execute();
@@ -33,7 +33,7 @@ if (isset($_COOKIE['recovery_token'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <link rel="stylesheet" href="css/diseño.css">
+    <link rel="stylesheet" href="css/diseñologinAdmin.css">
     <script src="JS/java.js"></script>
     <title>Cambiar Contraseña</title>
 </head>
@@ -77,9 +77,9 @@ if (isset($_COOKIE['recovery_token'])) {
 </html>
 <?php
     } else {
-        header("Location: olvido.php?message=token_invalido");
+        header("Location: ../index.php?message=token_invalido");
     }
 } else {
-    header("Location: olvido.php?message=token_invalido");
+    header("Location: ../index.php?message=token_invalido");
 }
 ?>

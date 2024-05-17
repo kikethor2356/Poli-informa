@@ -6,7 +6,7 @@ $conexion = $db->connect();
 
 if (isset($_COOKIE['recovery_token'])) {
     $token = $_COOKIE['recovery_token'];
-    $sql = "SELECT * FROM registroalu WHERE recovery_token = ? AND token_expiration > NOW()";
+    $sql = "SELECT * FROM registro WHERE recovery_token = ? AND token_expiration > NOW()";
     $stmt = $conexion->prepare($sql);
     $stmt->bind_param("s", $token);
     $stmt->execute();
@@ -34,7 +34,7 @@ if (isset($_COOKIE['recovery_token'])) {
         $new_password_history = implode(',', $passwords);
 
         // Actualizar la base de datos con la nueva contraseña y el historial
-        $sql_update = "UPDATE registroalu SET AluPassword = ?, password_history = ?, recovery_token = NULL, token_expiration = NULL WHERE id = ?";
+        $sql_update = "UPDATE registro SET AdPassword = ?, password_history = ?, recovery_token = NULL, token_expiration = NULL WHERE id = ?";
         $stmt_update = $conexion->prepare($sql_update);
         $stmt_update->bind_param("ssi", $hashed_new_pass, $new_password_history, $user_id);
         if ($stmt_update->execute()) {

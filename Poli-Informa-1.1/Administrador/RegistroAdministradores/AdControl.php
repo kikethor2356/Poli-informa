@@ -1,9 +1,8 @@
 <?php require 'ConexFuncion.php'; 
-
+include '../LoginA/inicio.php';
 $db = new Database();
 $conexion = $db->connect();
 ?>
-<?php include '../LoginA/inicio.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -22,12 +21,9 @@ $conexion = $db->connect();
         <main id="principal-productos">
             <section id="section-productos">
                 <?php include '../Menu/menu.html'; ?>
-
                     <h1 class="tit">Control de Administrador</h1>
                     <form class="ConexFuncion.php" action="" method="post" enctype="multipart/form-data">
-
                     <a href="AdAgregar.php" class="btn btn-primary" ><i class="fa-solid fa-mostrar-plus">Agregar</i></a>
-
                         <table class="table" cellpadding = 10 cellspacing = 0>
                             <tr>
                                 <th scope="col">Codigo</th>
@@ -36,37 +32,27 @@ $conexion = $db->connect();
                                 <th scope="col">Ap. Materno</th>
                                 <th scope="col">Correo</th>
                                 <th scope="col">Imagen</th>
-                                <th scope="col">Password</th>
                                 <th scope="col">Opciones</th>
                             </tr>
                             <?php
                             $registro = mysqli_query($conexion, "SELECT * FROM registro");
-
-                            while($mostrar = mysqli_fetch_array($registro)){
-                                       
-                            
-                            ?>
-
+                            while($mostrar = mysqli_fetch_array($registro)){?>
                             <tr>
-                                
                                 <td> <?php echo $mostrar["AdCode"]; ?> </td>
                                 <td> <?php echo $mostrar["AdNombre"]; ?> </td>
                                 <td> <?php echo $mostrar["AdApellidoP"]; ?> </td>
                                 <td> <?php echo $mostrar["AdApellidoM"]; ?> </td>
                                 <td> <?php echo $mostrar["AdCorreo"]; ?> </td>
                                 <td> <?php echo $mostrar["AdImagen"]; ?></td>
-                                <td> <?php echo $mostrar["AdPassword"]; ?> </td>
                                 <td>
-
                                     <button type="button" class="btn btn-samll btn-warning" onclick="mostrarEditar('<?php echo $mostrar['id']; ?>' ,'<?php echo $mostrar['AdCode']; ?>', 
                                     '<?php echo $mostrar['AdNombre']; ?>', '<?php echo $mostrar['AdApellidoP']; ?>', '<?php echo $mostrar['AdApellidoM']; ?>', 
-                                    '<?php echo $mostrar['AdCorreo']; ?>', '<?php echo $mostrar['AdImagen']; ?>', '<?php echo $mostrar['AdPassword']; ?>', 
+                                    '<?php echo $mostrar['AdCorreo']; ?>', '<?php echo $mostrar['AdImagen']; ?>', 
                                     '<?php echo $mostrar['AdImagen']; ?>')"><i class="fa-regular fa-pen-to-square"></i></button>
                                     <!-- Button trigger modal -->
                                     <form id="eliminarForm_<?php echo $mostrar['id']; ?>" action="ConexFuncion.php" method="POST" enctype="multipart/form-data">
                                         <input type="hidden" name="idEliminar" value="<?php echo $mostrar['id']; ?>">
                                         <input type="hidden" name="eliminar_imagen" value="<?php echo $mostrar['AdImagen']; ?>">
-
                                         <button type="button" class="btn btn-primary btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="mostrarBorrar(<?php echo $mostrar['id']; ?>)">
                                             <i class="fa-regular fa-trash-can"></i>
                                         </button>   
@@ -130,12 +116,6 @@ $conexion = $db->connect();
                                 <tr>
                                     <td>Correo:</td>
                                     <td><input type="email" name="AdCorreo"  placeholder="anonimato@alumnos.udg.mx" value="" id="campoCorreo"  required></td>
-                                </tr>
-        
-                                <tr>
-                                    <td>Contraseña:</td>
-                                    <td><input type="password" name="AdPassword" id="password" placeholder="Anonimato123" value="" onblur="validarPassword()" required></td>
-                                    <span id="passwordError" class="error-message"></span>
                                 </tr>
                                 <tr class="caja_imagen">
                                     <td class="cajita_textImagen">Imagen</td>

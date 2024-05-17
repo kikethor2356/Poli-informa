@@ -1,4 +1,5 @@
 <?php require 'ConexFuncion.php'; 
+include '../LoginA/inicio.php';
 
 $db = new Database();
 $conexion = $db->connect();
@@ -22,8 +23,7 @@ $conexion = $db->connect();
         <main id="principal-productos">
             <section id="section-productos">
                 <?php include '../Menu/menu.html'; ?>
-
-                    <h1 class="tit">Control de Usuarios</h1>
+                    <h1 class="tit">Control de Alumnos</h1>
                     <form class="ConexFuncion.php" action="" method="post" enctype="multipart/form-data">
 
                     <a href="AluAgregar.php" class="btn btn-primary" ><i class="fa-solid fa-mostrar-plus">Agregar</i></a>
@@ -37,17 +37,12 @@ $conexion = $db->connect();
                                 <th scope="col">Carrera</th>
                                 <th scope="col">Correo</th>
                                 <th scope="col">Imagen</th>
-                                <th scope="col">Password</th>
                                 <th scope="col">Opciones</th>
                             </tr>
                             <?php
                             $registro = mysqli_query($conexion, "SELECT * FROM registroalu");
 
-                            while($mostrar = mysqli_fetch_array($registro)){
-                                
-                                            
-                            
-                            ?>
+                            while($mostrar = mysqli_fetch_array($registro)){?>
 
                             <tr>
                                 
@@ -58,18 +53,15 @@ $conexion = $db->connect();
                                 <td> <?php echo $mostrar["AluCarrera"]; ?> </td>
                                 <td> <?php echo $mostrar["AluCorreo"]; ?> </td>
                                 <td> <?php echo $mostrar["AluImage"]; ?></td>
-                                <td> <?php echo $mostrar["AluPassword"]; ?> </td>
                                 <td>
-
                                     <button type="button" class="btn btn-samll btn-warning" onclick="mostrarEditar('<?php echo $mostrar['id']; ?>' ,'<?php echo $mostrar['CodeAlu']; ?>', 
                                     '<?php echo $mostrar['AluNom']; ?>', '<?php echo $mostrar['AluApellidoP']; ?>', '<?php echo $mostrar['AluApellidoM']; ?>', 
                                     '<?php echo $mostrar['AluCarrera']; ?>', '<?php echo $mostrar['AluCorreo']; ?>', '<?php echo $mostrar['AluImage']; ?>', 
-                                    '<?php echo $mostrar['AluPassword']; ?>', '<?php echo $mostrar['AluImage']; ?>')"><i class="fa-regular fa-pen-to-square"></i></button>
+                                    '<?php echo $mostrar['AluImage']; ?>')"><i class="fa-regular fa-pen-to-square"></i></button>
                                     <!-- Button trigger modal -->
                                     <form id="eliminarForm_<?php echo $mostrar['id']; ?>" action="ConexFuncion.php" method="POST" enctype="multipart/form-data">
                                         <input type="hidden" name="idEliminar" value="<?php echo $mostrar['id']; ?>">
                                         <input type="hidden" name="eliminar_imagen" value="<?php echo $mostrar['AluImage']; ?>">
-
                                         <button type="button" class="btn btn-primary btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="mostrarBorrar(<?php echo $mostrar['id']; ?>)">
                                             <i class="fa-regular fa-trash-can"></i>
                                         </button>   
@@ -148,11 +140,6 @@ $conexion = $db->connect();
                                         <div class="envoltura_imag_1"><input type="text" id="nombreArchivoEditar" readonly></div>
                                         <div class="envoltura_imag_2"><input type="file" name="AluImage" id="imagenInputEditar" onchange="previewImageEditar(this)"></div>
                                     </td>
-                                </tr>
-                                <tr>
-                                    <td>Contraseña:</td>
-                                    <td><input type="password" name="AluPassword" id="password" placeholder="Anonimato123" value="" onblur="validarPassword()" required></td>
-                                    <span id="passwordError" class="error-message"></span>
                                 </tr>
                                 <tr>
                                     <td><button type="button" class="cerrarModal" onclick="cerrarVentanaEditar()">Cancelar</button></td>
