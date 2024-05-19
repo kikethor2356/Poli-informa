@@ -7,7 +7,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="JS/java.js"></script>
     <link rel="stylesheet" href="css/diseñologinAdmin.css">
-    <title>Enviar Correo</title>
+    <title>Olivde mi contraseña</title>
 </head>
 <body>
     <img src="Img/fondo.png" alt="fondo" id="fondo">

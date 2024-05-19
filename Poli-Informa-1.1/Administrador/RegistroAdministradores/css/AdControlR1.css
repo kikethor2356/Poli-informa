@@ -1,7 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+/* FIN IMPORTACIONES */
 
+/* Cuerpo de diseño */
+* {
+    font-family: 'Poppins', sans-serif; /* Usar la fuente Poppins para todo el documento */
+    box-sizing: border-box; /* Incluir el borde y el relleno en el tamaño total del elemento */
+}
 
-#productos {
+#productos{
     position: absolute;
     left: 0%;
     top: 0%;
@@ -9,11 +15,11 @@
     height: 100vh;
 }
 
-#principal-productos {
+#principal-productos{
     position: absolute;
 }
 
-#principal-productos {
+#principal-productos{
     width: 85%;
     height: 100%;
     top: 0%;
@@ -21,15 +27,104 @@
     background-color: white;
 }
 
-*{
-
-    font-family: 'Poppins';
-}
-
-.tit{
-
+/* Diseño de la tabla */
+#mostrarProductos h2{
     text-align: center;
+    margin-top: .5%;
 }
+
+#mostrarProductos #nuevoProducto{
+    position: absolute;
+    top: 7.5%;
+    left: 82%;
+    padding-left: 1%;
+    padding-right: 1%;
+    padding-top: .5%;
+    padding-bottom: .5%;
+    background: rgb(143, 0, 0);
+    color: white;
+    border-radius: 5px;
+    /* border: none; */
+    cursor: pointer;
+}
+#nuevoProducto:hover{
+    transform: scale(0.9);
+}
+
+#mostrarProductos table{
+    width: 95%;
+    margin-left: 2%;
+    margin-top: 3%;
+
+}
+
+#mostrarProductos table, th, td{
+    border-collapse: collapse;
+    border: none ;
+}
+
+#mostrarProductos th{
+    border-bottom: 1px solid black;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    text-align: left;
+    font-weight: 600;
+}
+
+#mostrarProductos td{
+    padding-top: .2%;
+    padding-bottom: .2%;
+}
+
+/* Diseño de columna */
+#mostrarProductos #cabezaCodigo{
+    width: 10%;
+}
+
+#mostrarProductos #cabezaNombre{
+    width: 10%;
+}
+
+#mostrarProductos #cabezaApellidoP{
+    width: 15%;
+}
+
+#mostrarProductos #cabezaApellidoM{
+    width: 15%;
+}
+
+#mostrarProductos #cabezaCorreo{
+    width: 20%;
+}
+
+#mostrarProductos #cabezaImagen{
+    width: 20%;
+}
+
+#mostrarProductos #cabezaAcciones{
+    text-align: center;
+    width: 15%;
+}
+
+#mostrarProductos .acciones-buttons {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#tablaProductos input[type=text]{
+    margin: 0;
+    width: 95%;
+    outline: none;
+    border: none;
+    background: none;
+}
+
+#mostrarProductos .fila1{
+    background: rgb(251, 200, 200);
+}
+
+
+/* Ventana modal de editar */
 
 .modal_editar{
     pointer-events: none;
@@ -92,10 +187,6 @@ button{
     color: white;
 }
 
-#mostrarProductos .fila1{
-    background: rgb(187, 187, 187);
-}
-
 .caja_imagen{
     top: 0%;
     position: absolute;
@@ -128,3 +219,34 @@ button{
     left: -45%;
 }
 
+
+/* Botones de pagina para los productos */
+#paginacion {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#paginacion a {
+    padding: 5px 10px;
+    margin: 0 5px;
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #333;
+}
+
+#paginacion #resultados_por_pagina{
+    cursor: pointer;
+}
+
+#paginacion a.current {
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+}
+#paginacion a.current:hover {
+    transform: scale(0.9);
+}

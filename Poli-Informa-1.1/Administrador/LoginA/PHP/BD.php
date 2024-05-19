@@ -13,15 +13,24 @@ if(isset($_POST['btn_iniciar_sesion'])){
     $login_status = handle_login_attempt($conexion, $codigo);
 
     if ($login_status['status'] === 'locked') {
-        header("Location: ../index.php?message=locked_out&time_left=".$login_status['time_left']);
+        $time_left = gmdate("H:i:s", $login_status['time_left']);
+        header("Location: ../index.php?message=locked_time&time_left=".$time_left."&unlock_time=".$login_status['unlock_time']);
         exit();
     }
 
-    if ($login_status['status'] === 'locked_time') {
-        header("Location: ../index.php?message=locked_time&time_left=".$login_status['time_left']);
+    // Verificar si el usuario existe en la base de datos
+    $stmt_check_user = $conexion->prepare("SELECT * FROM registro WHERE AdCode=?");
+    $stmt_check_user->bind_param("s", $codigo);
+    $stmt_check_user->execute();
+    $result_check_user = $stmt_check_user->get_result();
+
+    if($result_check_user->num_rows === 0) {
+        // Si el usuario no está registrado, mostrar un mensaje de error personalizado
+        header("Location: ../index.php?message=user_not_found");
         exit();
     }
 
+    // Si el usuario existe, verificar la contraseña
     $stmt = $conexion->prepare("SELECT * FROM registro WHERE AdCode=? AND AdPassword=?");
     $stmt->bind_param("ss", $codigo, $hashed_password);
     $stmt->execute();
@@ -35,7 +44,12 @@ if(isset($_POST['btn_iniciar_sesion'])){
         exit();
     } else {
         increment_login_attempts($conexion, $codigo);
-        header("Location: ../index.php?message=error");
+        
+        // Obtener el número restante de intentos
+        $remaining_attempts = 3 - $login_status['login_attempts']; // Cambia 3 al número máximo de intentos
+        
+        // Redirigir con el número restante de intentos como parámetro
+        header("Location: ../index.php?message=error&remaining_attempts=" . $remaining_attempts);
         exit();
     }
 }

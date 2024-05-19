@@ -14,7 +14,6 @@ $db = $database->connect();
   <meta charset="UTF-8">
   <script src="script.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../Menu/menu.css">
   <title>Poli-Informa Admin</title>
 </head>
 

@@ -40,25 +40,49 @@
             </div>
 
             <div class="contenedor">
-                <form action="Contactanos/UsInsertar.php" method="post">
+                <form action="Contactanos/UsInsertar.php" method="POST">
                     <h1>Poli-informa</h1>
                     <h2>Quejas y sugerencias</h2>
 
                     <label>Nombre:</label>
-                    <input type="text" name="UsNombre" required><br>
+                    <input type="text" name="UsNombre" id="UsNombre" required><br>
 
                     <label>Correo:</label>
-                    <input type="email" name="UsCorreo" required><br>
+                    <input type="email" name="UsCorreo" id="UsCorreo" required><br>
 
                     <label>Comentario:</label>
-                    <textarea id="message" name="UsComentario" rows="4" required></textarea>
+                    <textarea id="UsComentario" name="UsComentario" rows="4" required></textarea>
 
-                    <button class="boton" type="submit" value="registrar" name="registro">Enviar</button>
+                    <button class="boton" type="submit" id="registro" name="registro">Enviar</button>
                 </form>
             </div>
 
         </div>
     </div>
+
+    <?php
+    if(isset($_SESSION['success']) && $_SESSION['success']) {
+        echo "<script>
+                Swal.fire({
+                    title: 'Agregar',
+                    text: 'El registro fue todo un éxito',
+                    icon: 'success',
+                    confirmButtonText: 'Aceptar'
+                });
+            </script>";
+        unset($_SESSION['success']); // Eliminar la variable de sesión
+    } else if(isset($_SESSION['error']) && $_SESSION['error']) {
+        echo "<script>
+                Swal.fire({
+                    title: 'Error',
+                    text: 'El registro no fue posible, inténtelo de nuevo',
+                    icon: 'error',
+                    confirmButtonText: 'Cerrar'
+                });
+            </script>";
+        unset($_SESSION['error']); // Eliminar la variable de sesión
+    }
+    ?>
     
     <?php include '../Partes/footer.php'; ?>
 </body>

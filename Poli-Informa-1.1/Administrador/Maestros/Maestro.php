@@ -208,7 +208,6 @@ class Maestro extends Database
         $result = $conn->query($sql);
 
         ?>
-        <link rel="stylesheet" href="../Menu/menu.css">
 
     <style>
         #productos{
