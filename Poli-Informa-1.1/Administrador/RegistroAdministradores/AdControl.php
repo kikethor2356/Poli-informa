@@ -3,7 +3,7 @@
 $db = new Database();
 $conexion = $db->connect();
 ?>
-<?php include '../LoginA/inicio.php'; ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -49,13 +49,13 @@ $conexion = $db->connect();
 
                             <tr>
                                 
-                                <td> <?php echo $mostrar["AdCode"]; ?> </td>
-                                <td> <?php echo $mostrar["AdNombre"]; ?> </td>
-                                <td> <?php echo $mostrar["AdApellidoP"]; ?> </td>
-                                <td> <?php echo $mostrar["AdApellidoM"]; ?> </td>
-                                <td> <?php echo $mostrar["AdCorreo"]; ?> </td>
-                                <td> <?php echo $mostrar["AdImagen"]; ?></td>
-                                <td> <?php echo $mostrar["AdPassword"]; ?> </td>
+                                <td> <input class="tamaño_campos" type="text" value="<?php echo $mostrar["AdCode"]; ?>"> </td>
+                                <td> <input class="tamaño_campos" type="text" value="<?php echo $mostrar["AdNombre"]; ?>"> </td>
+                                <td> <input class="tamaño_campos" type="text" value="<?php echo $mostrar["AdApellidoP"]; ?>"> </td>
+                                <td> <input class="tamaño_campos" type="text" value="<?php echo $mostrar["AdApellidoM"]; ?>"> </td>
+                                <td> <input class="tamaño_campos" type="text" value="<?php echo $mostrar["AdCorreo"]; ?>"> </td>
+                                <td> <input class="tamaño_campos" type="text" value="<?php echo $mostrar["AdImagen"]; ?>"> </td>
+                                <td> <input class="tamaño_campos" type="text" value="<?php echo $mostrar["AdPassword"]; ?>"> </td>
                                 <td>
 
                                     <button type="button" class="btn btn-samll btn-warning" onclick="mostrarEditar('<?php echo $mostrar['id']; ?>' ,'<?php echo $mostrar['AdCode']; ?>', 

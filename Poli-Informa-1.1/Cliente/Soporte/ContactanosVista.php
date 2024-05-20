@@ -42,7 +42,7 @@
             <div class="contenedor">
                 <form action="Contactanos/UsInsertar.php" method="post">
                     <h1>Poli-informa</h1>
-                    <h2>Quejas y sugerencias</h2>
+                    <h2>Comentarios y sugerencias</h2>
 
                     <label>Nombre:</label>
                     <input type="text" name="UsNombre" required><br>

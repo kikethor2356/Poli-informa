@@ -22,13 +22,16 @@
 }
 
 *{
-
     font-family: 'Poppins';
 }
 
 .tit{
-
     text-align: center;
+}
+
+.tamaño_campos{
+    width: 100%;
+    border: 0;
 }
 
 .modal_editar{
@@ -130,3 +133,4 @@ button{
     top: 80%;
     left: -87%;
 }
+

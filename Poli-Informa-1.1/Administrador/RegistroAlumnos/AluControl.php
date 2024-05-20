@@ -49,18 +49,17 @@ $conexion = $db->connect();
                             
                             ?>
 
-                            <tr>
-                                
-                                <td> <?php echo $mostrar["CodeAlu"]; ?> </td>
-                                <td> <?php echo $mostrar["AluNom"]; ?> </td>
-                                <td> <?php echo $mostrar["AluApellidoP"]; ?> </td>
-                                <td> <?php echo $mostrar["AluApellidoM"]; ?> </td>
-                                <td> <?php echo $mostrar["AluCarrera"]; ?> </td>
-                                <td> <?php echo $mostrar["AluCorreo"]; ?> </td>
-                                <td> <?php echo $mostrar["AluImage"]; ?></td>
-                                <td> <?php echo $mostrar["AluPassword"]; ?> </td>
+                            <tr>                           
+                                <td><input class="tamaño_campos" type="text" value="<?php echo $mostrar["CodeAlu"]; ?>"> </td>
+                                <td><input class="tamaño_campos" type="text" value="<?php echo $mostrar["AluNom"]; ?>"> </td>
+                                <td><input class="tamaño_campos" type="text" value="<?php echo $mostrar["AluApellidoP"]; ?>"> </td>
+                                <td><input class="tamaño_campos" type="text" value="<?php echo $mostrar["AluApellidoM"]; ?>"> </td>
+                                <td><input class="tamaño_campos" type="text" value="<?php echo $mostrar["AluCarrera"]; ?>"> </td>
+                                <td><input class="tamaño_campos" type="text" value="<?php echo $mostrar["AluCorreo"]; ?>"> </td>
+                                <td><input class="tamaño_campos" type="text" value="<?php echo $mostrar["AluImage"]; ?>"></td>
+                                <td><input class="tamaño_campos" type="text" value="<?php echo $mostrar["AluPassword"]; ?>"> </td>
                                 <td>
-
+                                  
                                     <button type="button" class="btn btn-samll btn-warning" onclick="mostrarEditar('<?php echo $mostrar['id']; ?>' ,'<?php echo $mostrar['CodeAlu']; ?>', 
                                     '<?php echo $mostrar['AluNom']; ?>', '<?php echo $mostrar['AluApellidoP']; ?>', '<?php echo $mostrar['AluApellidoM']; ?>', 
                                     '<?php echo $mostrar['AluCarrera']; ?>', '<?php echo $mostrar['AluCorreo']; ?>', '<?php echo $mostrar['AluImage']; ?>', 
@@ -69,7 +68,6 @@ $conexion = $db->connect();
                                     <form id="eliminarForm_<?php echo $mostrar['id']; ?>" action="ConexFuncion.php" method="POST" enctype="multipart/form-data">
                                         <input type="hidden" name="idEliminar" value="<?php echo $mostrar['id']; ?>">
                                         <input type="hidden" name="eliminar_imagen" value="<?php echo $mostrar['AluImage']; ?>">
-
                                         <button type="button" class="btn btn-primary btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="mostrarBorrar(<?php echo $mostrar['id']; ?>)">
                                             <i class="fa-regular fa-trash-can"></i>
                                         </button>   
