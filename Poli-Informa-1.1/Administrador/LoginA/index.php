@@ -1,7 +1,7 @@
 <?php 
     session_start();
     // Verificar si hay una sesión activa como alumno
-    if (!empty($_SESSION['CodeAlu'])) {
+    if (!empty($_SESSION['AdCode'])) {
         header("Location: ../Avisos/AdminAvisos.php");
         exit();
     }
