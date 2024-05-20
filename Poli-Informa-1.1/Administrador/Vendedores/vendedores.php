@@ -1,11 +1,9 @@
 <?php
-    include("../../Conexion/conexion.php");
+    include('../../Conexion/conexion.php');
+    include '../LoginA/inicio.php';
     $db = new Database();
     $conexion = $db->connect();
-    session_start();
-
 ?>
-<?php include '../LoginA/inicio.php'; ?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -13,7 +11,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/ventanaAdministradores.css">
-    <link rel="stylesheet" href="../Menu/menu.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <link rel="stylesheet" href="style/diseño.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -39,7 +36,7 @@
                                     <option value="6" <?php if(isset($_GET['resultados_por_pagina']) && $_GET['resultados_por_pagina'] == 6) echo 'selected'; ?>>6</option>
                                     <option value="8" <?php if(isset($_GET['resultados_por_pagina']) && $_GET['resultados_por_pagina'] == 8) echo 'selected'; ?>>8</option>
                                 </select>
-                                Producto</label>
+                                Vendedores</label>
                             </form>
                             <?php
                             $resultados_por_pagina = isset($_GET['resultados_por_pagina']) ? $_GET['resultados_por_pagina'] : 8;

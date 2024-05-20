@@ -1,9 +1,9 @@
-<?php require 'ConexFuncion.php'; 
-
-$db = new Database();
-$conexion = $db->connect();
+<?php 
+    require 'ConexFuncion.php'; 
+    include '../LoginA/inicio.php';
+    $db = new Database();
+    $conexion = $db->connect();
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,34 +12,64 @@ $conexion = $db->connect();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="css/AluControl.css">
-    <link rel="stylesheet" href="../Menu/menu.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://kit.fontawesome.com/d6736406d6.js" crossorigin="anonymous"></script>
-    <title>Registro Usuario</title>
+    <title>Registro Alumno</title>
 </head>
 <body>
     <div id="productos">
+        <?php include '../Menu/menu.html'; ?>
+
         <main id="principal-productos">
             <section id="section-productos">
-                <?php include '../Menu/menu.html'; ?>
+                <div id="mostrarProductos">
+                    <h2>Control de Alumnos</h2>
 
-                    <h1 class="tit">Control de Usuarios</h1>
-                    <form class="ConexFuncion.php" action="" method="post" enctype="multipart/form-data">
+                    <!-- Controles de paginación -->
+                    <div id="paginacion">
+                        <form action="" method="GET">
+                            <label for="resultados_por_pagina">Mostrar 
+                            <select name="resultados_por_pagina" id="resultados_por_pagina" onchange="this.form.submit()">
+                                <option value="4" <?php if(isset($_GET['resultados_por_pagina']) && $_GET['resultados_por_pagina'] == 4) echo 'selected'; ?>>4</option>
+                                <option value="6" <?php if(isset($_GET['resultados_por_pagina']) && $_GET['resultados_por_pagina'] == 6) echo 'selected'; ?>>6</option>
+                                <option value="8" <?php if(isset($_GET['resultados_por_pagina']) && $_GET['resultados_por_pagina'] == 8) echo 'selected'; ?>>8</option>
+                            </select>
+                             Registro</label>
+                        </form>
+                        <?php
 
-                    <a href="AluAgregar.php" class="btn btn-primary" ><i class="fa-solid fa-mostrar-plus">Agregar</i></a>
+                        $resultados_por_pagina = isset($_GET['resultados_por_pagina']) ? $_GET['resultados_por_pagina'] : 6;
+                        $pagina_actual = isset($_GET['pagina']) ? $_GET['pagina'] : 1;
 
-                        <table class="table" cellpadding = 10 cellspacing = 0>
-                            <tr>
-                                <th scope="col">Codigo</th>
-                                <th scope="col">Nombre</th>
-                                <th scope="col">Ap. Parteno</th>
-                                <th scope="col">Ap. Materno</th>
-                                <th scope="col">Carrera</th>
-                                <th scope="col">Correo</th>
-                                <th scope="col">Imagen</th>
-                                <th scope="col">Password</th>
-                                <th scope="col">Opciones</th>
-                            </tr>
+                        $inicio = ($pagina_actual - 1) * $resultados_por_pagina;
+
+                        $sql = "SELECT COUNT(*) AS total FROM registroalu";
+                        $resultado = mysqli_query($conexion, $sql);
+                        $fila = mysqli_fetch_assoc($resultado);
+                        $total_resultados = $fila['total'];
+                        $total_paginas = ceil($total_resultados / $resultados_por_pagina);
+
+                        $sql = "SELECT * FROM registroalu LIMIT $inicio, $resultados_por_pagina";
+                        $resultado = mysqli_query($conexion, $sql);
+                        ?>
+                    </div>
+
+                    <form class="" action="ConexFuncion.php" method="post" enctype="multipart/form-data">
+                        <a href="AluAgregar.php" id="nuevoProducto"><i class="fa-solid fa-mostrar-plus">Agregar</i></a>
+
+                        <table id="tablaProductos" border="1px">
+                            <thead id="cabeceraTabla">
+                                <tr>
+                                    <th id="cabezaCodigo">Codigo</th>
+                                    <th id="cabezaNombre">Nombre</th>
+                                    <th id="cabezaApellidoP">Ap. Parteno</th>
+                                    <th id="cabezaApellidoM">Ap. Materno</th>
+                                    <th id="cabezaCarrera">Carrera</th>
+                                    <th id="cabezaCorreo">Correo</th>
+                                    <th id="cabezaImagen">Imagen</th>
+                                    <th id="cabezaAcciones">Opciones</th>
+                                </tr>
+                            </thead>
                             <?php
                             $registro = mysqli_query($conexion, "SELECT * FROM registroalu");
 
@@ -49,17 +79,18 @@ $conexion = $db->connect();
                             
                             ?>
 
-                            <tr>                           
-                                <td><input class="tamaño_campos" type="text" value="<?php echo $mostrar["CodeAlu"]; ?>"> </td>
-                                <td><input class="tamaño_campos" type="text" value="<?php echo $mostrar["AluNom"]; ?>"> </td>
-                                <td><input class="tamaño_campos" type="text" value="<?php echo $mostrar["AluApellidoP"]; ?>"> </td>
-                                <td><input class="tamaño_campos" type="text" value="<?php echo $mostrar["AluApellidoM"]; ?>"> </td>
-                                <td><input class="tamaño_campos" type="text" value="<?php echo $mostrar["AluCarrera"]; ?>"> </td>
-                                <td><input class="tamaño_campos" type="text" value="<?php echo $mostrar["AluCorreo"]; ?>"> </td>
-                                <td><input class="tamaño_campos" type="text" value="<?php echo $mostrar["AluImage"]; ?>"></td>
-                                <td><input class="tamaño_campos" type="text" value="<?php echo $mostrar["AluPassword"]; ?>"> </td>
+                            <tr>
+                                
+                                <td> <?php echo $mostrar["CodeAlu"]; ?> </td>
+                                <td> <?php echo $mostrar["AluNom"]; ?> </td>
+                                <td> <?php echo $mostrar["AluApellidoP"]; ?> </td>
+                                <td> <?php echo $mostrar["AluApellidoM"]; ?> </td>
+                                <td> <?php echo $mostrar["AluCarrera"]; ?> </td>
+                                <td> <?php echo $mostrar["AluCorreo"]; ?> </td>
+                                <td> <?php echo $mostrar["AluImage"]; ?></td>
+                                <td> <?php echo $mostrar["AluPassword"]; ?> </td>
                                 <td>
-                                  
+
                                     <button type="button" class="btn btn-samll btn-warning" onclick="mostrarEditar('<?php echo $mostrar['id']; ?>' ,'<?php echo $mostrar['CodeAlu']; ?>', 
                                     '<?php echo $mostrar['AluNom']; ?>', '<?php echo $mostrar['AluApellidoP']; ?>', '<?php echo $mostrar['AluApellidoM']; ?>', 
                                     '<?php echo $mostrar['AluCarrera']; ?>', '<?php echo $mostrar['AluCorreo']; ?>', '<?php echo $mostrar['AluImage']; ?>', 
@@ -68,6 +99,7 @@ $conexion = $db->connect();
                                     <form id="eliminarForm_<?php echo $mostrar['id']; ?>" action="ConexFuncion.php" method="POST" enctype="multipart/form-data">
                                         <input type="hidden" name="idEliminar" value="<?php echo $mostrar['id']; ?>">
                                         <input type="hidden" name="eliminar_imagen" value="<?php echo $mostrar['AluImage']; ?>">
+
                                         <button type="button" class="btn btn-primary btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="mostrarBorrar(<?php echo $mostrar['id']; ?>)">
                                             <i class="fa-regular fa-trash-can"></i>
                                         </button>   
@@ -146,11 +178,6 @@ $conexion = $db->connect();
                                         <div class="envoltura_imag_1"><input type="text" id="nombreArchivoEditar" readonly></div>
                                         <div class="envoltura_imag_2"><input type="file" name="AluImage" id="imagenInputEditar" onchange="previewImageEditar(this)"></div>
                                     </td>
-                                </tr>
-                                <tr>
-                                    <td>Contraseña:</td>
-                                    <td><input type="password" name="AluPassword" id="password" placeholder="Anonimato123" value="" onblur="validarPassword()" required></td>
-                                    <span id="passwordError" class="error-message"></span>
                                 </tr>
                                 <tr>
                                     <td><button type="button" class="cerrarModal" onclick="cerrarVentanaEditar()">Cancelar</button></td>

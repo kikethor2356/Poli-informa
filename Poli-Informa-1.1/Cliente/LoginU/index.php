@@ -1,12 +1,12 @@
 <?php 
     session_start();
-    // Verificar si hay una sesión activa
+    // Verificar si hay una sesión activa como alumno
     if (!empty($_SESSION['CodeAlu'])) {
         header("Location: ../Avisos/Avisos.php");
         exit();
     }
 ?>
-
+ 
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -48,50 +48,92 @@
                 </div>
             </form>
         </div>
-
+        <!-- Ventanas de emergencia para saber si ubo un error -->
         <?php
-            if(isset($_GET['message'])){
-                ?>
-                    <div>
-                        <?php
-                            switch ($_GET['message']){
-                                case 'ok':
-                                    echo "<script>
-                                        Swal.fire({
-                                            title: 'Revisa',
-                                            text: 'Porfavor revisa tu correo',
-                                            icon: 'warning',
-                                            confirmButtonText: 'Aceptar'
-                                        });
-                                    </script>";
-                                break;
+        if(isset($_GET['message'])){
+            $message = $_GET['message'];
+            switch ($message){
+                case 'ok':
+                    echo "<script>
+                        Swal.fire({
+                            title: 'Revisa',
+                            text: 'Por favor revisa tu correo',
+                            icon: 'warning',
+                            confirmButtonText: 'Aceptar'
+                        });
+                    </script>";
+                    break;
+                    
+                case 'success_password':
+                    echo "<script>
+                        Swal.fire({
+                            title: 'Éxito',
+                            text: 'Inicia sesión con tu nueva contraseña',
+                            icon: 'success',
+                            confirmButtonText: 'Aceptar'
+                        });
+                    </script>";
+                    break;
 
-                                case 'success_password':
-                                    echo "<script>
-                                        Swal.fire({
-                                            title: 'Revisa',
-                                            text: 'Inicia sesion con tu nueva contraseña',
-                                            icon: 'success',
-                                            confirmButtonText: 'Aceptar'
-                                        });
-                                    </script>";
-                                break;
+                case 'locked_time':
+                    $unlock_time = isset($_GET['unlock_time']) ? $_GET['unlock_time'] : 'desconocido';
+                    echo "<script>
+                        Swal.fire({
+                            title: 'Bloqueado',
+                            text: 'Has alcanzado el número máximo de intentos. Inténtalo de nuevo a las {$unlock_time}.',
+                            icon: 'error',
+                            confirmButtonText: 'Cerrar'
+                        });
+                    </script>";
+                    break;
 
-                                default:
-                                    echo "<script>
-                                        Swal.fire({
-                                            title: 'Error',
-                                            text: 'Algo salio mal, intentelo de nuevo',
-                                            icon: 'error',
-                                            confirmButtonText: 'Cerrar'
-                                        });
-                                    </script>";
-                                break;
-                            }
-                        ?>
-                    </div>
-                <?php
+                case 'error':
+                    // Verificar si se pasó el parámetro de intentos restantes
+                    $remaining_attempts = isset($_GET['remaining_attempts']) ? $_GET['remaining_attempts'] : '';
+                    if (!empty($remaining_attempts)) {
+                        echo "<script>
+                            Swal.fire({
+                                title: 'Error',
+                                text: 'Codigo o contraseña incorrecta. Te quedan {$remaining_attempts} intentos.',
+                                icon: 'error',
+                                confirmButtonText: 'Cerrar'
+                            });
+                        </script>";
+                    } else {
+                        echo "<script>
+                            Swal.fire({
+                                title: 'Error',
+                                text: 'Algo salió mal, inténtelo de nuevo',
+                                icon: 'error',
+                                confirmButtonText: 'Cerrar'
+                            });
+                        </script>";
+                    }
+                    break;
+
+                case 'user_not_found':
+                    echo "<script>
+                        Swal.fire({
+                            title: 'Error',
+                            text: 'Los datos proporcionados no fueron reconocidos. Por favor, inténtalo de nuevo.',
+                            icon: 'error',
+                            confirmButtonText: 'Cerrar'
+                        });
+                    </script>";
+                    break;
+
+                default:
+                    echo "<script>
+                        Swal.fire({
+                            title: 'Error',
+                            text: 'Algo salió mal, inténtelo de nuevo',
+                            icon: 'error',
+                            confirmButtonText: 'Cerrar'
+                        });
+                    </script>";
+                    break;
             }
+        }
         ?>
     </div>
 </body>

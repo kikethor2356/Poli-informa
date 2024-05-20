@@ -40,7 +40,7 @@
                     </div>
 
                     <!-- Contenedor de botones de categoría -->
-                    <div id="buttons"><br>
+                    <br><div id="buttons">
                         <!-- Botón para mostrar todos los productos -->
                         <button class="button-value active1" onclick="filterProductos('Todo', '')">Todo</button>
                         <?php                                             

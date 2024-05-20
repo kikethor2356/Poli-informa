@@ -1,9 +1,10 @@
-<?php require 'ConexFuncion.php'; 
-
-$db = new Database();
-$conexion = $db->connect();
+<?php 
+    require 'ConexFuncion.php'; 
+    include '../LoginA/inicio.php';
+    $db = new Database();
+    $conexion = $db->connect();
 ?>
-
+<?php include '../LoginA/inicio.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,33 +13,63 @@ $conexion = $db->connect();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="css/AdControlR1.css">
-    <link rel="stylesheet" href="../Menu/menu.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://kit.fontawesome.com/d6736406d6.js" crossorigin="anonymous"></script>
     <title>Registro Administrador</title>
 </head>
 <body>
     <div id="productos">
+        <?php include '../Menu/menu.html'; ?>
+
         <main id="principal-productos">
             <section id="section-productos">
-                <?php include '../Menu/menu.html'; ?>
+                <div id="mostrarProductos">
+                    <h2>Control de Administrador</h2>
 
-                    <h1 class="tit">Control de Administrador</h1>
+                    <!-- Controles de paginación -->
+                    <div id="paginacion">
+                        <form action="" method="GET">
+                            <label for="resultados_por_pagina">Mostrar 
+                            <select name="resultados_por_pagina" id="resultados_por_pagina" onchange="this.form.submit()">
+                                <option value="4" <?php if(isset($_GET['resultados_por_pagina']) && $_GET['resultados_por_pagina'] == 4) echo 'selected'; ?>>4</option>
+                                <option value="6" <?php if(isset($_GET['resultados_por_pagina']) && $_GET['resultados_por_pagina'] == 6) echo 'selected'; ?>>6</option>
+                                <option value="8" <?php if(isset($_GET['resultados_por_pagina']) && $_GET['resultados_por_pagina'] == 8) echo 'selected'; ?>>8</option>
+                            </select>
+                             Registro</label>
+                        </form>
+                        <?php
+
+                        $resultados_por_pagina = isset($_GET['resultados_por_pagina']) ? $_GET['resultados_por_pagina'] : 8;
+                        $pagina_actual = isset($_GET['pagina']) ? $_GET['pagina'] : 1;
+
+                        $inicio = ($pagina_actual - 1) * $resultados_por_pagina;
+
+                        $sql = "SELECT COUNT(*) AS total FROM registro";
+                        $resultado = mysqli_query($conexion, $sql);
+                        $fila = mysqli_fetch_assoc($resultado);
+                        $total_resultados = $fila['total'];
+                        $total_paginas = ceil($total_resultados / $resultados_por_pagina);
+
+                        $sql = "SELECT * FROM registro LIMIT $inicio, $resultados_por_pagina";
+                        $resultado = mysqli_query($conexion, $sql);
+                        ?>
+                    </div>
+                    
                     <form class="ConexFuncion.php" action="" method="post" enctype="multipart/form-data">
+                        <a href="AdAgregar.php" class="btn btn-primary" id="nuevoProducto"><i class="fa-solid fa-mostrar-plus">Agregar</i></a>
 
-                    <a href="AdAgregar.php" class="btn btn-primary" ><i class="fa-solid fa-mostrar-plus">Agregar</i></a>
-
-                        <table class="table" cellpadding = 10 cellspacing = 0>
-                            <tr>
-                                <th scope="col">Codigo</th>
-                                <th scope="col">Nombre</th>
-                                <th scope="col">Ap. Parteno</th>
-                                <th scope="col">Ap. Materno</th>
-                                <th scope="col">Correo</th>
-                                <th scope="col">Imagen</th>
-                                <th scope="col">Password</th>
-                                <th scope="col">Opciones</th>
-                            </tr>
+                        <table id="tablaProductos" border="1px">
+                            <thead id="cabeceraTabla">
+                                <tr>
+                                    <th id="cabezaCodigo">Codigo</th>
+                                    <th id="cabezaNombre">Nombre</th>
+                                    <th id="cabezaApellidoP">Ap. Parteno</th>
+                                    <th id="cabezaApellidoM">Ap. Materno</th>
+                                    <th id="cabezaCorreo">Correo</th>
+                                    <th id="cabezaImagen">Imagen</th>
+                                    <th id="cabezaAcciones">Opciones</th>
+                                </tr>
+                            </thead>
                             <?php
                             $registro = mysqli_query($conexion, "SELECT * FROM registro");
 
@@ -49,13 +80,13 @@ $conexion = $db->connect();
 
                             <tr>
                                 
-                                <td> <input class="tamaño_campos" type="text" value="<?php echo $mostrar["AdCode"]; ?>"> </td>
-                                <td> <input class="tamaño_campos" type="text" value="<?php echo $mostrar["AdNombre"]; ?>"> </td>
-                                <td> <input class="tamaño_campos" type="text" value="<?php echo $mostrar["AdApellidoP"]; ?>"> </td>
-                                <td> <input class="tamaño_campos" type="text" value="<?php echo $mostrar["AdApellidoM"]; ?>"> </td>
-                                <td> <input class="tamaño_campos" type="text" value="<?php echo $mostrar["AdCorreo"]; ?>"> </td>
-                                <td> <input class="tamaño_campos" type="text" value="<?php echo $mostrar["AdImagen"]; ?>"> </td>
-                                <td> <input class="tamaño_campos" type="text" value="<?php echo $mostrar["AdPassword"]; ?>"> </td>
+                                <td> <?php echo $mostrar["AdCode"]; ?> </td>
+                                <td> <?php echo $mostrar["AdNombre"]; ?> </td>
+                                <td> <?php echo $mostrar["AdApellidoP"]; ?> </td>
+                                <td> <?php echo $mostrar["AdApellidoM"]; ?> </td>
+                                <td> <?php echo $mostrar["AdCorreo"]; ?> </td>
+                                <td> <?php echo $mostrar["AdImagen"]; ?></td>
+                                <td> <?php echo $mostrar["AdPassword"]; ?> </td>
                                 <td>
 
                                     <button type="button" class="btn btn-samll btn-warning" onclick="mostrarEditar('<?php echo $mostrar['id']; ?>' ,'<?php echo $mostrar['AdCode']; ?>', 
@@ -79,7 +110,19 @@ $conexion = $db->connect();
                             ?>
                         </table>
                     </form>    
-                    <br>
+                    <!-- Navegación entre páginas -->
+                    <div id="paginacion">
+                        <?php
+                        if ($total_paginas > 1) {
+                            echo "<span>Páginas: </span>";
+                            for ($i = 1; $i <= $total_paginas; $i++) {
+                                echo "<a href='?pagina=$i&resultados_por_pagina=$resultados_por_pagina' ";
+                                if ($pagina_actual == $i) echo "class='current'";
+                                echo "> $i </a>";
+                            }
+                        }
+                        ?>
+                    </div>
                     
                     <!-- Modal Eliminar -->
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -131,12 +174,6 @@ $conexion = $db->connect();
                                     <td>Correo:</td>
                                     <td><input type="email" name="AdCorreo"  placeholder="anonimato@alumnos.udg.mx" value="" id="campoCorreo"  required></td>
                                 </tr>
-        
-                                <tr>
-                                    <td>Contraseña:</td>
-                                    <td><input type="password" name="AdPassword" id="password" placeholder="Anonimato123" value="" onblur="validarPassword()" required></td>
-                                    <span id="passwordError" class="error-message"></span>
-                                </tr>
                                 <tr class="caja_imagen">
                                     <td class="cajita_textImagen">Imagen</td>
                                     <td class="caja_atributos_imagen">
@@ -155,14 +192,13 @@ $conexion = $db->connect();
                             </form>
                         </div>
                     </div> <!-- .modal_editar -->
-                </section>
-            </main>
-        </div>
 
-
+                </div>
+            </section>
+        </main>
+    </div>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-        
         <script src="JS/AdFunciones.js"></script>
     
         <!-- Agregar -->

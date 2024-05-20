@@ -73,8 +73,9 @@
             //Content
             $mail->isHTML(true);                                  //Set email format to HTML
             $mail->Subject = 'Recuperarción de contraseña';
-            $mail->Body = 'El motivo de este correo es para confirmar el cambio de contraseña del portal POLI-IFORMA<br>
-            del siguiente enlace, <a href="localhost/Proyecto/Poli-informa/Poli-Informa-1.1/Cliente/LoginU/new_password.php?token='.$token.'">Haz clic aquí para cambiar tu contraseña</a>
+            $mail->Body = 'El motivo de este correo es para confirmar el cambio de contraseña del portal POLI-INFORMA.<br>
+            Para continuar, haz clic en el siguiente enlace y el token se guardará automáticamente en tu navegador: 
+            <a href="localhost/https/Poli-informa/Poli-Informa-1.1/Cliente/LoginU/guardar_token.php?token='.$token.'">Haz clic aquí para cambiar tu contraseña</a>
             <br>De no ser el caso, ignora este correo o verifica si tramitó el cambio de contraseña.';
             // $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
         

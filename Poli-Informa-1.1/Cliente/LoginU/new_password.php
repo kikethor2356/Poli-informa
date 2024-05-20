@@ -4,14 +4,27 @@ include('../../Conexion/conexion.php');
 $db = new Database();
 $conexion = $db->connect();
 
-if(isset($_GET['token'])) {
-    $token = $_GET['token'];
-    $sql = "SELECT * FROM registroalu WHERE recovery_token = '$token' AND token_expiration > NOW()";
-    $result = $conexion->query($sql);
+if (isset($_COOKIE['recovery_token'])) {
+    $token = $_COOKIE['recovery_token'];
+    $sql = "SELECT * FROM registroalu WHERE recovery_token = ? AND token_expiration > NOW()";
+    $stmt = $conexion->prepare($sql);
+    $stmt->bind_param("s", $token);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
     if ($result && $result->num_rows === 1) {
         $row = $result->fetch_assoc();
         $user_id = $row['id'];
+        $login_attempts = $row['login_attempts'];
+        $last_attempt = strtotime($row['last_attempt']);
+        $current_time = time();
+        $lockout_time = 15 * 60; // 15 minutes lockout period
+
+        // Check if the user is locked out
+        if ($login_attempts >= 3 && ($current_time - $last_attempt) < $lockout_time) {
+            header("Location: ../index.php?message=locked_out");
+            exit();
+        }
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -19,8 +32,9 @@ if(isset($_GET['token'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-    <script src="JS/java.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="css/diseño.css">
+    <script src="JS/java.js"></script>
     <title>Cambiar Contraseña</title>
 </head>
 <body>
@@ -46,6 +60,19 @@ if(isset($_GET['token'])) {
             </form>
         </div>
     </div>
+    
+    <?php
+    if (isset($_GET['message']) && $_GET['message'] === 'password_used') {
+        echo "<script>
+                Swal.fire({
+                    icon: 'warning',
+                    title: '¡Advertencia!',
+                    text: 'Esta contraseña ya ha sido utilizada anteriormente. Por favor, elige una contraseña diferente.',
+                    confirmButtonText: 'Entendido'
+                });
+              </script>";
+    }
+    ?>
 </body>
 </html>
 <?php

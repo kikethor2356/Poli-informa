@@ -8,12 +8,9 @@ session_start();
 if(isset($_POST["submit"])){
     if($_POST["submit"] == "Agregar"){
         add();
-    }
-    
-    else if($_POST["submit"] == "Editar"){
+    } else if($_POST["submit"] == "Editar"){
         edit();
-    }
-    else if($_POST["submit"] == "borrar"){
+    } else if($_POST["submit"] == "borrar"){
         delete();
     }
 }
@@ -29,7 +26,6 @@ function add(){
     $AluCorreo= $_POST ['AluCorreo'];
     $AluImage = $_FILES['AluImage']['name'];
     $AluPassword= $_POST ['AluPassword'];
-    $hashed_password = password_hash($AluPassword, PASSWORD_DEFAULT);
 
     $sqlcode = "SELECT id FROM registroalu WHERE CodeAlu = '$CodeAlu'";
     $resultadocode = $conexion->query($sqlcode);
@@ -40,10 +36,12 @@ function add(){
             alert('El usuario ya esta registrado');
         </script>";
     }else{
+        // Encriptar la contraseña con MD5
+        $hashed_password = md5($AluPassword);
+
         $query = "INSERT INTO registroalu (CodeAlu, AluNom, AluApellidoP, AluApellidoM, AluCarrera , AluCorreo, AluImage, AluPassword) VALUES('$CodeAlu', '$AluNom', '$AluApellidoP', '$AluApellidoM', '$AluCarrera', '$AluCorreo', '$AluImage', '$hashed_password')";
         $resultado = mysqli_query($conexion, $query);
     }
-
 
     if ($resultado) {
         move_uploaded_file($_FILES["AluImage"]["tmp_name"], "imagenes1/".$_FILES["AluImage"]["name"]);
@@ -54,7 +52,6 @@ function add(){
         header("location: AluControl.php");
         die("Datos NO eliminados: " . mysqli_error($conexion));
     }
-
 }
 
 
@@ -71,9 +68,6 @@ function edit(){
 
     $new_imagen  = $_FILES['AluImage']['name'];
     $old_imagen = $_POST['AluImagen_old'];
-
-    $AluPassword= $_POST ['AluPassword'];
-    $hashed_password = password_hash($AluPassword, PASSWORD_DEFAULT);
 
     if($new_imagen != ''){
         // Genera un nombre único para la nueva imagen
@@ -96,7 +90,7 @@ function edit(){
         $AluImage = $old_imagen;
     }
 
-    $sql = "UPDATE registroalu SET CodeAlu = '$CodeAlu',  AluNom = '$AluNom', AluApellidoP = '$AluApellidoP', AluApellidoM = '$AluApellidoM', AluCarrera  = '$AluCarrera ', AluCorreo = '$AluCorreo', AluImage = '$AluImage', AluPassword = '$hashed_password' WHERE id = '$id'";
+    $sql = "UPDATE registroalu SET CodeAlu = '$CodeAlu',  AluNom = '$AluNom', AluApellidoP = '$AluApellidoP', AluApellidoM = '$AluApellidoM', AluCarrera  = '$AluCarrera ', AluCorreo = '$AluCorreo', AluImage = '$AluImage' WHERE id = '$id'";
     $resultado = mysqli_query($conexion, $sql);
 
     if ($resultado) {

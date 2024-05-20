@@ -1,5 +1,5 @@
 <?php
-
+include '../LoginA/inicio.php';
 include "Horario.php";
 include "../../Conexion/conexion.php";
 

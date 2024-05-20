@@ -32,7 +32,7 @@ function validarPassword(){
     }
 }
 
-function mostrarEditar(id, codigo, nombre, apellidoPaterno, apellidoMaterno, carrera, correo, imagen, contraseña, nombre_imagen){
+function mostrarEditar(id, codigo, nombre, apellidoPaterno, apellidoMaterno, carrera, correo, imagen, nombre_imagen){
     // Abrir ventana modal
     let abrir = event.target; 
     let modal = document.querySelector('.modal_editar');
@@ -48,7 +48,6 @@ function mostrarEditar(id, codigo, nombre, apellidoPaterno, apellidoMaterno, car
     let carreraUsuario = document.getElementById('campoCarrera');
     let correoUsuario = document.getElementById('campoCorreo');
     var imagenOldInput = document.getElementById("AluImagen_old");
-    let passwordUsuario = document.getElementById('password');
     var imagenPreview = document.getElementById('imagenPreviewEditar');
 
     idUsuario.value = id;
@@ -59,7 +58,8 @@ function mostrarEditar(id, codigo, nombre, apellidoPaterno, apellidoMaterno, car
     carreraUsuario.value = carrera;
     correoUsuario.value = correo;
     imagenOldInput.value = imagen;
-    passwordUsuario.value = contraseña;
+    document.getElementById('AluPassword_old').value = contraseña; // Establecer la contraseña actual
+
 
     // Establecer la imagen previa
     if (imagen) {
@@ -78,7 +78,6 @@ function mostrarEditar(id, codigo, nombre, apellidoPaterno, apellidoMaterno, car
     carreraUsuario.removeAttribute('readonly');
     correoUsuario.removeAttribute('readonly');
     imagenOldInput.removeAttribute('readonly');
-    passwordUsuario.removeAttribute('readonly');
 
     if (imagen) {
         imagenPreview.src = "imagenes1/" + imagen;

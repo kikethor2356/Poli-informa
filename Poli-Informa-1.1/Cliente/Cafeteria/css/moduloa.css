@@ -124,9 +124,9 @@ body{
 #buttons {
     overflow-x: auto; /* Agregar desplazamiento horizontal si los botones son demasiados */
     white-space: nowrap;
-    position: relative;
-    width: 68em;
-}
+    position: absolute;
+    width: 95%;
+} 
 
 /* Estilo de la barra de desplazamiento */
 #buttons::-webkit-scrollbar {
@@ -165,7 +165,7 @@ body{
 /* Productos para mostrar */
 #productos {
     width: 100%; /* Tamaño fijo para el contenedor de productos */
-    margin-top: 2em; /* Espacio superior */
+    margin-top: 10%; /* Espacio superior */
 }
 
 #productos .descripcion-grande {

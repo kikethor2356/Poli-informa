@@ -28,7 +28,6 @@ function add(){
     $AdCorreo= $_POST ['AdCorreo'];
     $AdImagen = $_FILES['AdImagen']['name'];
     $AdPassword= $_POST ['AdPassword'];
-    $hashed_password = password_hash($AdPassword, PASSWORD_DEFAULT);
 
     $sqlcode = "SELECT id FROM registro WHERE AdCode = '$AdCode'";
     $resultadocode = $conexion->query($sqlcode);
@@ -39,6 +38,9 @@ function add(){
             alert('El usuario ya esta registrado');
         </script>";
     }else{
+        // Encriptar la contraseña con MD5
+        $hashed_password = md5($AdPassword);
+
         $query = "INSERT INTO registro (AdCode, AdNombre, AdApellidoP, AdApellidoM, AdCorreo, AdImagen, AdPassword) VALUES('$AdCode', '$AdNombre', '$AdApellidoP', '$AdApellidoM', '$AdCorreo', '$AdImagen', '$hashed_password')";
         $resultado = mysqli_query($conexion, $query);
     }
@@ -70,9 +72,6 @@ function edit(){
     $new_imagen  = $_FILES['AdImagen']['name'];
     $old_imagen = $_POST['AdImagen_old'];
 
-    $AdPassword= $_POST ['AdPassword'];
-    $hashed_password = password_hash($AdPassword, PASSWORD_DEFAULT);
-
     if($new_imagen != ''){
         // Genera un nombre único para la nueva imagen
         $AdImagen = uniqid().'_'.$_FILES['AdImagen']['name'];
@@ -94,7 +93,7 @@ function edit(){
         $AdImagen = $old_imagen;
     }
 
-    $sql = "UPDATE registro SET AdCode = '$AdCode', AdNombre = '$AdNombre', AdApellidoP = '$AdApellidoP', AdApellidoM = '$AdApellidoM', AdCorreo = '$AdCorreo', AdImagen = '$AdImagen', AdPassword = '$hashed_password' WHERE id = '$id'";
+    $sql = "UPDATE registro SET AdCode = '$AdCode', AdNombre = '$AdNombre', AdApellidoP = '$AdApellidoP', AdApellidoM = '$AdApellidoM', AdCorreo = '$AdCorreo', AdImagen = '$AdImagen' WHERE id = '$id'";
     $resultado = mysqli_query($conexion, $sql);
 
     if ($resultado) {

@@ -1,4 +1,4 @@
-<!-- <?php include '../LoginA/inicio.php'; ?> -->
+<?php include '../LoginA/inicio.php'; ?>
 
 <?php
 require_once '../../Conexion/conexion.php'; // Asegúrate de incluir tu clase Database aquí
@@ -36,8 +36,6 @@ public function MostrarLaboratoriosTabla() {
     $result = $conn->query($sql);
 
     ?>
-        <link rel="stylesheet" href="../Menu/menu.css">
-
     <style>
         #productos{
             position: absolute;
