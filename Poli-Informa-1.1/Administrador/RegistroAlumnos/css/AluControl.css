@@ -27,108 +27,15 @@
     background-color: white;
 }
 
-/* Diseño de la tabla */
-#mostrarProductos h2{
+*{
+
+    font-family: 'Poppins';
+}
+
+.tit{
+
     text-align: center;
-    margin-top: .5%;
 }
-
-#mostrarProductos #nuevoProducto{
-    position: absolute;
-    top: 7.5%;
-    left: 82%;
-    padding-left: 1%;
-    padding-right: 1%;
-    padding-top: .5%;
-    padding-bottom: .5%;
-    background: rgb(143, 0, 0);
-    color: white;
-    border-radius: 5px;
-    /* border: none; */
-    cursor: pointer;
-}
-#nuevoProducto:hover{
-    transform: scale(0.9);
-}
-
-#mostrarProductos table{
-    width: 95%;
-    margin-left: 2%;
-    margin-top: 3%;
-
-}
-
-#mostrarProductos table, th, td{
-    border-collapse: collapse;
-    border: none ;
-}
-
-#mostrarProductos th{
-    border-bottom: 1px solid black;
-    padding-top: 1%;
-    padding-bottom: 1%;
-    text-align: left;
-    font-weight: 600;
-}
-
-#mostrarProductos td{
-    padding-top: .2%;
-    padding-bottom: .2%;
-}
-
-/* Diseño de columna */
-#mostrarProductos #cabezaCodigo{
-    width: 10%;
-}
-
-#mostrarProductos #cabezaNombre{
-    width: 10%;
-}
-
-#mostrarProductos #cabezaApellidoP{
-    width: 12%;
-}
-
-#mostrarProductos #cabezaApellidoM{
-    width: 12%;
-}
-
-#mostrarProductos #cabezaCarrera{
-    width: 7%;
-}
-
-#mostrarProductos #cabezaCorreo{
-    width: 20%;
-}
-
-#mostrarProductos #cabezaImagen{
-    width: 20%;
-}
-
-#mostrarProductos #cabezaAcciones{
-    text-align: center;
-    width: 15%;
-}
-
-#mostrarProductos .acciones-buttons {
-    display: flex;
-    justify-content: space-evenly;
-}
-
-#tablaProductos input[type=text]{
-    margin: 0;
-    width: 95%;
-    outline: none;
-    border: none;
-    background: none;
-}
-
-#mostrarProductos .fila1{
-    background: rgb(251, 200, 200);
-}
-
-
-/* Ventana modal de editar */
 
 .modal_editar{
     pointer-events: none;
@@ -225,6 +132,7 @@ button{
     top: 80%;
     left: -87%;
 }
+
 
 
 /* Botones de pagina para los productos */

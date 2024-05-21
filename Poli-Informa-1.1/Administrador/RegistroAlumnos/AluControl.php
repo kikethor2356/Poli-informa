@@ -71,46 +71,45 @@
                                 </tr>
                             </thead>
                             <?php
-                            if(mysqli_num_rows($resultado) > 0){  
-                                $contador = 1; // Inicializar el contador dentro del bucle
+                            $registro = mysqli_query($conexion, "SELECT * FROM registroalu");
 
-                                foreach($resultado as $row){
-                                    // DETERMINA LA CLASE QUE SE ASIGNARÁ A CADA FILA EN FUNCIÓN DE SI ES PAR O IMPAR
-                                    $clase_fila = ($contador % 2 == 0) ? 'fila2' : 'fila1';
-                                    
-                                    ?>
-                                    <tr>
-                                        <td class="<?php echo $clase_fila; ?>"><input type="text" value="<?php echo $row["CodeAlu"]; ?>"  readonly></td>
-                                        <td class="<?php echo $clase_fila; ?>"><input type="text" value="<?php echo $row["AluNom"]; ?>"  readonly></td>
-                                        <td class="<?php echo $clase_fila; ?>"><input type="text" value="<?php echo $row["AluApellidoP"]; ?>"  readonly></td>
-                                        <td class="<?php echo $clase_fila; ?>"><input type="text" value="<?php echo $row["AluApellidoM"]; ?>"  readonly></td>
-                                        <td class="<?php echo $clase_fila; ?>"><input type="text" value="<?php echo $row["AluCarrera"]; ?>"  readonly></td>
-                                        <td class="<?php echo $clase_fila; ?>"><input type="text" value="<?php echo $row["AluCorreo"]; ?>"  readonly></td>
-                                        <td class="<?php echo $clase_fila; ?>"><input type="text" value="<?php echo $row["AluImage"]; ?>" readonly></td>
-                                        <td class="<?php echo $clase_fila; ?>">
-                                            <button type="button" class="btn btn-samll btn-warning" onclick="mostrarEditar('<?php echo $row['id']; ?>' ,'<?php echo $row['CodeAlu']; ?>', 
-                                            '<?php echo $row['AluNom']; ?>', '<?php echo $row['AluApellidoP']; ?>', '<?php echo $row['AluApellidoM']; ?>', 
-                                            '<?php echo $row['AluCarrera']; ?>', '<?php echo $row['AluCorreo']; ?>', '<?php echo $row['AluImage']; ?>', 
-                                            '<?php echo $row['AluImage']; ?>')"><i class="fa-regular fa-pen-to-square"></i></button>
-                                            <!-- Button trigger modal -->
-                                            <form id="eliminarForm_<?php echo $row['id']; ?>" action="ConexFuncion.php" method="POST" enctype="multipart/form-data">
-                                                <input type="hidden" name="idEliminar" value="<?php echo $row['id']; ?>">
-                                                <input type="hidden" name="eliminar_imagen" value="<?php echo $row['AluImage']; ?>">
-                                                <button type="button" class="btn btn-primary btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="mostrarBorrar(<?php echo $row['id']; ?>)">
-                                                    <i class="fa-regular fa-trash-can"></i>
-                                                </button>   
-                                            </form>
-                                        </td>
-                                    </tr>
-                                    <?php
-                                    // Incrementa el contador
-                                    $contador++;
-                                }
-                            } else{
-                                ?>
-                                <tr><td colspan="2">No hay registros disponibles.</td></tr>
-                                <?php
-                            }
+                            while($mostrar = mysqli_fetch_array($registro)){
+                                
+                                            
+                            
+                            ?>
+
+                            <tr>
+                                
+                                <td> <?php echo $mostrar["CodeAlu"]; ?> </td>
+                                <td> <?php echo $mostrar["AluNom"]; ?> </td>
+                                <td> <?php echo $mostrar["AluApellidoP"]; ?> </td>
+                                <td> <?php echo $mostrar["AluApellidoM"]; ?> </td>
+                                <td> <?php echo $mostrar["AluCarrera"]; ?> </td>
+                                <td> <?php echo $mostrar["AluCorreo"]; ?> </td>
+                                <td> <?php echo $mostrar["AluImage"]; ?></td>
+                                <td> <?php echo $mostrar["AluPassword"]; ?> </td>
+                                <td>
+
+                                    <button type="button" class="btn btn-samll btn-warning" onclick="mostrarEditar('<?php echo $mostrar['id']; ?>' ,'<?php echo $mostrar['CodeAlu']; ?>', 
+                                    '<?php echo $mostrar['AluNom']; ?>', '<?php echo $mostrar['AluApellidoP']; ?>', '<?php echo $mostrar['AluApellidoM']; ?>', 
+                                    '<?php echo $mostrar['AluCarrera']; ?>', '<?php echo $mostrar['AluCorreo']; ?>', '<?php echo $mostrar['AluImage']; ?>', 
+                                    '<?php echo $mostrar['AluPassword']; ?>', '<?php echo $mostrar['AluImage']; ?>')"><i class="fa-regular fa-pen-to-square"></i></button>
+                                    <!-- Button trigger modal -->
+                                    <form id="eliminarForm_<?php echo $mostrar['id']; ?>" action="ConexFuncion.php" method="POST" enctype="multipart/form-data">
+                                        <input type="hidden" name="idEliminar" value="<?php echo $mostrar['id']; ?>">
+                                        <input type="hidden" name="eliminar_imagen" value="<?php echo $mostrar['AluImage']; ?>">
+
+                                        <button type="button" class="btn btn-primary btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="mostrarBorrar(<?php echo $mostrar['id']; ?>)">
+                                            <i class="fa-regular fa-trash-can"></i>
+                                        </button>   
+                                    </form>
+                                </td>
+                            </tr>
+                            <?php 
+                            
+                                }//FIN WHILE
+                                
                             ?>
                         </table>
                     </form>    

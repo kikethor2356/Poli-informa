@@ -4,6 +4,7 @@
     $db = new Database();
     $conexion = $db->connect();
 ?>
+<?php include '../LoginA/inicio.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -70,45 +71,42 @@
                                 </tr>
                             </thead>
                             <?php
-                            if(mysqli_num_rows($resultado) > 0){  
-                                $contador = 1; // Inicializar el contador dentro del bucle
+                            $registro = mysqli_query($conexion, "SELECT * FROM registro");
 
-                                foreach($resultado as $row){
-                                    // DETERMINA LA CLASE QUE SE ASIGNARÁ A CADA FILA EN FUNCIÓN DE SI ES PAR O IMPAR
-                                    $clase_fila = ($contador % 2 == 0) ? 'fila2' : 'fila1';
-                                    
-                                    ?>
-                                    <tr>
-                                        <td class="<?php echo $clase_fila; ?>"><input type="text" id="campoCodigo" value="<?php echo $row["AdCode"]; ?>" readonly ></td>
-                                        <td class="<?php echo $clase_fila; ?>"><input type="text" id="campoNombre" value="<?php echo $row["AdNombre"]; ?>" readonly ></td>
-                                        <td class="<?php echo $clase_fila; ?>"><input type="text" id="campoApellidoP" value="<?php echo $row["AdApellidoP"]; ?>" readonly ></td>
-                                        <td class="<?php echo $clase_fila; ?>"><input type="text" id="campoApellidoM" value="<?php echo $row["AdApellidoM"]; ?>" readonly ></td>
-                                        <td class="<?php echo $clase_fila; ?>"><input type="text" id="campoCorreo" value="<?php echo $row["AdCorreo"]; ?>" readonly ></td>
-                                        <td class="<?php echo $clase_fila; ?>"><input type="text" id="campoImagen" value="<?php echo $row["AdImagen"]; ?>" readonly ></td>
-                                        <!-- Botones de Editar y Eliminar -->
-                                        <td id="cabezaAccones" class="<?php echo $clase_fila; ?>">
-                                            <div class="acciones-buttons">
-                                                <button type="button" class="btn btn-samll btn-warning" onclick="mostrarEditar('<?php echo $row['id']; ?>' ,'<?php echo $row['AdCode']; ?>', '<?php echo $row['AdNombre']; ?>', '<?php echo $row['AdApellidoP']; ?>', '<?php echo $row['AdApellidoM']; ?>', '<?php echo $row['AdCorreo']; ?>', '<?php echo $row['AdImagen']; ?>', '<?php echo $row['AdImagen']; ?>')"><i class="fa-regular fa-pen-to-square"></i></button>
-                                                <!-- Button trigger modal -->
-                                                <form id="eliminarForm_<?php echo $row['id']; ?>" action="ConexFuncion.php" method="POST" enctype="multipart/form-data">
-                                                    <input type="hidden" name="idEliminar" value="<?php echo $row['id']; ?>">
-                                                    <input type="hidden" name="eliminar_imagen" value="<?php echo $row['AdImagen']; ?>">
-                                                    <button type="button" class="btn btn-primary btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="mostrarBorrar(<?php echo $row['id']; ?>)">
-                                                        <i class="fa-regular fa-trash-can"></i>
-                                                    </button>   
-                                                </form>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <?php
-                                    // Incrementa el contador
-                                    $contador++;
-                                }
-                            } else{
-                                ?>
-                                <tr><td colspan="2">No hay registros disponibles.</td></tr>
-                                <?php
-                            }
+                            while($mostrar = mysqli_fetch_array($registro)){
+                                       
+                            
+                            ?>
+
+                            <tr>
+                                
+                                <td> <?php echo $mostrar["AdCode"]; ?> </td>
+                                <td> <?php echo $mostrar["AdNombre"]; ?> </td>
+                                <td> <?php echo $mostrar["AdApellidoP"]; ?> </td>
+                                <td> <?php echo $mostrar["AdApellidoM"]; ?> </td>
+                                <td> <?php echo $mostrar["AdCorreo"]; ?> </td>
+                                <td> <?php echo $mostrar["AdImagen"]; ?></td>
+                                <td> <?php echo $mostrar["AdPassword"]; ?> </td>
+                                <td>
+
+                                    <button type="button" class="btn btn-samll btn-warning" onclick="mostrarEditar('<?php echo $mostrar['id']; ?>' ,'<?php echo $mostrar['AdCode']; ?>', 
+                                    '<?php echo $mostrar['AdNombre']; ?>', '<?php echo $mostrar['AdApellidoP']; ?>', '<?php echo $mostrar['AdApellidoM']; ?>', 
+                                    '<?php echo $mostrar['AdCorreo']; ?>', '<?php echo $mostrar['AdImagen']; ?>', '<?php echo $mostrar['AdPassword']; ?>', 
+                                    '<?php echo $mostrar['AdImagen']; ?>')"><i class="fa-regular fa-pen-to-square"></i></button>
+                                    <!-- Button trigger modal -->
+                                    <form id="eliminarForm_<?php echo $mostrar['id']; ?>" action="ConexFuncion.php" method="POST" enctype="multipart/form-data">
+                                        <input type="hidden" name="idEliminar" value="<?php echo $mostrar['id']; ?>">
+                                        <input type="hidden" name="eliminar_imagen" value="<?php echo $mostrar['AdImagen']; ?>">
+
+                                        <button type="button" class="btn btn-primary btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="mostrarBorrar(<?php echo $mostrar['id']; ?>)">
+                                            <i class="fa-regular fa-trash-can"></i>
+                                        </button>   
+                                    </form>
+                                </td>
+                            </tr>
+                            <?php 
+                                }//FIN WHILE
+                                
                             ?>
                         </table>
                     </form>    

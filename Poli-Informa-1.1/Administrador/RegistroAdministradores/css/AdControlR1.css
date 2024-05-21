@@ -103,28 +103,7 @@
 
 #mostrarProductos #cabezaAcciones{
     text-align: center;
-    width: 15%;
 }
-
-#mostrarProductos .acciones-buttons {
-    display: flex;
-    justify-content: space-evenly;
-}
-
-#tablaProductos input[type=text]{
-    margin: 0;
-    width: 95%;
-    outline: none;
-    border: none;
-    background: none;
-}
-
-#mostrarProductos .fila1{
-    background: rgb(251, 200, 200);
-}
-
-
-/* Ventana modal de editar */
 
 .modal_editar{
     pointer-events: none;
