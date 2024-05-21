@@ -11,12 +11,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/AdminCafeteria.css">
-    <script src="js/Categorias.js"></script>
+    <link rel="stylesheet" href="css/Carrera.css">
+    <script src="js/Carrera.js"></script>
     <!-- Link separados (iconos) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <title>Administracion Cafeteria</title>
+    <title>Administracion Careras</title>
 </head> 
 <body>
     <?php
@@ -43,16 +43,17 @@
         }
     ?>
     <!-- Ventana emergente para agregar producto -->
-    <div class="ventanaEmergenteCategoria">
-        <div class="contenidoVentanaEmergenteCategoria">
-            <div id="ventana-cerrarCategoria" class="cerrar-ventanaAgregarCate"><i class="fa-solid fa-x"></i></div>
-            <h2>Agregar Categoria</h2>
-            <form action="Agregar/InsertarCategoria.php" method="POST" enctype="multipart/form-data">
+    <div class="ventanaEmergenteCarrera">
+        <div class="contenidoVentanaEmergenteCarrera">
+            <div id="ventana-cerrarCarrera" class="cerrar-ventanaAgregarCarrera"><i class="fa-solid fa-x"></i></div>
+            <h2>Agregar Carrera</h2>
+            <form action="Agregar/InsertarCarrera.php" method="POST" enctype="multipart/form-data">
 
-                <input type="text" id="nombrecategoria" name="categoria_nombre" required placeholder="Nombre de la categoria">
+                <input type="text" id="nombreinicial" name="carrera_inicial" required placeholder="Inicial de la carrera">
+                <input type="text" id="nombrecarrera" name="carrera" required placeholder="Nombre de la carrera">
 
-                <button type="submit" name="Agregar1" id="Agregar1Categoria">Agregar Categoria</button>
-                <button type="button" class="ventanacerrarCategoria" onclick="limpiarDatos()">Cancelar</button>
+                <button type="submit" name="Agregar1" id="Agregar1Categoria">Agregar Carrea</button>
+                <button type="button" class="ventanacerrarCarrera" onclick="limpiarDatos()">Cancelar</button>
             </form>
         </div>
     </div>
@@ -82,17 +83,18 @@
         }
     ?>
     <!-- Ventana emergente para editar producto -->
-    <div class="ventanaEditarProductoCategoria">
-        <div class="contenidoVentanaEditarProductoCategoria">
-            <h2>Editar Producto</h2>
-            <div id="ventana-cerrar2Categoria" class="cerrar-ventanaEditarCategoria" onclick="cerrarVentanaEditar()"><i class="fa-solid fa-x"></i></div>
-            <form action="Agregar/EditarDatosCategoria.php" method="POST" enctype="multipart/form-data">
-                <input type="hidden" id="categoria_id" name="categoria_id">
+    <div class="ventanaEditarCarrera">
+        <div class="contenidoVentanaEditarCarrera">
+            <h2>Editar Carrera</h2>
+            <div id="ventana-cerrar2Carrera" class="cerrar-ventanaEditarCarrera" onclick="cerrarVentanaEditar()"><i class="fa-solid fa-x"></i></div>
+            <form action="Agregar/EditarDatosCarrera.php" method="POST" enctype="multipart/form-data">
+                <input type="hidden" id="id" name="id">
 
-                <p>Nombre <input type="text" id="categoria_nombre" name="categoria_nombre" placeholder="Nombre de la categoria"></p>
+                <p>Iniciales de la carrera<input type="text" id="carrera_inicial" name="carrera_inicial" required placeholder="Inicial de la carrera"></p>
+                <p>Nombre de la carrera completo<input type="text" id="carrera" name="carrera" required placeholder="Nombre de la carrera"></p>
 
                 <button type="submit" name="Editar1" id="Editar1Categoria">Guardar cambios</button>
-                <button type="button" class="ventanacerrarEditarCategoria" onclick="cerrarVentanaEditar()">Cancelar</button>
+                <button type="button" class="ventanacerrarEditarCarrera" onclick="cerrarVentanaEditar()">Cancelar</button>
             </form>
         </div>
     </div>
@@ -101,14 +103,13 @@
     <div id="productos">
         <!-- OPCIONES DEL ADMINISTRADOR -->
         <?php include '../Menu/menu.html'; ?>
-
         <!-- ÁREA DE TRABAJO -->
         <main id="principal-productos">
             <section id="section-productos">
                 <div id="mostrarProductos">
-                    <center><h2>CATEGORIAS EN CAFETERIA</h2></center>
+                    <center><h2>CARRERAS</h2></center>
 
-                    <button id="nuevoProducto" class="nuevoProducto" name="nuevoProducto" title="Agregar Producto" onclick="mostrarVentana()"><i class="fa-solid fa-circle-plus"></i> Agregar Categoria</button>
+                    <button id="nuevoCarrera" class="nuevoCarrera" name="nuevoCarrera" title="Agregar Cerrera" onclick="mostrarVentana()"><i class="fa-solid fa-circle-plus"></i> Agregar Carrera</button>
 
                     <!-- Controles de paginación -->
                     <div id="paginacion">
@@ -119,7 +120,7 @@
                                 <option value="7" <?php if(isset($_GET['resultados_por_pagina']) && $_GET['resultados_por_pagina'] == 7) echo 'selected'; ?>>7</option>
                                 <option value="10" <?php if(isset($_GET['resultados_por_pagina']) && $_GET['resultados_por_pagina'] == 10) echo 'selected'; ?>>10</option>
                             </select>
-                             Producto</label>
+                             Carrera</label>
                         </form>
                         <?php
 
@@ -128,23 +129,24 @@
 
                         $inicio = ($pagina_actual - 1) * $resultados_por_pagina;
 
-                        $sql = "SELECT COUNT(*) AS total FROM categorias_cafeteria";
+                        $sql = "SELECT COUNT(*) AS total FROM carreras";
                         $resultado = mysqli_query($conexion, $sql);
                         $fila = mysqli_fetch_assoc($resultado);
                         $total_resultados = $fila['total'];
                         $total_paginas = ceil($total_resultados / $resultados_por_pagina);
 
-                        $sql = "SELECT * FROM categorias_cafeteria LIMIT $inicio, $resultados_por_pagina";
+                        $sql = "SELECT * FROM carreras LIMIT $inicio, $resultados_por_pagina";
                         $resultado = mysqli_query($conexion, $sql);
                         ?>
                     </div><br><br>
 
                     <!-- Datos para registrar de cafeteria modulo a -->
-                    <table id="tablaProductosCategoria" border="1px">
+                    <table id="tablaProductos" border="1px">
                         <thead id="cabeceraTabla">
                             <tr>
-                                <th id="cabezaNombreCategoria">Categoria</th>
-                                <th id="cabezaAccionesCategoria">Acciones</th>
+                                <th id="cabezaInicialCarrera">Carrera</th>
+                                <th id="cabezaNombreCarrera">Nombre de la Crrera</th>
+                                <th id="cabezaAccionesCarrera">Acciones</th>
                             </tr>
                         </thead>
                         <?php
@@ -157,22 +159,23 @@
                                     
                                 ?>
                                 <tr>
-                                    <td class="<?php echo $clase_fila; ?>"><input type="text" id="campoNombre" value="<?php echo $row['categoria_nombre']; ?>" readonly></td>
+                                    <td class="<?php echo $clase_fila; ?>"><input type="text" id="campoInicial" value="<?php echo $row['carrera_inicial']; ?>" readonly></td>
+                                    <td class="<?php echo $clase_fila; ?>"><input type="text" id="campoNombre" value="<?php echo $row['carrera']; ?>" readonly></td>
                                     <!-- Botones de Editar y Eliminar  -->
-                                    <td id="cabezaAcciones" class="<?php echo $clase_fila; ?>">
+                                    <td id="cabezaAccionesCarrera" class="<?php echo $clase_fila; ?>">
                                         <div class="acciones-buttons">
-                                            <button type="button" class="iconoEditar" title="Editar Categoria" onclick="abrirVentanaEditar('<?php echo $row['categoria_id']; ?>', '<?php echo $row['categoria_nombre']; ?>')"><i class="fa-solid fa-pen-to-square"></i></button>
-                                            <form id="eliminarForm_<?php echo $row['categoria_id']; ?>" action="Agregar/EliminarCategoria.php" method="POST">
-                                                <input type="hidden" name="eliminar_id" value="<?php echo $row['categoria_id']; ?>">
+                                            <button type="button" class="iconoEditar" title="Editar Carrera" onclick="abrirVentanaEditar('<?php echo $row['id']; ?>', '<?php echo $row['carrera']; ?>', '<?php echo $row['carrera_inicial']; ?>')"><i class="fa-solid fa-pen-to-square"></i></button>
+                                            <form id="eliminarForm_<?php echo $row['id']; ?>" action="Agregar/EliminarCarrera.php" method="POST">
+                                                <input type="hidden" name="eliminar_id" value="<?php echo $row['id']; ?>">
                                                 <!-- Ventana emergente de confirmación -->
                                                 <div class="contenedor-modal">
                                                     <div class="contenedor-eliminar">
-                                                        <p>¿Seguro que quieres eliminar el registro?</p>
+                                                        <p>¿Seguro que quieres eliminar la carrera?</p>
                                                         <button type="submit" class="confirmarBtn" name="eliminar_id" id="eliminar_id">Eliminar</button>
                                                         <button type="button" class="cancelarBtn" onclick="cerrarVentanaEliminar()">Cancelar</button>
                                                     </div>
                                                 </div>
-                                                <button type="button" class="iconoEliminar" title="Eliminar registro" onclick="mostrarConfirmacion('<?php echo $row['categoria_id']; ?>')"><i class="fa-solid fa-trash-can"></i></button>
+                                                <button type="button" class="iconoEliminar" title="Eliminar registro" onclick="mostrarConfirmacion('<?php echo $row['id']; ?>')"><i class="fa-solid fa-trash-can"></i></button>
                                             </form>
                                         </div>
                                     </td>
@@ -227,20 +230,6 @@
                 });
             </script>";
         unset($_SESSION['error2']); // Eliminar la variable de sesión
-    }
-    ?>
-        <?php
-    if(isset($_SESSION['success3']) && $_SESSION['success3']) {
-        echo "<script>
-                Swal.fire({
-                    title: 'Categoria',
-                    text: 'La categoria no se puede eliminar porque esta siendo ocupado, <br>
-                    elimine el producto relaciono',
-                    icon: 'question',
-                    confirmButtonText: 'Aceptar'
-                });
-            </script>";
-        unset($_SESSION['success3']); // Eliminar la variable de sesión
     }
     ?>
 </body>

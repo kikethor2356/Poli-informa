@@ -1,3 +1,4 @@
+<?php include '../LoginU/inicio.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

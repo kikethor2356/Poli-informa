@@ -9,7 +9,7 @@
     }
 
     // Configurar el tiempo de sesión en segundos (5 minutos)
-    $session_duration = 5 * 60;
+    $session_duration = 25 * 60;
 
     // Actualizar el tiempo de última actividad
     if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity'] > $session_duration)) {
@@ -30,7 +30,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         // Tiempo de sesión en milisegundos (5 minutos)
-        var sessionDuration = 5 * 60 * 1000; // 5 minutos
+        var sessionDuration = 25 * 60 * 1000; // 5 minutos
         // Mostrar la alerta cuando han pasado 4 minutos
         var alertTime = sessionDuration - (1 * 60 * 1000);
 
