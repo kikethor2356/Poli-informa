@@ -1,5 +1,5 @@
 <?php 
-
+    require '../LoginU/inicio.php';
     require '../../Conexion/conexion.php';
     $db = new Database();
     $conexion = $db->connect();
