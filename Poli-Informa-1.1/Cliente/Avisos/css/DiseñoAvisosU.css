@@ -9,6 +9,23 @@
     font-family: "Inter", sans-serif;
 }
 
+
+/*Diseño de la página*/
+:root{
+    --colorPrincipal: #008150bc;
+    --colorSecundario: #C8E3D4;
+    --colorTerceo: #fdfaea;
+    --colorCuarto: #F6D7A7;
+    --blanco: #fff;
+    --negro: #000;
+}
+
+.home{
+
+    background-color: var(--colorTerceo);
+}
+
+
 /* IMAGENES DE CARRUSEL */
 .item {
     display: none;
@@ -27,6 +44,12 @@
     display: flex;
     justify-content: center; /* Centra horizontalmente */
     align-items: center; /* Centra verticalmente */
+}
+
+.pregunta{
+    left: 7%;
+    width: 60%;
+    text-align: center;
 }
 
 /* REFERENCIA */

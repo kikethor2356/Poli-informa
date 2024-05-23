@@ -1,4 +1,4 @@
-<?php include '../LoginU/inicio.php'; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,7 +33,7 @@
                     </div><br>
 
                     <div class="acercade_informacion">
-                        <h2 class="acercade_subtitulo">¿Que es?</h2>
+                        <h2 class="acercade_subtitulo">¿Qué es?</h2>
                         <p>POLI-INFORMA es un portal informativo para quellos estudiantes que quieran conocer un poco más sobre su escuela, ya que este portal puede ver datos muy importantes en la sessión de <a href="../Avisos/Avisos.php">Avisos</a> podras ver la información importante ya sea desde becas o dias de descanso o cuando son eventos importante.</p>
                         <p>Tambien en este portal podras ver lo que los horarios de los laboratorios, talleres o areas academicas, tambien puedes interactuar con las sessiones <a href="../Cafeteria/ModuloA.php">Cafeteria</a> y <a href="../Poli-Commerce/index.php">Poli-Commerce</a> hay podras ver productos que estan disponibles en la escuela, en "Cafeteria" hay dos sessiones las cuales podra tener diferentes productos o en "Poli-Commerce" el caul podras ver productos que vende los estudiantes de la escuela.</p><br>
     

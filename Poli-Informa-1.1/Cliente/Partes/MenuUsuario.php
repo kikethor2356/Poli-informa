@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
@@ -143,6 +144,15 @@
             box-sizing: border-box;
             font-family: "Inter", sans-serif;
         }
+
+        :root{
+            --colorPrincipal: #25a071fd;
+            --colorSecundario: #C8E3D4;
+            --colorTerceo: #fdfaea;
+            --colorCuarto: #F6D7A7;
+            --blanco: #fff;
+            --negro: #000;
+        }
         body {
             display: grid;
         }
@@ -160,7 +170,7 @@
             display: flex;
             flex-direction: column;
             gap: 4%;
-            background-color: #fff;
+            background-color: var(--colorPrincipal);
             padding: 2%;
             transition: all 0.3s;
 
@@ -174,9 +184,18 @@
             padding-bottom: 3%;
             border-bottom: 1px solid #f6f6f6;
         }
+
+        .icon{
+            color: #000;
+        }
+
+        .text{
+            color: #000;
+        }
+
         .user-img {
-            width: 34px;
-            height: 34px;
+            width: 59px;
+            height: 59px;
             border-radius: 35%;
             overflow: hidden;
             border: 1px solid #000;
@@ -187,9 +206,9 @@
         }
         .user-details .title,
         .menu .title {
-            font-size: 8px;
-            font-weight: 500; /*Leta oscura*/
-            color: #757575;
+            font-size: 12px;
+            font-weight: 500; /*Letra oscura*/
+            color: #000;
             text-transform: uppercase;
             margin-bottom: 5%;
         }
@@ -226,7 +245,7 @@
         .menu ul li .icon {
             font-size: 20px;
         }
-        .menu ul li .text {
+        .menu ul li .text{
             flex: 1;
         }
         .menu ul li .arrow {
@@ -294,7 +313,7 @@
             align-items: center;
             justify-content: center;
         }
-        .sidebar.active .menu > ul > li > a .text {
+        .sidebar.active .menu > ul > li > a .text{
             position: absolute;
             left: 70%;
             top: 50%;
@@ -319,7 +338,7 @@
             transform: rotate(45deg);
             z-index: -1;
         }
-        .sidebar.active .menu > ul > li > a:hover .text {
+        .sidebar.active .menu > ul > li > a:hover .text{
             left: 90%;
             opacity: 1;
             visibility: visible;
@@ -348,7 +367,7 @@
 
         }
 
-        .home .text {
+        .home .text{
             padding-top: 1%;
             position: relative;
         }

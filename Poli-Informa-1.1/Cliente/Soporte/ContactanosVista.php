@@ -1,4 +1,4 @@
-<?php include '../LoginU/inicio.php'; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,6 +13,9 @@
 <body>
     <?php include '../Partes/MenuUsuario.php'; ?>
     <div class="home">
+        <header class="cabecera">
+            <img class="cabecera__imagen"  src="imagenes/Contactanos.jpg" alt="imagen terminos y condiciones">
+        </header>
         <div class="text">
             <div class="container-form">
                 <div class="info-form">

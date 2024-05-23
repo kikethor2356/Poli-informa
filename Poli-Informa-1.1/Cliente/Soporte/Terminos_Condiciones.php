@@ -1,4 +1,4 @@
-<?php include '../LoginU/inicio.php'; ?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -14,10 +14,9 @@
 
     <div class="home">
         <header class="cabecera">
-            <img class="cabecera__imagen"  src="imagenes/hero.jpg" alt="imagen terminos y condiciones">
+            <img class="cabecera__imagen"  src="imagenes/TerminosCon.jpg" alt="imagen terminos y condiciones">
             <div class="cabecera__hero">
                 <h1 class="cabecera__titulo">Políticas y términos de privacidad</h1>
-                <a class="cabecera__boton boton" href="#">Inicio</a>
             </div>
         </header>
 

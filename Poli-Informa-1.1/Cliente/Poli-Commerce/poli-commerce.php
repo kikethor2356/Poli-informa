@@ -1,5 +1,5 @@
 <?php
-    include '../LoginU/inicio.php';
+
     include('../../Conexion/conexion.php');
 ?>
 <!DOCTYPE html>
@@ -18,11 +18,12 @@
     <?php include '../Partes/MenuUsuario.php'; ?>
     <div class="home">
             <header class="cabecera">
-                <img class="cabecera__imagen" src="img/cabecera.jpg" alt="imagen inicio">    
+                <img class="cabecera__imagen" src="img/poliComerce.jpg" alt="imagen inicio">    
                 <div class="cabecera__hero">
                     <div class="cabecera__contenido_1">
                         <h1>Poli-Commerce</h1>
-                        <p class="cabecera__texto">Descubre una amplia variedad de productos únicos ofrecidos por nuestros vendedores. ¡Apoya a los emprendedores y disfruta de una experiencia de compra única!</p>
+                        <p class="cabecera__texto">Descubre una amplia variedad de productos únicos ofrecidos por nuestros vendedores. <br>
+                        ¡Apoya a los emprendedores y disfruta de una experiencia de compra única!</p>
                         <a class="cabecera__enlace" href="#explorar">Explorar productos</a>
                     </div> <!-- .cabecera__contenido_1 -->
                     <div class="cabecera__contenido_2">

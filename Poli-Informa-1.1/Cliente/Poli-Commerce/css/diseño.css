@@ -2,8 +2,8 @@
     --blanco: #fff;
     --negro: #000;
     --gris: rgb(248, 248, 248);
-    --primario: rgb(143, 214, 198);
-    --secundario: rgb(52, 152, 219);
+    --primario: #25a071fd;
+    --secundario: #00815048;
     --tercero: rgb(146, 43, 33); 
     --cuarto: rgb(52, 73, 94);
     --fuentePrincipal: 'Raleway', sans-serif;
@@ -12,7 +12,7 @@
 /* GLOBALES */
 
 html {
-    box-sizing: border-box;
+    box-sizing: border-box; 
     font-size: 62.5%;
 }
 
@@ -106,7 +106,10 @@ h3{
 }
 
 .cabecera__enlace{
-    background-color: var(--tercero);
+    position: absolute;
+    top: 52%;
+    left: 42.5%;
+    background-color: var(--primario);
     color: var(--blanco);
     padding: 1.2rem 2.5rem;
     text-decoration: none;
@@ -120,25 +123,33 @@ h3{
 }
 
 .cabecera__texto{
+    position: absolute;
+    top: 30%;
+    width: 50%;
+    height: 10%;
+    left: 25%;
+    text-align: center;
     font-size: 1.5rem;
 }
 
 .cabecera__contenido_2{
     position: absolute;
     bottom: 0;
-    width: 50%;
-    height: 22rem;
+    width: 100%;
+    height: 10rem;
+    left: 74%;
     padding: 2rem 4rem;
-    background-color: var(--primario);
+    background-color: var(--secundario);
     font-size: 1.5rem;
     grid-column: 1 / 2;
     color: var(--blanco);
+    text-align: center;
 }
 
 /* NAVEGACION */
 .navegacion{
     display: flex;
-    background-color: var(--cuarto);
+    background-color: var(--negro );
     box-sizing: border-box;
     padding: 0 2rem;
     position: sticky;

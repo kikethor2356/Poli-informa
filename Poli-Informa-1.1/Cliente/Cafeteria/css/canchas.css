@@ -9,6 +9,13 @@
 
 h1{
     text-align: center;
+
+    font-weight: 500;
+}
+
+p{
+    text-align: center;
+
 }
 
 .acerca{
@@ -18,7 +25,7 @@ h1{
 
 /* Imagen fondo */
 .imagen_fondo{
-    background-image: url('../img/CafeteriaC.png');
+    background-image: url('../img/c_Canchas.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -48,15 +55,14 @@ h1{
 .boton_explorar {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
+    background-color: #25a071fd;
     text-decoration: none;
     border-radius: 4px;
     transition: background-color 0.3s ease;
 }
 
 .boton_explorar:hover {
-    background-color: #0056b3;
+    background-color: #25a071fd;
 }
 /* Fin de imagen fondo */
 
@@ -81,13 +87,13 @@ body{
 }
 
 #search-container input:focus {
-    border-bottom-color: #6759ff;
+    border-bottom-color: #25a071fd;
 }
 
 #search-container button {
     padding: 1em 2em;
     margin-left: 1em;
-    background-color: #6759ff;
+    background-color: #25a071fd;
     color: #ffffff;
     border-radius: 20px;
     margin-top: 0.5em;
@@ -107,14 +113,14 @@ body{
 }
 
 #search-container2 input:focus {
-    border-bottom-color: #6759ff;
+    border-bottom-color: #25a071fd;
 }
 
 #search-container2 button {
     position: absolute;
     padding: 1em 2em;
     margin-left: 18em;
-    background-color: #6759ff;
+    background-color: #25a071fd;
     color: #ffffff;
     border-radius: 20px;
     margin-top: -3.5em;
@@ -147,18 +153,18 @@ body{
 
 
 .button-value {
-    border: 2px solid #6759ff;
+    border: 2px solid #008150bc;
     padding: 1em 2.2em;
     border-radius: 3em;
     background-color: transparent;
-    color: #6759ff;
+    color: #008150bc;
     cursor: pointer;
     display: inline-block; /* Hacer que los botones se muestren en línea */
     margin-right: 0.5em; /* Espacio entre los botones */
 }
 
 .active1 {
-    background-color: #6759ff;
+    background-color: #008150bc;
     color: #ffffff;
 }
 

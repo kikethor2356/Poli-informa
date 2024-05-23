@@ -1,5 +1,5 @@
 <?php 
-    include '../LoginU/inicio.php';
+
     require '../../Conexion/conexion.php';
     $db = new Database();
     $conexion = $db->connect();
@@ -16,7 +16,7 @@
     <title>Avisos</title>
 </head>
 <body>
-    <?php include '../Partes/MenuUsuario.php'; ?>
+<?php include '../Partes/MenuUsuario.php'; ?>
 
     <div class="home">
         <div class="text">
@@ -80,7 +80,8 @@
 
             <br><br><br><br><br><br>
             <div class="pregunta">
-                ¿Te gustaria vender un producto?, registrate como vendedor en el siguiente link <a href="../Perfil/vendedorespen.php">Vendedores</a>
+                <p>¿Te gustaria vender un producto?</p> <br>
+                <p>Registrate como vendedor en el siguiente link <a href="../Perfil/vendedorespen.php">Vendedores</a></p>
                 <br><br>
                 <p>Se vera un croquis de la escuela para que conozca las instalaciones que tiene y como llegar con indicaciones.</p>
             </div>

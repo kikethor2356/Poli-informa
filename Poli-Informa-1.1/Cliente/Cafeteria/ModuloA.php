@@ -1,5 +1,5 @@
 <?php
-    include '../LoginU/inicio.php';
+
     include('../../Conexion/conexion.php');
     $db = new Database();
     $conexion = $db->connect();    

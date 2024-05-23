@@ -1,5 +1,5 @@
 <?php
-    include '../LoginU/inicio.php';
+
     include('../../Conexion/conexion.php');
     $db = new Database();
     $conexion = $db->connect();    
@@ -22,7 +22,7 @@
                 <div class="imagen_fondo">
                     <div class="conten">
                         <h1>Cafeteria Canchas</h1>
-                        <p>Encontrarás algunos productos los cuales esperamos que sean de tu gusto. Solamente podrás ver productos y no podrás pagarlos, pero puedes consultar qué es lo que se te antoja e ir a la cooperativa que está al lado de las escaleras del Modulo A.</p>
+                        <p>Encontrarás productos de tu cafetería favorita (Los productos mostrados aquí los podras adquirir en la cafeteria a lado de canchas)</p>
                         <a href="#buttons" class="boton_explorar">Explorar</a>
                     </div>
                 </div>

@@ -21,8 +21,10 @@ h1{
     overflow-x: hidden;
     border: 2px solid black;
     border-radius: 10px;
-    background-color: rgb(247, 247, 181);
+    background-color: #25a071fd;
+    color: #000;
 }
+
 .opcion {
     padding: 19px;    
 }
@@ -30,7 +32,7 @@ h1{
 .opcion .titu {
     font-size: 60%;
     font-weight: 500;
-    color: #757575;
+    color: #000000;
     text-transform: uppercase;
     margin-bottom: 1%;
 }
@@ -45,7 +47,7 @@ h1{
     gap: 10%;
     font-size: 80%;
     font-weight: 500;
-    color: #757575;
+    color: #000000;
     text-decoration: none;
     padding: 5% 2%;
     border-radius: 80px;
