@@ -3,7 +3,6 @@
 include('../../Conexion/conexion.php');
 $db = new Database();
 $conexion = $db->connect();
-session_start();
 
 if(isset($_POST["submit"])){
     if($_POST["submit"] == "Agregar"){

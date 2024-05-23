@@ -1,0 +1,543 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+/* FIN IMPORTACIONES */
+
+/* Cuerpo de diseño */
+* {
+    font-family: 'Poppins', sans-serif; /* Usar la fuente Poppins para todo el documento */
+    box-sizing: border-box; /* Incluir el borde y el relleno en el tamaño total del elemento */
+}
+
+#productos{
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    width: 100%;
+    height: 100vh;
+}
+
+#principal-productos{
+    position: absolute;
+}
+
+#principal-productos{
+    width: 85%;
+    height: 100%;
+    top: 0%;
+    left: 15%;
+    background-color: white;
+}
+
+/* Diseño de la tabla */
+#mostrarProductos h2{
+    text-align: center;
+    margin-top: 3%;
+}
+
+#mostrarProductos #nuevoCarrera{
+    position: absolute;
+    top: 15%;
+    left: 82%;
+    padding-left: 1%;
+    padding-right: 1%;
+    padding-top: .5%;
+    padding-bottom: .5%;
+    background: rgb(143, 0, 0);
+    color: white;
+    border-radius: 5px;
+    /* border: none; */
+    cursor: pointer;
+}
+#nuevoProducto:hover{
+    transform: scale(0.9);
+}
+
+#mostrarProductos table{
+    width: 95%;
+    margin-left: 2%;
+    margin-top: 3%;
+
+}
+
+#mostrarProductos table, th, td{
+    border-collapse: collapse;
+    border: none ;
+}
+
+#mostrarProductos th{
+    border-bottom: 1px solid black;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    text-align: left;
+    font-weight: 600;
+}
+
+#mostrarProductos td{
+    padding-top: .2%;
+    padding-bottom: .2%;
+}
+
+/* Diseño de columna */
+#mostrarProductos #cabezaInicialCarrera{
+    width: 10%;
+}
+
+#mostrarProductos #cabezaNombreCarrera{
+    width: 25%;
+}
+
+#mostrarProductos #cabezaAccionesCarrera{
+    text-align: center;
+    width: 12%;
+}
+
+#tablaProductos input[type=text]{
+    margin: 0;
+    width: 140%;
+    outline: none;
+    border: none;
+    background: none;
+}
+#mostrarProductos #tablaProductos{
+    width: 75%;
+    margin: auto;
+}
+#mostrarProductos .fila1{
+    background: rgb(251, 200, 200);
+}
+
+#mostrarProductos .iconoEliminar {
+    position: relative;
+    width: 5.5vh;
+    height: 4.5vh;
+    margin-top: .10vh;
+    border-radius: 5px;
+    cursor: pointer;
+    user-select: none;
+    background: rgb(255, 55, 0);
+}
+
+#mostrarProductos .iconoEditar {
+    position: relative;
+    width: 5.5vh;
+    height: 4.5vh;
+    margin-top: .10vh;
+    border-radius: 5px;
+    cursor: pointer;
+    user-select: none;
+    background: rgb(255, 251, 0);
+}
+
+#mostrarProductos .iconoVer {
+    position: relative;
+    width: 5.5vh;
+    height: 4.5vh;
+    margin-top: .10vh;
+    border-radius: 5px;
+    cursor: pointer;
+    user-select: none;
+    background: green;
+}
+
+#mostrarProductos .acciones-buttons {
+    display: flex;
+    justify-content: space-evenly;
+}
+.iconoEliminar:hover, .iconoEditar:hover, .iconoVer:hover{
+    transform: scale(0.9);
+}
+
+/* Ventana de agregar categoria */
+@media screen and (max-width: 768px) {
+    /* Estilos para pantallas más pequeñas */
+    .contenidoVentanaEmergenteCarrera {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    /* Estilos para pantallas aún más pequeñas */
+    .ventanaEmergenteCarrera {
+        width: 95%;
+    }
+}
+
+.contenidoVentanaEmergenteCarrera p{
+    margin-left: 8vh;
+    margin-top: 5vh;
+}
+
+.ventanaEmergenteCarrera {
+    pointer-events: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.164);
+    display: flex;
+    opacity: 1;
+    --transform: translateY(-100vh);
+    --transition: transform .8s;
+    opacity: 0;
+    transition: opacity .9s .9s;
+    z-index: 9999;
+}
+
+.enseñar_modalCarrera {
+    opacity: 1;
+    pointer-events: unset;
+    transition: opacity .6s;
+    --transform: translateY(0);
+    --transition: transform .8s .8s;
+}
+
+.contenidoVentanaEmergenteCarrera h2{
+    font-weight: normal;
+    font-size: 130%;
+    font-weight: 500;
+    margin: 0;
+    background: rgb(19, 123, 207);
+    border-radius: 10px;
+    color: white;
+    padding: 1%;
+    padding-left: 3%;
+    text-align: center;
+}
+
+.contenidoVentanaEmergenteCarrera #ventana-cerrarCarrera{
+    position: absolute;
+    top: 4%;
+    margin-left: 65vh;
+    color: #f2f2f2;
+    cursor: pointer;
+    transition: color .3s;
+    user-select: none;
+}
+
+.contenidoVentanaEmergenteCarrera #ventana-cerrarCarrera:hover{
+    color: #000;
+}
+
+.contenidoVentanaEmergenteCarrera {
+    display: inline;
+    width: 70vh;
+    height: 30vh;
+    margin: auto;
+    border-radius: 10px;
+    background: rgb(255, 255, 255);
+    border: 1px solid;
+    box-sizing: border-box;
+    transform: var(--transform);
+    transition: var(--transition);
+}
+
+.contenidoVentanaEmergenteCarrera #nombrecarrera{
+    position: absolute;
+    width: 80%;
+    margin-top: 4vh;
+    padding-top: .6%;
+    margin-left: 6vh;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    border: 1px solid;
+}
+
+.contenidoVentanaEmergenteCarrera #Agregar1Categoria{
+    position: absolute;
+    margin-left: 5vh;
+    margin-top: 13vh;
+    width: 30vh;
+    padding: 1vh;
+    user-select: none;
+    box-shadow: 2px 4px 10px rgba(157, 157, 157, 0.35);
+    border: 1px solid rgb(194, 194, 194);
+    border-radius: 5px;
+    font-size: 95%;
+    background: rgb(83, 127, 177);
+    color: white;
+    transition: transform .4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+.contenidoVentanaEmergenteCarrera #Agregar1Categoria:hover {
+    transform: scale(0.9);
+}
+
+.contenidoVentanaEmergenteCarrera .ventanacerrarCarrera{
+    position: absolute;
+    margin-left: 40vh;
+    margin-top: 13vh;
+    width: 20vh;
+    padding: 1vh;
+    user-select: none;
+    box-shadow: 2px 4px 10px rgba(157, 157, 157, 0.35);
+    border: 1px solid rgb(194, 194, 194);
+    border-radius: 5px;
+    font-size: 95%;
+    background: rgb(83, 127, 177);
+    color: white;
+    transition: transform .4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+.contenidoVentanaEmergenteCarrera .ventanacerrarCarrera:hover {
+    transform: scale(0.9);
+}
+
+
+/* Ventana de Editar de Categoria */
+@media screen and (max-width: 768px) {
+    /* Estilos para pantallas más pequeñas */
+    .contenidoVentanaEditarCarrera {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    /* Estilos para pantallas aún más pequeñas */
+    .ventanaEditarCarrera {
+        width: 95%;
+    }
+}
+
+.contenidoVentanaEditarCarrera p{
+    margin-left: 8vh;
+    margin-top: 5vh;
+}
+
+.ventanaEditarCarrera {
+    pointer-events: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.164);
+    display: flex;
+    opacity: 1;
+    --transform: translateY(-100vh);
+    --transition: transform .8s;
+    opacity: 0;
+    transition: opacity .9s .9s;
+    z-index: 9999;
+}
+
+.enseñar_EditarCarrera{
+    opacity: 1;
+    pointer-events: unset;
+    transition: opacity .6s;
+    --transform: translateY(0);
+    --transition: transform .8s .8s;
+}
+
+.contenidoVentanaEditarCarrera h2{
+    font-weight: normal;
+    font-size: 130%;
+    font-weight: 500;
+    margin: 0;
+    background: rgb(19, 123, 207);
+    border-radius: 10px;
+    color: white;
+    padding: 1%;
+    padding-left: 3%;
+    text-align: center;
+}
+
+.contenidoVentanaEditarCarrera #ventana-cerrar2Carrera{
+    position: absolute;
+    top: 3.5%;
+    margin-left: 65vh;
+    color: #f2f2f2;
+    cursor: pointer;
+    transition: color .3s;
+    user-select: none;
+}
+
+.contenidoVentanaEditarCarrera #ventana-cerrar2Carrera:hover{
+    color: #000;
+}
+
+.contenidoVentanaEditarCarrera {
+    display: inline;
+    width: 70vh;
+    height: 30vh;
+    margin: auto;
+    border-radius: 10px;
+    background: rgb(255, 255, 255);
+    border: 1px solid;
+    box-sizing: border-box;
+    transform: var(--transform);
+    transition: var(--transition);
+}
+
+.contenidoVentanaEditarCarrera #carrera {
+    position: absolute;
+    width: 50%;
+    margin-top: -.5vh;
+    padding-top: .6%;
+    margin-left: 1vh;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    border: 1px solid;
+}
+
+.contenidoVentanaEditarCarrera #Editar1Categoria {
+    margin-left: 5vh;
+    margin-top: 2vh;
+    width: 30vh;
+    padding: 1vh;
+    user-select: none;
+    box-shadow: 2px 4px 10px rgba(157, 157, 157, 0.35);
+    border: 1px solid rgb(194, 194, 194);
+    border-radius: 5px;
+    font-size: 95%;
+    background: rgb(83, 127, 177);
+    color: white;
+    transition: transform .4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+.contenidoVentanaEditarCarrera #Editar1Categoria:hover {
+    transform: scale(0.9);
+}
+
+.contenidoVentanaEditarCarrera .ventanacerrarEditarCarrera{
+    margin-left: 5vh;
+    margin-top: 2vh;
+    width: 20vh;
+    padding: 1vh;
+    user-select: none;
+    box-shadow: 2px 4px 10px rgba(157, 157, 157, 0.35);
+    border: 1px solid rgb(194, 194, 194);
+    border-radius: 5px;
+    font-size: 95%;
+    background: rgb(83, 127, 177);
+    color: white;
+    transition: transform .4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+.contenidoVentanaEditarCarrera .ventanacerrarEditarCarrera:hover {
+    transform: scale(0.9);
+}
+
+
+
+/* Ventana de Eliminar */
+@media screen and (max-width: 768px) {
+    /* Estilos para pantallas más pequeñas */
+    .contenedor-eliminar {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    /* Estilos para pantallas aún más pequeñas */
+    .contenedor-modal {
+        width: 95%;
+    }
+}
+
+/* Estilo para el contenedor modal */
+.contenedor-modal {
+    pointer-events: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.164);
+    display: flex;
+    opacity: 1;
+    --transform: translateY(-100vh);
+    --transition: transform .8s;
+    opacity: 0;
+    transition: opacity .5s .5s;
+    z-index: 9999;
+}
+
+/* Mostrar el modal */
+.mostrar-modal {
+    display: flex; /* Cambia a "display: flex" cuando se muestra */
+    opacity: 1;
+    pointer-events: unset;
+    transition: opacity .6s;
+    --transform: translateY(0);
+    --transition: transform .5s .5s;
+}
+
+/* Estilo para la ventana emergente de confirmación */
+.contenedor-eliminar {
+    padding: 2vh;
+    display: inline;
+    width: 52vh;
+    height: 25vh;
+    margin: auto;
+    border-radius: 10px;
+    background: rgb(255, 255, 255);
+    border: 1px solid;
+    box-sizing: border-box;
+    transform: var(--transform);
+    transition: var(--transition);
+}
+
+/* Estilos para los botones dentro de la ventana emergente */
+.contenedor-eliminar button {
+    margin: 0 10px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* Estilos para el botón de confirmar */
+.contenedor-eliminar .confirmarBtn {
+    background-color: #32CD32;
+    color: white;
+}
+
+/* Estilos para el botón de cancelar */
+.contenedor-eliminar .cancelarBtn {
+    background-color: #ff6347;
+    color: white;
+}
+
+/* Cambia el color de fondo al pasar el ratón por encima */
+.contenedor-eliminar button:hover {
+    transform: scale(0.9);
+}
+
+
+/* Diseño de emergencia de agregar con exito (ventana) */
+/* Fin de diseño de agregar con exito (ventana) */
+
+
+/* Botones de pagina para los productos */
+#paginacion {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#paginacion a {
+    padding: 5px 10px;
+    margin: 0 5px;
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #333;
+}
+
+#paginacion #resultados_por_pagina{
+    cursor: pointer;
+}
+
+#paginacion a.current {
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+}
+#paginacion a.current:hover {
+    transform: scale(0.9);
+}

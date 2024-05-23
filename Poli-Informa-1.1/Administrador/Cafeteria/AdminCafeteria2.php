@@ -4,8 +4,6 @@
     $db = new Database();
     $conexion = $db->connect();
 ?>
-<?php include '../LoginA/inicio.php'; ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>

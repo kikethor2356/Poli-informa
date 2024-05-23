@@ -14,10 +14,7 @@
             <div class="linea"></div>
             <div class="elemento_menu">
                 <input type="checkbox" name="opciones_menu" id="opcion_avisos">
-                <label for="opcion_avisos"><i class="fa-regular fa-newspaper"></i>Avisos&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa-solid fa-chevron-down" ></i></label>
-                  <ul>
-                    <li class="ultima_opcion"><a href="../Avisos/AdminAvisos.php">Mostrar</a></li>
-                  </ul>
+                <label for="opcion_avisos" class="ultima_opcion"><i class="fa-regular fa-newspaper"></i><a href="../Avisos/AdminAvisos.php">Avisos</a></label>
             </div>
             <div class="elemento_menu">
                 <input type="checkbox" name="opciones_menu" id="opcion_vendedores">
@@ -35,7 +32,8 @@
                 <ul>
                     <li><a href="../Laboratorios/ControllerShowTable.php">Laboratorios</a></li>
                     <li><a href="../Horarios/indexAdmin.php">Talleres</a></li> <!-- Falta -->
-                    <li class="ultima_opcion"><a href="../Maestros/ControllerShowTable.php">Académicos</a></li>
+                    <li><a href="../Maestros/ControllerShowTable.php">Académicos</a></li>
+                    <li class="ultima_opcion"><a href="../Carreras/Carreras.php">Carreras</a></li>
                 </ul>
             </div>
             <div class="elemento_menu">
@@ -57,15 +55,12 @@
             </div>
             <div class="elemento_menu">
                 <input type="checkbox" name="opciones_menu" id="opcion_registro">
-                <a class="sesion ultima_opcion ultima_opcion" href="../Quejas/Sugerencias.php">
-                    <i class="fa-regular fa-address-book"></i>Sugerencias
-                </a>                
+                <label for="opcion_registro" class="ultima_opcion"><i class="fa-regular fa-address-book"></i><a href="../Quejas/Sugerencias.php">Sugerencias</a></label>
             </div>
+
             <div class="elemento_menu">
                 <input type="checkbox" name="opciones_menu" id="opcion_registro">
-                <a class="sesion ultima_opcion ultima_opcion" href="../LoginA/controlador_cerrar_sesion.php">
-                    <i class="fa-solid fa-arrow-right-from-bracket"></i>Cerrar Sesión
-                </a>                
+                <label for="opcion_registro" class="ultima_opcion"><i class="fa-solid fa-arrow-right-from-bracket"></i><a href="../LoginA/controlador_cerrar_sesion.php">Cerrar Sesión</a></label>
             </div>
         </div>
     </div>
@@ -138,6 +133,11 @@
             color: #000;
         }
         .menu_lateral li a{
+            color: #000;
+            text-decoration: none;
+        }
+
+        .menu_lateral a{
             color: #000;
             text-decoration: none;
         }
